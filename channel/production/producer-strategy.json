@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "name": "U.S. practical-impact desk",
+  "summary": "Prioritize consequences for American households, work and public services. Surface consequential policy decisions without ranking parties, politicians or viewpoints.",
+  "products": [
+    {"id":"brief","name":"The Brief","purpose":"What does the viewer need to know now?","format":"A concise awareness item, with a clear development and practical consequence.","freshnessHours":24},
+    {"id":"focus","name":"In Focus","purpose":"What does the viewer need help understanding?","format":"A produced explanation of mechanisms, consequences and unresolved questions.","freshnessHours":72}
+  ],
+  "rules": [
+    {"id":"household","label":"Household costs and consumer utility","terms":["rent","housing","mortgage","insurance","premiums","groceries","electricity","utility","utilities","bills","fees","consumer protection","recall","recalled","prices","costs","debt","student loan","student loans","borrowers","interest rate discount"],"brief":24,"focus":18},
+    {"id":"work","label":"Work and economic consequences","terms":["jobs","workers","wages","employment","unemployment","layoffs","laying off","employees","training","apprenticeships","paychecks","inflation","interest rates","interest rate","tax credits","benefits"],"brief":20,"focus":18},
+    {"id":"policy","label":"Consequential public decisions","terms":["court","rule","ruling","law","funding","budget","shutdown","deadline","takes effect","water","public transit","schools","infrastructure","fuel economy standards","tariff","tariffs"],"brief":14,"focus":12},
+    {"id":"immediate","label":"Immediate awareness or action","terms":["recall","recalled","warning","evacuation","deadline","takes effect","blocked","approved","suspended","closed","outage","shutdown"],"brief":30,"focus":0},
+    {"id":"mechanism","label":"A mechanism or tradeoff worth explaining","terms":["eligibility","exemptions","deductible","reinsurance","supply","subsidies","financing","zoning","implementation","constraints","tradeoff","affordability","methodology","research","study"],"brief":2,"focus":40}
+  ],
+  "watchTerms": ["proposal","proposed","hearing","draft","may","could","pending","expected","deadline"],
+  "previewTerms": ["what to expect","expected","could","may","proposal","proposed","draft","preview","opinion","predicts"],
+  "utilityTerms": ["stop use","stop using","do not use","evacuate","check the model","refund","boil water","avoid travel"],
+  "directChangeTerms": ["extends","extended","deadline","takes effect","approved","approves","passed","passes","blocked","blocks","recalls","recall","recalled","raises","cuts","rolls back","rollback","restores","signs","signed","orders","ordered"],
+  "publicConsequenceTerms": ["borrowers","student aid","student loan","student loans","voter registration","register to vote","voters need","voting rights","health care","healthcare","medicare","medicaid","schools","school funding","education funding","public transit","water","electricity","transportation","fuel economy standards","tariffs","trade war","dairy","food safety","public health","workers","paychecks","benefits"],
+  "foreignPlaceTerms": ["UK","Britain","British","Argentina","Falkland","Iran","Israel","Russia","Australia","Hungary","Pakistan","India","London","NHS"],
+  "politicalFrameTerms": ["midterm","midterms","poll","polls","pollster","donors","campaign consultant","midterm ticket","campaign cash","electoral","approval rating","political fortunes"],
+  "civicUtilityTerms": ["register to vote","voter registration","voters need","early voting","polling place","ballot deadline"],
+  "reactionTerms": ["criticizes","criticises","blames","slams","condemns","hits back","takes aim","claps back","trades barbs"],
+  "suppressTerms": ["newsletter","subscribe","sponsored","shopping deals","coupon","watch live","live updates","news quiz","trades barbs","slams","feud","claps back"],
+  "localPatterns": [
+    {"id":"home-insurance-costs","label":"Insurance costs across local markets","allOf":[["insurance","insurers"],["premiums","rates","costs","renewal"]]},
+    {"id":"housing-pressure","label":"Housing pressure across local markets","allOf":[["housing","rent","rental"],["supply","costs","prices","shortage","eviction"]]},
+    {"id":"utility-pressure","label":"Utility costs across local markets","allOf":[["utility","utilities","electricity"],["bills","rates","costs"]]}
+  ],
+  "localMinimumMarkets": 3,
+  "localWindowHours": 72,
+  "changeWindowHours": 24,
+  "sourceStaleMinutes": 120,
+  "boardSize": 8
+}

@@ -2,13 +2,13 @@
 
 A calm, watch-first news experience: individual produced stories, a continuous playlist, and a latest-news feed. The editorial focus is practical U.S. consumer, economic and consequential policy news.
 
-The application lives in [`channel/`](channel/README.md). Run **`channel/Start Bearing.cmd`** on the configured Windows machine and open **http://127.0.0.1:8796/**. See the application README for Python, Piper models, FFmpeg and runtime setup on another machine.
+The application lives in [`channel/`](channel/README.md). Run **`channel/Start Bearing.cmd`** on the configured Windows machine. Open **http://127.0.0.1:8796/** to watch Bearing or **http://127.0.0.1:8796/producer.html** for the **Easy News** producer workspace. See the application README for Python, Piper models, FFmpeg and runtime setup on another machine.
 
 ## Milestone status
 
 The one-story quality milestone is complete and was accepted by the user on September 29, 2026: a sourced script, narration, story-specific graphics, audio treatment, assembly, playlist entry and automatic playback into the next item. The accepted cybersecurity cut remains intact. Carry-forward feedback: the voice is slightly too fast and the graphics need enough time to land. See [the handoff](product/NEXT.md) for the accepted delivery and stop boundary.
 
-There is no active development mission. Broad feature work and Coverage Radar remain queued and unstarted until explicitly authorized by the user.
+Easy News adds an editorial view over the same source intake and event IDs: separate immediate-awareness and deeper-treatment recommendations, source inspection, change history, and reversible producer decisions. Its sample news cycle is explicitly separated from live reporting. Recommendations do not assign, generate or publish stories. See [the V1 guide](product/EASY_NEWS_V1.md) and [current handoff](product/NEXT.md).
 
 ## Repository
 
@@ -26,7 +26,7 @@ Local model environments, machine-specific `runtime.json`, production run archiv
 
 The product is **Bearing**, formerly **current.** The rename changes display copy and metadata, not playback logic or layout. `CURRENT_*` environment variables, the `current.preferences.v1` storage key, internal CSS selectors and existing local folder names remain compatible to preserve configuration and viewer preferences. Historical generation prompts and media provenance retain their original wording.
 
-EasyNews material is archival reference only. Do not inspect or use it unless the user explicitly requests a comparison against EasyNews. It is not a runtime, import or repository dependency.
+The old `easynews-reference` repository is archival reference only. Do not inspect or use it unless the user explicitly requests a comparison against EasyNews. It is not a runtime, import or repository dependency. The new **Easy News** producer workspace is implemented natively here, following [the current product direction](product/EASY_NEWS_DIRECTION.md); its name does not authorize using the archive.
 
 ## Verification
 

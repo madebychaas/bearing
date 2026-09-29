@@ -16,6 +16,14 @@ Run **Start Bearing.cmd**, then open **http://127.0.0.1:8796**. The configured l
 
 The latest desk shows reports published within 24 hours, newest first, with For you/All/topic filters. It checks completed local snapshots every 30 seconds. Reader updates wait behind an updates button; new playable editions enter at video boundaries. Refreshing the desk never resets playback. Feed polling retains publisher TTLs and existing 5–60 minute schedules, so this is continuously updating news, not event footage or guaranteed instant delivery.
 
+## Easy News producer workspace
+
+Open **http://127.0.0.1:8796/producer.html** on the same server for producer work. The separate workspace shares Bearing's reporting and coverage IDs. The Brief and In Focus have independent recommendations, source-linked reasons and readiness gaps; shortlist, watch, dismiss and reset are editorial decisions, not assignments or publication commands. Live feed excerpts remain in this local producer interface, behind a loopback-only API.
+
+The server observes collected reporting every 20 seconds; the producer page polls its snapshot every 30 seconds. Source collection retains its existing publisher schedules and waits for the current production cycle. A source check time is not a publication time or a guaranteed live update. **Sample cycle** uses clearly labeled representative inputs and separate state to demonstrate meaningful updates, cosmetic edits, syndication and local reporting signals without mixing them into live news.
+
+Configuration lives in `production/producer-strategy.json`. Editorial history and decisions persist locally under the ignored `production/runs/` directory. Run one local server per checkout to keep one writer for that state. See [the V1 guide](../product/EASY_NEWS_V1.md) for the proof, limits and operation. The Bearing player and accepted story segment remain independent of these controls.
+
 ## Production feel
 
 Studio graphics ease in and out over **1.5 seconds of viewing time**, including at the chosen narration speed. Opening and closing idents last 4.5 seconds, while narration has 1.8 seconds of lead and tail space per chapter. Supporting facts fade smoothly at their own boundaries. A 1.5-second branded transition separates playlist entries. Sound cues are optional, music ducks under speech, and master mute covers all audio. Reduced movement removes transitions and freezes the illustration.

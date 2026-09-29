@@ -4,13 +4,86 @@ from datetime import datetime, timezone
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from urllib.parse import parse_qs, urlsplit
 
 ROOT=Path(__file__).resolve().parent.parent
 stop=threading.Event()
 status={'state':'starting','lastRun':None,'detail':'Current edition is available while updates are prepared.'}
 status_lock=threading.Lock()
+producer_store=None
+producer_store_lock=threading.Lock()
+
+def get_producer():
+    # One server owns producer decisions and observations. The collector stays
+    # the single intake path; it never writes this editorial state.
+    global producer_store
+    with producer_store_lock:
+        if producer_store is None:
+            from producer import ProducerStore
+            producer_store=ProducerStore(ROOT)
+        return producer_store
+
+def observe_reporting():
+    while not stop.is_set():
+        try:get_producer().snapshot()
+        except (OSError,ValueError,RuntimeError):
+            # An unavailable snapshot must not stop the viewer or feed worker.
+            pass
+        if stop.wait(20):return
 
 class Handler(SimpleHTTPRequestHandler):
+    def json_response(self,data,status_code=200):
+        body=json.dumps(data,ensure_ascii=False).encode('utf-8')
+        self.send_response(status_code)
+        self.send_header('Content-Type','application/json; charset=utf-8')
+        self.send_header('Cache-Control','no-store')
+        self.send_header('Content-Length',str(len(body)))
+        self.end_headers();self.wfile.write(body)
+
+    def local_request(self):
+        # Producer notes are local. Reject foreign origins and rebound hosts;
+        # this is a loopback editor, not an unauthenticated network API.
+        host=self.headers.get('Host','')
+        try:
+            parsed=urlsplit('http://'+host)
+            valid=parsed.hostname in ('127.0.0.1','localhost','::1') and parsed.port==self.server.server_port
+        except ValueError:valid=False
+        origin=self.headers.get('Origin')
+        if not valid or (origin is not None and origin!='http://'+host):
+            self.json_response({'error':'Producer controls are available from this local application only.'},403)
+            return False
+        return True
+
+    def do_POST(self):
+        path=urlsplit(self.path).path
+        if path not in ('/api/producer/decision','/api/producer/demo'):
+            self.json_response({'error':'Unknown endpoint.'},404);return
+        if not self.local_request():return
+        if self.headers.get('Content-Type','').split(';')[0].strip().lower()!='application/json':
+            self.json_response({'error':'Send an application/json request.'},415);return
+        try:length=int(self.headers.get('Content-Length','0'))
+        except ValueError:length=0
+        if not 1<=length<=8192:
+            self.json_response({'error':'Request body must be between 1 and 8192 bytes.'},413);return
+        try:
+            payload=json.loads(self.rfile.read(length))
+            if not isinstance(payload,dict):raise ValueError('Expected a JSON object.')
+            action=payload.get('action')
+            if path.endswith('/demo'):
+                if action not in ('advance','reset'):raise ValueError('Choose advance or reset for the sample cycle.')
+                result=get_producer().demo(action)
+            else:
+                mode=payload.get('mode','live');event_id=payload.get('eventId');note=payload.get('note','')
+                if mode not in ('live','demo'):raise ValueError('Unknown news mode.')
+                if action not in ('shortlist','watch','dismiss','reset'):raise ValueError('Unknown editorial decision.')
+                if not isinstance(event_id,str) or not 1<=len(event_id)<=160:raise ValueError('Choose an existing story.')
+                if not isinstance(note,str) or len(note)>500:raise ValueError('Keep the editorial note within 500 characters.')
+                result=get_producer().decide(event_id,action,note,mode=mode)
+            self.json_response(result)
+        except (ValueError,UnicodeError) as exc:self.json_response({'error':str(exc)},400)
+        except KeyError:self.json_response({'error':'This story is no longer in the candidate pool.'},404)
+        except (OSError,RuntimeError):self.json_response({'error':'Editorial state could not be saved. Your decision was not confirmed.'},503)
+
     def send_head(self):
         self._byte_range=None
         path=Path(self.translate_path(self.path))
@@ -41,6 +114,14 @@ class Handler(SimpleHTTPRequestHandler):
             if not chunk:break
             outputfile.write(chunk);remaining-=len(chunk)
     def do_GET(self):
+        if urlsplit(self.path).path=='/api/producer':
+            if not self.local_request():return
+            mode=parse_qs(urlsplit(self.path).query).get('mode',['live'])[0]
+            if mode not in ('live','demo'):
+                self.json_response({'error':'Unknown news mode.'},400);return
+            try:self.json_response(get_producer().snapshot(mode=mode))
+            except (OSError,ValueError,RuntimeError):self.json_response({'error':'Producer reporting is temporarily unavailable. Retry shortly.'},503)
+            return
         if self.path.split('?')[0]=='/api/production':
             with status_lock:data=json.dumps(status).encode()
             self.send_response(200);self.send_header('Content-Type','application/json');self.send_header('Cache-Control','no-store');self.send_header('Content-Length',str(len(data)));self.end_headers();self.wfile.write(data);return
@@ -81,6 +162,7 @@ def main():
         if settings.get('modelDir'):os.environ['CURRENT_PIPER_MODEL_DIR']=settings['modelDir']
         if settings.get('ffmpeg'):os.environ['CURRENT_FFMPEG']=settings['ffmpeg']
     server=ThreadingHTTPServer(('127.0.0.1',args.port),partial(Handler,directory=str(ROOT/'dist')))
+    threading.Thread(target=observe_reporting,daemon=True).start()
     if not args.no_refresh:threading.Thread(target=refresh,args=(max(1,args.refresh_minutes),),daemon=True).start()
     else:status.update(state='preview',detail='Automatic refresh is disabled in this preview.')
     print(f'Bearing is ready at http://127.0.0.1:{args.port}',flush=True)
