@@ -4,9 +4,11 @@ A calm, watch-first news experience: individual produced stories, a continuous p
 
 The application lives in [`channel/`](channel/README.md). Run **`channel/Start Bearing.cmd`** on the configured Windows machine and open **http://127.0.0.1:8796/**. See the application README for Python, Piper models, FFmpeg and runtime setup on another machine.
 
-## Current milestone
+## Milestone status
 
-Broad feature development is paused. The next milestone is one selected real story produced end-to-end: an approved script in the preferred voice, narration, story-specific visuals, audio treatment, assembly, playlist publication and seamless playback into the next item. Preserve the existing player design and desktop viewing layout.
+The one-story quality milestone is complete and was accepted by the user on September 29, 2026: a sourced script, narration, story-specific graphics, audio treatment, assembly, playlist entry and automatic playback into the next item. The accepted cybersecurity cut remains intact. Carry-forward feedback: the voice is slightly too fast and the graphics need enough time to land. See [the handoff](product/NEXT.md) for the accepted delivery and stop boundary.
+
+There is no active development mission. Broad feature work and Coverage Radar remain queued and unstarted until explicitly authorized by the user.
 
 ## Repository
 

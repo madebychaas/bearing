@@ -1,10 +1,12 @@
-# Bearing — Current Mission
+# Bearing — Mission Handoff
 
-## Mission
+**Status: story-quality milestone complete.** The user accepted the finished cybersecurity segment on September 29, 2026 and explicitly asked to stop after committing and pushing the handoff. There is no active development mission. Coverage Radar and all other queued work remain unstarted until the user authorizes the next mission.
+
+## Completed mission
 
 Make one real **In Focus** story feel unmistakably like Bearing from beginning to end.
 
-Broad feature development is paused.
+Broad feature development remains paused. The brief and quality standards below document the completed milestone; they do not authorize further iteration.
 
 Use the production machinery that already exists. Improve whatever most prevents the finished experience from delivering the Bearing promise:
 
@@ -51,6 +53,7 @@ Do not assume every existing production element deserves to remain merely becaus
 - Remove repetition, throat-clearing, generic connective language, and lines that do not earn their runtime.
 - Preserve nuance and evidence while making the spoken structure easier to follow.
 - Read and listen for cadence, not just grammatical correctness.
+- Preserve enough time for viewers to absorb each graphic. In accepting this milestone, the user noted that the voice is slightly too fast and reduces the graphics' impact. Do not pursue shorter runtime by accelerating delivery; revisit the voice and visual dwell together only when further work is authorized.
 
 ### Treat voice quality as a product requirement
 
@@ -88,7 +91,7 @@ Avoid generic "what to watch" conclusions.
 
 The ending should land on the specific unresolved question, consequence, decision, deadline, evidence gap, or next development that genuinely determines where the story goes from here.
 
-## Priorities
+## Completed milestone workflow
 
 1. Watch one current In Focus story all the way through.
 2. Identify the few highest-leverage weaknesses in the finished experience.
@@ -129,9 +132,7 @@ UI quality matters, but for this mission it is secondary to editorial and produc
 
 ## Autonomy
 
-Continue working until the milestone is materially better or a genuine blocker requires the user.
-
-Do not stop merely because one implementation task is complete. Re-experience the finished product and decide whether the mission has actually been achieved.
+The user has accepted this milestone and ended autonomous iteration. Preserve the finished state and stop. Do not continue polishing, alter playback preferences, or begin queued work without a new user instruction.
 
 ## Queued next mission — do not start yet
 
@@ -139,18 +140,18 @@ The next major capability is the producer-facing real-time news intelligence sur
 
 It should share the same underlying news/event intelligence that ultimately feeds Bearing, while giving a national network producer a human-facing view of what deserves attention now, what materially changed, and what is emerging.
 
-Do not begin that build until this file explicitly makes Coverage Radar the active mission.
+Do not begin that build until the user authorizes it and this file explicitly makes Coverage Radar the active mission. Closing the story-quality milestone does not activate Coverage Radar.
 
 ## Astra handoff
 
 When stopping after a meaningful milestone, update this section briefly.
 
-**Last completed:** September 29, 2026: rebuilt **A route into cybersecurity** as a 51-word, 23.11-second Warm / 25.71-second Measured production example, delivery `a315989abeedc6ee7f60`. See [the story review](IN_FOCUS_WORKFORCE_REVIEW.md).
+**Last completed and accepted:** September 29, 2026: the user accepted **A route into cybersecurity** as sufficient to close the story-quality milestone. The finished 51-word production example runs 23.11 seconds in Warm / 25.71 seconds in Measured, delivery `a315989abeedc6ee7f60`. See [the story review](IN_FOCUS_WORKFORCE_REVIEW.md). This closeout changes documentation only; the accepted script, graphics, audio, timing and playback preferences remain as delivered.
 
-**Commit:** The milestone commit titled `Tighten the workforce segment with voice-led graphics and an editorial score` updates this handoff.
+**Finished-state commits:** `a873e23` implements the produced cut; `7e95725` finalizes concise map attribution and the accepted delivery. The subsequent documentation-only closeout records user acceptance and the stop boundary.
 
 **What materially improved:** Immediate benefit-led narration under an original musical signature; funding geography with actual state paths and verified reuse permission; a separate training/employer mechanism diagram; a resolved closing; and The Shift / The Design / The Payoff chapter overlay. The arbitrary Houston detour and shaky footage are absent. Sound now bridges the lead and playlist handoff, respects seeking, and cannot restart accidentally on early pause/resume. New or changed scripts require an evidenced why-now review; this older announcement is explicitly context. All eleven programmes rebuilt with no holds; 91 Python and 32 JavaScript checks pass. Actual in-app browser review confirmed playback and automatic advance. Desktop remains scroll-less; phone caption clearance was checked and the map corrected. Source clips, prior deliveries and original media remain preserved.
 
-**What still feels unresolved:** The user has not accepted this new performance or graphic treatment. Physical listening quality, energy and voice preference remain subjective checks; successful decoding and measured levels do not establish approval. Other stories retain their earlier production. This context example has no verified new September 29 development and must not be promoted as such. Broader publication expansion is not approved by this milestone.
+**Carry-forward feedback:** The user finds the voice slightly too fast and says the graphics lose impact as a result. Acceptance closes this milestone; it is not a request to accelerate the delivery or keep tuning now. In future authorized work, balance narration cadence with graphic read time and emphasis. Other stories retain their earlier production. This context example has no verified new September 29 development and must not be promoted as such. Broader publication expansion is not approved by this milestone.
 
-**Recommended next move:** Review this exact delivery for cadence, map read time, mechanism clarity, audio blend and whether the close earns its emphasis. Make focused refinements to this one cut before applying the treatment elsewhere. Keep Coverage Radar and broad feature work queued. For the next real current-news production, select an evidenced new consequence or development instead of treating retrieval time as news value.
+**Next action:** Stop after the closeout commit and push. Await an explicit user instruction; do not start Coverage Radar or reopen story-quality iteration automatically. Preserve the pacing feedback for the next authorized production task.

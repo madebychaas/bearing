@@ -38,10 +38,12 @@ Kokoro synthesizes complete sentences on two CPU threads. Word-level reveals use
 
 New or changed full-story scripts require a reviewed `editorialTiming` record. Current news needs an evidenced trigger (new development, material update, deadline or ongoing impact), a stated reason for running now and an expiring review window. Fetch/build time and an unexplained page-update timestamp are not accepted news pegs. Context examples remain playable but explicitly not live-eligible. Ten unchanged legacy cuts have frozen ID/source/script-hash migration exceptions; altering their copy requires a new timing review. The check validates review discipline, not the truth of an editor's evidence.
 
-## Verification and remaining judgment
+## Verification and user acceptance
 
 All eleven programmes rebuilt with no holds. **91 Python and 32 JavaScript tests pass**, covering media integrity, publication retention, cue ordering, geography, rights, review expiry, audio envelopes, pause/resume and seek behavior. Full narration and music decoding passed. Active speech measures approximately -17.7 dBFS RMS; the default music bed is approximately 20 dB below it.
 
-The actual Codex in-app browser was used to inspect the lead, map, mechanism, closing, narration/music synchronization and automatic progression into the next story. Desktop remains scroll-less. A narrow-screen map/caption overlap found during review was corrected; the diagram and closing clear captions. Browser timing and audio levels are verification evidence, not physical listening approval. Naturalness, emotional emphasis and the user's preference for this performance remain listening judgments.
+The actual Codex in-app browser was used to inspect the lead, map, mechanism, closing, narration/music synchronization and automatic progression into the next story. Desktop remains scroll-less. A narrow-screen map/caption overlap found during review was corrected; the diagram and closing clear captions. Browser timing and audio levels are verification evidence, not independent physical listening approval.
 
-Prior deliveries are retained. This is a focused production revision to one selected story. Coverage Radar and broad feature work remain queued; no archival reference project was consulted.
+On September 29, 2026, the user accepted this finished state as sufficient to close the story-quality milestone. Their remaining direction is to avoid over-rotating on voice: it is slightly too fast, reducing the impact of the graphics. Future authorized production should preserve graphic read time and emphasis alongside concise narration. This acceptance does not request another timing change; the delivered media and viewer preferences remain unchanged at closeout.
+
+Prior deliveries are retained. This focused production milestone is complete. The user explicitly requested a commit, push, updated handoff and then a stop. Coverage Radar and broad feature work remain queued and unstarted; no archival reference project was consulted.
