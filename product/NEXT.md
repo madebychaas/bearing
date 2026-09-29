@@ -83,8 +83,12 @@ Do not stop merely because one implementation task is complete. Re-experience th
 
 When stopping after a meaningful milestone, update this section briefly.
 
-**Last completed:**  
-**Commit:**  
-**What materially improved:**  
-**What still feels unresolved:**  
-**Recommended next move:**  
+**Last completed:** September 29, 2026: watched and refined the existing In Focus story, now titled **Cybersecurity training. A route to work?**, through rendered narration, explanatory graphics, music and automatic playback into the next story. Warm delivery: 80.98 seconds; measured: 91.77 seconds. See [the editorial and viewing review](IN_FOCUS_WORKFORCE_REVIEW.md).
+
+**Commit:** `6070d61` — Produce a source-grounded cybersecurity In Focus treatment.
+
+**What materially improved:** Less repetition, a verified University of Houston example, a clear distinction between funding and outcomes, four graphics bound to each voice's actual narration cues, quieter internal transitions and readable phone graphics above captions. Existing player, preferences and continuous playlist remain intact. Production returned 11 ready programmes with no holds; 73 Python and 24 JavaScript tests pass. JavaScript tests ran directly with `node --test channel/tests/*.test.mjs` because this machine's npm shim points to a missing npm installation.
+
+**What still feels unresolved:** The synthetic narration still needs a focused listening and performance review with the user; physical speaker output and subjective voice preference are not established. This is an improvement to one dated explanatory story, not approval to expand autonomous publication or claim a fully human presentation.
+
+**Recommended next move:** Listen to this exact In Focus cut in Bearing before extending the treatment. Refine cadence, emphasis and audio mix where the listening review identifies a concrete weakness. Keep broad feature work paused and preserve the current source review and delivery version `3e89d626a639aa91c7f4` for comparison.
