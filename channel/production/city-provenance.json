@@ -1,0 +1,16 @@
+{
+  "asset": "current-broad-city-original.png",
+  "createdDate": "2026-09-28",
+  "generator": "Built-in image_gen.imagegen",
+  "generationCalls": 1,
+  "sourceOriginal": "exec-e2d1cdbc-6a3a-420c-880d-b04b0c919e36.png",
+  "promptFile": "prompt.txt",
+  "width": 1672,
+  "height": 941,
+  "sha256": "7FE051923094399DA0534CD815D30596278727520F8EFCD8D52ABAB21584859B",
+  "transparency": false,
+  "disclosure": "AI-generated conceptual illustration of an invented city. Not event footage or a documented real location.",
+  "inspection": "Quiet blue-hour riverfront city with contemporary anonymous towers, small warm windows, tree-lined embankment, and water reflections. Landscape near 16:9. No visible text, logos, people, identifiable landmark, or disaster content. Cool blue-slate palette dominates; warm reflections are a noticeable secondary accent.",
+  "motion": "12-second CPU-composited H.264 loop; cosine zoom, 1280x720, 24fps; not generative event footage",
+  "motionSha256": "12A1ACD0CB60ADA62965115C21366B77E2272B9F65B380EF49D53917742A7681"
+}

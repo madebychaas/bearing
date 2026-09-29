@@ -1,0 +1,143 @@
+{
+  "version": 1,
+  "createdAt": "2026-09-28T19:26:26.048864+00:00",
+  "editionSource": "edition-source.json",
+  "editionSourceSha256": "b5cb307265b0ba6019775539016bb0a8116d91fe9579fcd618f8b48d353d226c",
+  "ffmpeg": "ffmpeg-win-x86_64-v7.1.exe",
+  "edgeTtsVersion": "7.2.8",
+  "assets": {
+    "space-loop": {
+      "file": "space-loop.mp4",
+      "bytes": 1715157,
+      "sha256": "bd4c290e280c175f1082ab593c8a3d2f40f6ec7e125f525b9b729606ff4eec40",
+      "durationSeconds": 12.0,
+      "fullDecodePassed": true,
+      "kind": "motion-illustration",
+      "sourceImage": "space.png",
+      "sourceImageSha256": "ff823b33fd3f0b98597056210d2cf1ea6bc9ffc098c1324a24d38cf96f35efce",
+      "provenance": "CPU camera motion over an AI-generated editorial illustration",
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": 24,
+      "frames": 288,
+      "codec": "h264",
+      "audio": false,
+      "motion": "12-second periodic cosine center zoom: 1.00 to 1.04 to 1.00",
+      "storyId": "webb-small-worlds-2026-09",
+      "disclosure": "AI illustration · Not a telescope observation"
+    },
+    "nature-loop": {
+      "file": "nature-loop.mp4",
+      "bytes": 1873356,
+      "sha256": "109cb7cf076a3250d40a53f9444b157ff3633ccad8dbac30999adbe880056f33",
+      "durationSeconds": 12.0,
+      "fullDecodePassed": true,
+      "kind": "motion-illustration",
+      "sourceImage": "nature.png",
+      "sourceImageSha256": "ea7e307f560c836a243331327e792be00f96b67e0bcb4d24703071ed8a220ea3",
+      "provenance": "CPU camera motion over an AI-generated editorial illustration",
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": 24,
+      "frames": 288,
+      "codec": "h264",
+      "audio": false,
+      "motion": "12-second periodic cosine center zoom: 1.00 to 1.04 to 1.00",
+      "storyId": "habitat-restoration-2026-09",
+      "disclosure": "AI illustration · An imagined habitat"
+    },
+    "culture-loop": {
+      "file": "culture-loop.mp4",
+      "bytes": 2188513,
+      "sha256": "2d7ab9a1e2ccbfc8387502204714c241e188cf4fd069ed161986b8026685519c",
+      "durationSeconds": 12.0,
+      "fullDecodePassed": true,
+      "kind": "motion-illustration",
+      "sourceImage": "culture.png",
+      "sourceImageSha256": "eae343c312089b6b434ba022fffa3f28f4907fc094eb23f6042b6a458fbe9f97",
+      "provenance": "CPU camera motion over an AI-generated editorial illustration",
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": 24,
+      "frames": 288,
+      "codec": "h264",
+      "audio": false,
+      "motion": "12-second periodic cosine center zoom: 1.00 to 1.04 to 1.00",
+      "storyId": "louvre-smithsonian-2026-09",
+      "disclosure": "AI illustration · Not an exhibited object"
+    },
+    "music-drift": {
+      "file": "music-drift.mp3",
+      "bytes": 769296,
+      "sha256": "c05613eb34ca11edc699d26ccfb5ca54f16002f60e0967d25f40c45e4d2291d6",
+      "durationSeconds": 32.03,
+      "fullDecodePassed": true,
+      "kind": "music",
+      "wav": {
+        "file": "music-drift.wav",
+        "bytes": 5644844,
+        "sha256": "f4bdcad70ec2110313f74e7c3cb95b31b00927c460eab1a87a8bf8b132eb372e",
+        "durationSeconds": 32.0,
+        "fullDecodePassed": true
+      },
+      "provenance": "Original algorithmically synthesized AI composition; not model-generated audio",
+      "title": "Tidal Light",
+      "composer": "AI-directed original note arrangement and additive synthesis",
+      "key": "D major",
+      "chords": [
+        "Dmaj9",
+        "Bm11",
+        "Gmaj9",
+        "Asus2/add6"
+      ],
+      "sampleRate": 44100,
+      "channels": 2,
+      "loopSeconds": 32,
+      "rmsDbFS": -30.0,
+      "peakDbFS": -19.27,
+      "loopSeamMaxSampleDelta": 0.0023521,
+      "normal99PercentSampleDelta": 0.00274864,
+      "loopMethod": "Circular note-tail placement; WAV is exact 32-second loop; MP3 has encoder padding"
+    },
+    "music-piano": {
+      "file": "music-piano.mp3",
+      "bytes": 769296,
+      "sha256": "f7215562b9b5e4ed0bc3316701b300736d2f0b9c772456f2259fac1b79361b5e",
+      "durationSeconds": 32.03,
+      "fullDecodePassed": true,
+      "kind": "music",
+      "wav": {
+        "file": "music-piano.wav",
+        "bytes": 5644844,
+        "sha256": "9516eea8fecb13f97d580f4553c9d68b3ec05a72d447833326fe813045461a93",
+        "durationSeconds": 32.0,
+        "fullDecodePassed": true
+      },
+      "provenance": "Original algorithmically synthesized AI composition; not model-generated audio",
+      "title": "Quiet Window",
+      "composer": "AI-directed original note arrangement and additive synthesis",
+      "key": "D major",
+      "chords": [
+        "Dmaj9",
+        "Bm11",
+        "Gmaj9",
+        "Asus2/add6"
+      ],
+      "sampleRate": 44100,
+      "channels": 2,
+      "loopSeconds": 32,
+      "rmsDbFS": -29.0,
+      "peakDbFS": -15.03,
+      "loopSeamMaxSampleDelta": 0.00175121,
+      "normal99PercentSampleDelta": 0.00547808,
+      "loopMethod": "Circular note-tail placement; WAV is exact 32-second loop; MP3 has encoder padding"
+    }
+  },
+  "restrictions": "No GPU services started or called. No site checkout writes."
+}

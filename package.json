@@ -1,0 +1,16 @@
+{
+  "name": "bearing",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Bearing: a calm, watch-first news experience with individually produced stories and a continuous playlist.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madebychaas/bearing.git"
+  },
+  "bugs": { "url": "https://github.com/madebychaas/bearing/issues" },
+  "homepage": "https://github.com/madebychaas/bearing#readme",
+  "scripts": {
+    "test": "node --test channel/tests/*.test.mjs"
+  }
+}

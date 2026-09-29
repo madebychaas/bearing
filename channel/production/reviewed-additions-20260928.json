@@ -1,0 +1,83 @@
+{
+  "sourceCheckedAt": "2026-09-28",
+  "stories": [
+    {
+      "reviewStatus": "verified",
+      "reviewedAt": "2026-09-28",
+      "reviewMethod": "Source-grounded editorial pass against linked primary announcement; not independent field reporting.",
+      "image": "assets/city.png",
+      "video": "assets/city-motion.mp4",
+      "visualDisclosure": "AI-generated anonymous city illustration, not a depiction of the people, places, or events in this report",
+      "storyKind": "reviewedBrief",
+      "facts": [],
+      "id": "reviewed-fed-stablecoin-20260924-v1",
+      "topic": "business",
+      "topicLabel": "Business & economy",
+      "title": "Stablecoin rules enter a public comment period",
+      "dek": "Two Federal Reserve proposals address reserves and applications. The rules are still proposals.",
+      "publishedAt": "2026-09-24",
+      "dateLabel": "24 Sep 2026",
+      "expiresAt": "2026-10-02T00:00:00Z",
+      "source": {
+        "name": "Federal Reserve",
+        "title": "Federal Reserve Board requests public comment on two stablecoin proposals",
+        "url": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260924a.htm"
+      },
+      "publisherGroup": "Federal Reserve",
+      "editorialNote": "The primary announcement establishes what the Board proposed, not that those rules have taken effect. No prediction about prices or investment outcomes is made.",
+      "script": "The Federal Reserve is asking for public feedback on proposed rules for payment stablecoins. One proposal covers the assets that would back them, along with capital and risk controls. Another describes how supervised banks would apply for permission to issue them. These are proposed requirements, not a statement that the rules are already in effect. The comment window runs for sixty days after the notices appear in the Federal Register."
+    },
+    {
+      "reviewStatus": "verified",
+      "reviewedAt": "2026-09-28",
+      "reviewMethod": "Source-grounded editorial pass against linked primary announcement; not independent field reporting.",
+      "image": "assets/city.png",
+      "video": "assets/city-motion.mp4",
+      "visualDisclosure": "AI-generated anonymous city illustration, not a depiction of the people, places, or events in this report",
+      "storyKind": "reviewedBrief",
+      "facts": [],
+      "id": "reviewed-nist-workforce-20260918-v1",
+      "topic": "technology",
+      "topicLabel": "Technology",
+      "title": "More pathways into cybersecurity work",
+      "dek": "NIST announced nine awards across eight states for education and practical training.",
+      "publishedAt": "2026-09-18",
+      "dateLabel": "18 Sep 2026",
+      "expiresAt": "2026-10-03T00:00:00Z",
+      "source": {
+        "name": "NIST",
+        "title": "NIST Awards More Than $1.7 Million to Support Cybersecurity Workforce Development Across 8 States",
+        "url": "https://www.nist.gov/news-events/news/2026/09/nist-awards-more-17-million-support-cybersecurity-workforce-development"
+      },
+      "publisherGroup": "NIST",
+      "editorialNote": "A dated context segment from the September 18 announcement, checked September 28. Funding awards are not proof of completed training or jobs created. Illustration does not depict a recipient.",
+      "script": "NIST has announced more than one point seven million dollars for cybersecurity workforce projects in eight states. Nine awards will support partnerships between training organizations and local employers. The projects include practical routes into the field, such as internships, apprenticeships, and hands-on learning. The goal is to connect education with the skills communities need. This is a funding announcement; the eventual number of people trained or hired is not yet established."
+    },
+    {
+      "reviewStatus": "verified",
+      "reviewedAt": "2026-09-28",
+      "reviewMethod": "Source-grounded editorial pass against linked primary announcement; not independent field reporting.",
+      "image": "assets/city.png",
+      "video": "assets/city-motion.mp4",
+      "visualDisclosure": "AI-generated anonymous city illustration, not a depiction of the people, places, or events in this report",
+      "storyKind": "reviewedBrief",
+      "facts": [],
+      "id": "reviewed-havel-prize-20260928-v1",
+      "topic": "world",
+      "topicLabel": "World & society",
+      "title": "A human rights prize recognizes Nasrin Sotoudeh",
+      "dek": "The Council of Europe announced the award in Strasbourg. Her daughter accepted it on her behalf.",
+      "publishedAt": "2026-09-28",
+      "dateLabel": "28 Sep 2026",
+      "expiresAt": "2026-10-05T00:00:00Z",
+      "source": {
+        "name": "Council of Europe",
+        "title": "2026 Václav Havel Prize awarded to Iranian human-rights lawyer Nasrin Sotoudeh",
+        "url": "https://www.coe.int/en/web/portal/-/2026-v%C3%A1clav-havel-prize-awarded-to-iranian-human-rights-lawyer-nasrin-sotoudeh"
+      },
+      "publisherGroup": "Council of Europe",
+      "editorialNote": "Original factual summary of the awarding institution's announcement. Background is attributed to the Council of Europe. No publisher text, photograph, or quotation is reproduced.",
+      "script": "Iranian lawyer Nasrin Sotoudeh has received this year's Václav Havel human rights prize. The Council of Europe announced the award at its parliamentary assembly in Strasbourg. Her daughter accepted on her behalf, while Sotoudeh sent a video message from Tehran. The Council cited her legal advocacy and campaigning for human rights. The annual award recognizes civil society work in Europe and beyond, and includes sixty thousand euros, a trophy, and a diploma."
+    }
+  ]
+}

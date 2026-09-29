@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 1,
+  "style": "polished-news-studio",
+  "editorialMethod": "Original presentation copy grounded in the retained sourced scripts. Look-ahead lines are questions to follow, not predictions. Each plan is bound to the exact underlying source script.",
+  "stories": {
+    "auto-a46bc2af204ae5": {
+      "sourceScriptSha256": "8ef2c76e88863cfc3e1b63a5986434e6b53b441c6cbca304a93de00f5aaa5780",
+      "title": "The next test for satellite servicing",
+      "why": "An unsuccessful orbital boost can still show what future repair missions need to solve.",
+      "body": "NASA's Swift observatory was the target of a commercial mission intended to raise its orbit. That mission has now ended without achieving the boost. NASA says the agency and its industry partner nevertheless gained experience that can inform future servicing programmes. The distinction matters: engineering lessons are a result, but they are not the same as a successful orbital change. Swift's attempted boost puts that gap between ambition and execution into focus.",
+      "summary": "The boost was not achieved. The engineering lessons are the result to follow.",
+      "lookAhead": "What changes will those lessons bring to the design and testing of future servicing missions?",
+      "beats": [
+        {
+          "label": "THE GOAL",
+          "text": "Raise Swift's orbit"
+        },
+        {
+          "label": "THE RESULT",
+          "text": "No orbital boost"
+        },
+        {
+          "label": "THE NEXT QUESTION",
+          "text": "Applying the lessons"
+        }
+      ]
+    },
+    "auto-3480bbae929c06": {
+      "sourceScriptSha256": "d405037f8e59bac1729b302063be9f5b2dc95d7f6c62c71806e09e4e148bd7a5",
+      "title": "Crew-13 prepares for the station",
+      "why": "Crew rotations keep the orbiting laboratory's research and essential maintenance moving.",
+      "body": "Four crew members are preparing to launch to the International Space Station as part of NASA's SpaceX Crew-13 mission. Their work is set to span research, technology demonstrations, and maintenance aboard the station. That combination is central to an orbiting laboratory: experiments depend on the equipment and people that keep it running. The launch and work are still ahead in this mission announcement.",
+      "summary": "Four crew members. Research, technology demonstrations, and station upkeep.",
+      "lookAhead": "The milestones to follow are the launch, arrival, and the results of the work aboard the station.",
+      "beats": [
+        {
+          "label": "THE CREW",
+          "text": "Four people"
+        },
+        {
+          "label": "THE WORK",
+          "text": "Research + technology"
+        },
+        {
+          "label": "THE FOUNDATION",
+          "text": "Station maintenance"
+        }
+      ]
+    },
+    "auto-f615b1c9d3fe7f": {
+      "sourceScriptSha256": "02ae55956864e0613fa7ba4aae20bb208f17a70d20094b1ace0f1625d6b35c2b",
+      "title": "Nature leaves a chemical trail",
+      "why": "Chemical signatures can reveal how wildlife feeds and how contaminants move through ecosystems.",
+      "body": "Two different wildlife questions share a common tool. USGS scientists used stable isotope analysis to study grizzly bear diets in Alaska and mercury contamination in fish in the Upper Colorado River Basin. The analyses took place at a laboratory specializing in chemical and isotopic tracers. Together, the studies show how these signatures can help researchers examine relationships between animals and their environments.",
+      "summary": "One analytical tool is helping investigate two very different ecosystems.",
+      "lookAhead": "Watch for the detailed findings and how researchers connect those measurements to wildlife management.",
+      "beats": [
+        {
+          "label": "ALASKA",
+          "text": "Grizzly bear diets"
+        },
+        {
+          "label": "UPPER COLORADO",
+          "text": "Mercury in fish"
+        },
+        {
+          "label": "THE CONNECTION",
+          "text": "Stable isotope analysis"
+        }
+      ]
+    },
+    "auto-d736032e980afd": {
+      "sourceScriptSha256": "39805e72b31a99f95dc6598b86bb9a6de0daacc5f2b5dcad36e3b578e5bac8fc",
+      "title": "A closer watch on Yellowstone",
+      "why": "Better observations help scientists follow changes in the park's hydrothermal features.",
+      "body": "Yellowstone's monitoring network received two additions in early September, according to the USGS. A new station was installed at Geyser Hill, near Old Faithful. The Yellowstone Lake camera was also renewed. The two changes expand the tools available for observing the park. They are improvements to monitoring capability. Their installation alone does not establish a new hazard or predict an eruption.",
+      "summary": "A new station and a renewed camera expand Yellowstone's observations.",
+      "lookAhead": "The useful next chapter is what the monitoring records and how scientists interpret any changes.",
+      "beats": [
+        {
+          "label": "GEYSER HILL",
+          "text": "A new monitoring station"
+        },
+        {
+          "label": "YELLOWSTONE LAKE",
+          "text": "A renewed camera"
+        },
+        {
+          "label": "THE PURPOSE",
+          "text": "More observations"
+        }
+      ]
+    },
+    "reviewed-havel-prize-20260928-v1": {
+      "sourceScriptSha256": "fa6a6788b46c460970b4cdee1c2947648a5d7444708d05768acec6ba64a54dc8",
+      "title": "Recognition for human rights work",
+      "why": "The Havel Prize brings international attention to Nasrin Sotoudeh's legal advocacy.",
+      "summary": "The Council of Europe has recognized Sotoudeh's civil society work.",
+      "lookAhead": "Will the recognition lead to more sustained international attention to her work? That is the next question to follow.",
+      "beats": [
+        {
+          "label": "THE RECIPIENT",
+          "text": "Nasrin Sotoudeh"
+        },
+        {
+          "label": "THE RECOGNITION",
+          "text": "Václav Havel Prize"
+        },
+        {
+          "label": "THE WORK",
+          "text": "Human rights advocacy"
+        }
+      ]
+    },
+    "louvre-smithsonian-2026-09": {
+      "sourceScriptSha256": "58c8909a8c43e0bf7813db9f8d1b1499cfa7d80c23dcd3510aa3fb27961b8372",
+      "title": "The journeys inside the art",
+      "why": "How an artwork travels can shape its meaning as much as how it was made.",
+      "summary": "This exhibition brings craftsmanship and the histories of collecting into the same frame.",
+      "lookAhead": "For visitors, the next question is how those histories change the way they see the objects. The announced run ends January eighteenth, twenty twenty-seven.",
+      "beats": [
+        {
+          "label": "THE SETTING",
+          "text": "Washington, D.C."
+        },
+        {
+          "label": "THE REACH",
+          "text": "From Spain to India"
+        },
+        {
+          "label": "THE LENS",
+          "text": "Objects + their histories"
+        }
+      ]
+    },
+    "auto-3f566565c3f92f": {
+      "sourceScriptSha256": "f9a90ed7e72c9a99cbee9090e22c2c2d96f952d0d8516d5a0fb6a82da3808ab9",
+      "title": "Reading the floor of Lake Chelan",
+      "why": "Mapping a lake's depths and sediments creates a record of a landscape hidden from view.",
+      "body": "Lake Chelan is the third-deepest lake in the contiguous United States. A USGS report describes a three-week survey carried out there in 2023. The team collected sediment cores, high-resolution depth measurements, and profiles of material below the lakebed. Those are different ways of documenting what lies beneath the surface. Together, those materials form a detailed survey of the lakebed.",
+      "summary": "Depth measurements and sediment samples document the lake beneath the surface.",
+      "lookAhead": "Watch for how researchers use the survey and its sediment record to understand the lake's history.",
+      "beats": [
+        {
+          "label": "THE FIELDWORK",
+          "text": "Three weeks in 2023"
+        },
+        {
+          "label": "THE SURFACE BELOW",
+          "text": "High-resolution depth data"
+        },
+        {
+          "label": "THE RECORD",
+          "text": "Sediment cores"
+        }
+      ]
+    },
+    "reviewed-fed-stablecoin-20260924-v1": {
+      "sourceScriptSha256": "b28d373acecbfa30331663e20c6339638fbfa9f9c0beea82a93d96e5d76c7e9d",
+      "title": "Stablecoin rules enter the debate",
+      "why": "Reserve and risk requirements would shape how supervised banks issue payment stablecoins.",
+      "summary": "These are proposals open for comment, not requirements already in effect.",
+      "lookAhead": "Follow the public comments and any changes before final rules. The response window begins with publication in the Federal Register.",
+      "beats": [
+        {
+          "label": "PROPOSAL ONE",
+          "text": "Reserves + risk controls"
+        },
+        {
+          "label": "PROPOSAL TWO",
+          "text": "Bank applications"
+        },
+        {
+          "label": "CURRENT STATUS",
+          "text": "Public comment"
+        }
+      ]
+    },
+    "auto-ee02773a8c2a86": {
+      "sourceScriptSha256": "5c2baf2196c173c9626b4aa56f35832ce3b0dec82b8fd74edbd6c31dacdd29fc",
+      "title": "A first in Maryland's bird record",
+      "why": "A confirmed observation adds a precise piece of evidence to a state's wildlife record.",
+      "body": "A fall migration station at Patuxent Research Refuge recorded a first for Maryland in September. The USGS Bird Banding Laboratory reported a confirmed MacGillivray's warbler, adding the species to the state's record. The finding comes from a particular observation at a particular place and time. Its location and timing make it a specific addition to the state's wildlife record.",
+      "summary": "One confirmed record adds to what observers know about Maryland's birds.",
+      "lookAhead": "Future confirmed observations may add context. A single record, by itself, does not establish a migration trend.",
+      "beats": [
+        {
+          "label": "THE SPECIES",
+          "text": "MacGillivray's warbler"
+        },
+        {
+          "label": "THE LOCATION",
+          "text": "Patuxent Research Refuge"
+        },
+        {
+          "label": "THE FINDING",
+          "text": "First confirmed state record"
+        }
+      ]
+    },
+    "reviewed-nist-workforce-20260918-v1": {
+      "sourceScriptSha256": "c7f927a0587917c60f92d08e98a553f293ca057331957ec24b77f3ce6a2a10f4",
+      "title": "Building routes into cybersecurity",
+      "why": "Practical training partnerships aim to connect education with employers' cybersecurity needs.",
+      "summary": "Nine awards support training partnerships across eight states.",
+      "lookAhead": "The outcomes to follow are participation, completed training, and employment. The funding announcement does not yet establish those results.",
+      "beats": [
+        {
+          "label": "THE FUNDING",
+          "text": "More than $1.7 million"
+        },
+        {
+          "label": "THE REACH",
+          "text": "Nine awards · eight states"
+        },
+        {
+          "label": "THE APPROACH",
+          "text": "Practical training"
+        }
+      ]
+    },
+    "webb-small-worlds-2026-09": {
+      "sourceScriptSha256": "18c5beeafa84d886487af10686c6a4ce728d78054ee1da8b5cb502207bd28580",
+      "title": "How small can a star-like world be?",
+      "why": "Very low-mass brown dwarfs test ideas about how star-forming clouds build new objects.",
+      "summary": "Webb's observations show an unusually varied stellar nursery.",
+      "lookAhead": "The research question ahead is how formation models explain objects at these low masses. More observations can help test those ideas.",
+      "beats": [
+        {
+          "label": "THE LOCATION",
+          "text": "IC 348 stellar nursery"
+        },
+        {
+          "label": "THE SCALE",
+          "text": "As low as 2 Jupiter masses"
+        },
+        {
+          "label": "THE QUESTION",
+          "text": "How do they form?"
+        }
+      ]
+    }
+  }
+}

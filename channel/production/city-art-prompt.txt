@@ -1,0 +1,8 @@
+Use case: photorealistic-natural
+Asset type: landscape conceptual news-channel background illustration for Current; approximately 16:9 widescreen.
+Primary request: a sophisticated quiet contemporary city seen across a river at blue hour, with warm small lit windows and a few trees. Architecture must be plausible, anonymous, and invented rather than any identifiable city.
+Style/medium: photographic cinematic conceptual illustration, refined realistic architectural materials and natural restrained light. This is a fictional broad illustration for world, economy, and technology topics, never a depiction of a particular real event.
+Composition/framing: wide calm cityscape, buildings along the distant riverbank, foreground river with soft reflections, generous blue-hour atmosphere and understated visual rhythm.
+Lighting/mood: peaceful blue hour, small warm lights, calm water, quiet and contemplative.
+Color palette: blue slate and muted teal with restrained warm amber window lights.
+Constraints: one image only; no text, lettering, logos, watermarks, recognizable landmarks, identifiable cities, crowds, disasters, smoke, emergency scenes, or dramatic news-event imagery. No interface or graphics. Opaque background.

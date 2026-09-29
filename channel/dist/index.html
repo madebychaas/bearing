@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#090b0d">
+  <title>Bearing — Your news, at your pace</title>
+  <meta name="description" content="Bearing is one watch-first news playlist, with individual produced stories and a live-updating news feed. Your news, at your pace.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%230b1016'/%3E%3Cpath d='M29 11a13 13 0 1 0 0 18M30 16H18m12 8H18' fill='none' stroke='%23c7f1d4' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="studio.css"><link rel="stylesheet" href="watch.css"><link rel="stylesheet" href="desktop.css">
+</head>
+<body>
+  <a class="skip-link" href="#channel">Skip to channel</a>
+  <header class="masthead"><a href="./" class="brand" aria-label="Bearing home"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M29 11a13 13 0 1 0 0 18M30 16H18m12 8H18"/></svg>Bearing</a><span class="masthead-note">A little perspective.</span><button class="tune-button" id="tune"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 17h16M9 4v6M15 14v6"/></svg><span id="tune-label">Tune your channel</span></button></header>
+  <main id="channel">
+    <div class="watch-heading"><div><span class="broadcast-mark" aria-hidden="true"></span><h1>Watch your world.</h1><span id="rotation-meta">Your personal playlist</span></div><span class="edition-meta" id="edition-date">CURRENT EDITION</span></div>
+    <div class="watch-grid">
+      <div class="screen-column">
+        <div class="programme-heading"><span id="programme-name">In Focus</span><span id="programme-note">A story worth understanding</span><span class="continuous-label">CONTINUOUS PLAY</span></div>
+    <section class="player" id="player" aria-label="News playlist">
+      <video id="film" poster="assets/space.png" playsinline preload="metadata" muted aria-label="AI-illustrated story"></video>
+      <div class="stage-shade"></div><div class="brief-design" id="brief-design" hidden><div class="brief-mast"><span>The Brief<span class="brief-current">by Bearing</span></span><span id="brief-topic"></span></div><div class="brief-content"><p id="brief-source"></p><h2 id="brief-title"></h2></div><span class="brief-disclosure">PUBLISHER HEADLINE / AI NARRATION</span></div><div class="channel-transition" id="channel-transition" aria-hidden="true"><span>Bearing</span><strong id="transition-series">In Focus</strong></div>
+      <div class="stage-top"><span class="topic-pill" id="topic-label">YOUR EDITION</span><span class="visual-label">AI ILLUSTRATION</span></div>
+      <div class="story-intro" id="story-intro"><button class="start-button" id="start" aria-label="Watch now"><span class="start-symbol" aria-hidden="true">▶</span><span class="start-copy">Watch now<span class="start-duration" id="start-duration">YOUR EDITION</span></span></button></div>
+      <div id="caption" class="caption" hidden aria-live="off"></div>
+      <div class="story-insight" id="story-insight" hidden><span id="insight-label">IN FOCUS</span><p id="insight-text"></p></div>
+      <div class="on-air-title" id="on-air-title" hidden></div>
+      <div class="player-message" id="player-message" role="status" hidden></div>
+      <div class="fullscreen-controls"><button id="full-play" aria-label="Pause or resume">Pause</button><button id="full-next">Next story</button><button id="full-exit">Exit fullscreen</button></div>
+    <div class="transport"><div class="transport-left"><button class="icon-button play-button" id="play" aria-label="Play channel">▶</button><button class="icon-button" id="next" aria-label="Next story"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 5 10 7-10 7zM18 5v14"/></svg></button><span class="time-label" id="time">00:00 / 00:00</span></div><input id="seek" class="seek" aria-label="Seek within story" type="range" min="0" max="100" step="0.1" value="0"><div class="transport-right"><button class="text-button" id="captions" aria-label="Toggle captions" aria-pressed="true">CC</button><button class="icon-button" id="sound" aria-label="Mute narration"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4zM17 8q5 4 0 8"/></svg></button><button class="icon-button" id="fullscreen" aria-label="Enter fullscreen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4H4v4m12-4h4v4M4 16v4h4m12-4v4h-4"/></svg></button></div></div>
+    </section>
+    <section class="story-summary" aria-label="Current story"><div><div class="story-byline" id="story-byline">SOURCE-GROUNDED STORIES</div><h2 id="story-title">Your next perspective.</h2></div><p id="story-dek">Thoughtful reporting, at a pace you choose.</p></section>
+    <div class="story-context"><span id="selection-reason">Selected for your interest in space & discovery</span><button class="text-button source-button" id="sources">Behind this story <span aria-hidden="true">↗</span></button></div>
+
+        <section class="rotation-section" aria-labelledby="playlist-title">
+          <div class="section-heading"><h2 id="playlist-title">Your playlist <span id="queue-count"></span></h2><div class="playlist-tools"><div class="queue-pages"><button id="queue-prev" aria-label="Previous playlist stories">←</button><button id="queue-next" aria-label="More playlist stories">→</button></div><label class="series-filter">Programme <select id="playlist-series"><option value="all">Your mix</option><option value="brief">The Brief</option><option value="focus">In Focus</option><option value="field">Field Notes</option></select></label></div></div>
+          <p class="playlist-note" id="update-status" role="status">One story at a time. New arrivals join between videos.</p>
+          <div id="rotation" class="rotation" tabindex="0" aria-label="Story playlist; scroll to explore"></div>
+        </section>
+      </div>
+      <div class="view-desk" data-desk="latest">
+        <div class="desk-tabs" role="tablist" aria-label="Explore your channel"><button id="tab-latest" role="tab" aria-selected="true" aria-controls="desk-latest" data-desk-tab="latest">Latest</button><button id="tab-cameras" role="tab" aria-selected="false" aria-controls="desk-cameras" tabindex="-1" data-desk-tab="cameras">Cameras</button><button id="tab-sources" role="tab" aria-selected="false" aria-controls="desk-sources" tabindex="-1" data-desk-tab="sources">Sources</button></div>
+      <aside class="news-stream" id="desk-latest" aria-labelledby="latest-title">
+        <div class="stream-heading"><div><span class="feed-eyebrow">THE NEWS DESK</span><h2 id="latest-title">Latest</h2></div><span id="live-connection" class="connection">Connecting</span></div>
+        <div class="feed-filter"><label class="sr-only" for="latest-interest">Filter latest news by interest</label><select id="latest-interest"><option value="following">For you</option><option value="all">All interests</option></select><button id="latest-refresh" class="refresh-icon" aria-label="Check for latest reports" title="Check for latest reports">↻</button></div>
+        <div class="feed-status"><span id="latest-count">Loading</span><span>24 HOURS</span></div>
+        <p id="latest-notice" class="latest-notice" role="status" hidden></p><button id="new-reports" class="new-reports" hidden>Updates ready</button>
+        <div id="latest-list"><p class="latest-empty">Gathering the latest source reports…</p></div>
+        <button id="load-more-news" class="load-more" hidden>More reporting ↓</button>
+        <div class="feed-pages"><button id="reports-prev" aria-label="Previous reports">←</button><span id="reports-page" role="status"></span><button id="reports-next" aria-label="Next reports">→</button></div>
+        <p id="live-health" class="feed-health">Checking the publishers…</p>
+      </aside>
+    <section id="desk-cameras" class="cameras-section" aria-labelledby="cameras-title"><div class="section-heading"><div><span class="feed-eyebrow">A WINDOW ON THE WORLD</span><h2 id="cameras-title">Live cameras</h2></div><span class="camera-section-note">Observation &amp; beauty shots</span></div><p class="playlist-note">Real views from public agencies. Open a camera to take a quiet break from the playlist.</p><div id="camera-tiles" class="camera-tiles"></div></section>
+    <section id="desk-sources" class="source-desk" aria-label="U.S. source desk"><span>U.S. source desk</span><a href="https://apnews.com/" target="_blank" rel="noopener noreferrer">AP ↗ <small>Source link</small></a><a href="https://www.cnn.com/" target="_blank" rel="noopener noreferrer">CNN ↗ <small>Source link</small></a><a href="https://www.axios.com/" target="_blank" rel="noopener noreferrer">Axios ↗</a><a href="https://www.cnbc.com/" target="_blank" rel="noopener noreferrer">CNBC ↗</a><a href="https://www.npr.org/" target="_blank" rel="noopener noreferrer">NPR ↗</a><a href="https://www.pbs.org/newshour/" target="_blank" rel="noopener noreferrer">PBS NewsHour ↗</a></section>
+      </div>
+    </div>
+    <footer><span>Independent stories. Your pace.</span><span id="freshness">Sourced reporting · AI-produced presentation</span></footer>
+  </main>
+  <dialog id="preferences" aria-labelledby="preferences-title"><form method="dialog"><div class="dialog-heading"><div><span class="eyebrow">MAKE YOURSELF COMFORTABLE</span><h2 id="preferences-title">Your kind of Bearing.</h2></div><button class="icon-button close-button" aria-label="Close preferences">×</button></div><p class="dialog-intro">A few choices. A channel that feels like you.</p><fieldset><legend>What brings you here?</legend><div class="topic-options" id="topic-options"></div></fieldset><fieldset><legend>Find your pace</legend><div class="segmented" id="pace-options"><button type="button" data-pace="0.85">Unhurried</button><button type="button" data-pace="1">Natural</button><button type="button" data-pace="1.15">A little quicker</button></div></fieldset><fieldset><legend>A voice you enjoy</legend><div class="segmented" id="voice-options"><button type="button" data-voice="warm">Warm <span>Conversational</span></button><button type="button" data-voice="measured">Measured <span>Steady</span></button></div></fieldset><fieldset><legend>Set the atmosphere</legend><div class="segmented" id="music-options"><button type="button" data-music="off">Just the story</button><button type="button" data-music="drift">Soft ambient</button><button type="button" data-music="piano">Gentle keys</button></div><label class="range-label" for="music-volume">Music volume<input id="music-volume" type="range" min="0" max="0.35" value="0.12" step="0.01"></label></fieldset><label class="check-row"><input id="transition-sounds" type="checkbox" checked> Transition sounds</label><label class="check-row"><input id="reduce-motion" type="checkbox"> Less movement</label><p id="preference-note" class="preference-note" role="status">Preferences are saved on this device.</p><button class="save-button" id="save-preferences" type="button">Back to my channel <span aria-hidden="true">↗</span></button></form></dialog>
+  <dialog id="source-dialog" aria-labelledby="source-title"><div class="dialog-heading"><div><span class="eyebrow">THE REPORTING BEHIND IT</span><h2 id="source-title">Behind this story</h2></div><button id="close-sources" class="icon-button close-button" aria-label="Close story sources">×</button></div><div id="source-content"></div></dialog>
+  <audio id="narration" preload="metadata"></audio><audio id="music" preload="none" loop></audio>
+  <script type="module" src="app.js"></script><script type="module" src="desktop.js"></script>
+</body></html>

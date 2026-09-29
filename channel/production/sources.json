@@ -1,0 +1,511 @@
+{
+  "checkedAt": "2026-09-29",
+  "scope": "Local source discovery. Publication and AI narration permissions are distinct.",
+  "sources": [
+    {
+      "enabled": true,
+      "pollMinutes": 30,
+      "maxAgeDays": 7,
+      "id": "nasa",
+      "name": "NASA",
+      "topic": "space",
+      "url": "https://www.nasa.gov/feed/",
+      "hosts": [
+        "www.nasa.gov",
+        "science.nasa.gov"
+      ],
+      "mode": "automatic",
+      "policyUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "rightsNote": "Agency-authored feed text only; exclude third-party material.",
+      "region": "US / international",
+      "publisherGroup": "NASA",
+      "domestic": true
+    },
+    {
+      "enabled": true,
+      "pollMinutes": 30,
+      "maxAgeDays": 7,
+      "id": "noaa",
+      "name": "NOAA",
+      "topic": "nature",
+      "url": "https://www.noaa.gov/rss.xml",
+      "hosts": [
+        "www.noaa.gov",
+        "oceanservice.noaa.gov",
+        "www.fisheries.noaa.gov"
+      ],
+      "mode": "automatic",
+      "policyUrl": "https://www.noaa.gov/disclaimer",
+      "rightsNote": "Agency-authored feed text only.",
+      "region": "US / international",
+      "publisherGroup": "NOAA",
+      "domestic": true
+    },
+    {
+      "enabled": true,
+      "pollMinutes": 60,
+      "maxAgeDays": 7,
+      "id": "nsf",
+      "name": "NSF",
+      "topic": "technology",
+      "url": "https://www.nsf.gov/rss/rss_www_news.xml",
+      "hosts": [
+        "www.nsf.gov"
+      ],
+      "mode": "review",
+      "policyUrl": "https://www.nsf.gov/rss",
+      "rightsNote": "Discovery; check complete source and reuse conditions before narration.",
+      "region": "US / international",
+      "publisherGroup": "NSF",
+      "domestic": true
+    },
+    {
+      "enabled": true,
+      "pollMinutes": 60,
+      "maxAgeDays": 7,
+      "id": "nist",
+      "name": "NIST",
+      "topic": "technology",
+      "url": "https://www.nist.gov/news-events/news/rss.xml",
+      "hosts": [
+        "www.nist.gov"
+      ],
+      "mode": "automatic",
+      "policyUrl": "https://www.nist.gov/open/license",
+      "rightsNote": "Attributed NIST employee-authored news; exclude outside copyrights and Standard Reference Data.",
+      "region": "US / international",
+      "publisherGroup": "NIST",
+      "domestic": true
+    },
+    {
+      "enabled": true,
+      "pollMinutes": 30,
+      "maxAgeDays": 7,
+      "id": "usgs",
+      "name": "USGS",
+      "topic": "nature",
+      "url": "https://www.usgs.gov/news/all/feed",
+      "hosts": [
+        "www.usgs.gov"
+      ],
+      "mode": "automatic",
+      "policyUrl": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+      "rightsNote": "Agency-authored text only; third-party materials excluded.",
+      "region": "US / international",
+      "publisherGroup": "USGS",
+      "domestic": true
+    },
+    {
+      "enabled": true,
+      "pollMinutes": 30,
+      "maxAgeDays": 7,
+      "id": "fed",
+      "name": "Federal Reserve",
+      "topic": "business",
+      "url": "https://www.federalreserve.gov/feeds/press_all.xml",
+      "hosts": [
+        "www.federalreserve.gov"
+      ],
+      "mode": "review",
+      "policyUrl": "https://www.federalreserve.gov/feeds/feeds.htm",
+      "rightsNote": "Economic and regulatory announcements need contextual editorial review.",
+      "region": "US / international",
+      "publisherGroup": "Federal Reserve",
+      "domestic": true
+    },
+    {
+      "enabled": true,
+      "pollMinutes": 15,
+      "maxAgeDays": 7,
+      "id": "bbc-world",
+      "name": "BBC News",
+      "topic": "world",
+      "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
+      "hosts": [
+        "feeds.bbci.co.uk",
+        "www.bbc.co.uk",
+        "www.bbc.com",
+        "bbc.com"
+      ],
+      "mode": "review",
+      "policyUrl": "https://www.bbc.com/usingthebbc/terms-of-use/",
+      "rightsNote": "Local source discovery; narrated derivatives and business syndication not cleared.",
+      "region": "International",
+      "publisherGroup": "BBC",
+      "domestic": false
+    },
+    {
+      "enabled": false,
+      "pollMinutes": 15,
+      "maxAgeDays": 7,
+      "id": "bbc-technology",
+      "name": "BBC News",
+      "topic": "technology",
+      "url": "https://feeds.bbci.co.uk/news/technology/rss.xml",
+      "hosts": [
+        "feeds.bbci.co.uk",
+        "www.bbc.co.uk",
+        "www.bbc.com",
+        "bbc.com"
+      ],
+      "mode": "review",
+      "policyUrl": "https://www.bbc.com/usingthebbc/terms-of-use/",
+      "rightsNote": "Local source discovery; narrated derivatives and business syndication not cleared.",
+      "region": "US / international",
+      "publisherGroup": "BBC",
+      "domestic": false,
+      "disabledReason": "Retained in registry; U.S.-first editorial scope."
+    },
+    {
+      "enabled": true,
+      "pollMinutes": 15,
+      "maxAgeDays": 7,
+      "id": "bbc-business",
+      "name": "BBC News",
+      "topic": "business",
+      "url": "https://feeds.bbci.co.uk/news/business/rss.xml",
+      "hosts": [
+        "feeds.bbci.co.uk",
+        "www.bbc.co.uk",
+        "www.bbc.com",
+        "bbc.com"
+      ],
+      "mode": "review",
+      "policyUrl": "https://www.bbc.com/usingthebbc/terms-of-use/",
+      "rightsNote": "Local source discovery; narrated derivatives and business syndication not cleared.",
+      "region": "US / international",
+      "publisherGroup": "BBC",
+      "domestic": false
+    },
+    {
+      "enabled": false,
+      "pollMinutes": 15,
+      "maxAgeDays": 7,
+      "id": "bbc-health",
+      "name": "BBC News",
+      "topic": "health",
+      "url": "https://feeds.bbci.co.uk/news/health/rss.xml",
+      "hosts": [
+        "feeds.bbci.co.uk",
+        "www.bbc.co.uk",
+        "www.bbc.com",
+        "bbc.com"
+      ],
+      "mode": "review",
+      "policyUrl": "https://www.bbc.com/usingthebbc/terms-of-use/",
+      "rightsNote": "Local source discovery; narrated derivatives and business syndication not cleared.",
+      "region": "US / international",
+      "publisherGroup": "BBC",
+      "domestic": false,
+      "disabledReason": "Retained in registry; U.S.-first editorial scope."
+    },
+    {
+      "enabled": false,
+      "pollMinutes": 15,
+      "maxAgeDays": 7,
+      "id": "bbc-entertainment_and_arts",
+      "name": "BBC News",
+      "topic": "culture",
+      "url": "https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml",
+      "hosts": [
+        "feeds.bbci.co.uk",
+        "www.bbc.co.uk",
+        "www.bbc.com",
+        "bbc.com"
+      ],
+      "mode": "review",
+      "policyUrl": "https://www.bbc.com/usingthebbc/terms-of-use/",
+      "rightsNote": "Local source discovery; narrated derivatives and business syndication not cleared.",
+      "region": "US / international",
+      "publisherGroup": "BBC",
+      "domestic": false,
+      "disabledReason": "Retained in registry; U.S.-first editorial scope."
+    },
+    {
+      "enabled": false,
+      "pollMinutes": 15,
+      "maxAgeDays": 7,
+      "id": "bbc-sport",
+      "name": "BBC Sport",
+      "topic": "sport",
+      "url": "https://feeds.bbci.co.uk/sport/rss.xml",
+      "hosts": [
+        "feeds.bbci.co.uk",
+        "www.bbc.co.uk",
+        "www.bbc.com",
+        "bbc.com"
+      ],
+      "mode": "review",
+      "policyUrl": "https://www.bbc.com/usingthebbc/terms-of-use/",
+      "rightsNote": "Local source discovery; narrated derivatives and business syndication not cleared.",
+      "region": "US / international",
+      "publisherGroup": "BBC",
+      "domestic": false,
+      "disabledReason": "Retained in registry; U.S.-first editorial scope."
+    },
+    {
+      "enabled": true,
+      "pollMinutes": 5,
+      "maxAgeDays": 7,
+      "id": "npr",
+      "name": "NPR",
+      "topic": "world",
+      "url": "https://feeds.npr.org/1001/rss.xml",
+      "hosts": [
+        "feeds.npr.org",
+        "www.npr.org",
+        "npr.org"
+      ],
+      "mode": "review",
+      "policyUrl": "https://www.npr.org/about-npr/179876898/terms-of-use",
+      "rightsNote": "Discovery only; narration/republication permission not established.",
+      "region": "United States",
+      "publisherGroup": "NPR",
+      "domestic": true
+    },
+    {
+      "enabled": true,
+      "pollMinutes": 5,
+      "maxAgeDays": 7,
+      "id": "pbs",
+      "name": "PBS NewsHour",
+      "topic": "world",
+      "url": "https://www.pbs.org/newshour/feeds/rss/headlines",
+      "hosts": [
+        "www.pbs.org"
+      ],
+      "mode": "review",
+      "policyUrl": "https://www.pbs.org/about/about-pbs/terms-of-use/",
+      "rightsNote": "Discovery only; narration/republication permission not established.",
+      "region": "United States",
+      "publisherGroup": "PBS NewsHour",
+      "domestic": true
+    },
+    {
+      "enabled": false,
+      "pollMinutes": 5,
+      "maxAgeDays": 7,
+      "id": "guardian-world",
+      "name": "The Guardian",
+      "topic": "world",
+      "url": "https://www.theguardian.com/world/rss",
+      "hosts": [
+        "www.theguardian.com"
+      ],
+      "mode": "review",
+      "policyUrl": "https://www.theguardian.com/help/terms-of-service",
+      "rightsNote": "Discovery only; no automated narrated derivative rights assumed.",
+      "region": "International",
+      "publisherGroup": "The Guardian",
+      "domestic": false,
+      "disabledReason": "Retained in registry; U.S.-first editorial scope."
+    },
+    {
+      "enabled": false,
+      "pollMinutes": 5,
+      "maxAgeDays": 7,
+      "id": "guardian-culture",
+      "name": "The Guardian",
+      "topic": "culture",
+      "url": "https://www.theguardian.com/culture/rss",
+      "hosts": [
+        "www.theguardian.com"
+      ],
+      "mode": "review",
+      "policyUrl": "https://www.theguardian.com/help/terms-of-service",
+      "rightsNote": "Discovery only; no automated narrated derivative rights assumed.",
+      "region": "US / international",
+      "publisherGroup": "The Guardian",
+      "domestic": false,
+      "disabledReason": "Retained in registry; U.S.-first editorial scope."
+    },
+    {
+      "enabled": false,
+      "pollMinutes": 5,
+      "maxAgeDays": 7,
+      "id": "dw",
+      "name": "DW",
+      "topic": "world",
+      "url": "https://rss.dw.com/rdf/rss-en-world",
+      "hosts": [
+        "rss.dw.com",
+        "www.dw.com",
+        "dw.com"
+      ],
+      "mode": "review",
+      "policyUrl": "https://www.dw.com/en/rss/s-31500",
+      "rightsNote": "Discovery only; no automated narrated derivative rights assumed.",
+      "region": "International",
+      "publisherGroup": "DW",
+      "domestic": false,
+      "disabledReason": "Retained in registry; U.S.-first editorial scope."
+    },
+    {
+      "enabled": false,
+      "pollMinutes": 5,
+      "maxAgeDays": 7,
+      "id": "france24",
+      "name": "France 24",
+      "topic": "world",
+      "url": "https://www.france24.com/en/rss",
+      "hosts": [
+        "www.france24.com"
+      ],
+      "mode": "review",
+      "policyUrl": "https://www.france24.com/en/rss",
+      "rightsNote": "Discovery only; no automated narrated derivative rights assumed.",
+      "region": "International",
+      "publisherGroup": "France 24",
+      "domestic": false,
+      "disabledReason": "Retained in registry; U.S.-first editorial scope."
+    },
+    {
+      "enabled": false,
+      "pollMinutes": 5,
+      "maxAgeDays": 7,
+      "id": "aljazeera",
+      "name": "Al Jazeera",
+      "topic": "world",
+      "url": "https://www.aljazeera.com/xml/rss/all.xml",
+      "hosts": [
+        "www.aljazeera.com"
+      ],
+      "mode": "review",
+      "policyUrl": "https://www.aljazeera.com/terms-and-conditions",
+      "rightsNote": "Discovery only; no automated narrated derivative rights assumed.",
+      "region": "International",
+      "publisherGroup": "Al Jazeera",
+      "domestic": false,
+      "disabledReason": "Retained in registry; U.S.-first editorial scope."
+    },
+    {
+      "enabled": true,
+      "pollMinutes": 5,
+      "maxAgeDays": 7,
+      "id": "kera",
+      "name": "KERA",
+      "topic": "local",
+      "url": "https://www.keranews.org/news.rss",
+      "hosts": [
+        "www.keranews.org"
+      ],
+      "mode": "review",
+      "policyUrl": "https://www.kera.org/about/terms-of-use/",
+      "rightsNote": "Optional North Texas reporting; not inferred from device location. Narration rights not established.",
+      "region": "North Texas",
+      "publisherGroup": "KERA",
+      "domestic": true
+    },
+    {
+      "id": "axios",
+      "name": "Axios",
+      "topic": "world",
+      "url": "https://www.axios.com/feeds/feed.rss",
+      "hosts": [
+        "www.axios.com",
+        "axios.com",
+        "api.axios.com"
+      ],
+      "policyUrl": "https://legal.axios.com/",
+      "enabled": true,
+      "pollMinutes": 15,
+      "maxAgeDays": 7,
+      "mode": "review",
+      "region": "United States",
+      "domestic": true,
+      "publisherGroup": "Axios",
+      "rightsNote": "Source discovery and attributed local headline readout; commercial article, image and narration syndication rights not granted by RSS availability. Full scripts require source-bound editorial review."
+    },
+    {
+      "id": "cnbc",
+      "name": "CNBC",
+      "topic": "business",
+      "url": "https://www.cnbc.com/id/100003114/device/rss/rss.html",
+      "hosts": [
+        "www.cnbc.com",
+        "cnbc.com"
+      ],
+      "policyUrl": "https://www.cnbc.com/terms/",
+      "enabled": true,
+      "pollMinutes": 15,
+      "maxAgeDays": 7,
+      "mode": "review",
+      "region": "United States",
+      "domestic": true,
+      "publisherGroup": "CNBC",
+      "rightsNote": "Source discovery and attributed local headline readout; commercial article, image and narration syndication rights not granted by RSS availability. Full scripts require source-bound editorial review."
+    },
+    {
+      "id": "npr-business",
+      "name": "NPR",
+      "topic": "business",
+      "url": "https://feeds.npr.org/1006/rss.xml",
+      "hosts": [
+        "feeds.npr.org",
+        "www.npr.org",
+        "npr.org"
+      ],
+      "policyUrl": "https://www.npr.org/about-npr/179876898/terms-of-use",
+      "enabled": true,
+      "pollMinutes": 15,
+      "maxAgeDays": 7,
+      "mode": "review",
+      "region": "United States",
+      "domestic": true,
+      "publisherGroup": "NPR",
+      "rightsNote": "Source discovery and attributed local headline readout; commercial article, image and narration syndication rights not granted by RSS availability. Full scripts require source-bound editorial review."
+    },
+    {
+      "id": "pbs-economy",
+      "name": "PBS NewsHour",
+      "topic": "business",
+      "url": "https://www.pbs.org/newshour/feeds/rss/economy",
+      "hosts": [
+        "www.pbs.org"
+      ],
+      "policyUrl": "https://www.pbs.org/about/about-pbs/terms-of-use/",
+      "enabled": true,
+      "pollMinutes": 15,
+      "maxAgeDays": 7,
+      "mode": "review",
+      "region": "United States",
+      "domestic": true,
+      "publisherGroup": "PBS NewsHour",
+      "rightsNote": "Source discovery and attributed local headline readout; commercial article, image and narration syndication rights not granted by RSS availability. Full scripts require source-bound editorial review."
+    },
+    {
+      "id": "ftc-consumer",
+      "name": "FTC",
+      "topic": "business",
+      "url": "https://www.ftc.gov/feeds/press-release-consumer-protection.xml",
+      "hosts": [
+        "www.ftc.gov"
+      ],
+      "policyUrl": "https://www.ftc.gov/site-information/privacy-policy",
+      "enabled": true,
+      "pollMinutes": 15,
+      "maxAgeDays": 7,
+      "mode": "review",
+      "region": "United States",
+      "domestic": true,
+      "publisherGroup": "FTC",
+      "rightsNote": "Source discovery and attributed local headline readout; commercial article, image and narration syndication rights not granted by RSS availability. Full scripts require source-bound editorial review."
+    }
+  ],
+  "editorialPolicy": "US consumer/economic impact first; international publishers capped at 10% of curated selection; consequences over political sparring.",
+  "pendingSources": [
+    {
+      "name": "AP",
+      "url": "https://apnews.com/",
+      "status": "source-link-only",
+      "reason": "No licence; public RSS returned 403. Use licensed AP Media API when access is supplied.",
+      "documentation": "https://api.ap.org/media/v/docs/Getting_Started_API.htm"
+    },
+    {
+      "name": "CNN",
+      "url": "https://www.cnn.com/",
+      "status": "source-link-only",
+      "reason": "No licence; legacy official RSS failed TLS verification. No scraping fallback or fabricated feed health."
+    }
+  ]
+}

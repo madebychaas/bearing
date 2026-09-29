@@ -1,0 +1,24 @@
+{
+  "edition": "2026-09-28",
+  "verifiedAt": "2026-09-28",
+  "stories": [
+    {
+      "id": "webb-small-worlds-2026-09", "topic": "space", "topicLabel": "Space & discovery", "title": "Small worlds in a stellar nursery", "dek": "Webb finds brown dwarfs with masses as low as twice Jupiter’s.", "publishedAt": "2026-09-15", "dateLabel": "15 Sep 2026", "image": "assets/space.png", "source": {"name":"NASA", "title":"NASA’s Webb Reveals Dynamic Panorama of Star Formation", "url":"https://science.nasa.gov/missions/webb/nasas-webb-reveals-dynamic-panorama-of-star-formation/"},
+      "script": "About a thousand light-years away, a cloud called IC 348 is making stars, and much smaller objects. NASA reports that Webb observations have identified brown dwarfs with masses as low as twice Jupiter’s. Brown dwarfs form much like stars, but cannot sustain the ordinary hydrogen fusion that powers them. These unusually small examples challenge existing formation models. The observations also show young stars sending jets into surrounding material. The discovery gives researchers a closer look at how varied stellar nurseries can be.",
+      "facts": ["1,000 light-years away", "As little as twice Jupiter’s mass", "A new look at how small worlds form"],
+      "visualDisclosure": "AI illustration · Not a telescope observation", "editorialNote": "The brown dwarfs are observed research findings. The visual is an imagined stellar nursery, not Webb imagery.", "reviewStatus":"verified"
+    },
+    {
+      "id":"habitat-restoration-2026-09", "topic":"nature", "topicLabel":"Nature & our planet", "title":"More room for rivers and reefs to recover", "dek":"New restoration funding supports fish habitats across the United States.", "publishedAt":"2026-09-10", "dateLabel":"10 Sep 2026", "image":"assets/nature.png", "source":{"name":"NOAA Fisheries", "title":"$103 Million in NOAA Funding Awarded to Restore Habitat for Fisheries", "url":"https://www.fisheries.noaa.gov/feature-story/103-million-noaa-funding-awarded-restore-habitat-fisheries"},
+      "script":"Healthy fisheries begin with places where fish can feed, grow, and reproduce. NOAA Fisheries says it has awarded 103 million dollars to sixteen habitat restoration projects across the country. The work includes planting corals in the Caribbean, reconnecting rivers for salmon, and restoring salt marsh habitat for shrimp and oysters. These are funding awards, rather than completed recoveries. The next chapter is the work itself: rebuilding the habitats that support aquatic life, and tracking what changes as those projects move forward.",
+      "facts":["$103 million in funding", "16 restoration projects", "Corals. Rivers. Salt marshes."],
+      "visualDisclosure":"AI illustration · An imagined habitat", "editorialNote":"These are announced funding awards, not evidence of completed ecological recovery. The marsh illustration does not depict a funded project.", "reviewStatus":"verified"
+    },
+    {
+      "id":"louvre-smithsonian-2026-09", "topic":"culture", "topicLabel":"Art & culture", "title":"Art carries stories across centuries", "dek":"A Washington exhibition follows Islamic artworks and the journeys that shaped their meaning.", "publishedAt":null, "eventDate":"2026-09-26", "dateLabel":"Opened 26 Sep 2026", "image":"assets/culture.png", "source":{"name":"Musée du Louvre", "title":"From the Louvre: Masterpieces of Islamic Art", "url":"https://musee.louvre.fr/expositions-et-evenements/expositions/from-the-louvre-masterpieces-of-islamic-art"},
+      "script":"In Washington, an exhibition invites visitors to follow the journeys of Islamic artworks across centuries. The Louvre and the Smithsonian’s National Museum of Asian Art are presenting objects connected to places stretching from Spain to India. Alongside their craftsmanship, the exhibition considers how diplomacy, collecting, and movement between owners shaped their meaning. Its announced run began September twenty-sixth and continues through January eighteenth, twenty twenty-seven. The focus is both the objects themselves and the histories they carry.",
+      "facts":["Washington, D.C.", "From Spain to India", "Through January 18, 2027"],
+      "visualDisclosure":"AI illustration · Not an exhibited object", "editorialNote":"The date is the exhibition opening, not a publication date. The imagined ceramic vessel is not claimed to be part of the exhibition.", "reviewStatus":"verified"
+    }
+  ]
+}

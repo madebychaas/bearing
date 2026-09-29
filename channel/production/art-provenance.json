@@ -1,0 +1,40 @@
+{
+  "mode": "built-in image_gen",
+  "generatedAt": "2026-09-28",
+  "description": "Conceptual AI editorial illustrations, not documentary evidence. One generation per asset, no retries.",
+  "assets": [
+    {
+      "slug": "current-star-nursery",
+      "prompt": "Use case: stylized-concept\nAsset type: widescreen editorial illustration for Current, a calm personalized news channel.\nPrimary request: a dreamy yet scientifically inspired conceptual deep-space star nursery inspired by the idea of IC 348, an original imagined celestial composition, not a replica of a Webb photograph.\nScene/backdrop: blue-black space with dusty indigo molecular clouds, delicate wispy layered nebula filaments and a few amber luminous young stars.\nStyle/medium: sophisticated atmospheric editorial illustration with tactile cinematic detail and visibly artistic painterly treatment; beautiful quiet light, rich natural contrast.\nComposition/framing: full-bleed landscape exactly 16:9 aspect ratio, wide celestial expanse with main cloud structure and luminous star accents toward upper center/right; enough dark lower-left quiet area for a headline overlay added later.\nColor palette: cool indigo and teal, blue-black, restrained warm amber accents, no excessive saturation.\nConstraints: no text, no logos, no UI, no watermark, no people. This will be labeled an AI illustration; it must read as conceptual art rather than actual telescope evidence or documentation. Generate one image.",
+      "file": "current-star-nursery.png",
+      "source": "exec-e7f69244-6364-4b19-b716-5bccf2aaa1f5.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2234319,
+      "sha256": "FF823B33FD3F0B98597056210D2CF1EA6BC9FFC098C1324A24D38CF96F35EFCE",
+      "requestedAspectRatio": "16:9"
+    },
+    {
+      "slug": "current-tidal-marsh",
+      "prompt": "Use case: stylized-concept\nAsset type: widescreen editorial illustration for Current, a calm personalized news channel.\nPrimary request: a cinematic painterly coastal tidal marsh at blue hour, meandering water channels through lush reeds, low horizon and quiet silver-gold light.\nScene/backdrop: a broad imaginary coastal wetland beneath an open dusk sky, winding tidal water catching restrained silver and pale gold reflections, reed islands receding into the distance.\nStyle/medium: sophisticated atmospheric editorial illustration, tactile cinematic detail, subtle painterly surface, beautiful quiet lighting and rich natural contrast, clearly an artistic interpretation rather than event documentation.\nComposition/framing: full-bleed landscape exactly 16:9 aspect ratio with a low horizon; reeds and water weave across the frame, enough dark lower-left quiet area for a headline overlay added later.\nColor palette: cool indigo and teal, natural green reeds, small warm silver-gold accents, no excessive saturation.\nConstraints: no text, no logos, no UI, no watermark, no people, no buildings. Generate one image.",
+      "file": "current-tidal-marsh.png",
+      "source": "exec-5807c054-70dc-4e9b-9fe0-c918b2ae5d1d.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2287792,
+      "sha256": "EA7E307F560C836A243331327E792BE00F96B67E0BCB4D24703071ED8A220EA3",
+      "requestedAspectRatio": "16:9"
+    },
+    {
+      "slug": "current-ceramic-vessel",
+      "prompt": "Use case: stylized-concept\nAsset type: widescreen editorial illustration for Current, a calm personalized news channel.\nPrimary request: a museum-inspired close detail of an ornate historic-looking glazed ceramic vessel with cobalt and turquoise floral geometry on a midnight background; an original imagined artifact, not a claimed real museum object.\nScene/backdrop: deep midnight indigo studio-like darkness; an exquisite curving glazed ceramic surface with cobalt/turquoise painted floral geometry and subtle age-like glaze crackle, fine tactile ceramic detail.\nStyle/medium: sophisticated atmospheric painterly editorial illustration with tactile cinematic detail, visibly artistic treatment, beautiful quiet directional light and rich natural contrast.\nComposition/framing: full-bleed landscape exactly 16:9 aspect ratio, closely cropped ornate vessel dominating the right and upper central part of the image; dark lower-left quiet area for a headline overlay added later.\nColor palette: cool indigo, cobalt and teal/turquoise, cream ceramic ground, small warm light accents, no excessive saturation.\nConstraints: no text, no logos, no UI, no watermark, no people, no museum label. This is an imagined artifact illustration and must not appear as factual documentation of a particular museum object. Generate one image.",
+      "file": "current-ceramic-vessel.png",
+      "source": "exec-739831b2-4868-472a-96b8-91b9395feac7.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2378906,
+      "sha256": "EAE343C312089B6B434BA022FFFA3F28F4907FC094EB23F6042B6A458FBE9F97",
+      "requestedAspectRatio": "16:9"
+    }
+  ]
+}

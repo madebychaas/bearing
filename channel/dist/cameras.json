@@ -1,0 +1,36 @@
+{
+  "checkedAt": "2026-09-29",
+  "delivery": "Official YouTube embeds; no stream extraction or retransmission",
+  "cameras": [
+    {
+      "id": "usgs-kilauea-v1",
+      "title": "Kīlauea · Hawaiʻi",
+      "provider": "USGS / Hawaiian Volcano Observatory",
+      "videoId": "HggWKlZv9yk",
+      "purpose": "Observation camera",
+      "description": "A view into Halemaʻumaʻu crater. Useful for explaining volcanic monitoring; the picture alone is not an activity alert.",
+      "availability": "Provider reported live at the last check. Darkness, weather and outages can interrupt the view.",
+      "sourceUrl": "https://www.usgs.gov/volcanoes/kilauea/summit-webcams",
+      "watchUrl": "https://url.usgs.gov/v1cam",
+      "rightsUrl": "https://www.usgs.gov/media/webcams/kilauea-volcano-live-stream-halemaumau-crater",
+      "rightsLabel": "USGS imagery · Public domain",
+      "rightsScope": "USGS marks this webcam public domain. Credit USGS. Use the official player here; future rebroadcast must use an authorized media delivery path, not extract YouTube streams.",
+      "editorialStoryId": null
+    },
+    {
+      "id": "nasa-earth",
+      "title": "Earth · From the space station",
+      "provider": "NASA",
+      "videoId": "awQzjn72bI0",
+      "purpose": "Beauty shot",
+      "description": "An orbital view for a quiet moment between the news. No connection to the current story is implied.",
+      "availability": "NASA may substitute footage labeled Previously Recorded. Check the provider’s on-screen status; a live player does not guarantee a live image.",
+      "sourceUrl": "https://www.nasa.gov/live/",
+      "watchUrl": "https://www.youtube.com/playlist?list=PL2aBZuCeDwlQMf6xMgQAUAY_nbHAgW5jz",
+      "rightsUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "rightsLabel": "NASA imagery · Editorial use permitted",
+      "rightsScope": "NASA permits factual editorial use with credit and no endorsement. Third-party footage, music and identifiable people require separate review. This tile embeds the official external-view camera; no extraction, recording or outbound restream is enabled.",
+      "editorialStoryId": null
+    }
+  ]
+}

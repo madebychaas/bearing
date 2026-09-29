@@ -1,0 +1,13 @@
+production/.venv/
+production/runs/
+production/candidates/
+production/__pycache__/
+__pycache__/
+output/
+.env
+.sites-runtime/
+*.zip
+production/runtime.json
+production/models/
+.playwright-cli/
+production/.production.lock

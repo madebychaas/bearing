@@ -1,0 +1,610 @@
+{
+  "version": 1,
+  "createdAt": "2026-09-28T19:26:26.048864+00:00",
+  "editionSource": "edition-source.json",
+  "editionSourceSha256": "b5cb307265b0ba6019775539016bb0a8116d91fe9579fcd618f8b48d353d226c",
+  "ffmpeg": "ffmpeg-win-x86_64-v7.1.exe",
+  "edgeTtsVersion": "7.2.8",
+  "assets": {
+    "space-loop": {
+      "file": "space-loop.mp4",
+      "bytes": 1715157,
+      "sha256": "bd4c290e280c175f1082ab593c8a3d2f40f6ec7e125f525b9b729606ff4eec40",
+      "durationSeconds": 12.0,
+      "fullDecodePassed": true,
+      "kind": "motion-illustration",
+      "sourceImage": "space.png",
+      "sourceImageSha256": "ff823b33fd3f0b98597056210d2cf1ea6bc9ffc098c1324a24d38cf96f35efce",
+      "provenance": "CPU camera motion over an AI-generated editorial illustration",
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": 24,
+      "frames": 288,
+      "codec": "h264",
+      "audio": false,
+      "motion": "12-second periodic cosine center zoom: 1.00 to 1.04 to 1.00",
+      "storyId": "webb-small-worlds-2026-09",
+      "disclosure": "AI illustration · Not a telescope observation"
+    },
+    "nature-loop": {
+      "file": "nature-loop.mp4",
+      "bytes": 1873356,
+      "sha256": "109cb7cf076a3250d40a53f9444b157ff3633ccad8dbac30999adbe880056f33",
+      "durationSeconds": 12.0,
+      "fullDecodePassed": true,
+      "kind": "motion-illustration",
+      "sourceImage": "nature.png",
+      "sourceImageSha256": "ea7e307f560c836a243331327e792be00f96b67e0bcb4d24703071ed8a220ea3",
+      "provenance": "CPU camera motion over an AI-generated editorial illustration",
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": 24,
+      "frames": 288,
+      "codec": "h264",
+      "audio": false,
+      "motion": "12-second periodic cosine center zoom: 1.00 to 1.04 to 1.00",
+      "storyId": "habitat-restoration-2026-09",
+      "disclosure": "AI illustration · An imagined habitat"
+    },
+    "culture-loop": {
+      "file": "culture-loop.mp4",
+      "bytes": 2188513,
+      "sha256": "2d7ab9a1e2ccbfc8387502204714c241e188cf4fd069ed161986b8026685519c",
+      "durationSeconds": 12.0,
+      "fullDecodePassed": true,
+      "kind": "motion-illustration",
+      "sourceImage": "culture.png",
+      "sourceImageSha256": "eae343c312089b6b434ba022fffa3f28f4907fc094eb23f6042b6a458fbe9f97",
+      "provenance": "CPU camera motion over an AI-generated editorial illustration",
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": 24,
+      "frames": 288,
+      "codec": "h264",
+      "audio": false,
+      "motion": "12-second periodic cosine center zoom: 1.00 to 1.04 to 1.00",
+      "storyId": "louvre-smithsonian-2026-09",
+      "disclosure": "AI illustration · Not an exhibited object"
+    },
+    "music-drift": {
+      "file": "music-drift.mp3",
+      "bytes": 769296,
+      "sha256": "c05613eb34ca11edc699d26ccfb5ca54f16002f60e0967d25f40c45e4d2291d6",
+      "durationSeconds": 32.03,
+      "fullDecodePassed": true,
+      "kind": "music",
+      "wav": {
+        "file": "music-drift.wav",
+        "bytes": 5644844,
+        "sha256": "f4bdcad70ec2110313f74e7c3cb95b31b00927c460eab1a87a8bf8b132eb372e",
+        "durationSeconds": 32.0,
+        "fullDecodePassed": true
+      },
+      "provenance": "Original algorithmically synthesized AI composition; not model-generated audio",
+      "title": "Tidal Light",
+      "composer": "AI-directed original note arrangement and additive synthesis",
+      "key": "D major",
+      "chords": [
+        "Dmaj9",
+        "Bm11",
+        "Gmaj9",
+        "Asus2/add6"
+      ],
+      "sampleRate": 44100,
+      "channels": 2,
+      "loopSeconds": 32,
+      "rmsDbFS": -30.0,
+      "peakDbFS": -19.27,
+      "loopSeamMaxSampleDelta": 0.0023521,
+      "normal99PercentSampleDelta": 0.00274864,
+      "loopMethod": "Circular note-tail placement; WAV is exact 32-second loop; MP3 has encoder padding"
+    },
+    "music-piano": {
+      "file": "music-piano.mp3",
+      "bytes": 769296,
+      "sha256": "f7215562b9b5e4ed0bc3316701b300736d2f0b9c772456f2259fac1b79361b5e",
+      "durationSeconds": 32.03,
+      "fullDecodePassed": true,
+      "kind": "music",
+      "wav": {
+        "file": "music-piano.wav",
+        "bytes": 5644844,
+        "sha256": "9516eea8fecb13f97d580f4553c9d68b3ec05a72d447833326fe813045461a93",
+        "durationSeconds": 32.0,
+        "fullDecodePassed": true
+      },
+      "provenance": "Original algorithmically synthesized AI composition; not model-generated audio",
+      "title": "Quiet Window",
+      "composer": "AI-directed original note arrangement and additive synthesis",
+      "key": "D major",
+      "chords": [
+        "Dmaj9",
+        "Bm11",
+        "Gmaj9",
+        "Asus2/add6"
+      ],
+      "sampleRate": 44100,
+      "channels": 2,
+      "loopSeconds": 32,
+      "rmsDbFS": -29.0,
+      "peakDbFS": -15.03,
+      "loopSeamMaxSampleDelta": 0.00175121,
+      "normal99PercentSampleDelta": 0.00547808,
+      "loopMethod": "Circular note-tail placement; WAV is exact 32-second loop; MP3 has encoder padding"
+    },
+    "culture-measured": {
+      "duration": 43.57,
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 1.22816,
+          "text": "In Washington,"
+        },
+        {
+          "start": 1.29814,
+          "end": 8.58966,
+          "text": "an exhibition invites visitors to follow the journeys of Islamic artworks across centuries."
+        },
+        {
+          "start": 8.79964,
+          "end": 13.70639,
+          "text": "The Louvre and the Smithsonian’s National Museum of Asian Art are"
+        },
+        {
+          "start": 13.77637,
+          "end": 21.5371,
+          "text": "presenting objects connected to places stretching from Spain to India. Alongside their craftsmanship,"
+        },
+        {
+          "start": 21.60707,
+          "end": 25.30921,
+          "text": "the exhibition considers how diplomacy, collecting,"
+        },
+        {
+          "start": 25.37918,
+          "end": 29.16404,
+          "text": "and movement between owners shaped their meaning."
+        },
+        {
+          "start": 29.37401,
+          "end": 37.47864,
+          "text": "Its announced run began September twenty-sixth and continues through January eighteenth, twenty twenty-seven."
+        },
+        {
+          "start": 37.68862,
+          "end": 43.30095,
+          "text": "The focus is both the objects themselves and the histories they carry."
+        }
+      ],
+      "provider": "piper-local-cpu",
+      "voice": "en_US-bryce-medium",
+      "voiceName": "Bryce",
+      "engineVersion": "1.8.0",
+      "engineSource": "https://github.com/OHF-Voice/piper1-gpl",
+      "engineLicense": "GPL-3.0",
+      "modelCard": "https://huggingface.co/rhasspy/piper-voices/blob/main/en/en_US/bryce/medium/MODEL_CARD",
+      "modelDatasetLicense": "public domain per model card",
+      "modelPath": "en_US-bryce-medium.onnx",
+      "modelSha256": "dc9caa6c313199ffb5ac698b6e542fa6cba388aeaf2731e25262e33b9810aef1",
+      "scriptSha256": "58c8909a8c43e0bf7813db9f8d1b1499cfa7d80c23dcd3510aa3fb27961b8372",
+      "captionTiming": "phrase-aligned: independently synthesized phrases, exact PCM sample-count boundaries",
+      "pcmDuration": 43.51092970521542,
+      "sampleRate": 22050,
+      "inferenceProviders": [
+        "CPUExecutionProvider"
+      ],
+      "lengthScale": 1.06,
+      "file": "culture-measured.mp3",
+      "bytes": 697616,
+      "sha256": "42652eab31aae4ac1e5152a732933c4486b018204381611cb9d6774cb89b2066",
+      "fullDecodePassed": true,
+      "externalScriptUpload": false,
+      "captionsFile": "culture-measured.captions.json"
+    },
+    "culture-warm": {
+      "duration": 37.96,
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 1.02168,
+          "text": "In Washington,"
+        },
+        {
+          "start": 1.09166,
+          "end": 7.21011,
+          "text": "an exhibition invites visitors to follow the journeys of Islamic artworks across centuries."
+        },
+        {
+          "start": 7.42009,
+          "end": 11.79705,
+          "text": "The Louvre and the Smithsonian’s National Museum of Asian Art are"
+        },
+        {
+          "start": 11.86703,
+          "end": 18.31057,
+          "text": "presenting objects connected to places stretching from Spain to India. Alongside their craftsmanship,"
+        },
+        {
+          "start": 18.38054,
+          "end": 22.15379,
+          "text": "the exhibition considers how diplomacy, collecting,"
+        },
+        {
+          "start": 22.22376,
+          "end": 25.19592,
+          "text": "and movement between owners shaped their meaning."
+        },
+        {
+          "start": 25.4059,
+          "end": 32.70109,
+          "text": "Its announced run began September twenty-sixth and continues through January eighteenth, twenty twenty-seven."
+        },
+        {
+          "start": 32.91107,
+          "end": 37.68277,
+          "text": "The focus is both the objects themselves and the histories they carry."
+        }
+      ],
+      "provider": "piper-local-cpu",
+      "voice": "en_US-ljspeech-medium",
+      "voiceName": "LJ Speech",
+      "engineVersion": "1.8.0",
+      "engineSource": "https://github.com/OHF-Voice/piper1-gpl",
+      "engineLicense": "GPL-3.0",
+      "modelCard": "https://huggingface.co/rhasspy/piper-voices/blob/main/en/en_US/ljspeech/medium/MODEL_CARD",
+      "modelDatasetLicense": "public domain per model card",
+      "modelPath": "en_US-ljspeech-medium.onnx",
+      "modelSha256": "6f52a751e2349abe7a76735eb09dc1875298c77ea2342ffd2fef79ff81b87f22",
+      "scriptSha256": "58c8909a8c43e0bf7813db9f8d1b1499cfa7d80c23dcd3510aa3fb27961b8372",
+      "captionTiming": "phrase-aligned: independently synthesized phrases, exact PCM sample-count boundaries",
+      "pcmDuration": 37.89274376417234,
+      "sampleRate": 22050,
+      "inferenceProviders": [
+        "CPUExecutionProvider"
+      ],
+      "lengthScale": 1.06,
+      "file": "culture-warm.mp3",
+      "bytes": 607755,
+      "sha256": "6395c57f69070b3e87cf8d7b8c3606d2c226e2fe7c99a452a97c73dc258fe766",
+      "fullDecodePassed": true,
+      "externalScriptUpload": false,
+      "captionsFile": "culture-warm.captions.json"
+    },
+    "nature-measured": {
+      "duration": 45.61,
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 6.26735,
+          "text": "Healthy fisheries begin with places where fish can feed, grow, and reproduce."
+        },
+        {
+          "start": 6.47732,
+          "end": 12.94408,
+          "text": "NOAA Fisheries says it has awarded 103 million dollars to sixteen"
+        },
+        {
+          "start": 13.01406,
+          "end": 17.01506,
+          "text": "habitat restoration projects across the country."
+        },
+        {
+          "start": 17.22503,
+          "end": 21.12853,
+          "text": "The work includes planting corals in the Caribbean,"
+        },
+        {
+          "start": 21.1985,
+          "end": 23.70168,
+          "text": "reconnecting rivers for salmon,"
+        },
+        {
+          "start": 23.77166,
+          "end": 28.52834,
+          "text": "and restoring salt marsh habitat for shrimp and oysters."
+        },
+        {
+          "start": 28.73832,
+          "end": 30.86444,
+          "text": "These are funding awards,"
+        },
+        {
+          "start": 30.93442,
+          "end": 33.50023,
+          "text": "rather than completed recoveries."
+        },
+        {
+          "start": 33.7102,
+          "end": 36.65914,
+          "text": "The next chapter is the work itself:"
+        },
+        {
+          "start": 36.72912,
+          "end": 40.51342,
+          "text": "rebuilding the habitats that support aquatic life,"
+        },
+        {
+          "start": 40.5834,
+          "end": 45.34023,
+          "text": "and tracking what changes as those projects move forward."
+        }
+      ],
+      "provider": "piper-local-cpu",
+      "voice": "en_US-bryce-medium",
+      "voiceName": "Bryce",
+      "engineVersion": "1.8.0",
+      "engineSource": "https://github.com/OHF-Voice/piper1-gpl",
+      "engineLicense": "GPL-3.0",
+      "modelCard": "https://huggingface.co/rhasspy/piper-voices/blob/main/en/en_US/bryce/medium/MODEL_CARD",
+      "modelDatasetLicense": "public domain per model card",
+      "modelPath": "en_US-bryce-medium.onnx",
+      "modelSha256": "dc9caa6c313199ffb5ac698b6e542fa6cba388aeaf2731e25262e33b9810aef1",
+      "scriptSha256": "82129284bf9749577cddfa81d51f31d5361ea05cc9cf9c9f8ef2f26ab890f6a5",
+      "captionTiming": "phrase-aligned: independently synthesized phrases, exact PCM sample-count boundaries",
+      "pcmDuration": 45.55020408163265,
+      "sampleRate": 22050,
+      "inferenceProviders": [
+        "CPUExecutionProvider"
+      ],
+      "lengthScale": 1.06,
+      "file": "nature-measured.mp3",
+      "bytes": 730217,
+      "sha256": "0b1f81e25d59d2b6be0de89fcaad3bf3c2af0f6c6f4da1afd1e0fb3fc4d9dafe",
+      "fullDecodePassed": true,
+      "externalScriptUpload": false,
+      "captionsFile": "nature-measured.captions.json"
+    },
+    "nature-warm": {
+      "duration": 41.17,
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 6.59447,
+          "text": "Healthy fisheries begin with places where fish can feed, grow, and reproduce."
+        },
+        {
+          "start": 6.80444,
+          "end": 12.81841,
+          "text": "NOAA Fisheries says it has awarded 103 million dollars to sixteen"
+        },
+        {
+          "start": 12.88839,
+          "end": 16.3946,
+          "text": "habitat restoration projects across the country."
+        },
+        {
+          "start": 16.60458,
+          "end": 20.22689,
+          "text": "The work includes planting corals in the Caribbean,"
+        },
+        {
+          "start": 20.29687,
+          "end": 22.38667,
+          "text": "reconnecting rivers for salmon,"
+        },
+        {
+          "start": 22.45664,
+          "end": 26.53175,
+          "text": "and restoring salt marsh habitat for shrimp and oysters."
+        },
+        {
+          "start": 26.74172,
+          "end": 28.50644,
+          "text": "These are funding awards,"
+        },
+        {
+          "start": 28.57642,
+          "end": 30.81714,
+          "text": "rather than completed recoveries."
+        },
+        {
+          "start": 31.02712,
+          "end": 33.34912,
+          "text": "The next chapter is the work itself:"
+        },
+        {
+          "start": 33.41909,
+          "end": 36.55379,
+          "text": "rebuilding the habitats that support aquatic life,"
+        },
+        {
+          "start": 36.62376,
+          "end": 40.88463,
+          "text": "and tracking what changes as those projects move forward."
+        }
+      ],
+      "provider": "piper-local-cpu",
+      "voice": "en_US-ljspeech-medium",
+      "voiceName": "LJ Speech",
+      "engineVersion": "1.8.0",
+      "engineSource": "https://github.com/OHF-Voice/piper1-gpl",
+      "engineLicense": "GPL-3.0",
+      "modelCard": "https://huggingface.co/rhasspy/piper-voices/blob/main/en/en_US/ljspeech/medium/MODEL_CARD",
+      "modelDatasetLicense": "public domain per model card",
+      "modelPath": "en_US-ljspeech-medium.onnx",
+      "modelSha256": "6f52a751e2349abe7a76735eb09dc1875298c77ea2342ffd2fef79ff81b87f22",
+      "scriptSha256": "82129284bf9749577cddfa81d51f31d5361ea05cc9cf9c9f8ef2f26ab890f6a5",
+      "captionTiming": "phrase-aligned: independently synthesized phrases, exact PCM sample-count boundaries",
+      "pcmDuration": 41.09460317460317,
+      "sampleRate": 22050,
+      "inferenceProviders": [
+        "CPUExecutionProvider"
+      ],
+      "lengthScale": 1.06,
+      "file": "nature-warm.mp3",
+      "bytes": 659164,
+      "sha256": "5b424af85c90fa779b8a966886663db98a9521b5f9911f54a695e8fd84041336",
+      "fullDecodePassed": true,
+      "externalScriptUpload": false,
+      "captionsFile": "nature-warm.captions.json"
+    },
+    "space-measured": {
+      "duration": 46.32,
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 2.74009,
+          "text": "About a thousand light-years away,"
+        },
+        {
+          "start": 2.81007,
+          "end": 7.83955,
+          "text": "a cloud called IC 348 is making stars,"
+        },
+        {
+          "start": 7.90952,
+          "end": 10.21079,
+          "text": "and much smaller objects."
+        },
+        {
+          "start": 10.42077,
+          "end": 15.64526,
+          "text": "NASA reports that Webb observations have identified brown dwarfs"
+        },
+        {
+          "start": 15.71524,
+          "end": 19.08213,
+          "text": "with masses as low as twice Jupiter’s."
+        },
+        {
+          "start": 19.29211,
+          "end": 22.42104,
+          "text": "Brown dwarfs form much like stars,"
+        },
+        {
+          "start": 22.49102,
+          "end": 27.25111,
+          "text": "but cannot sustain the ordinary hydrogen fusion that powers them."
+        },
+        {
+          "start": 27.46109,
+          "end": 32.55351,
+          "text": "These unusually small examples challenge existing formation models."
+        },
+        {
+          "start": 32.76349,
+          "end": 39.02127,
+          "text": "The observations also show young stars sending jets into surrounding material."
+        },
+        {
+          "start": 39.23125,
+          "end": 46.03442,
+          "text": "The discovery gives researchers a closer look at how varied stellar nurseries can be."
+        }
+      ],
+      "provider": "piper-local-cpu",
+      "voice": "en_US-bryce-medium",
+      "voiceName": "Bryce",
+      "engineVersion": "1.8.0",
+      "engineSource": "https://github.com/OHF-Voice/piper1-gpl",
+      "engineLicense": "GPL-3.0",
+      "modelCard": "https://huggingface.co/rhasspy/piper-voices/blob/main/en/en_US/bryce/medium/MODEL_CARD",
+      "modelDatasetLicense": "public domain per model card",
+      "modelPath": "en_US-bryce-medium.onnx",
+      "modelSha256": "dc9caa6c313199ffb5ac698b6e542fa6cba388aeaf2731e25262e33b9810aef1",
+      "scriptSha256": "18c5beeafa84d886487af10686c6a4ce728d78054ee1da8b5cb502207bd28580",
+      "captionTiming": "phrase-aligned: independently synthesized phrases, exact PCM sample-count boundaries",
+      "pcmDuration": 46.244399092970525,
+      "sampleRate": 22050,
+      "inferenceProviders": [
+        "CPUExecutionProvider"
+      ],
+      "lengthScale": 1.06,
+      "file": "space-measured.mp3",
+      "bytes": 741502,
+      "sha256": "73fda76310fcaef61e1690a9ad37cb86838f9f33d6c659c80ed1e0659788fcae",
+      "fullDecodePassed": true,
+      "externalScriptUpload": false,
+      "captionsFile": "space-measured.captions.json"
+    },
+    "space-warm": {
+      "duration": 41.69,
+      "captions": [
+        {
+          "start": 0.0,
+          "end": 2.322,
+          "text": "About a thousand light-years away,"
+        },
+        {
+          "start": 2.39197,
+          "end": 7.36104,
+          "text": "a cloud called IC 348 is making stars,"
+        },
+        {
+          "start": 7.43102,
+          "end": 9.35828,
+          "text": "and much smaller objects."
+        },
+        {
+          "start": 9.56825,
+          "end": 14.1658,
+          "text": "NASA reports that Webb observations have identified brown dwarfs"
+        },
+        {
+          "start": 14.23578,
+          "end": 17.33565,
+          "text": "with masses as low as twice Jupiter’s."
+        },
+        {
+          "start": 17.54562,
+          "end": 20.21592,
+          "text": "Brown dwarfs form much like stars,"
+        },
+        {
+          "start": 20.2859,
+          "end": 25.04599,
+          "text": "but cannot sustain the ordinary hydrogen fusion that powers them."
+        },
+        {
+          "start": 25.25596,
+          "end": 30.36435,
+          "text": "These unusually small examples challenge existing formation models."
+        },
+        {
+          "start": 30.57433,
+          "end": 35.8917,
+          "text": "The observations also show young stars sending jets into surrounding material."
+        },
+        {
+          "start": 36.10168,
+          "end": 41.40744,
+          "text": "The discovery gives researchers a closer look at how varied stellar nurseries can be."
+        }
+      ],
+      "provider": "piper-local-cpu",
+      "voice": "en_US-ljspeech-medium",
+      "voiceName": "LJ Speech",
+      "engineVersion": "1.8.0",
+      "engineSource": "https://github.com/OHF-Voice/piper1-gpl",
+      "engineLicense": "GPL-3.0",
+      "modelCard": "https://huggingface.co/rhasspy/piper-voices/blob/main/en/en_US/ljspeech/medium/MODEL_CARD",
+      "modelDatasetLicense": "public domain per model card",
+      "modelPath": "en_US-ljspeech-medium.onnx",
+      "modelSha256": "6f52a751e2349abe7a76735eb09dc1875298c77ea2342ffd2fef79ff81b87f22",
+      "scriptSha256": "18c5beeafa84d886487af10686c6a4ce728d78054ee1da8b5cb502207bd28580",
+      "captionTiming": "phrase-aligned: independently synthesized phrases, exact PCM sample-count boundaries",
+      "pcmDuration": 41.61741496598639,
+      "sampleRate": 22050,
+      "inferenceProviders": [
+        "CPUExecutionProvider"
+      ],
+      "lengthScale": 1.06,
+      "file": "space-warm.mp3",
+      "bytes": 667523,
+      "sha256": "874a5b7e49af3e0d43e15df1fcf614091a10320c79894b698e83cfa28207fd8d",
+      "fullDecodePassed": true,
+      "externalScriptUpload": false,
+      "captionsFile": "space-warm.captions.json"
+    }
+  },
+  "restrictions": "No GPU services started or called. No site checkout writes.",
+  "narrationEngine": "piper-local-cpu",
+  "narrationEngineVersion": "1.8.0",
+  "cloudNarration": "Not used; no scripts uploaded"
+}

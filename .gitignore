@@ -1,0 +1,18 @@
+# Local runtimes, inspection archives, browser evidence and generated work
+/output/
+/.playwright-cli/
+**/__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+Thumbs.db
+.DS_Store
+
+# Continuously refreshed news and headline media are rebuilt locally.
+/channel/dist/reporting.json
+/channel/dist/source-status.json
+/channel/dist/latest-edition.json
+/channel/dist/assets/latest/
