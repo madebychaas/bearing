@@ -90,6 +90,8 @@ Physical speaker output and TV/remote-control hardware have not been tested. The
 
 The default playlist now prioritizes domestic consumer/economic impact and consequential policy. AP/CNN remain source links pending licensed access. Official USGS/NASA camera tiles remain separate from the playlist. See ../product/US_EDITORIAL_AND_CAMERAS.md for sources and reuse boundaries.
 
+Camera tiles use the official YouTube IFrame API, an explicit page origin and muted startup. They report playback only after a provider playing event, expose retry/source controls on failures, and destroy the external player when closed or when returning to news. Both configured cameras were verified playing in Chrome on September 29, 2026. The Codex in-app browser still left the cross-origin YouTube frames blank in that check; use Bearing in Chrome or the tile's source link when this occurs. No video extraction or restreaming is involved. Player events follow the [official IFrame API](https://developers.google.com/youtube/iframe_api_reference).
+
 The nine-stage production records, automation boundaries and verification are documented in ../product/BROADCAST_PIPELINE.md. Run `python production/produce_programmes.py` to assemble reviewed plans under the production lock. The scheduler also invokes it. New scripts and bespoke artwork remain review-gated; headline clips are a separate format. Each complete programme includes its own original procedural music beds.
 
 ## Desktop home screen
