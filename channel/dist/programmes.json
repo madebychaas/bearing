@@ -1,7 +1,7 @@
 {
   "edition": "2026-09-28",
-  "version": "7f162a500e297bddf80d4d1c2cc028faa5967dce21599b5c78e4b746f1f094d6",
-  "builtAt": "2026-09-29T20:26:32.601846+00:00",
+  "version": "7a9dee34c097db0f5bac6b589f7e74fdcf2b74541f81db23f4aaac3a88b21db7",
+  "builtAt": "2026-09-29T20:30:17.106469+00:00",
   "stories": [
     {
       "id": "auto-a46bc2af204ae5",
@@ -3043,7 +3043,7 @@
       "script": "Federal funding aims to turn cybersecurity training into a clearer route to work. NIST is backing nine partnerships in eight states, with over one point seven million dollars. Training meets employers' needs through internships, apprenticeships and hands-on projects. Success means finishing that training—and getting hired. That's the result still to prove.",
       "voices": {
         "warm": {
-          "audio": "assets/studio/a13c86a73eb39bfd92ce-warm.mp3",
+          "audio": "assets/studio/a315989abeedc6ee7f60-warm.mp3",
           "duration": 23.11,
           "captions": [
             {
@@ -3452,7 +3452,7 @@
           ]
         },
         "measured": {
-          "audio": "assets/studio/a13c86a73eb39bfd92ce-measured.mp3",
+          "audio": "assets/studio/a315989abeedc6ee7f60-measured.mp3",
           "duration": 25.71,
           "captions": [
             {
@@ -3882,7 +3882,7 @@
       "displayTitle": "A route into cybersecurity",
       "displayDek": "Nine NIST awards support practical training partnerships in eight states.",
       "format": "studio-programme",
-      "programmeVersion": "a13c86a73eb39bfd92ce",
+      "programmeVersion": "a315989abeedc6ee7f60",
       "programme": {
         "why": "Federal backing for a clearer route from training to work.",
         "summary": "From skills to work.",
@@ -3938,7 +3938,7 @@
               "sha256": "76af317485a3ed1fdb1d3b8e60d76b94fd7dd699d81216b75e6c0b970e9b67ee",
               "usageApproved": true,
               "title": "U.S. award recipient states",
-              "displayChanges": "Decoded and stitched TopoJSON arcs into SVG paths with coordinates rounded to two decimals. Preserves all 50 states plus District of Columbia. Original Albers USA projection with Alaska and Hawaii insets. Original bounds (-60,0,1040,620) uniformly scaled by 960/1040; coordinates translated 60 units right before scaling and vertically centered in 960x600. No distortion or clipping. Postal abbreviations are stable IDs; original FIPS retained separately. State abbreviations from USPS convention. Center is area centroid of the largest polygon and is for label placement only.",
+              "displayChanges": "Generalized U.S. state outlines with Alaska and Hawaii insets; award states highlighted by Bearing. Inset scales differ. Boundary data is from 2017.",
               "editorialUse": "States with award recipients, not statewide service coverage. Nine awards in eight states; Ohio has two. Highlights shown only with the eight-states phrase."
             }
           },
@@ -4037,20 +4037,20 @@
         }
       },
       "sourceScriptSha256": "c7f927a0587917c60f92d08e98a553f293ca057331957ec24b77f3ce6a2a10f4",
-      "builtAt": "2026-09-29T20:26:31.136095+00:00",
+      "builtAt": "2026-09-29T20:30:17.098821+00:00",
       "music": {
-        "drift": "assets/studio/score-a13c86a73eb39bfd92ce-drift.mp3",
-        "piano": "assets/studio/score-a13c86a73eb39bfd92ce-piano.mp3",
-        "signature": "assets/studio/score-a13c86a73eb39bfd92ce-signature.mp3",
-        "handoff": "assets/studio/score-a13c86a73eb39bfd92ce-handoff.mp3",
-        "bridge": "assets/studio/score-a13c86a73eb39bfd92ce-bridge.mp3"
+        "drift": "assets/studio/score-a315989abeedc6ee7f60-drift.mp3",
+        "piano": "assets/studio/score-a315989abeedc6ee7f60-piano.mp3",
+        "signature": "assets/studio/score-a315989abeedc6ee7f60-signature.mp3",
+        "handoff": "assets/studio/score-a315989abeedc6ee7f60-handoff.mp3",
+        "bridge": "assets/studio/score-a315989abeedc6ee7f60-bridge.mp3"
       },
       "production": {
         "pipeline": "broadcast-v1",
         "visualDecision": "mixture",
         "renderer": "studio.js",
         "sourceBound": true,
-        "compositionHash": "d57b53e9936b5f382244e99df56571c1e65bd07719467d9fec7cacbb6d07aed6"
+        "compositionHash": "51aa8ac6d736fde74bcbddee8937e219a8280a54e2fad6da39b18fcd95403c52"
       },
       "publishedTime": null,
       "coverage": null,

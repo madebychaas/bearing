@@ -255,7 +255,7 @@
             "sha256": "76af317485a3ed1fdb1d3b8e60d76b94fd7dd699d81216b75e6c0b970e9b67ee",
             "usageApproved": true,
             "title": "U.S. award recipient states",
-            "displayChanges": "Decoded and stitched TopoJSON arcs into SVG paths with coordinates rounded to two decimals. Preserves all 50 states plus District of Columbia. Original Albers USA projection with Alaska and Hawaii insets. Original bounds (-60,0,1040,620) uniformly scaled by 960/1040; coordinates translated 60 units right before scaling and vertically centered in 960x600. No distortion or clipping. Postal abbreviations are stable IDs; original FIPS retained separately. State abbreviations from USPS convention. Center is area centroid of the largest polygon and is for label placement only.",
+            "displayChanges": "Generalized U.S. state outlines with Alaska and Hawaii insets; award states highlighted by Bearing. Inset scales differ. Boundary data is from 2017.",
             "editorialUse": "States with award recipients, not statewide service coverage. Nine awards in eight states; Ohio has two. Highlights shown only with the eight-states phrase."
           }
         },

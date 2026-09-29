@@ -1,6 +1,6 @@
 # In Focus: a route into cybersecurity
 
-Editorial and production review: September 29, 2026. Story `reviewed-nist-workforce-20260918-v1`; delivery `a13c86a73eb39bfd92ce`.
+Editorial and production review: September 29, 2026. Story `reviewed-nist-workforce-20260918-v1`; delivery `a315989abeedc6ee7f60`.
 
 The finished example is **23.11 seconds in Warm / Heart** and **25.71 seconds in Measured / Michael**, including framing. Its 51-word script replaces the previous 66-word, 31.68/34.71-second cut. Narration enters at 0.45 seconds; a 2.1-second original musical signature overlaps it. No standalone title wait precedes the lead.
 

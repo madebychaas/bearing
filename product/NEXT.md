@@ -145,7 +145,7 @@ Do not begin that build until this file explicitly makes Coverage Radar the acti
 
 When stopping after a meaningful milestone, update this section briefly.
 
-**Last completed:** September 29, 2026: rebuilt **A route into cybersecurity** as a 51-word, 23.11-second Warm / 25.71-second Measured production example, delivery `a13c86a73eb39bfd92ce`. See [the story review](IN_FOCUS_WORKFORCE_REVIEW.md).
+**Last completed:** September 29, 2026: rebuilt **A route into cybersecurity** as a 51-word, 23.11-second Warm / 25.71-second Measured production example, delivery `a315989abeedc6ee7f60`. See [the story review](IN_FOCUS_WORKFORCE_REVIEW.md).
 
 **Commit:** The milestone commit titled `Tighten the workforce segment with voice-led graphics and an editorial score` updates this handoff.
 
