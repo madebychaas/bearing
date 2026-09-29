@@ -80,6 +80,10 @@ For another machine, create a virtual environment, install `production/requireme
 
 Piper engine source and model cards are recorded in `production/speech.py` and media provenance. Models run locally; they are not bundled into the Site.
 
+The reviewed cybersecurity In Focus story now selects `kokoro-local-cpu` explicitly. Install the pinned `production/requirements.txt` into the existing CPU production environment. Obtain `kokoro-v1.0.onnx` (with duration outputs) and `voices-v1.0.bin` from the [Kokoro ONNX documented model release](https://github.com/thewh1teagle/kokoro-onnx/releases/tag/model-files-v1.1), then set `BEARING_KOKORO_MODEL_DIR` to their local directory. A `kokoro-models` folder beside the configured `piper-models` folder is also recognized. Model and voice weights are Apache-2.0; the adapter is MIT. Models stay in the ignored runtime, and every delivery records hashes and license references. No model downloads or script uploads occur implicitly at narration time, and unavailable Kokoro does not silently fall back to Piper.
+
+This story's 66-word cut is approximately 32 seconds in Warm / Heart or 35 seconds in Measured / Michael, including its chapter framing. It uses original motion graphics plus a narration-scoped, credited University of Houston file photograph. The existing player now has a contained chapter overlay. See [the current story review](../product/IN_FOCUS_WORKFORCE_REVIEW.md) for editorial, rights, timing and verification details.
+
 ## Verification
 
 The earlier illustrated-channel revision passed 30 Python checks, three rotation checks, full media decoding of all 11 stories, and browser playback of every distinct visual. The Latest revision adds precise-time, date-only exclusion, polling TTL, source revision, retained-outage, and recent-news selection checks. Browser QA covers desktop and mobile, time and interest filters, retained Watch playback, pausing when leaving Watch, staged report updates, and connection failures. Source checks and visual-art holds remain active in the local worker.

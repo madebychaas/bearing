@@ -16,6 +16,12 @@ class StoryTreatmentTests(unittest.TestCase):
    with self.assertRaises(ValueError):broadcast.timed_beats(beats,captions,{'start':0,'end':10})
  def test_existing_plans_keep_their_old_visual_timing(self):
   self.assertIsNone(broadcast.timed_beats([{'text':'Existing fact'}],[],{'start':0,'end':10}))
+ def test_reveals_use_actual_word_times_instead_of_sentence_start(self):
+  captions=[{'start':2,'text':'Funding supports nine partnerships.'}]
+  words=[{'start':2,'text':'Funding'},{'start':3,'text':'supports'},{'start':4,'text':'nine'},{'start':5,'text':'partnerships.'}]
+  chapter={'start':1,'end':8}
+  self.assertEqual(broadcast.timed_reveals([{'cue':'nine partnerships'}],captions,chapter,words),[{'start':4,'reveal':0}])
+  with self.assertRaises(ValueError):broadcast.timed_reveals([{'cue':'nine'},{'cue':'Funding'}],captions,chapter,words)
  def test_reviewed_spoken_copy_is_shared_by_assembly_and_production_brief(self):
   root=Path(__file__).resolve().parents[1]
   plan=json.loads((root/'production/programme-plans.json').read_text(encoding='utf-8'))['stories']['reviewed-nist-workforce-20260918-v1']

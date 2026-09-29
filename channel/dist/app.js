@@ -119,6 +119,13 @@ function sourceView(){
  if(!current)return;const panel=$('source-content');panel.replaceChildren();
  const link=node('a','source-article');link.href=current.source.url;link.target='_blank';link.rel='noopener noreferrer';link.append(node('span','',`${current.source.name} · ${current.dateLabel||new Date(current.publishedTime).toLocaleString()}`),node('strong','',`${current.source.title} ↗`));
  panel.append(link);
+ const media=[...new Map((current.programme?.beats||[]).filter(b=>b.media).map(b=>[b.media.src,b.media])).values()];
+ if(media.length){panel.append(node('p','source-label','VISUAL CREDITS'));for(const item of media){
+  const credit=node('p','source-description',`${item.title||'File photograph'} · ${item.author}. ${item.dateLabel||''}. `);
+  const original=node('a','', 'Original photograph');original.href=item.sourceUrl;original.target='_blank';original.rel='noopener noreferrer';
+  const license=node('a','',item.license);license.href=item.licenseUrl;license.target='_blank';license.rel='noopener noreferrer';
+  credit.append(original,document.createTextNode(' · '),license,document.createTextNode(`. ${item.displayChanges||''}`));panel.append(credit);
+ }}
  const coverage=current.coverage;if(coverage?.sources?.length>1){panel.append(node('p','source-label','RELATED COVERAGE'));panel.append(node('p','source-description','Reports grouped by headline similarity. This does not imply independent confirmation.'));for(const source of coverage.sources){if(source.url===current.source.url)continue;const related=node('a','source-article',`${source.name}: ${source.title} ↗`);related.href=source.url;related.target='_blank';related.rel='noopener noreferrer';panel.append(related);}}
  panel.append(node('p','source-description',current.editorialNote||'This short update reads the publisher headline with attribution. Follow the source for the complete reporting.'),node('p','source-label','HOW THIS SEGMENT WAS MADE'),node('p','source-description',current.visualDisclosure||'AI-produced presentation based on linked reporting; not live footage.'),node('p','source-label','NARRATION'),node('p','source-script',current.script));openDialog($('source-dialog'));
 }

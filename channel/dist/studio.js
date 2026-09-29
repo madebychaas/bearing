@@ -1,4 +1,5 @@
 import {franchise} from './playlist.js';
+import {createDirected} from './directed.js';
 export const TRANSITION_SECONDS=1.5;
 const ease=value=>{const t=Math.max(0,Math.min(1,value));return t*t*(3-2*t);};
 const create=(tag,cls,text)=>{const node=document.createElement(tag);node.className=cls;if(text!==undefined)node.textContent=text;return node;};
@@ -20,7 +21,8 @@ export function createStudio({host,media,music,getPreferences,getState,getNextTi
  const beat=create('div','studio-beat'),beatLabel=create('span','studio-beat-label'),beatText=create('strong','studio-beat-text'),beatDetail=create('p','studio-beat-detail'),beatFlow=create('div','studio-beat-flow');beat.append(beatLabel,beatText,beatDetail,beatFlow);
  const outro=create('div','studio-outro'),nextTitle=create('h2','studio-next-title');outro.append(create('span','studio-eyebrow','UP NEXT'),nextTitle);
  const wipe=create('div','studio-wipe'),credit=create('div','studio-credit');root.append(ident,card,closing,beat,outro,credit,wipe);host.append(root);host.classList.add('studio-player');
- const rail=create('div','studio-chapters');host.append(rail);
+ const directed=createDirected(root);
+ const rail=create('nav','studio-chapters');rail.setAttribute('aria-label','Story chapters');host.append(rail);
  const sounds=Object.fromEntries(['ident','sweep','resolve'].map(name=>{const audio=new Audio(`assets/studio/${name}-v2.wav`);audio.preload='auto';audio.dataset.studioSound=name;audio.setAttribute('aria-hidden','true');host.append(audio);return [name,audio];}));
  let story=null,track=null,frame=0,lastTime=0,lastKind='',previousPlaying=false,seeked=false,lastBeat=null;
  const stopEffects=()=>{for(const sound of Object.values(sounds)){sound.pause();if(sound.currentTime)sound.currentTime=0;}};
@@ -31,9 +33,11 @@ export function createStudio({host,media,music,getPreferences,getState,getNextTi
   const kind=state.started?chapter.kind:'opening',elapsed=Math.max(0,time-chapter.start),remaining=chapter.end-time;
   root.hidden=false;rail.hidden=false;root.dataset.phase=kind;host.dataset.phase=kind;host.dataset.programme=story.programmeVersion;
   for(const [element,visible] of [[ident,kind==='ident'],[card,kind==='opening'],[closing,kind==='closing'],[beat,kind==='story'],[outro,kind==='outro']])element.setAttribute('aria-hidden',String(!visible));
-  const transition=TRANSITION_SECONDS*(prefs.pace||1),enter=prefs.reducedMotion?1:ease(elapsed/transition),leave=prefs.reducedMotion?1:ease(remaining/transition);
+  const authored=story.programme.visualTreatment==='directed';
+  const transition=TRANSITION_SECONDS*(prefs.pace||1),enter=prefs.reducedMotion?1:ease(elapsed/transition),leave=prefs.reducedMotion||authored?1:ease(remaining/transition);
   root.style.setProperty('--studio-enter',state.started?enter:1);root.style.setProperty('--studio-exit',state.started?leave:1);root.style.setProperty('--studio-travel',`${prefs.reducedMotion?0:Math.max(0,1-enter)*18}px`);root.style.setProperty('--studio-wipe',String(state.started&&!prefs.reducedMotion?1-ease(elapsed/transition):0));
-  const brand=franchise(story);ident.querySelector('.studio-wordmark').textContent=brand.name;ident.querySelector('.studio-ident-kicker').textContent='BEARING / '+story.topicLabel.toUpperCase();ident.querySelector('.studio-ident-topic').textContent=brand.note;credit.textContent=`${story.source.name}  /  ${story.dateLabel||new Date(story.publishedTime).toLocaleDateString()}  /  AI ILLUSTRATION`;nextTitle.textContent=getNextTitle()||'More from your interests';
+  const brand=franchise(story);ident.querySelector('.studio-wordmark').textContent=brand.name;ident.querySelector('.studio-ident-kicker').textContent='BEARING / '+story.topicLabel.toUpperCase();ident.querySelector('.studio-ident-topic').textContent=brand.note;credit.textContent=`${story.source.name}  /  ${story.dateLabel||new Date(story.publishedTime).toLocaleDateString()}${authored?'':'  /  AI ILLUSTRATION'}`;nextTitle.textContent=getNextTitle()||'More from your interests';
+  directed.draw(story,track,time,kind,prefs);
   const selected=visualBeatAt(story,track,time),b=selected.value;
   if(b!==lastBeat){beatLabel.textContent=b.label;beatText.textContent=b.text;beatDetail.textContent=b.detail||'';beatFlow.replaceChildren();for(const [index,text] of (b.nodes||[]).entries()){if(index)beatFlow.append(create('span','studio-flow-arrow','→'));beatFlow.append(create('span','studio-flow-node',text));}lastBeat=b;}
   const beatElapsed=Math.max(0,time-selected.start),beatRemaining=Math.max(0,selected.end-time);root.style.setProperty('--beat-opacity',prefs.reducedMotion?1:Math.min(ease(beatElapsed/transition),ease(beatRemaining/transition)));root.style.setProperty('--beat-travel',`${prefs.reducedMotion?0:12*(1-ease(beatElapsed/transition))}px`);
@@ -46,6 +50,6 @@ export function createStudio({host,media,music,getPreferences,getState,getNextTi
  }
  function update(){if(frame)cancelAnimationFrame(frame);draw();}
  media.addEventListener('seeking',()=>{seeked=true;stopEffects();});media.addEventListener('seeked',update);media.addEventListener('timeupdate',()=>{if(!frame)update();});media.addEventListener('pause',()=>{stopEffects();update();});media.addEventListener('play',update);
- return {update,stopEffects,setStory(value,voice){stopEffects();story=value?.programme?value:null;host.classList.toggle('studio-player',!!story);root.dataset.visualTreatment=story?.programme.visualTreatment||'';track=story?.voices[voice];lastBeat=null;lastKind='';lastTime=0;previousPlaying=false;rail.replaceChildren();if(!story){root.hidden=true;rail.hidden=true;return;}title.textContent=story.title;eyebrow.textContent=`${franchise(story).name} / ${story.topicLabel}`.toUpperCase();why.textContent=story.programme.why;summary.textContent=story.programme.summary;outlook.textContent=story.programme.lookAhead;
-  for(const [index,chapter] of track.chapters.entries()){if(chapter.kind==='ident'||chapter.kind==='outro')continue;const button=create('button','studio-chapter',chapter.label);button.dataset.chapter=index;button.setAttribute('aria-label',`Jump to ${chapter.label.toLowerCase()}`);button.onclick=()=>{seeked=true;media.currentTime=chapter.start;update();};rail.append(button);}update();},get phase(){return phaseAt(track?.chapters,media.currentTime||0)?.kind;}};
+ return {update,stopEffects,setStory(value,voice){stopEffects();story=value?.programme?value:null;host.classList.toggle('studio-player',!!story);host.dataset.visualTreatment=root.dataset.visualTreatment=story?.programme.visualTreatment||'';directed.setStory(story,closing);track=story?.voices[voice];lastBeat=null;lastKind='';lastTime=0;previousPlaying=false;rail.replaceChildren();if(!story){root.hidden=true;rail.hidden=true;return;}title.textContent=story.title;eyebrow.textContent=`${franchise(story).name} / ${story.topicLabel}`.toUpperCase();why.textContent=story.programme.why;summary.textContent=story.programme.summary;outlook.textContent=story.programme.lookAhead;closing.querySelector('.studio-eyebrow').textContent=(story.programme.chapterLabels?.closing||'The takeaway').toUpperCase();
+  for(const [index,chapter] of track.chapters.entries()){if(chapter.kind==='ident'||chapter.kind==='outro')continue;const button=create('button','studio-chapter');button.append(create('span','studio-chapter-number',String(index).padStart(2,'0')),create('span','studio-chapter-name',chapter.label));button.dataset.chapter=index;button.setAttribute('aria-label',`Jump to ${chapter.label.toLowerCase()}`);button.onclick=()=>{seeked=true;media.currentTime=chapter.start;update();};rail.append(button);}update();},get phase(){return phaseAt(track?.chapters,media.currentTime||0)?.kind;}};
 }

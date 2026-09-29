@@ -1,9 +1,13 @@
-"""Local CPU neural narration. No networking or implicit model downloads.
+"""Replaceable local CPU narration. No networking or implicit model downloads.
 
-Public API: synthesize(script, voice_key, output_mp3, model_dir=None)
-Dependencies: piper-tts==1.8.0, onnxruntime==1.30.0, numpy, imageio-ffmpeg.
-Model directory: argument, CURRENT_PIPER_MODEL_DIR, or sibling piper-models.
-Captions are phrase aligned from actual PCM sample counts, not word estimates.
+Public API: synthesize(script, voice_key, output_mp3, model_dir=None, *, provider=None)
+Explicit providers: piper-local-cpu (legacy), kokoro-local-cpu (reviewed narration).
+An unavailable selected provider fails closed; it never silently changes voices.
+Legacy dependencies: piper-tts==1.8.0, onnxruntime==1.30.0, numpy, imageio-ffmpeg.
+Kokoro adds kokoro-onnx==0.6.1; see speech_kokoro.py for explicit local setup.
+Piper models: argument, CURRENT_PIPER_MODEL_DIR, or sibling piper-models.
+Piper captions use exact phrase PCM boundaries; Kokoro also returns
+duration-tensor word timings while synthesizing complete sentences.
 """
 from __future__ import annotations
 
@@ -19,8 +23,6 @@ from pathlib import Path
 import imageio_ffmpeg
 import numpy as np
 import onnxruntime
-from piper import PiperVoice
-from piper.config import PiperConfig, SynthesisConfig
 
 VOICES = {
     "warm": {"model": "en_US-ljspeech-medium", "name": "LJ Speech",
@@ -57,6 +59,8 @@ def _phrases(script):
 
 
 def _load_voice(model_path):
+    from piper import PiperVoice
+    from piper.config import PiperConfig
     key = str(model_path.resolve())
     if key not in _CACHE:
         config_path = Path(str(model_path) + ".json")
@@ -72,8 +76,30 @@ def _load_voice(model_path):
     return _CACHE[key]
 
 
-def synthesize(script, voice_key, output_mp3, model_dir=None):
+def synthesize(script, voice_key, output_mp3, model_dir=None, *, provider=None):
+    selected = provider or os.environ.get("BEARING_TTS_PROVIDER") or "piper-local-cpu"
+    if selected == "kokoro-local-cpu":
+        from speech_kokoro import synthesize as render_kokoro
+        return render_kokoro(script, voice_key, output_mp3, model_dir)
+    if selected != "piper-local-cpu":
+        raise ValueError(f"Unknown narration provider: {selected}")
+    return _synthesize_piper(script, voice_key, output_mp3, model_dir)
+
+
+def provider_fingerprint(provider=None, model_dir=None):
+    """Bind cached narration to its actual engine, voice settings and model files."""
+    selected = provider or os.environ.get("BEARING_TTS_PROVIDER") or "piper-local-cpu"
+    if selected == "kokoro-local-cpu":
+        from speech_kokoro import configuration
+        return configuration(model_dir)["fingerprint"]
+    if selected != "piper-local-cpu":
+        raise ValueError(f"Unknown narration provider: {selected}")
+    return "piper-local-cpu-legacy-1.06"
+
+
+def _synthesize_piper(script, voice_key, output_mp3, model_dir=None):
     """Render MP3/WAV and exact phrase captions locally and return asset metadata."""
+    from piper.config import SynthesisConfig
     if voice_key not in VOICES:
         raise ValueError(f"Unknown voice: {voice_key}")
     if not script or not script.strip():
@@ -163,6 +189,7 @@ if __name__ == "__main__":
     parser.add_argument("--source", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--model-dir", type=Path)
+    parser.add_argument("--provider", choices=("piper-local-cpu", "kokoro-local-cpu"))
     parser.add_argument("--only", default="")
     args = parser.parse_args()
     data = json.loads(args.source.read_text("utf-8"))
@@ -175,7 +202,7 @@ if __name__ == "__main__":
             if target.exists():
                 print(json.dumps({"retained": str(target)}), flush=True)
                 continue
-            result = synthesize(story["script"], label, target, args.model_dir)
+            result = synthesize(story["script"], label, target, args.model_dir, provider=args.provider)
             print(json.dumps({"asset":stem,"duration":result["duration"],"bytes":result["bytes"],
                               "captions":len(result["captions"]),"provider":result["provider"],
                               "voice":result["voice"],"decoded":result["fullDecodePassed"]}),flush=True)

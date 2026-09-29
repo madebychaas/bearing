@@ -44,6 +44,7 @@ Do not assume every existing production element deserves to remain merely becaus
 
 ### Write for the ear
 
+- Narration-only stories should normally finish within 45 seconds, including framing. Longer cuts need a deliberate editorial reason, such as soundbites, natural sound or additional voices. Viewer-selected slower playback is separate from this authored duration budget.
 - Tighten aggressively.
 - Prefer shorter, cleaner sentences.
 - Carry one main idea at a time.
@@ -64,6 +65,8 @@ Do not use EQ, music, or sound design to disguise a fundamentally weak voice.
 ### Graphics should explain
 
 Graphics are not decoration for narration.
+
+Produce line-specific visual scenes and reveal elements with the voice. Vary the visual form when it serves understanding: original motion graphics, tasteful relevant illustration or clearly licensed documentary media. Third-party material must have verified display permission, appear only when the script references its subject, and carry a restrained top-left courtesy credit. Keep its full attribution and license behind the story. The three-part story structure should feel intentionally showcased in one contained chapter overlay.
 
 Each visual beat should help the viewer understand at least one of:
 

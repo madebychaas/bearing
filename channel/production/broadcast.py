@@ -40,28 +40,46 @@ def write_and_edit(run,story,plan):
     run.finish('edit_script',artifact='script-edited.json',**checks)
     return scripts
 
-def timed_beats(beats,captions,chapter):
+def cue_time(cue,captions,chapter,word_timings=None):
+    """Locate a unique spoken cue; prefer model duration-aligned word boundaries."""
+    normalize=lambda text: re.findall(r"[a-z0-9]+",text.lower())
+    phrases=[c for c in (word_timings or captions) if chapter['start']<=c['start']<chapter['end']]
+    words=[];times=[]
+    for phrase in phrases:
+        tokens=normalize(phrase['text']);words.extend(tokens);times.extend([phrase['start']]*len(tokens))
+    target=normalize(cue)
+    if not target:raise ValueError('Empty visual cue')
+    matches=[i for i in range(len(words)-len(target)+1) if words[i:i+len(target)]==target]
+    if len(matches)!=1:raise ValueError('Visual cue must match exactly one spoken phrase')
+    return times[matches[0]]
+
+def timed_reveals(reveals,captions,chapter,word_timings=None):
+    values=[{'start':cue_time(r['cue'],captions,chapter,word_timings),'reveal':i} for i,r in enumerate(reveals)]
+    if any(b['start']<a['start'] for a,b in zip(values,values[1:])):raise ValueError('Visual reveals must follow narration order')
+    return values
+
+def timed_beats(beats,captions,chapter,word_timings=None):
     """Bind authored graphics to actual spoken phrases, independently for each voice."""
     if not any(beat.get('cue') for beat in beats):return None
     if not all(beat.get('cue') for beat in beats):raise ValueError('Every explanatory beat needs a narration cue')
-    normalize=lambda text: ' '.join(re.findall(r"[a-z0-9]+",text.lower()))
-    phrases=[c for c in captions if chapter['start']<=c['start']<chapter['end']]
-    words=[];times=[]
-    for caption in phrases:
-        tokens=normalize(caption['text']).split();words.extend(tokens);times.extend([caption['start']]*len(tokens))
-    starts=[]
-    for beat in beats:
-        cue=normalize(beat['cue']).split()
-        matches=[i for i in range(len(words)-len(cue)+1) if words[i:i+len(cue)]==cue]
-        if len(matches)!=1:raise ValueError('Visual cue must match exactly one spoken phrase')
-        starts.append(times[matches[0]])
+    starts=[cue_time(beat['cue'],captions,chapter,word_timings) for beat in beats]
     if any(b<=a for a,b in zip(starts,starts[1:])):raise ValueError('Visual cues must follow narration order')
-    starts[0]=chapter['start']
-    return [{'start':start,'end':starts[i+1] if i+1<len(starts) else chapter['end'],'beat':i} for i,start in enumerate(starts)]
+    # Directed scenes appear at the spoken cue, never before the referenced subject.
+    if not any(b.get('kind') for b in beats):starts[0]=chapter['start']
+    result=[]
+    for i,start in enumerate(starts):
+        item={'start':start,'end':starts[i+1] if i+1<len(starts) else chapter['end'],'beat':i}
+        if beats[i].get('reveals'):
+            item['reveals']=timed_reveals(beats[i]['reveals'],captions,chapter,word_timings)
+            if any(r['start']<start or r['start']>=item['end'] for r in item['reveals']):raise ValueError('Reveal falls outside its scene')
+        result.append(item)
+    return result
 
 def visuals(run,story,plan):
     decisions=[{'phase':'opening','kind':'text-motion','purpose':'Introduce this story and why it matters'}, {'phase':'story','kind':'illustration-video-and-motion-graphics','purpose':'Story-specific illustrative scene and source-bound supporting facts','image':story['image'],'video':story['video'],'beats':plan['beats']}, {'phase':'closing','kind':'text-motion','purpose':'Takeaway and a qualified look-ahead'}]
-    pipeline.write_json(run.folder/'visual-plan.json',{'decision':'mixture','scenes':decisions,'disclosure':'Conceptual AI illustration; not documentary footage','mapOrChartPolicy':'Only use maps or charts with reviewed coordinates or quantitative evidence; never invent data.'})
+    directed=plan.get('visualTreatment')=='directed'
+    if directed:decisions[1]={'phase':'story','kind':'narration-directed-scenes','purpose':'Distinct, reviewed explanatory scenes revealed at actual spoken phrases','beats':plan['beats']}
+    pipeline.write_json(run.folder/'visual-plan.json',{'decision':'mixture','scenes':decisions,'disclosure':'Original explanatory graphics and licensed, credited file photography; photography is a location reference, not evidence of training outcomes.' if directed else 'Conceptual AI illustration; not documentary footage','mapOrChartPolicy':'Only use maps or charts with reviewed coordinates or quantitative evidence; never invent data.'})
     run.finish('plan_visuals',artifact='visual-plan.json',decision='mixture')
     assets=[]
     for key in ('image','video'):
@@ -69,7 +87,14 @@ def visuals(run,story,plan):
         if not path.is_relative_to(pipeline.DIST.resolve()) or not path.is_file():raise ValueError('Missing approved visual asset')
         assets.append({'kind':key,'path':story[key],'sha256':file_hash(path)})
     if story.get('visual',{}).get('storyId')!=story['id']:raise ValueError('Visual belongs to another story')
-    graphics={'scenes':decisions,'renderer':'studio.js','rendererSha256':file_hash(pipeline.DIST/'studio.js'),'styleSha256':file_hash(pipeline.DIST/'studio.css'),'assets':assets}
+    for beat in plan['beats']:
+        media=beat.get('media')
+        if not media:continue
+        if not all(media.get(k) for k in ('src','sourceUrl','licenseUrl','license','author','courtesy','sha256','usageApproved')):raise ValueError('Third-party media requires reviewed rights and a courtesy credit')
+        path=(pipeline.DIST/media['src']).resolve()
+        if not path.is_relative_to(pipeline.DIST.resolve()) or not path.is_file() or file_hash(path)!=media['sha256']:raise ValueError('Third-party media differs from its reviewed asset')
+        assets.append({'kind':'licensed-image','path':media['src'],'sha256':media['sha256'],'rights':media})
+    graphics={'scenes':decisions,'renderer':'studio.js','rendererSha256':file_hash(pipeline.DIST/'studio.js'),'styleSha256':file_hash(pipeline.DIST/'studio.css'),'rendererDependencies':{p:file_hash(pipeline.DIST/p) for p in ('directed.js','directed.css')},'assets':assets}
     pipeline.write_json(run.folder/'visual-composition.json',graphics)
     run.finish('create_visuals',artifact='visual-composition.json',method='Reuse approved bespoke image and motion video; compose story-specific broadcast graphics',assets=assets)
     return graphics
@@ -126,6 +151,7 @@ def cache_valid(folder,story):
         checks += [(path,music['sha256'][style]) for style,path in music['assets'].items()]
         checks += [(v['path'],v['sha256']) for v in composition['assets']]
         checks += [('studio.js',composition['rendererSha256']),('studio.css',composition['styleSha256'])]
+        checks += list(composition.get('rendererDependencies',{}).items())
         for value,expected in checks:
             path=(pipeline.DIST/value).resolve()
             if not path.is_relative_to(pipeline.DIST.resolve()) or file_hash(path)!=expected:return False

@@ -22,8 +22,19 @@ test('programme and topic choices constrain every playlist item',()=>{
  assert.deepEqual(list,[full]);assert.equal(franchise(full).name,'Field Notes');
  assert.equal(selectPlaylist([full],{failed:new Set([full.id])}).length,0);
 });
-test('re-timed stories give the 1.5 second transition room before and after narration',()=>{
+test('chapter timing preserves legacy pauses and keeps directed narration within its budget',()=>{
  for(const story of edition.stories)for(const voice of Object.values(story.voices)){
+  if(story.programme.visualTreatment==='directed'){
+   assert.ok(voice.duration<=story.programme.maxDuration);
+   assert.ok(voice.chapters[0].end>=1.5);
+   assert.ok(voice.chapters.at(-1).end-voice.chapters.at(-1).start>=1.499);
+   for(const chapter of voice.chapters.slice(1,-1)){
+    const captions=voice.captions.filter(c=>c.start>=chapter.start&&c.end<=chapter.end);
+    assert.ok(captions.length);assert.ok(captions[0].start>=chapter.start);
+    assert.ok(captions.at(-1).end<=chapter.end);
+   }
+   continue;
+  }
   assert.ok(voice.chapters[0].end>=4.5);
   assert.ok(voice.chapters.at(-1).end-voice.chapters.at(-1).start>=4.499);
   for(const chapter of voice.chapters.slice(1,-1)){
