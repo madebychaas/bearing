@@ -58,7 +58,7 @@ function renderPreferences(){
 function configureMusic(){
  if(preferences.music==='off'){music.pause();return;}
  const desired=current?.music?.[preferences.music]||`assets/music-${preferences.music}.mp3`;if(music.getAttribute('src')!==desired){music.src=desired;music.load();}
- music.volume=preferences.musicVolume;if(playing)music.play().catch(()=>{});
+ music.volume=current?.programme?.soundTreatment==='editorial-score'?0:preferences.musicVolume;music.playbackRate=current?.programme?.soundTreatment==='editorial-score'?audio.playbackRate:1;if(playing)music.play().catch(()=>{});
 }
 function updateTransport(){
  $('play').textContent=playing?'Ⅱ':'▶';$('play').setAttribute('aria-label',playing?'Pause channel':'Play channel');
@@ -88,7 +88,7 @@ function switchStory(story){
  if(!story)return;const animate=started&&!preferences.reducedMotion;pause();
  if(!animate){loadStory(story,true);return;}
  const overlay=$('channel-transition');$('transition-series').textContent=franchise(story).name;overlay.classList.add('active');
- if(preferences.transitionSounds!==false&&!audio.muted){transitionSound.currentTime=0;transitionSound.volume=.35;transitionSound.play().catch(()=>{});}
+ if(preferences.transitionSounds!==false&&!audio.muted){const scored=current?.programme?.soundTreatment==='editorial-score'?current:story.programme?.soundTreatment==='editorial-score'?story:null;transitionSound.src=scored?(scored.music.bridge||scored.music.handoff):'assets/studio/sweep-v2.wav';transitionSound.currentTime=0;transitionSound.volume=scored?.55:.35;transitionSound.play().catch(()=>{});}
  transitionTimer=setTimeout(()=>{overlay.classList.remove('active');transitionTimer=null;loadStory(story,true);},1500);
 }
 async function next(){
@@ -122,7 +122,7 @@ function sourceView(){
  const media=[...new Map((current.programme?.beats||[]).filter(b=>b.media).map(b=>[b.media.src,b.media])).values()];
  if(media.length){panel.append(node('p','source-label','VISUAL CREDITS'));for(const item of media){
   const credit=node('p','source-description',`${item.title||'File photograph'} · ${item.author}. ${item.dateLabel||''}. `);
-  const original=node('a','', 'Original photograph');original.href=item.sourceUrl;original.target='_blank';original.rel='noopener noreferrer';
+  const original=node('a','', item.kind==='map'?'Map source':'Original photograph');original.href=item.sourceUrl;original.target='_blank';original.rel='noopener noreferrer';
   const license=node('a','',item.license);license.href=item.licenseUrl;license.target='_blank';license.rel='noopener noreferrer';
   credit.append(original,document.createTextNode(' · '),license,document.createTextNode(`. ${item.displayChanges||''}`));panel.append(credit);
  }}

@@ -4,13 +4,58 @@ The script editor consumes an existing reviewed presentation plan. It does not
 pretend that a headline, a hash check, or an LLM is independent fact verification.
 """
 import hashlib,json,re,subprocess,wave
+from datetime import date
 from pathlib import Path
+from urllib.parse import urlsplit
 import numpy as np
 import pipeline
 
 STAGES=['source','write_script','edit_script','tts','plan_visuals','create_visuals','create_music','assemble','publish']
 def digest(value):return hashlib.sha256(value.encode('utf-8')).hexdigest()
 def file_hash(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+def validate_editorial_timing(timing,today=None):
+    """Validate an editor's why-now record, not the truth of its underlying evidence."""
+    today=today or date.today()
+    if not isinstance(timing,dict):raise ValueError('A reviewed why-now record is required')
+    mode=timing.get('mode')
+    if mode not in ('current','context-example'):raise ValueError('Choose current news or an explicit context example')
+    def day(key):
+        value=timing.get(key)
+        if not isinstance(value,str) or not re.fullmatch(r'\d{4}-\d{2}-\d{2}',value):raise ValueError(f'Missing or invalid editorial {key}')
+        try:return date.fromisoformat(value)
+        except ValueError:raise ValueError(f'Missing or invalid editorial {key}') from None
+    checked=day('checkedAt');development=day('developmentDate');published=day('sourcePublishedDate')
+    if checked>today or development>checked or published>checked:raise ValueError('Editorial dates cannot claim an unverified future development')
+    if timing.get('sourceUpdatedDate') and day('sourceUpdatedDate')>checked:raise ValueError('Source update postdates the editorial review')
+    reason=timing.get('reason','')
+    if not isinstance(reason,str) or len(reason.strip())<24:raise ValueError('Explain the specific reason to cover this story')
+    evidence_url=timing.get('evidenceUrl','')
+    if not isinstance(evidence_url,str):raise ValueError('The editorial reason needs a source evidence URL')
+    url=urlsplit(evidence_url)
+    if url.scheme not in ('http','https') or not url.hostname or url.username:raise ValueError('The editorial reason needs a source evidence URL')
+    result={k:timing[k] for k in ('mode','developmentDate','sourcePublishedDate','checkedAt','reason','evidenceUrl')}
+    if timing.get('sourceUpdatedDate'):result['sourceUpdatedDate']=timing['sourceUpdatedDate']
+    if mode=='context-example':return {**result,'label':'Context example','liveEligible':False}
+    # Fetch time, build time and an unexplained source-page timestamp are never news pegs.
+    if timing.get('basis') not in ('new-development','material-update','deadline','ongoing-impact'):raise ValueError('Retrieval or page-update timestamps are not an editorial why-now basis')
+    trigger=day('triggerDate');expires=day('validThrough')
+    if not checked<=today<=expires:raise ValueError('Current-news review expired; reassess why this matters now')
+    if (expires-checked).days>7:raise ValueError('Current-news eligibility needs review within seven days')
+    if timing['basis'] in ('new-development','material-update') and (trigger>checked or (checked-trigger).days>3):raise ValueError('An old development needs a current, evidenced impact or explicit context framing')
+    if timing['basis']=='ongoing-impact' and trigger>checked:raise ValueError('Ongoing impact needs an observed development')
+    if timing['basis']=='deadline' and trigger<today:raise ValueError('A passed deadline needs a newly reviewed consequence')
+    return {**result,**{k:timing[k] for k in ('basis','triggerDate','validThrough')},'label':'Current development','liveEligible':True}
+
+def editorial_timing(story,plan,scripts,today=None):
+    if plan.get('editorialTiming') is not None:return validate_editorial_timing(plan['editorialTiming'],today)
+    # Frozen migration exceptions bind the existing ID, source revision AND spoken copy.
+    # Changing any of these requires an editorial decision; adding an ID is not approval.
+    exceptions=json.loads((Path(__file__).with_name('legacy-editorial-context.json')).read_text(encoding='utf-8'))['scripts']
+    identity=json.dumps([story['id'],plan['sourceScriptSha256'],' '.join(scripts.values())],ensure_ascii=False,separators=(',',':'))
+    if plan.get('visualTreatment')!='directed' and exceptions.get(story['id'])==digest(identity):
+        return {'mode':'legacy-context','label':'Context archive','liveEligible':False,'reason':'Unchanged presentation retained from before the why-now review requirement; not newly verified current news.'}
+    raise ValueError('New or changed broadcast copy needs a reviewed why-now record')
 
 class Run:
     def __init__(self,folder,story,identity):
@@ -35,7 +80,9 @@ def write_and_edit(run,story,plan):
     if not 35<=len(full.split())<=420:raise ValueError('Broadcast script length needs an editorial edit')
     if re.search(r'ignore previous|system prompt|guaranteed to|certain to',full,re.I):raise ValueError('Script contains an instruction or unsupported certainty')
     if not plan.get('why') or not plan.get('summary') or not plan.get('lookAhead'):raise ValueError('Incomplete broadcast structure')
-    checks={'sourceBinding':'passed','broadcastStructure':'passed','voice':'calm, attributed, factual; look-ahead framed as a question or milestone','accuracyBasis':'Existing source-bound editorial plan, with source-revision and structure checks. Not independent fact verification.','scriptSha256':digest(full)}
+    timing=editorial_timing(story,plan,scripts)
+    evidence['editorialTiming']=timing;pipeline.write_json(run.folder/'source-evidence.json',evidence)
+    checks={'sourceBinding':'passed','broadcastStructure':'passed','editorialTiming':timing,'voice':'calm, attributed, factual; look-ahead framed as a question or milestone','accuracyBasis':'Existing source-bound editorial plan, with source-revision and structure checks. Not independent fact verification.','scriptSha256':digest(full)}
     pipeline.write_json(run.folder/'script-edited.json',{'scripts':scripts,'review':checks})
     run.finish('edit_script',artifact='script-edited.json',**checks)
     return scripts
@@ -79,7 +126,7 @@ def visuals(run,story,plan):
     decisions=[{'phase':'opening','kind':'text-motion','purpose':'Introduce this story and why it matters'}, {'phase':'story','kind':'illustration-video-and-motion-graphics','purpose':'Story-specific illustrative scene and source-bound supporting facts','image':story['image'],'video':story['video'],'beats':plan['beats']}, {'phase':'closing','kind':'text-motion','purpose':'Takeaway and a qualified look-ahead'}]
     directed=plan.get('visualTreatment')=='directed'
     if directed:decisions[1]={'phase':'story','kind':'narration-directed-scenes','purpose':'Distinct, reviewed explanatory scenes revealed at actual spoken phrases','beats':plan['beats']}
-    pipeline.write_json(run.folder/'visual-plan.json',{'decision':'mixture','scenes':decisions,'disclosure':'Original explanatory graphics and licensed, credited file photography; photography is a location reference, not evidence of training outcomes.' if directed else 'Conceptual AI illustration; not documentary footage','mapOrChartPolicy':'Only use maps or charts with reviewed coordinates or quantitative evidence; never invent data.'})
+    pipeline.write_json(run.folder/'visual-plan.json',{'decision':'mixture','scenes':decisions,'disclosure':plan.get('visualDisclosure','Original explanatory graphics and credited media' if directed else 'Conceptual AI illustration; not documentary footage'),'mapOrChartPolicy':'Only use maps or charts with reviewed coordinates or quantitative evidence; never invent data.'})
     run.finish('plan_visuals',artifact='visual-plan.json',decision='mixture')
     assets=[]
     for key in ('image','video'):
@@ -93,13 +140,67 @@ def visuals(run,story,plan):
         if not all(media.get(k) for k in ('src','sourceUrl','licenseUrl','license','author','courtesy','sha256','usageApproved')):raise ValueError('Third-party media requires reviewed rights and a courtesy credit')
         path=(pipeline.DIST/media['src']).resolve()
         if not path.is_relative_to(pipeline.DIST.resolve()) or not path.is_file() or file_hash(path)!=media['sha256']:raise ValueError('Third-party media differs from its reviewed asset')
-        assets.append({'kind':'licensed-image','path':media['src'],'sha256':media['sha256'],'rights':media})
-    graphics={'scenes':decisions,'renderer':'studio.js','rendererSha256':file_hash(pipeline.DIST/'studio.js'),'styleSha256':file_hash(pipeline.DIST/'studio.css'),'rendererDependencies':{p:file_hash(pipeline.DIST/p) for p in ('directed.js','directed.css')},'assets':assets}
+        assets.append({'kind':media.get('kind','licensed-image'),'path':media['src'],'sha256':media['sha256'],'rights':media})
+    graphics={'scenes':decisions,'renderer':'studio.js','rendererSha256':file_hash(pipeline.DIST/'studio.js'),'styleSha256':file_hash(pipeline.DIST/'studio.css'),'rendererDependencies':{p:file_hash(pipeline.DIST/p) for p in ('directed.js','directed.css','us-states.js')},'assets':assets}
     pipeline.write_json(run.folder/'visual-composition.json',graphics)
     run.finish('create_visuals',artifact='visual-composition.json',method='Reuse approved bespoke image and motion video; compose story-specific broadcast graphics',assets=assets)
     return graphics
 
-def create_music(run,settings):
+def editorial_score(style,rate=24000,seconds=48):
+    """An original warm, open-fifth score; no samples, risers or noise sweeps."""
+    t=np.arange(round(rate*seconds))/rate
+    if style in ('signature','handoff','bridge'):
+        signal=np.zeros(len(t));notes=[(0,146.8324,.21),(.17,220,.12),(.34,329.6276,.07)]
+        if style in ('handoff','bridge'):notes=[(0,220,.12),(.12,293.6648,.07)]
+        for start,hz,level in notes:
+            local=np.maximum(0,t-start)
+            envelope=(1-np.exp(-local*110))*np.exp(-local*(2.6 if style=='signature' else 4.8))
+            tone=np.sin(2*np.pi*hz*local)+.14*np.sin(2*np.pi*hz*2*local)
+            signal+=tone*envelope*level
+        if style=='bridge':
+            # Carry the inter-story overlay to the next item without a silent
+            # half-second. The phrase-end resolve remains its own shorter cue.
+            release=np.clip((seconds-t)/.45,0,1);release=release*release*(3-2*release)
+            signal+=(.06*np.sin(2*np.pi*220*t)+.028*np.sin(2*np.pi*293.6648*t))*(1-np.exp(-t*35))*release
+        signal*=np.minimum(1,np.maximum(0,(seconds-t)/.12))
+        return signal
+    signal=np.zeros(len(t))
+    # Frequencies complete whole cycles across the loop. The bed is already
+    # present under the first sentence instead of spending seconds fading in.
+    for index,note in enumerate((0,7,14,21)):
+        hz=round(146.8324*2**(note/12)*seconds)/seconds
+        swell=.82+.18*np.cos(2*np.pi*t/seconds+index*.7)
+        signal+=(np.sin(2*np.pi*hz*t)+.08*np.sin(2*np.pi*hz*2*t))*swell*(.09/(1+index*.22))
+    if style=='piano':
+        for index,start in enumerate(np.arange(0,seconds,4)):
+            local=(t-start)%seconds;hz=round(293.6648*2**((0,7,14,7)[index%4]/12)*seconds)/seconds
+            signal+=np.sin(2*np.pi*hz*local)*(1-np.exp(-local*24))*np.exp(-local*1.4)*.08
+    else:
+        signal*=.91+.09*np.cos(2*np.pi*t/8)
+    # Match a useful mastered bed level before the viewer's volume and dialogue
+    # ducking are applied; the old quiet source plus ducking was nearly inaudible.
+    signal*=.72/max(.72/4,float(np.max(np.abs(signal))))
+    return signal
+
+
+def create_music(run,settings,plan=None):
+    if (plan or {}).get('soundTreatment')=='editorial-score':
+        assets={};durations={};rate=24000
+        for style,seconds in [('drift',48),('piano',48),('signature',2.1),('handoff',.95),('bridge',1.5)]:
+            path=pipeline.DIST/'assets'/'studio'/f"score-{run.data['version']}-{style}.mp3"
+            if not path.exists():
+                signal=editorial_score(style,rate,seconds)
+                temporary=run.folder/f'score-{style}.wav'
+                with wave.open(str(temporary),'wb') as audio:
+                    audio.setnchannels(1);audio.setsampwidth(2);audio.setframerate(rate);audio.writeframes((signal*32767).astype('<i2').tobytes())
+                target=run.folder/f'score-{style}.mp3'
+                subprocess.run([settings['ffmpeg'],'-v','error','-i',str(temporary),'-c:a','libmp3lame','-b:a','128k','-y',str(target)],check=True,capture_output=True,timeout=30)
+                subprocess.run([settings['ffmpeg'],'-v','error','-xerror','-i',str(target),'-f','null','-'],check=True,capture_output=True,timeout=30)
+                target.replace(path)
+            assets[style]=path.relative_to(pipeline.DIST).as_posix();durations[style]=seconds
+        pipeline.write_json(run.folder/'music.json',{'assets':assets,'composer':'Original Bearing open-fifth score and musical punctuation','rights':'Original composition and synthesis; no samples or external music','duration':48,'durations':durations,'treatment':'editorial-score','sha256':{k:file_hash(pipeline.DIST/v) for k,v in assets.items()}})
+        run.finish('create_music',artifact='music.json',method='Original immediate musical signature overlaps the lead; continuous speech-ducked score with a short phrase-end resolve')
+        return assets
     assets={};rate=24000;seconds=24;count=rate*seconds
     seed=int(run.data['version'][:8],16);base=[130.8128,146.8324,164.8138,174.6141][seed%4]
     for style in ('drift','piano'):
@@ -145,6 +246,9 @@ def cache_valid(folder,story):
         if record['state']=='held':return False
         stages=[s['stage'] for s in record['stages']]
         if stages not in (STAGES,STAGES[:-1]):return False
+        evidence=json.loads((folder/'source-evidence.json').read_text(encoding='utf-8'))
+        timing=evidence.get('editorialTiming') or story.get('editorialTiming')
+        if timing and timing.get('mode')=='current':validate_editorial_timing(timing)
         music=json.loads((folder/'music.json').read_text(encoding='utf-8'))
         composition=json.loads((folder/'visual-composition.json').read_text(encoding='utf-8'))
         checks=[(v['audio'],v['sha256']) for v in story['voices'].values()]

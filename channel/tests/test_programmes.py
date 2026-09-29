@@ -23,6 +23,6 @@ class ProgrammeTests(unittest.TestCase):
             for track in story['voices'].values():
                 self.assertTrue(track['fullDecodePassed'])
                 self.assertEqual(producer.hashlib.sha256(producer.asset(track['audio']).read_bytes()).hexdigest(),track['sha256'])
-                self.assertGreater(track['duration'],25)
+                self.assertGreater(track['duration'],10)
 
 if __name__=='__main__':unittest.main()

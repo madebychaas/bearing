@@ -1,55 +1,47 @@
 # In Focus: a route into cybersecurity
 
-Editorial revision: September 29, 2026. Story ID: `reviewed-nist-workforce-20260918-v1`. Current title: **A route into cybersecurity**.
+Editorial and production review: September 29, 2026. Story `reviewed-nist-workforce-20260918-v1`; delivery `a13c86a73eb39bfd92ce`.
 
-Source: [NIST's September 18 workforce funding announcement](https://www.nist.gov/news-events/news/2026/09/nist-awards-more-17-million-support-cybersecurity-workforce-development), rechecked against the live primary page. This is a dated explanatory story, not a new breaking development. Original source evidence and prior deliveries remain retained.
+The finished example is **23.11 seconds in Warm / Heart** and **25.71 seconds in Measured / Michael**, including framing. Its 51-word script replaces the previous 66-word, 31.68/34.71-second cut. Narration enters at 0.45 seconds; a 2.1-second original musical signature overlaps it. No standalone title wait precedes the lead.
 
-## Why this cut changed
+## Editorial decision
 
-The previous 137-word treatment improved factual context and continuous playback, but the viewer's review identified two failures: repetitive graphics that did not consistently belong with the current line, and narration that was not good enough. Passing media and runtime tests did not establish an acceptable finished piece. The warm cut ran 80.98 seconds and the measured cut 91.77 seconds, too long for this amount of information without a soundbite or natural sound.
+[NIST's primary announcement](https://www.nist.gov/news-events/news/2026/09/nist-awards-more-17-million-support-cybersecurity-workforce-development) reports nine awards in eight states on September 18. The page says updated September 28, but gives no material change that establishes a September 29 news peg. This stays an explicitly labeled **context example**, not freshly occurring news. The source date and explanation remain behind the story.
 
-This revision keeps the three-part structure, tightens the spoken copy to 66 words, and gives every body scene a different explanatory job. The complete delivery has a 45-second ceiling, including its programme bookends. The duration is a production acceptance condition, not a claim about an unrendered voice track.
+Houston no longer gets an arbitrary standalone example. The national geography explains the round: Florida, Kentucky, Virginia, New Mexico, Michigan, Ohio, Texas and Tennessee. Ohio has two awards. These are recipient states, not promises of statewide coverage. Training completion and employment are the consequential outcomes still to establish.
 
 ## Spoken script
 
-**The Brief**
+**The Shift**
 
-Federal funding is backing a new route into cybersecurity work.
+Federal funding aims to turn cybersecurity training into a clearer route to work.
 
-**The Connection**
+**The Design**
 
-NIST is awarding more than one point seven million dollars to nine local partnerships. The idea: match training to employers’ needs, through internships, apprenticeships and hands-on projects. The University of Houston gets just under two hundred thousand dollars.
+NIST is backing nine partnerships in eight states, with over one point seven million dollars. Training meets employers' needs through internships, apprenticeships and hands-on projects.
 
-**The Test**
+**The Payoff**
 
-The test is whether people finish the training and get hired. This announcement doesn't give us those results.
+Success means finishing that training—and getting hired. That's the result still to prove.
 
-The ending is the real limit of the evidence: a funding announcement does not demonstrate training completion or hiring. The Houston example gives the national award round one identifiable local anchor. Its exact award is $199,735; the rounded spoken amount is intentional. The announcement's eight-state count is retained in the source review but omitted from both speech and presentation to avoid another fact competing for attention.
+## Picture and sound
 
-## Editorial visual direction
+The opening reveals federal backing, cybersecurity training and the route to work at their spoken phrases. A drawn route motif establishes the visual idea without shaky footage or a simulated camera move.
 
-The Brief establishes cybersecurity and the purpose of the investment. It needs a restrained title composition, not documentary-looking synthetic footage of a trainee or workplace.
+The body changes visual form twice. A light, ink-like U.S. map highlights the eight award states as the count is spoken; the funding figure follows its spoken reference. Geography comes early enough to read before the next scene. The map then recedes into a dark explanatory diagram: training and employer needs connect, and the three practice branches reveal with the voice. The closing resolves the original route into **Finish training / Get hired**, followed by the explicit qualification. Its destination is an open circle, not an achieved-outcome checkmark.
 
-The Connection moves through three distinct scenes:
+Map paths are compiled from pinned `us-atlas@3.0.1`, derived from Census 2017 generalized boundaries. The full [ISC permission notice](https://github.com/topojson/us-atlas/blob/v3.0.1/LICENSE), original/output hashes, transformation and limitations are retained in `channel/dist/us-states.provenance.json`; the notice is also embedded in the JavaScript. Fifty states and DC are represented, including Alaska/Hawaii insets. A restrained top-left **Courtesy U.S. Census Bureau** appears only with the map. Behind this story links the source and permission. Previous photographic originals are retained but do not appear in this cut.
 
-1. **Investment:** a large, controlled funding figure, followed by nine marks representing nine partnerships. The amount appears when spoken; the count appears only at “nine local partnerships.” These marks represent a count, not equal grant amounts or measured outcomes.
-2. **Relationship:** training and employer needs become connected as the narration connects them. Internships, apprenticeships and hands-on projects enter one at a time on their own spoken phrases. This is an explanation of the intended programme design, not a claim that those experiences or hiring results have already happened.
-3. **Place:** the University of Houston sentence gets a licensed campus file photograph, with a restrained camera move, an archival date and a top-left courtesy credit. The award amount follows its spoken phrase. The campus image establishes location; it does not show a programme participant or document a funded activity.
+Kokoro synthesizes complete sentences on two CPU threads. Word-level reveals use model-duration timing independently for each voice. This cut uses native voice speed; viewer pace remains separate. The replacement original score starts under the lead, ducks dialogue, resolves under the closing line, and bridges the existing 1.5-second playlist transition. Seeking synchronizes music, and pause/mute stop sound effects. Early resume cannot accidentally restart the opening signature. No samples or third-party music are used.
 
-The Test replaces promises with two open questions: completing training and getting hired. These reveal with the corresponding spoken phrases; they are not success checkmarks. The missing-results statement follows the final line.
+## Editorial cadence safeguard
 
-Each plan cue is an exact substring of the spoken copy. The `investment`, `pathway` and `place` scene kinds and their semantic reveal roles let the renderer stage individual elements against the voice, instead of moving a complete static card at each boundary. The established three chapters are named **The Brief**, **The Connection** and **The Test**. Their navigation is intended to sit in a restrained player overlay container rather than three flat bars.
+New or changed full-story scripts require a reviewed `editorialTiming` record. Current news needs an evidenced trigger (new development, material update, deadline or ongoing impact), a stated reason for running now and an expiring review window. Fetch/build time and an unexplained page-update timestamp are not accepted news pegs. Context examples remain playable but explicitly not live-eligible. Ten unchanged legacy cuts have frozen ID/source/script-hash migration exceptions; altering their copy requires a new timing review. The check validates review discipline, not the truth of an editor's evidence.
 
-## Voice, rights and verification status
+## Verification and remaining judgment
 
-The selected story now uses Kokoro ONNX on two CPU threads, with Heart for Warm and Michael for Measured. It synthesizes complete sentences at native speed, instead of splicing Piper clauses. Captions follow exact sentence PCM boundaries; reveals use actual model-duration word timing (25 ms resolution), not equal slices of a sentence. Audio is normalized for level; music is not used to conceal voice problems. Scripts are not uploaded. An unavailable selected provider holds production rather than silently falling back.
+All eleven programmes rebuilt with no holds. **91 Python and 32 JavaScript tests pass**, covering media integrity, publication retention, cue ordering, geography, rights, review expiry, audio envelopes, pause/resume and seek behavior. Full narration and music decoding passed. Active speech measures approximately -17.7 dBFS RMS; the default music bed is approximately 20 dB below it.
 
-The campus photograph is [Ezekiel W. Cullen Building (Alternate), RJN, June 7, 2011](https://commons.wikimedia.org/wiki/File:Ezekiel_W._Cullen_Building_(Alternate).JPG), licensed [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). Original JPEG bytes and a rights record are retained in `channel/dist/assets/licensed/`. Display crops, overlays and the camera move are disclosed; adaptations of this photograph carry the same license. The top-left bug reads “Courtesy RJN / Wikimedia Commons” and “File photo, 2011.” Behind this story links the original and license. The photograph and credit appear only during the Houston scene. The NIST article's Shutterstock classroom photograph is not cleared and is not used. No archival reference project was inspected or used.
+The actual Codex in-app browser was used to inspect the lead, map, mechanism, closing, narration/music synchronization and automatic progression into the next story. Desktop remains scroll-less. A narrow-screen map/caption overlap found during review was corrected; the diagram and closing clear captions. Browser timing and audio levels are verification evidence, not physical listening approval. Naturalness, emotional emphasis and the user's preference for this performance remain listening judgments.
 
-Published version: `ca2ee6187725ad6aab25`. Complete durations, including bookends: **31.68 seconds Warm / Heart**, **34.71 seconds Measured / Michael**. The authored cap is 45 seconds at normal speed; a viewer's slower pace preference can extend playback. Both deliveries decode fully and retain their independent word, caption and chapter timings. The existing original music remains available with speech ducking, silence as a preference, and sound accents restricted to the bookends.
-
-Browser review covered the funding reveal, the sequential training examples, the licensed photo and courtesy, the final evidence gap, backward seeks, both voice choices, and automatic progression into the next programme. Phone checks at 355 CSS pixels found two layout issues, which were corrected: cramped practice names now stack as readable lines, and the source line moves above the closing instead of competing with the outcome labels. The revised chapter navigation is one keyboard-operable floating container. Desktop remains one viewport without page scrolling.
-
-Validation: **81 Python tests and 27 JavaScript tests pass**. They include actual provider selection, word-cue ordering, precise scene bounds, backward seeking, reduced motion, permission holds, 45-second delivery budgets and retention of a previously playable story when a new plan or build fails. Renderer and production revisions now create distinct delivery identities; voice files remain staged until both deliveries pass their cue and duration checks. A concurrent automatic build was preserved separately before restoring its affected prior deliverables; final legacy narration was reused unchanged when revalidating the shared renderer.
-
-The new voice path is a substantive replacement, not a claim of subjective listening approval. This environment verifies decoded playback and timing but cannot independently judge physical speaker output or whether the user prefers the performance. The next review should assess this exact cut for pronunciation, cadence, intelligibility and whether its visual sequence helps the viewer understand the story. Broad feature work and Coverage Radar remain queued.
+Prior deliveries are retained. This is a focused production revision to one selected story. Coverage Radar and broad feature work remain queued; no archival reference project was consulted.

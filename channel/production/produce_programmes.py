@@ -51,7 +51,7 @@ def produce_story(story,plan,settings):
     validate_plan(story,plan)
     speech_provider=plan.get('speechProvider','piper-local-cpu')
     speech_fingerprint=provider_fingerprint(speech_provider,settings['modelDir'])
-    renderer_revision={p:broadcast.file_hash(DIST/p) for p in ('studio.js','studio.css','directed.js','directed.css')}
+    renderer_revision={p:broadcast.file_hash(DIST/p) for p in ('studio.js','studio.css','directed.js','directed.css','us-states.js')}
     renderer_revision['assembler']=broadcast.file_hash(Path(__file__))
     renderer_revision['broadcast']=broadcast.file_hash(WORK/'broadcast.py')
     identity=sha(json.dumps([STYLE,story['id'],plan,story['image'],story['video'],speech_fingerprint,renderer_revision],sort_keys=True))[:20]
@@ -88,7 +88,7 @@ def produce_story(story,plan,settings):
             all_clips[voice]=clips
         run.finish('tts',voices={voice:{phase:{'path':str(path),'sha256':meta['sha256'],'duration':meta['duration']} for phase,(path,meta) in clips.items()} for voice,clips in all_clips.items()})
         visual_composition=broadcast.visuals(run,story,plan)
-        music=broadcast.create_music(run,settings)
+        music=broadcast.create_music(run,settings,plan)
         timing={'ident':IDENT_DURATION,'outro':OUTRO_DURATION,'lead':TRANSITION_LEAD,'tail':TRANSITION_TAIL,**plan.get('timing',{})}
         if any(not isinstance(v,(int,float)) or v<0 for v in timing.values()):raise ValueError('Invalid programme timing')
         deliveries=[]
@@ -111,20 +111,22 @@ def produce_story(story,plan,settings):
             command+=['-filter_complex',';'.join(filters),'-map','[out]','-c:a','libmp3lame','-b:a','128k','-y',str(temp)]
             subprocess.run(command,check=True,capture_output=True,timeout=90)
             subprocess.run([settings['ffmpeg'],'-v','error','-xerror','-i',str(temp),'-f','null','-'],check=True,capture_output=True,timeout=60)
-            if not 25<duration<160 or captions[-1]['end']>duration:raise ValueError('Programme duration or captions invalid')
+            if not 10<duration<160 or captions[-1]['end']>duration:raise ValueError('Programme duration or captions invalid')
             deliveries.append((temp,output))
             voices[voice]={'audio':output.relative_to(DIST).as_posix(),'duration':round(duration,3),'captions':captions,'chapters':chapters,'sha256':hashlib.sha256(temp.read_bytes()).hexdigest(),'fullDecodePassed':True,'provider':speech_provider,'voiceName':clips['story'][1].get('voiceName'), 'scriptSha256':sha(' '.join(scripts.values()))}
             if word_timings:voices[voice]['wordTimings']=word_timings
             cues=broadcast.timed_beats(plan['beats'],captions,next(c for c in chapters if c['kind']=='story'),word_timings)
             if cues:voices[voice]['visualCues']=cues
             if plan.get('closingReveals'):voices[voice]['closingCues']=broadcast.timed_reveals(plan['closingReveals'],captions,next(c for c in chapters if c['kind']=='closing'),word_timings)
+            if plan.get('openingReveals'):voices[voice]['openingCues']=broadcast.timed_reveals(plan['openingReveals'],captions,next(c for c in chapters if c['kind']=='opening'),word_timings)
         # No published delivery is touched until both voices, all cues and the duration gate pass.
         for temporary,target in deliveries:os.replace(temporary,target)
         result={**story,'format':'studio-programme','programmeVersion':identity,'title':plan['title'],'displayTitle':plan['title'],'script':' '.join(scripts.values()),'voices':voices,'programme':{k:plan[k] for k in ('why','summary','lookAhead','beats')},'sourceScriptSha256':plan['sourceScriptSha256'],'builtAt':pipeline.stamp(),'music':music,'production':{'pipeline':'broadcast-v1','visualDecision':'mixture','renderer':'studio.js','sourceBound':True,'compositionHash':sha(json.dumps(visual_composition,sort_keys=True))}}
-        for key in ('visualTreatment','soundTreatment','closingReveals','chapterLabels','maxDuration'):
+        for key in ('visualTreatment','soundTreatment','openingReveals','closingReveals','chapterLabels','maxDuration','editorialTiming'):
             if plan.get(key):result['programme'][key]=plan[key]
+        result['programme']['editorialTiming']=broadcast.editorial_timing(story,plan,scripts)
         if plan.get('visualTreatment')=='directed':
-            result['visualDisclosure']='Original Bearing explanatory graphics, with licensed location photography credited when shown. Photographs identify the place; they do not show the funded training or its results.'
+            result['visualDisclosure']=plan.get('visualDisclosure','Original Bearing explanatory graphics, with licensed media credited when shown.')
             result['editorialNote']=plan.get('editorialNote',story.get('editorialNote',''))
         run.finish('assemble',voices={v:{'audio':t['audio'],'duration':t['duration'],'sha256':t['sha256'],'fullDecodePassed':t['fullDecodePassed']} for v,t in voices.items()},delivery='Timed browser composition of voice, motion video, generated graphics and ducked music; one story per playlist entry')
         pipeline.write_json(record,result);return result
@@ -157,7 +159,14 @@ def produce(only=None):
         except Exception as exc:
             held.append({'id':story['id'],'reason':str(exc)[:300]})
             if story['id'] in retained:output.append(retained[story['id']])
-    version=sha(json.dumps([(s['id'],s['programmeVersion'],s.get('publishedTime'),s.get('editorial'),s.get('coverage')) for s in output]))
+    # A retained delivery can stay playable after a failed rebuild, but its old
+    # current-news review cannot silently remain valid indefinitely.
+    for complete in output:
+        timing=complete.get('programme',{}).get('editorialTiming')
+        if timing and timing.get('mode')=='current':
+            try:complete['programme']['editorialTiming']=broadcast.validate_editorial_timing(timing)
+            except ValueError as exc:complete['programme']['editorialTiming']={**timing,'liveEligible':False,'label':'Context — review needed','holdReason':str(exc)}
+    version=sha(json.dumps([(s['id'],s['programmeVersion'],s.get('publishedTime'),s.get('editorial'),s.get('coverage'),s.get('programme',{}).get('editorialTiming')) for s in output]))
     if version!=previous.get('version'):
         if previous:pipeline.write_json(WORK/'runs'/'programme-editions'/f"{previous['version']}.json",previous)
         pipeline.write_json(DIST/'programmes.json',{'edition':source.get('edition'),'version':version,'builtAt':pipeline.stamp(),'stories':output})

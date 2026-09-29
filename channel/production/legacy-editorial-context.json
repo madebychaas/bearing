@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "policy": "Frozen September 29, 2026 migration list. Retain these exact existing presentations as context, never as newly verified current news. A changed ID, source script hash or spoken script needs a new editorialTiming review. Do not extend this list for new work.",
+  "identity": "SHA256 of UTF-8 compact JSON [story ID, sourceScriptSha256, opening + space + body + space + closing], ensure_ascii=false",
+  "scripts": {
+    "auto-a46bc2af204ae5": "f8c73894909bf39ecf52e5752ae375f5cdcbfbf3bad23b336aaa3279cd55de02",
+    "auto-3480bbae929c06": "71cddae23a49a89afed9a13ade2fc830dd22d7887080f4faa6aafc41b5cef092",
+    "auto-f615b1c9d3fe7f": "9cacfce6937124bf4edf22716b75e9e8fd9edee8b1bdb84f976fc0fd48f656eb",
+    "auto-d736032e980afd": "6a0137fb66d2573d79a0780ebfe3b29dc49dd86794b398123626e662fc02348b",
+    "reviewed-havel-prize-20260928-v1": "9c1eeb9f49deab282dbd8643794d9d9cd40e325495dd827b2f5265d24fbc63fd",
+    "louvre-smithsonian-2026-09": "3d39b7f23e694b8700fda08b0b09a2195ffde42bcc0b92f171ef3ef0e35b015b",
+    "auto-3f566565c3f92f": "069c1eba355302143c1f36a564cc9a73b6e3efac406dd446c9467eeecd474c80",
+    "reviewed-fed-stablecoin-20260924-v1": "ee783b0a97e80dce1d41aa79bd6f59bb78c66dd98f3d7c62ecc705a245cd473b",
+    "auto-ee02773a8c2a86": "f12c7945a61c4a39d9edb5246fa952f9ce50ff558cb54fa11f00353839598c78",
+    "webb-small-worlds-2026-09": "6bf2ce2064fc6b690eae1dedea55c92e4a3cb4a016c6829bc489e511e0948565"
+  }
+}

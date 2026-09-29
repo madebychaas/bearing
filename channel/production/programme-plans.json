@@ -201,48 +201,78 @@
     "reviewed-nist-workforce-20260918-v1": {
       "sourceScriptSha256": "c7f927a0587917c60f92d08e98a553f293ca057331957ec24b77f3ce6a2a10f4",
       "title": "A route into cybersecurity",
-      "why": "Connecting training with the work employers need.",
-      "summary": "Will training lead to work?",
-      "lookAhead": "Do trainees finish—and get hired?",
+      "why": "Federal backing for a clearer route from training to work.",
+      "summary": "From skills to work.",
+      "lookAhead": "The measure of success: completed training and people getting hired.",
       "beats": [
         {
-          "kind": "investment",
+          "kind": "geography",
           "label": "THE INVESTMENT",
           "text": "$1.7M+",
-          "detail": "9 local partnerships",
-          "cue": "NIST is awarding",
+          "detail": "9 partnerships · 8 states",
+          "cue": "NIST is backing",
+          "states": [
+            "FL",
+            "KY",
+            "VA",
+            "NM",
+            "MI",
+            "OH",
+            "TX",
+            "TN"
+          ],
           "reveals": [
             {
-              "cue": "NIST is awarding",
-              "text": "NIST",
+              "cue": "NIST is backing",
+              "text": "NIST workforce awards",
               "role": "source"
             },
             {
-              "cue": "more than one point seven million dollars",
-              "text": "$1.7M+",
-              "role": "amount"
+              "cue": "nine partnerships",
+              "text": "9 partnerships",
+              "role": "scope"
             },
             {
-              "cue": "nine local partnerships",
-              "text": "9 local partnerships",
-              "role": "scope"
+              "cue": "eight states",
+              "text": "8 states",
+              "role": "geography"
+            },
+            {
+              "cue": "over one point seven million dollars",
+              "text": "$1.7M+",
+              "role": "amount"
             }
-          ]
+          ],
+          "media": {
+            "kind": "map",
+            "src": "us-states.js",
+            "sourceUrl": "https://github.com/topojson/us-atlas/tree/v3.0.1",
+            "license": "ISC",
+            "licenseUrl": "https://github.com/topojson/us-atlas/blob/v3.0.1/LICENSE",
+            "author": "U.S. Census Bureau; Michael Bostock / us-atlas",
+            "courtesy": "U.S. Census Bureau",
+            "dateLabel": "State boundaries · 2017",
+            "sha256": "76af317485a3ed1fdb1d3b8e60d76b94fd7dd699d81216b75e6c0b970e9b67ee",
+            "usageApproved": true,
+            "title": "U.S. award recipient states",
+            "displayChanges": "Decoded and stitched TopoJSON arcs into SVG paths with coordinates rounded to two decimals. Preserves all 50 states plus District of Columbia. Original Albers USA projection with Alaska and Hawaii insets. Original bounds (-60,0,1040,620) uniformly scaled by 960/1040; coordinates translated 60 units right before scaling and vertically centered in 960x600. No distortion or clipping. Postal abbreviations are stable IDs; original FIPS retained separately. State abbreviations from USPS convention. Center is area centroid of the largest polygon and is for label placement only.",
+            "editorialUse": "States with award recipients, not statewide service coverage. Nine awards in eight states; Ohio has two. Highlights shown only with the eight-states phrase."
+          }
         },
         {
-          "kind": "pathway",
+          "kind": "mechanism",
           "label": "THE CONNECTION",
-          "text": "Training meets employer needs",
-          "detail": "Internships · Apprenticeships · Hands-on projects",
-          "cue": "The idea",
+          "text": "Train for the work",
+          "detail": "Learning connected to employer needs",
+          "cue": "Training meets",
           "reveals": [
             {
-              "cue": "match training",
+              "cue": "Training meets",
               "text": "Training",
               "role": "training"
             },
             {
-              "cue": "employers’ needs",
+              "cue": "employers' needs",
               "text": "Employer needs",
               "role": "employer"
             },
@@ -262,98 +292,105 @@
               "role": "projects"
             }
           ]
-        },
-        {
-          "kind": "place",
-          "label": "ONE LOCAL AWARD",
-          "text": "University of Houston",
-          "detail": "$199,735",
-          "cue": "The University of Houston",
-          "reveals": [
-            {
-              "cue": "The University of Houston",
-              "text": "University of Houston",
-              "role": "place"
-            },
-            {
-              "cue": "just under two hundred thousand dollars",
-              "text": "$199,735",
-              "role": "amount"
-            }
-          ],
-          "media": {
-            "src": "assets/licensed/uh-cullen-rjn-2011.jpg",
-            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ezekiel_W._Cullen_Building_(Alternate).JPG",
-            "license": "CC BY-SA 3.0",
-            "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
-            "author": "RJN",
-            "courtesy": "RJN / Wikimedia Commons",
-            "dateLabel": "File photo, 2011",
-            "sha256": "24aa93cbdcabc27b024e0c782c52dac60abf95d8c39956158d54017dde19d558",
-            "usageApproved": true,
-            "title": "Ezekiel W. Cullen Building (Alternate)",
-            "alt": "Archival 2011 photograph of the Ezekiel W. Cullen Building and fountains at the University of Houston.",
-            "displayChanges": "Original file retained. Responsive crop, slow camera move and display overlay; any adaptation of this photograph is offered under CC BY-SA 3.0.",
-            "editorialUse": "Campus establishing view only during narration referring to the University of Houston award. File photo is not evidence of the funded project, participants, current campus appearance, training outcomes, or hiring outcomes."
-          }
         }
       ],
-      "openingNarration": "Federal funding is backing a new route into cybersecurity work.",
-      "body": "NIST is awarding more than one point seven million dollars to nine local partnerships. The idea: match training to employers’ needs, through internships, apprenticeships and hands-on projects. The University of Houston gets just under two hundred thousand dollars.",
-      "closingNarration": "The test is whether people finish the training and get hired. This announcement doesn't give us those results.",
+      "openingNarration": "Federal funding aims to turn cybersecurity training into a clearer route to work.",
+      "body": "NIST is backing nine partnerships in eight states, with over one point seven million dollars. Training meets employers' needs through internships, apprenticeships and hands-on projects.",
+      "closingNarration": "Success means finishing that training—and getting hired. That's the result still to prove.",
       "visualTreatment": "directed",
-      "soundTreatment": "bookends",
+      "soundTreatment": "editorial-score",
       "review": {
         "reviewedAt": "2026-09-29",
         "sourceUrl": "https://www.nist.gov/news-events/news/2026/09/nist-awards-more-17-million-support-cybersecurity-workforce-development",
-        "basis": "Primary announcement rechecked for total funding, award count, employer-training relationship, practical learning methods and Houston award. Employment outcomes remain unestablished. On-screen claims follow corresponding narration; original Bearing graphics do not depict observed outcomes.",
+        "basis": "Primary announcement checked for total funding, nine awards in eight states, employer-training alignment and practical learning. Dates remain behind the story; there is no verified September 29 development. Houston example removed because it adds no explanatory value to this general audience cut. Employment outcomes remain unestablished.",
         "reviewer": "Codex editorial pass following user listening feedback; new delivery still requires rendered viewing review",
         "checkedFacts": {
           "total": "More than $1.7 million",
           "awards": 9,
           "states": 8,
-          "houstonAwardUSD": 199735,
-          "recipient": "University of Houston",
           "approach": [
             "internships",
             "apprenticeships",
             "hands-on projects"
           ],
-          "outcomes": "Not established by the funding announcement"
+          "outcomes": "Not established by the funding announcement",
+          "awardStates": [
+            "Florida",
+            "Kentucky",
+            "Virginia",
+            "New Mexico",
+            "Michigan",
+            "Ohio",
+            "Texas",
+            "Tennessee"
+          ],
+          "geographyMeaning": "Recipient locations, not statewide service coverage. Ohio receives two awards."
         },
-        "visualRights": "RJN campus file photograph licensed CC BY-SA 3.0; exact asset and attribution reviewed 2026-09-29. Display only during the University of Houston narration, with courtesy and archival date. Native explanatory graphics are original Bearing work."
+        "visualRights": "Original Bearing typography and mechanism graphics. Map provenance and courtesy attached to the geography scene; prior campus photograph retained in the archive but not used in this cut."
       },
       "chapterLabels": {
-        "opening": "The Brief",
-        "story": "The Connection",
-        "closing": "The Test"
+        "opening": "The Shift",
+        "story": "The Design",
+        "closing": "The Payoff"
       },
       "speechProvider": "kokoro-local-cpu",
-      "maxDuration": 45,
+      "maxDuration": 32,
       "timing": {
-        "ident": 1.5,
-        "outro": 1.5,
-        "lead": 0.25,
-        "tail": 0.2
+        "ident": 0.35,
+        "outro": 0.55,
+        "lead": 0.1,
+        "tail": 0.12
       },
       "closingReveals": [
         {
-          "cue": "finish the training",
-          "text": "Complete training",
+          "cue": "Success means",
+          "text": "THE MEASURE OF SUCCESS",
+          "role": "goal"
+        },
+        {
+          "cue": "finishing that training",
+          "text": "Finish training",
           "role": "completion"
         },
         {
-          "cue": "get hired",
-          "text": "Get hired",
+          "cue": "getting hired",
+          "text": "Get hired.",
           "role": "employment"
         },
         {
-          "cue": "doesn't give us those results",
-          "text": "Results not reported",
+          "cue": "That's the result still to prove",
+          "text": "The result still to prove.",
           "role": "uncertainty"
         }
       ],
-      "editorialNote": "A dated context segment from the September 18 announcement, checked September 29. Funding awards are not proof of completed training or jobs created. The licensed 2011 file photo identifies the university; it predates this award and does not document the funded training."
+      "editorialNote": "Production example based on the September 18 announcement, reviewed September 29. No material September 29 development was verified. The September 28 page-update timestamp alone does not establish new news. Map highlights states with award recipients, not statewide coverage; Ohio has two awards. Funding is not proof of completed training or jobs created.",
+      "openingReveals": [
+        {
+          "cue": "Federal funding",
+          "text": "Federal backing",
+          "role": "funding"
+        },
+        {
+          "cue": "cybersecurity training",
+          "text": "Cybersecurity training",
+          "role": "training"
+        },
+        {
+          "cue": "a clearer route to work",
+          "text": "A route to work.",
+          "role": "work"
+        }
+      ],
+      "editorialTiming": {
+        "mode": "context-example",
+        "developmentDate": "2026-09-18",
+        "sourcePublishedDate": "2026-09-18",
+        "sourceUpdatedDate": "2026-09-28",
+        "checkedAt": "2026-09-29",
+        "reason": "Production review of September 18 announcement; no verified new September 29 development.",
+        "evidenceUrl": "https://www.nist.gov/news-events/news/2026/09/nist-awards-more-17-million-support-cybersecurity-workforce-development"
+      },
+      "visualDisclosure": "Original Bearing motion typography, an award-location map, and a training-to-employment explanation, all timed to spoken phrases. Geographic data is credited on the map. No generated footage or documentary training footage is used; hiring is an intended outcome, not an observed result."
     },
     "webb-small-worlds-2026-09": {
       "sourceScriptSha256": "18c5beeafa84d886487af10686c6a4ce728d78054ee1da8b5cb502207bd28580",

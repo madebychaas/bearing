@@ -24,7 +24,7 @@ class DirectedProductionTests(unittest.TestCase):
  def test_unreviewed_third_party_asset_is_held_before_composition(self):
   story=next(s for s in producer.read(producer.DIST/'edition.json',{})['stories'] if s['id']=='reviewed-nist-workforce-20260918-v1')
   plan=producer.read(producer.WORK/'programme-plans.json',{})['stories'][story['id']]
-  plan=json.loads(json.dumps(plan));plan['beats'][-1]['media']['usageApproved']=False
+  plan=json.loads(json.dumps(plan));next(b['media'] for b in plan['beats'] if b.get('media'))['usageApproved']=False
   with tempfile.TemporaryDirectory() as directory:
    run=broadcast.Run(Path(directory),story,'rights-test')
    run.finish=lambda *args,**kwargs:None

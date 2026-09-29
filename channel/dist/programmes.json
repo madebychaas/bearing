@@ -1,7 +1,7 @@
 {
   "edition": "2026-09-28",
-  "version": "4a7ad1805e6730598c08776afb2ab71107661f1d4ad10c466daaefed5d786ff3",
-  "builtAt": "2026-09-29T19:53:12.143682+00:00",
+  "version": "7f162a500e297bddf80d4d1c2cc028faa5967dce21599b5c78e4b746f1f094d6",
+  "builtAt": "2026-09-29T20:26:32.601846+00:00",
   "stories": [
     {
       "id": "auto-a46bc2af204ae5",
@@ -30,7 +30,7 @@
       "video": "assets/swift-orbit-v2-motion.mp4",
       "voices": {
         "warm": {
-          "audio": "assets/studio/05b64452735060b01d00-warm.mp3",
+          "audio": "assets/studio/82494d477d494166459d-warm.mp3",
           "duration": 76.2,
           "captions": [
             {
@@ -148,7 +148,7 @@
           "scriptSha256": "1dd65b2e2edfc3a7af8f31cea58a89fad74528007e97999ec786bd6552920fb7"
         },
         "measured": {
-          "audio": "assets/studio/05b64452735060b01d00-measured.mp3",
+          "audio": "assets/studio/82494d477d494166459d-measured.mp3",
           "duration": 82.65,
           "captions": [
             {
@@ -287,7 +287,7 @@
       "displayTitle": "The next test for satellite servicing",
       "displayDek": "The mission ended without raising Swift’s orbit. NASA is sharing what the attempt taught its team.",
       "format": "studio-programme",
-      "programmeVersion": "05b64452735060b01d00",
+      "programmeVersion": "82494d477d494166459d",
       "programme": {
         "why": "An unsuccessful orbital boost can still show what future repair missions need to solve.",
         "summary": "The boost was not achieved. The engineering lessons are the result to follow.",
@@ -305,20 +305,26 @@
             "label": "THE NEXT QUESTION",
             "text": "Applying the lessons"
           }
-        ]
+        ],
+        "editorialTiming": {
+          "mode": "legacy-context",
+          "label": "Context archive",
+          "liveEligible": false,
+          "reason": "Unchanged presentation retained from before the why-now review requirement; not newly verified current news."
+        }
       },
       "sourceScriptSha256": "8ef2c76e88863cfc3e1b63a5986434e6b53b441c6cbca304a93de00f5aaa5780",
-      "builtAt": "2026-09-29T19:52:58.233801+00:00",
+      "builtAt": "2026-09-29T20:26:16.958131+00:00",
       "music": {
-        "drift": "assets/studio/music-05b64452735060b01d00-drift.mp3",
-        "piano": "assets/studio/music-05b64452735060b01d00-piano.mp3"
+        "drift": "assets/studio/music-82494d477d494166459d-drift.mp3",
+        "piano": "assets/studio/music-82494d477d494166459d-piano.mp3"
       },
       "production": {
         "pipeline": "broadcast-v1",
         "visualDecision": "mixture",
         "renderer": "studio.js",
         "sourceBound": true,
-        "compositionHash": "b9e280b812f59b717422c0a389a4baf767bd80ed10c5c2c9a99c8aeb8df0dce1"
+        "compositionHash": "ab422f789e47c8195032738090fba9749ab3234aca9260023a7192e9e3439d81"
       },
       "publishedTime": null,
       "coverage": null,
@@ -368,7 +374,7 @@
       "video": "assets/crew-orbit-v2-motion.mp4",
       "voices": {
         "warm": {
-          "audio": "assets/studio/f672e30e2f3accc98e37-warm.mp3",
+          "audio": "assets/studio/66f1ce1b4f09ba5dcc4b-warm.mp3",
           "duration": 69.45,
           "captions": [
             {
@@ -476,7 +482,7 @@
           "scriptSha256": "63b716aea3b663b841af728b4043b5ea8d93ffa4dd5bbdf493bc8c418c3de428"
         },
         "measured": {
-          "audio": "assets/studio/f672e30e2f3accc98e37-measured.mp3",
+          "audio": "assets/studio/66f1ce1b4f09ba5dcc4b-measured.mp3",
           "duration": 78.08,
           "captions": [
             {
@@ -605,7 +611,7 @@
       "displayTitle": "Crew-13 prepares for the station",
       "displayDek": "Four crew members are set to carry out research, technology demonstrations, and maintenance on the space station.",
       "format": "studio-programme",
-      "programmeVersion": "f672e30e2f3accc98e37",
+      "programmeVersion": "66f1ce1b4f09ba5dcc4b",
       "programme": {
         "why": "Crew rotations keep the orbiting laboratory's research and essential maintenance moving.",
         "summary": "Four crew members. Research, technology demonstrations, and station upkeep.",
@@ -623,20 +629,26 @@
             "label": "THE FOUNDATION",
             "text": "Station maintenance"
           }
-        ]
+        ],
+        "editorialTiming": {
+          "mode": "legacy-context",
+          "label": "Context archive",
+          "liveEligible": false,
+          "reason": "Unchanged presentation retained from before the why-now review requirement; not newly verified current news."
+        }
       },
       "sourceScriptSha256": "d405037f8e59bac1729b302063be9f5b2dc95d7f6c62c71806e09e4e148bd7a5",
-      "builtAt": "2026-09-29T19:52:59.531561+00:00",
+      "builtAt": "2026-09-29T20:26:18.315438+00:00",
       "music": {
-        "drift": "assets/studio/music-f672e30e2f3accc98e37-drift.mp3",
-        "piano": "assets/studio/music-f672e30e2f3accc98e37-piano.mp3"
+        "drift": "assets/studio/music-66f1ce1b4f09ba5dcc4b-drift.mp3",
+        "piano": "assets/studio/music-66f1ce1b4f09ba5dcc4b-piano.mp3"
       },
       "production": {
         "pipeline": "broadcast-v1",
         "visualDecision": "mixture",
         "renderer": "studio.js",
         "sourceBound": true,
-        "compositionHash": "395b88de8c33dc9b4c2ac56d972f61d02bc2f83cccca2a4226bcee447505830d"
+        "compositionHash": "238d2423617b8a240378b45d85aee835ee3984d1bfd7c7715ad5e99d7cceb4c3"
       },
       "publishedTime": null,
       "coverage": null,
@@ -689,7 +701,7 @@
       "video": "assets/isotope-ecology-v2-motion.mp4",
       "voices": {
         "warm": {
-          "audio": "assets/studio/acc4b4ccdc021c1052cf-warm.mp3",
+          "audio": "assets/studio/6da5ec241690088d545c-warm.mp3",
           "duration": 72.84,
           "captions": [
             {
@@ -787,7 +799,7 @@
           "scriptSha256": "7adcd0734f5b8cb02ec9e1a9ba76866ec50eecefbba5a08e76afd58f08967c58"
         },
         "measured": {
-          "audio": "assets/studio/acc4b4ccdc021c1052cf-measured.mp3",
+          "audio": "assets/studio/6da5ec241690088d545c-measured.mp3",
           "duration": 81.35,
           "captions": [
             {
@@ -906,7 +918,7 @@
       "displayTitle": "Nature leaves a chemical trail",
       "displayDek": "Stable isotopes offer clues to grizzly bear diets and mercury in river fish.",
       "format": "studio-programme",
-      "programmeVersion": "acc4b4ccdc021c1052cf",
+      "programmeVersion": "6da5ec241690088d545c",
       "programme": {
         "why": "Chemical signatures can reveal how wildlife feeds and how contaminants move through ecosystems.",
         "summary": "One analytical tool is helping investigate two very different ecosystems.",
@@ -924,20 +936,26 @@
             "label": "THE CONNECTION",
             "text": "Stable isotope analysis"
           }
-        ]
+        ],
+        "editorialTiming": {
+          "mode": "legacy-context",
+          "label": "Context archive",
+          "liveEligible": false,
+          "reason": "Unchanged presentation retained from before the why-now review requirement; not newly verified current news."
+        }
       },
       "sourceScriptSha256": "02ae55956864e0613fa7ba4aae20bb208f17a70d20094b1ace0f1625d6b35c2b",
-      "builtAt": "2026-09-29T19:53:00.867142+00:00",
+      "builtAt": "2026-09-29T20:26:19.718803+00:00",
       "music": {
-        "drift": "assets/studio/music-acc4b4ccdc021c1052cf-drift.mp3",
-        "piano": "assets/studio/music-acc4b4ccdc021c1052cf-piano.mp3"
+        "drift": "assets/studio/music-6da5ec241690088d545c-drift.mp3",
+        "piano": "assets/studio/music-6da5ec241690088d545c-piano.mp3"
       },
       "production": {
         "pipeline": "broadcast-v1",
         "visualDecision": "mixture",
         "renderer": "studio.js",
         "sourceBound": true,
-        "compositionHash": "f81f13fbb41404d3a95e1d2405f3aae9fa9d3d45c9058859db4c7f79557f2d02"
+        "compositionHash": "8291af90a5f23cf2f34809818ceaca2c4cfad742998b37436fefdff11785984a"
       },
       "publishedTime": "2026-09-28T16:00:00+00:00",
       "coverage": {
@@ -1004,7 +1022,7 @@
       "video": "assets/yellowstone-monitoring-v2-motion.mp4",
       "voices": {
         "warm": {
-          "audio": "assets/studio/5c52f71a8191f23faeab-warm.mp3",
+          "audio": "assets/studio/9d18b515793a9d33214a-warm.mp3",
           "duration": 69.95,
           "captions": [
             {
@@ -1112,7 +1130,7 @@
           "scriptSha256": "c194fd8ce005981ffe25015c4e61dffcefde7dd3966fdba0184552c3c1e1241c"
         },
         "measured": {
-          "audio": "assets/studio/5c52f71a8191f23faeab-measured.mp3",
+          "audio": "assets/studio/9d18b515793a9d33214a-measured.mp3",
           "duration": 78.03,
           "captions": [
             {
@@ -1241,7 +1259,7 @@
       "displayTitle": "A closer watch on Yellowstone",
       "displayDek": "A new monitoring station and a renewed lake camera expand the park’s scientific observations.",
       "format": "studio-programme",
-      "programmeVersion": "5c52f71a8191f23faeab",
+      "programmeVersion": "9d18b515793a9d33214a",
       "programme": {
         "why": "Better observations help scientists follow changes in the park's hydrothermal features.",
         "summary": "A new station and a renewed camera expand Yellowstone's observations.",
@@ -1259,20 +1277,26 @@
             "label": "THE PURPOSE",
             "text": "More observations"
           }
-        ]
+        ],
+        "editorialTiming": {
+          "mode": "legacy-context",
+          "label": "Context archive",
+          "liveEligible": false,
+          "reason": "Unchanged presentation retained from before the why-now review requirement; not newly verified current news."
+        }
       },
       "sourceScriptSha256": "39805e72b31a99f95dc6598b86bb9a6de0daacc5f2b5dcad36e3b578e5bac8fc",
-      "builtAt": "2026-09-29T19:53:02.167090+00:00",
+      "builtAt": "2026-09-29T20:26:21.069443+00:00",
       "music": {
-        "drift": "assets/studio/music-5c52f71a8191f23faeab-drift.mp3",
-        "piano": "assets/studio/music-5c52f71a8191f23faeab-piano.mp3"
+        "drift": "assets/studio/music-9d18b515793a9d33214a-drift.mp3",
+        "piano": "assets/studio/music-9d18b515793a9d33214a-piano.mp3"
       },
       "production": {
         "pipeline": "broadcast-v1",
         "visualDecision": "mixture",
         "renderer": "studio.js",
         "sourceBound": true,
-        "compositionHash": "b172e225f534e0fc689acc58bc6da6f052f79cacccd617ca854c638d755906f8"
+        "compositionHash": "a11e52bf50e3c3343d5dd75e78ef47a61ff1b34dbfcf1bdb34e919bf460e4d0b"
       },
       "publishedTime": "2026-09-28T04:30:00+00:00",
       "coverage": {
@@ -1336,7 +1360,7 @@
       "script": "Recognition for human rights work. The Havel Prize brings international attention to Nasrin Sotoudeh's legal advocacy. Iranian lawyer Nasrin Sotoudeh has received this year's Václav Havel human rights prize. The Council of Europe announced the award at its parliamentary assembly in Strasbourg. Her daughter accepted on her behalf, while Sotoudeh sent a video message from Tehran. The Council cited her legal advocacy and campaigning for human rights. The annual award recognizes civil society work in Europe and beyond, and includes sixty thousand euros, a trophy, and a diploma. The Council of Europe has recognized Sotoudeh's civil society work. What to watch next. Will the recognition lead to more sustained international attention to her work? That is the next question to follow.",
       "voices": {
         "warm": {
-          "audio": "assets/studio/dff74b5b8dd8a691d0b0-warm.mp3",
+          "audio": "assets/studio/f16decd6c4d8084c9d34-warm.mp3",
           "duration": 78.4,
           "captions": [
             {
@@ -1444,7 +1468,7 @@
           "scriptSha256": "32467b146aee07560e1b04968aab51719f4e298d028eeff9b7dbc9e9114e9c71"
         },
         "measured": {
-          "audio": "assets/studio/dff74b5b8dd8a691d0b0-measured.mp3",
+          "audio": "assets/studio/f16decd6c4d8084c9d34-measured.mp3",
           "duration": 83.33,
           "captions": [
             {
@@ -1573,7 +1597,7 @@
       "displayTitle": "Recognition for human rights work",
       "displayDek": "The Council of Europe recognizes the Iranian lawyer’s human rights advocacy.",
       "format": "studio-programme",
-      "programmeVersion": "dff74b5b8dd8a691d0b0",
+      "programmeVersion": "f16decd6c4d8084c9d34",
       "programme": {
         "why": "The Havel Prize brings international attention to Nasrin Sotoudeh's legal advocacy.",
         "summary": "The Council of Europe has recognized Sotoudeh's civil society work.",
@@ -1591,20 +1615,26 @@
             "label": "THE WORK",
             "text": "Human rights advocacy"
           }
-        ]
+        ],
+        "editorialTiming": {
+          "mode": "legacy-context",
+          "label": "Context archive",
+          "liveEligible": false,
+          "reason": "Unchanged presentation retained from before the why-now review requirement; not newly verified current news."
+        }
       },
       "sourceScriptSha256": "fa6a6788b46c460970b4cdee1c2947648a5d7444708d05768acec6ba64a54dc8",
-      "builtAt": "2026-09-29T19:53:03.509419+00:00",
+      "builtAt": "2026-09-29T20:26:22.457849+00:00",
       "music": {
-        "drift": "assets/studio/music-dff74b5b8dd8a691d0b0-drift.mp3",
-        "piano": "assets/studio/music-dff74b5b8dd8a691d0b0-piano.mp3"
+        "drift": "assets/studio/music-f16decd6c4d8084c9d34-drift.mp3",
+        "piano": "assets/studio/music-f16decd6c4d8084c9d34-piano.mp3"
       },
       "production": {
         "pipeline": "broadcast-v1",
         "visualDecision": "mixture",
         "renderer": "studio.js",
         "sourceBound": true,
-        "compositionHash": "293deb7c8eecc16f88d49268e92250d899fc1b3f217687f566d37188c1050759"
+        "compositionHash": "17c82fb97aaaa37eaa166f90e295b842abb70261e961c58d95be0f34bb64ec31"
       },
       "publishedTime": null,
       "coverage": null,
@@ -1654,7 +1684,7 @@
       "video": "assets/culture-motion.mp4",
       "voices": {
         "warm": {
-          "audio": "assets/studio/4cc7de5a3d91e3ff6818-warm.mp3",
+          "audio": "assets/studio/c2fd5b05f0ddd73d7d26-warm.mp3",
           "duration": 82.03,
           "captions": [
             {
@@ -1772,7 +1802,7 @@
           "scriptSha256": "f9dd38b70f14e2f51181b2aff702797aefbcc3aa9da4f25c0e172113bdc398af"
         },
         "measured": {
-          "audio": "assets/studio/4cc7de5a3d91e3ff6818-measured.mp3",
+          "audio": "assets/studio/c2fd5b05f0ddd73d7d26-measured.mp3",
           "duration": 92.63,
           "captions": [
             {
@@ -1909,7 +1939,7 @@
         "motion": "Retained original CPU-composed loop"
       },
       "format": "studio-programme",
-      "programmeVersion": "4cc7de5a3d91e3ff6818",
+      "programmeVersion": "c2fd5b05f0ddd73d7d26",
       "displayTitle": "The journeys inside the art",
       "programme": {
         "why": "How an artwork travels can shape its meaning as much as how it was made.",
@@ -1928,20 +1958,26 @@
             "label": "THE LENS",
             "text": "Objects + their histories"
           }
-        ]
+        ],
+        "editorialTiming": {
+          "mode": "legacy-context",
+          "label": "Context archive",
+          "liveEligible": false,
+          "reason": "Unchanged presentation retained from before the why-now review requirement; not newly verified current news."
+        }
       },
       "sourceScriptSha256": "58c8909a8c43e0bf7813db9f8d1b1499cfa7d80c23dcd3510aa3fb27961b8372",
-      "builtAt": "2026-09-29T19:53:04.911671+00:00",
+      "builtAt": "2026-09-29T20:26:23.922143+00:00",
       "music": {
-        "drift": "assets/studio/music-4cc7de5a3d91e3ff6818-drift.mp3",
-        "piano": "assets/studio/music-4cc7de5a3d91e3ff6818-piano.mp3"
+        "drift": "assets/studio/music-c2fd5b05f0ddd73d7d26-drift.mp3",
+        "piano": "assets/studio/music-c2fd5b05f0ddd73d7d26-piano.mp3"
       },
       "production": {
         "pipeline": "broadcast-v1",
         "visualDecision": "mixture",
         "renderer": "studio.js",
         "sourceBound": true,
-        "compositionHash": "41bd04dfabdc7b3a86f78bb466ee514539059f70ddfbeccde2f77ffaf489a33d"
+        "compositionHash": "a916043c4c110419ca87f315e02d1f3d0201ed4fad35c3145ad2c80ab0f37a9a"
       },
       "publishedTime": null,
       "coverage": null,
@@ -1994,7 +2030,7 @@
       "video": "assets/lake-depths-v2-motion.mp4",
       "voices": {
         "warm": {
-          "audio": "assets/studio/f8fa89447b5461064600-warm.mp3",
+          "audio": "assets/studio/d0f2e81e8ae6ac4e39a6-warm.mp3",
           "duration": 69.14,
           "captions": [
             {
@@ -2102,7 +2138,7 @@
           "scriptSha256": "8860b2ce79aa71feaef9bf13e74f225163025fb09bcff12cffca640a60aa026b"
         },
         "measured": {
-          "audio": "assets/studio/f8fa89447b5461064600-measured.mp3",
+          "audio": "assets/studio/d0f2e81e8ae6ac4e39a6-measured.mp3",
           "duration": 79.15,
           "captions": [
             {
@@ -2231,7 +2267,7 @@
       "displayTitle": "Reading the floor of Lake Chelan",
       "displayDek": "A USGS survey explores the lakebed through depth measurements and sediment sampling.",
       "format": "studio-programme",
-      "programmeVersion": "f8fa89447b5461064600",
+      "programmeVersion": "d0f2e81e8ae6ac4e39a6",
       "programme": {
         "why": "Mapping a lake's depths and sediments creates a record of a landscape hidden from view.",
         "summary": "Depth measurements and sediment samples document the lake beneath the surface.",
@@ -2249,20 +2285,26 @@
             "label": "THE RECORD",
             "text": "Sediment cores"
           }
-        ]
+        ],
+        "editorialTiming": {
+          "mode": "legacy-context",
+          "label": "Context archive",
+          "liveEligible": false,
+          "reason": "Unchanged presentation retained from before the why-now review requirement; not newly verified current news."
+        }
       },
       "sourceScriptSha256": "f9a90ed7e72c9a99cbee9090e22c2c2d96f952d0d8516d5a0fb6a82da3808ab9",
-      "builtAt": "2026-09-29T19:53:06.204646+00:00",
+      "builtAt": "2026-09-29T20:26:25.272457+00:00",
       "music": {
-        "drift": "assets/studio/music-f8fa89447b5461064600-drift.mp3",
-        "piano": "assets/studio/music-f8fa89447b5461064600-piano.mp3"
+        "drift": "assets/studio/music-d0f2e81e8ae6ac4e39a6-drift.mp3",
+        "piano": "assets/studio/music-d0f2e81e8ae6ac4e39a6-piano.mp3"
       },
       "production": {
         "pipeline": "broadcast-v1",
         "visualDecision": "mixture",
         "renderer": "studio.js",
         "sourceBound": true,
-        "compositionHash": "ebf9197d3931dc9004d27cb26154f18b4540a686374d5abe41e4894a735b5d7e"
+        "compositionHash": "60ae306fa9ce5eccbac13636cda84c980ebfd3dcb5204bc305b78672c5b9c6d8"
       },
       "publishedTime": "2026-09-24T18:22:42+00:00",
       "coverage": {
@@ -2326,7 +2368,7 @@
       "script": "Stablecoin rules enter the debate. Reserve and risk requirements would shape how supervised banks issue payment stablecoins. The Federal Reserve is asking for public feedback on proposed rules for payment stablecoins. One proposal covers the assets that would back them, along with capital and risk controls. Another describes how supervised banks would apply for permission to issue them. These are proposed requirements, not a statement that the rules are already in effect. The comment window runs for sixty days after the notices appear in the Federal Register. These are proposals open for comment, not requirements already in effect. What to watch next. Follow the public comments and any changes before final rules. The response window begins with publication in the Federal Register.",
       "voices": {
         "warm": {
-          "audio": "assets/studio/0d8029828891c0322f21-warm.mp3",
+          "audio": "assets/studio/0d30123ec3aa324bc3a0-warm.mp3",
           "duration": 76.15,
           "captions": [
             {
@@ -2444,7 +2486,7 @@
           "scriptSha256": "0bc35f00ebe3e0b7eb3e37edb78f511422204ad13587e2a901960393ae4d42a1"
         },
         "measured": {
-          "audio": "assets/studio/0d8029828891c0322f21-measured.mp3",
+          "audio": "assets/studio/0d30123ec3aa324bc3a0-measured.mp3",
           "duration": 85.03,
           "captions": [
             {
@@ -2583,7 +2625,7 @@
       "displayTitle": "Stablecoin rules enter the debate",
       "displayDek": "Federal Reserve proposals address reserve assets, risk controls, and bank applications. The requirements are not yet in effect.",
       "format": "studio-programme",
-      "programmeVersion": "0d8029828891c0322f21",
+      "programmeVersion": "0d30123ec3aa324bc3a0",
       "programme": {
         "why": "Reserve and risk requirements would shape how supervised banks issue payment stablecoins.",
         "summary": "These are proposals open for comment, not requirements already in effect.",
@@ -2601,20 +2643,26 @@
             "label": "CURRENT STATUS",
             "text": "Public comment"
           }
-        ]
+        ],
+        "editorialTiming": {
+          "mode": "legacy-context",
+          "label": "Context archive",
+          "liveEligible": false,
+          "reason": "Unchanged presentation retained from before the why-now review requirement; not newly verified current news."
+        }
       },
       "sourceScriptSha256": "b28d373acecbfa30331663e20c6339638fbfa9f9c0beea82a93d96e5d76c7e9d",
-      "builtAt": "2026-09-29T19:53:07.562440+00:00",
+      "builtAt": "2026-09-29T20:26:26.743677+00:00",
       "music": {
-        "drift": "assets/studio/music-0d8029828891c0322f21-drift.mp3",
-        "piano": "assets/studio/music-0d8029828891c0322f21-piano.mp3"
+        "drift": "assets/studio/music-0d30123ec3aa324bc3a0-drift.mp3",
+        "piano": "assets/studio/music-0d30123ec3aa324bc3a0-piano.mp3"
       },
       "production": {
         "pipeline": "broadcast-v1",
         "visualDecision": "mixture",
         "renderer": "studio.js",
         "sourceBound": true,
-        "compositionHash": "095ce52a94f83411e2b2ac3a26caeff5de068f0984b4ff926490df916546d576"
+        "compositionHash": "55e6f2301330ea45c971acdc859c4e2906551e6c9eaa96a96140bd367530c879"
       },
       "publishedTime": null,
       "coverage": null,
@@ -2667,7 +2715,7 @@
       "video": "assets/warbler-record-v2-motion.mp4",
       "voices": {
         "warm": {
-          "audio": "assets/studio/7e567c1bd8b94ab72dc0-warm.mp3",
+          "audio": "assets/studio/6aba0941555b5fd2ff8f-warm.mp3",
           "duration": 68.73,
           "captions": [
             {
@@ -2770,7 +2818,7 @@
           "scriptSha256": "7fefc1f80aad6ce05eb9bb75692c2c193a8662ca5439ed22aec0cebfa4dd2956"
         },
         "measured": {
-          "audio": "assets/studio/7e567c1bd8b94ab72dc0-measured.mp3",
+          "audio": "assets/studio/6aba0941555b5fd2ff8f-measured.mp3",
           "duration": 79.28,
           "captions": [
             {
@@ -2894,7 +2942,7 @@
       "displayTitle": "A first in Maryland's bird record",
       "displayDek": "A MacGillivray’s warbler at Patuxent marks a newly confirmed species record for the state.",
       "format": "studio-programme",
-      "programmeVersion": "7e567c1bd8b94ab72dc0",
+      "programmeVersion": "6aba0941555b5fd2ff8f",
       "programme": {
         "why": "A confirmed observation adds a precise piece of evidence to a state's wildlife record.",
         "summary": "One confirmed record adds to what observers know about Maryland's birds.",
@@ -2912,20 +2960,26 @@
             "label": "THE FINDING",
             "text": "First confirmed state record"
           }
-        ]
+        ],
+        "editorialTiming": {
+          "mode": "legacy-context",
+          "label": "Context archive",
+          "liveEligible": false,
+          "reason": "Unchanged presentation retained from before the why-now review requirement; not newly verified current news."
+        }
       },
       "sourceScriptSha256": "5c2baf2196c173c9626b4aa56f35832ce3b0dec82b8fd74edbd6c31dacdd29fc",
-      "builtAt": "2026-09-29T19:53:08.876903+00:00",
+      "builtAt": "2026-09-29T20:26:28.068752+00:00",
       "music": {
-        "drift": "assets/studio/music-7e567c1bd8b94ab72dc0-drift.mp3",
-        "piano": "assets/studio/music-7e567c1bd8b94ab72dc0-piano.mp3"
+        "drift": "assets/studio/music-6aba0941555b5fd2ff8f-drift.mp3",
+        "piano": "assets/studio/music-6aba0941555b5fd2ff8f-piano.mp3"
       },
       "production": {
         "pipeline": "broadcast-v1",
         "visualDecision": "mixture",
         "renderer": "studio.js",
         "sourceBound": true,
-        "compositionHash": "721c86d20612d293c085af42a27889227554c9b0bc89c4c0eaf5d209c65e29c3"
+        "compositionHash": "461312946eafe420022bde59570ab12b6948e3621e2ad765a6cd50dbe01d0882"
       },
       "publishedTime": "2026-09-24T14:13:04+00:00",
       "coverage": {
@@ -2968,7 +3022,7 @@
       "reviewMethod": "Source-grounded editorial pass against linked primary announcement; not independent field reporting.",
       "image": "assets/cyber-workforce-v2.png",
       "video": "assets/cyber-workforce-v2-motion.mp4",
-      "visualDisclosure": "Original Bearing explanatory graphics, with licensed location photography credited when shown. Photographs identify the place; they do not show the funded training or its results.",
+      "visualDisclosure": "Original Bearing motion typography, an award-location map, and a training-to-employment explanation, all timed to spoken phrases. Geographic data is credited on the map. No generated footage or documentary training footage is used; hiring is an intended outcome, not an observed result.",
       "storyKind": "reviewedBrief",
       "facts": [],
       "id": "reviewed-nist-workforce-20260918-v1",
@@ -2985,42 +3039,37 @@
         "url": "https://www.nist.gov/news-events/news/2026/09/nist-awards-more-17-million-support-cybersecurity-workforce-development"
       },
       "publisherGroup": "NIST",
-      "editorialNote": "A dated context segment from the September 18 announcement, checked September 29. Funding awards are not proof of completed training or jobs created. The licensed 2011 file photo identifies the university; it predates this award and does not document the funded training.",
-      "script": "Federal funding is backing a new route into cybersecurity work. NIST is awarding more than one point seven million dollars to nine local partnerships. The idea: match training to employers’ needs, through internships, apprenticeships and hands-on projects. The University of Houston gets just under two hundred thousand dollars. The test is whether people finish the training and get hired. This announcement doesn't give us those results.",
+      "editorialNote": "Production example based on the September 18 announcement, reviewed September 29. No material September 29 development was verified. The September 28 page-update timestamp alone does not establish new news. Map highlights states with award recipients, not statewide coverage; Ohio has two awards. Funding is not proof of completed training or jobs created.",
+      "script": "Federal funding aims to turn cybersecurity training into a clearer route to work. NIST is backing nine partnerships in eight states, with over one point seven million dollars. Training meets employers' needs through internships, apprenticeships and hands-on projects. Success means finishing that training—and getting hired. That's the result still to prove.",
       "voices": {
         "warm": {
-          "audio": "assets/studio/ca2ee6187725ad6aab25-warm.mp3",
-          "duration": 31.68,
+          "audio": "assets/studio/a13c86a73eb39bfd92ce-warm.mp3",
+          "duration": 23.11,
           "captions": [
             {
-              "start": 1.75,
-              "end": 5.744,
-              "text": "Federal funding is backing a new route into cybersecurity work."
+              "start": 0.45,
+              "end": 5.404,
+              "text": "Federal funding aims to turn cybersecurity training into a clearer route to work."
             },
             {
-              "start": 6.42,
-              "end": 11.94,
-              "text": "NIST is awarding more than one point seven million dollars to nine local partnerships."
+              "start": 5.85,
+              "end": 11.326,
+              "text": "NIST is backing nine partnerships in eight states, with over one point seven million dollars."
             },
             {
-              "start": 12.1,
-              "end": 18.462,
-              "text": "The idea: match training to employers’ needs, through internships, apprenticeships and hands-on projects."
+              "start": 11.486,
+              "end": 16.71733,
+              "text": "Training meets employers' needs through internships, apprenticeships and hands-on projects."
             },
             {
-              "start": 18.622,
-              "end": 22.90467,
-              "text": "The University of Houston gets just under two hundred thousand dollars."
+              "start": 17.16,
+              "end": 20.28067,
+              "text": "Success means finishing that training—and getting hired."
             },
             {
-              "start": 23.57,
-              "end": 26.864,
-              "text": "The test is whether people finish the training and get hired."
-            },
-            {
-              "start": 27.024,
-              "end": 29.75933,
-              "text": "This announcement doesn't give us those results."
+              "start": 20.44067,
+              "end": 22.22867,
+              "text": "That's the result still to prove."
             }
           ],
           "chapters": [
@@ -3028,481 +3077,408 @@
               "kind": "ident",
               "label": "Bearing",
               "start": 0,
-              "end": 1.5
+              "end": 0.35
             },
             {
               "kind": "opening",
-              "label": "The Brief",
-              "start": 1.5,
-              "end": 6.17
+              "label": "The Shift",
+              "start": 0.35,
+              "end": 5.75
             },
             {
               "kind": "story",
-              "label": "The Connection",
-              "start": 6.17,
-              "end": 23.32
+              "label": "The Design",
+              "start": 5.75,
+              "end": 17.06
             },
             {
               "kind": "closing",
-              "label": "The Test",
-              "start": 23.32,
-              "end": 30.18
+              "label": "The Payoff",
+              "start": 17.06,
+              "end": 22.56
             },
             {
               "kind": "outro",
               "label": "Up next",
-              "start": 30.18,
-              "end": 31.68
+              "start": 22.56,
+              "end": 23.11
             }
           ],
-          "sha256": "21da61b8dcba3b1e5f9e14ab9bc69d82cc96ab26a687fa33ce11b22ab566c989",
+          "sha256": "11392d604455ebfd1423589ea6f765b58c91c3567a663d7daa7785683b49cd90",
           "fullDecodePassed": true,
           "provider": "kokoro-local-cpu",
           "voiceName": "Heart",
-          "scriptSha256": "9f0264e759d201ff3e5ffcdb8f435b2c323c2daa0fd1e807938a5ed97a7bea8a",
+          "scriptSha256": "62782018cc250e44ceb70614aff574c95ad7d54548c99bcf0961dd0d15a1715b",
           "wordTimings": [
             {
               "text": "Federal",
-              "start": 1.86533,
-              "end": 2.16533
+              "start": 0.56533,
+              "end": 0.86533
             },
             {
               "text": "funding",
-              "start": 2.24033,
-              "end": 2.84033
+              "start": 0.94033,
+              "end": 1.54033
             },
             {
-              "text": "is",
-              "start": 2.94033,
-              "end": 3.04033
+              "text": "aims",
+              "start": 1.64033,
+              "end": 1.89033
             },
             {
-              "text": "backing",
-              "start": 3.09033,
-              "end": 3.44033
+              "text": "to",
+              "start": 1.94033,
+              "end": 2.01533
             },
             {
-              "text": "a",
-              "start": 3.49033,
-              "end": 3.54033
-            },
-            {
-              "text": "new",
-              "start": 3.61533,
-              "end": 3.76533
-            },
-            {
-              "text": "route",
-              "start": 3.81533,
-              "end": 4.19033
-            },
-            {
-              "text": "into",
-              "start": 4.24033,
-              "end": 4.44033
+              "text": "turn",
+              "start": 2.06533,
+              "end": 2.31533
             },
             {
               "text": "cybersecurity",
-              "start": 4.51533,
-              "end": 5.29033
+              "start": 2.39033,
+              "end": 3.11533
+            },
+            {
+              "text": "training",
+              "start": 3.16533,
+              "end": 3.74033
+            },
+            {
+              "text": "into",
+              "start": 3.81533,
+              "end": 4.01533
+            },
+            {
+              "text": "a",
+              "start": 4.06533,
+              "end": 4.11533
+            },
+            {
+              "text": "clearer",
+              "start": 4.19033,
+              "end": 4.51533
+            },
+            {
+              "text": "route",
+              "start": 4.56533,
+              "end": 4.81533
+            },
+            {
+              "text": "to",
+              "start": 4.86533,
+              "end": 4.94033
             },
             {
               "text": "work.",
-              "start": 5.34033,
-              "end": 5.654
+              "start": 4.99033,
+              "end": 5.314
             },
             {
               "text": "NIST",
-              "start": 6.54267,
-              "end": 6.89267
+              "start": 5.97267,
+              "end": 6.29767
             },
             {
               "text": "is",
-              "start": 6.94267,
-              "end": 7.01767
+              "start": 6.34767,
+              "end": 6.44767
             },
             {
-              "text": "awarding",
-              "start": 7.06767,
-              "end": 7.44267
-            },
-            {
-              "text": "more",
-              "start": 7.49267,
-              "end": 7.69267
-            },
-            {
-              "text": "than",
-              "start": 7.74267,
-              "end": 7.86767
-            },
-            {
-              "text": "one",
-              "start": 7.94267,
-              "end": 8.14267
-            },
-            {
-              "text": "point",
-              "start": 8.21767,
-              "end": 8.54267
-            },
-            {
-              "text": "seven",
-              "start": 8.61767,
-              "end": 8.91767
-            },
-            {
-              "text": "million",
-              "start": 8.96767,
-              "end": 9.26767
-            },
-            {
-              "text": "dollars",
-              "start": 9.31767,
-              "end": 10.09267
-            },
-            {
-              "text": "to",
-              "start": 10.19267,
-              "end": 10.26767
+              "text": "backing",
+              "start": 6.49767,
+              "end": 6.84767
             },
             {
               "text": "nine",
-              "start": 10.31767,
-              "end": 10.71767
+              "start": 6.92267,
+              "end": 7.19767
             },
             {
-              "text": "local",
-              "start": 10.79267,
-              "end": 11.06767
+              "text": "partnerships",
+              "start": 7.24767,
+              "end": 7.82267
             },
             {
-              "text": "partnerships.",
-              "start": 11.11767,
-              "end": 11.86
+              "text": "in",
+              "start": 7.87267,
+              "end": 7.94767
             },
             {
-              "text": "The",
-              "start": 12.169,
-              "end": 12.269
+              "text": "eight",
+              "start": 7.99767,
+              "end": 8.19767
             },
             {
-              "text": "idea:",
-              "start": 12.344,
-              "end": 13.069
+              "text": "states,",
+              "start": 8.24767,
+              "end": 8.87267
             },
             {
-              "text": "match",
-              "start": 13.244,
-              "end": 13.519
+              "text": "with",
+              "start": 8.99767,
+              "end": 9.07267
             },
             {
-              "text": "training",
-              "start": 13.569,
-              "end": 13.919
+              "text": "over",
+              "start": 9.09767,
+              "end": 9.27267
             },
             {
-              "text": "to",
-              "start": 13.969,
-              "end": 14.069
+              "text": "one",
+              "start": 9.34767,
+              "end": 9.54767
             },
             {
-              "text": "employers’",
-              "start": 14.119,
-              "end": 14.594
+              "text": "point",
+              "start": 9.62267,
+              "end": 9.92267
             },
             {
-              "text": "needs,",
-              "start": 14.644,
-              "end": 15.219
+              "text": "seven",
+              "start": 9.99767,
+              "end": 10.29767
             },
             {
-              "text": "through",
-              "start": 15.369,
-              "end": 15.569
-            },
-            {
-              "text": "internships,",
-              "start": 15.594,
-              "end": 16.319
-            },
-            {
-              "text": "apprenticeships",
-              "start": 16.419,
-              "end": 17.069
-            },
-            {
-              "text": "and",
-              "start": 17.119,
-              "end": 17.194
-            },
-            {
-              "text": "hands-on",
-              "start": 17.244,
-              "end": 17.694
-            },
-            {
-              "text": "projects.",
-              "start": 17.744,
-              "end": 18.372
-            },
-            {
-              "text": "The",
-              "start": 18.716,
-              "end": 18.791
-            },
-            {
-              "text": "University",
-              "start": 18.841,
-              "end": 19.491
-            },
-            {
-              "text": "of",
-              "start": 19.541,
-              "end": 19.591
-            },
-            {
-              "text": "Houston",
-              "start": 19.641,
-              "end": 20.391
-            },
-            {
-              "text": "gets",
-              "start": 20.516,
-              "end": 20.766
-            },
-            {
-              "text": "just",
-              "start": 20.816,
-              "end": 21.016
-            },
-            {
-              "text": "under",
-              "start": 21.041,
-              "end": 21.216
-            },
-            {
-              "text": "two",
-              "start": 21.316,
-              "end": 21.491
-            },
-            {
-              "text": "hundred",
-              "start": 21.541,
-              "end": 21.841
-            },
-            {
-              "text": "thousand",
-              "start": 21.891,
-              "end": 22.241
+              "text": "million",
+              "start": 10.34767,
+              "end": 10.64767
             },
             {
               "text": "dollars.",
-              "start": 22.266,
-              "end": 22.82467
+              "start": 10.69767,
+              "end": 11.226
             },
             {
-              "text": "The",
-              "start": 23.66033,
-              "end": 23.73533
+              "text": "Training",
+              "start": 11.58,
+              "end": 11.955
             },
             {
-              "text": "test",
-              "start": 23.81033,
-              "end": 24.28533
+              "text": "meets",
+              "start": 12.005,
+              "end": 12.18
             },
             {
-              "text": "is",
-              "start": 24.36033,
-              "end": 24.46033
+              "text": "employers'",
+              "start": 12.205,
+              "end": 12.705
             },
             {
-              "text": "whether",
-              "start": 24.51033,
-              "end": 24.68533
+              "text": "needs",
+              "start": 12.755,
+              "end": 13.23
             },
             {
-              "text": "people",
-              "start": 24.73533,
-              "end": 25.06033
+              "text": "through",
+              "start": 13.33,
+              "end": 13.505
             },
             {
-              "text": "finish",
-              "start": 25.11033,
-              "end": 25.33533
+              "text": "internships,",
+              "start": 13.53,
+              "end": 14.505
             },
             {
-              "text": "the",
-              "start": 25.38533,
-              "end": 25.43533
-            },
-            {
-              "text": "training",
-              "start": 25.48533,
-              "end": 25.96033
+              "text": "apprenticeships",
+              "start": 14.63,
+              "end": 15.305
             },
             {
               "text": "and",
-              "start": 26.01033,
-              "end": 26.08533
+              "start": 15.355,
+              "end": 15.43
             },
             {
-              "text": "get",
-              "start": 26.13533,
-              "end": 26.26033
+              "text": "hands-on",
+              "start": 15.48,
+              "end": 15.955
+            },
+            {
+              "text": "projects.",
+              "start": 16.005,
+              "end": 16.62733
+            },
+            {
+              "text": "Success",
+              "start": 17.27533,
+              "end": 17.72533
+            },
+            {
+              "text": "means",
+              "start": 17.77533,
+              "end": 17.97533
+            },
+            {
+              "text": "finishing",
+              "start": 18.02533,
+              "end": 18.37533
+            },
+            {
+              "text": "that",
+              "start": 18.40033,
+              "end": 18.52533
+            },
+            {
+              "text": "training—and",
+              "start": 18.57533,
+              "end": 19.40033
+            },
+            {
+              "text": "getting",
+              "start": 19.45033,
+              "end": 19.67533
             },
             {
               "text": "hired.",
-              "start": 26.31033,
-              "end": 26.834
+              "start": 19.72533,
+              "end": 20.21067
             },
             {
-              "text": "This",
-              "start": 27.118,
-              "end": 27.293
+              "text": "That's",
+              "start": 20.556,
+              "end": 20.781
             },
             {
-              "text": "announcement",
-              "start": 27.343,
-              "end": 28.068
+              "text": "the",
+              "start": 20.806,
+              "end": 20.856
             },
             {
-              "text": "doesn't",
-              "start": 28.168,
-              "end": 28.418
+              "text": "result",
+              "start": 20.906,
+              "end": 21.256
             },
             {
-              "text": "give",
-              "start": 28.468,
-              "end": 28.618
+              "text": "still",
+              "start": 21.306,
+              "end": 21.531
             },
             {
-              "text": "us",
-              "start": 28.643,
-              "end": 28.768
+              "text": "to",
+              "start": 21.581,
+              "end": 21.631
             },
             {
-              "text": "those",
-              "start": 28.818,
-              "end": 29.018
-            },
-            {
-              "text": "results.",
-              "start": 29.068,
-              "end": 29.66933
+              "text": "prove.",
+              "start": 21.681,
+              "end": 22.16867
             }
           ],
           "visualCues": [
             {
-              "start": 6.54267,
-              "end": 12.169,
+              "start": 5.97267,
+              "end": 11.58,
               "beat": 0,
               "reveals": [
                 {
-                  "start": 6.54267,
+                  "start": 5.97267,
                   "reveal": 0
                 },
                 {
-                  "start": 7.49267,
+                  "start": 6.92267,
                   "reveal": 1
                 },
                 {
-                  "start": 10.31767,
+                  "start": 7.99767,
                   "reveal": 2
+                },
+                {
+                  "start": 9.09767,
+                  "reveal": 3
                 }
               ]
             },
             {
-              "start": 12.169,
-              "end": 18.716,
+              "start": 11.58,
+              "end": 17.06,
               "beat": 1,
               "reveals": [
                 {
-                  "start": 13.244,
+                  "start": 11.58,
                   "reveal": 0
                 },
                 {
-                  "start": 14.119,
+                  "start": 12.205,
                   "reveal": 1
                 },
                 {
-                  "start": 15.594,
+                  "start": 13.53,
                   "reveal": 2
                 },
                 {
-                  "start": 16.419,
+                  "start": 14.63,
                   "reveal": 3
                 },
                 {
-                  "start": 17.244,
+                  "start": 15.48,
                   "reveal": 4
-                }
-              ]
-            },
-            {
-              "start": 18.716,
-              "end": 23.32,
-              "beat": 2,
-              "reveals": [
-                {
-                  "start": 18.716,
-                  "reveal": 0
-                },
-                {
-                  "start": 20.816,
-                  "reveal": 1
                 }
               ]
             }
           ],
           "closingCues": [
             {
-              "start": 25.11033,
+              "start": 17.27533,
               "reveal": 0
             },
             {
-              "start": 26.13533,
+              "start": 18.02533,
               "reveal": 1
             },
             {
-              "start": 28.168,
+              "start": 19.45033,
+              "reveal": 2
+            },
+            {
+              "start": 20.556,
+              "reveal": 3
+            }
+          ],
+          "openingCues": [
+            {
+              "start": 0.56533,
+              "reveal": 0
+            },
+            {
+              "start": 2.39033,
+              "reveal": 1
+            },
+            {
+              "start": 4.06533,
               "reveal": 2
             }
           ]
         },
         "measured": {
-          "audio": "assets/studio/ca2ee6187725ad6aab25-measured.mp3",
-          "duration": 34.71,
+          "audio": "assets/studio/a13c86a73eb39bfd92ce-measured.mp3",
+          "duration": 25.71,
           "captions": [
             {
-              "start": 1.75,
-              "end": 6.25133,
-              "text": "Federal funding is backing a new route into cybersecurity work."
+              "start": 0.45,
+              "end": 6.03933,
+              "text": "Federal funding aims to turn cybersecurity training into a clearer route to work."
             },
             {
-              "start": 6.93,
-              "end": 13.06133,
-              "text": "NIST is awarding more than one point seven million dollars to nine local partnerships."
+              "start": 6.48,
+              "end": 12.64533,
+              "text": "NIST is backing nine partnerships in eight states, with over one point seven million dollars."
             },
             {
-              "start": 13.22133,
-              "end": 20.21867,
-              "text": "The idea: match training to employers’ needs, through internships, apprenticeships and hands-on projects."
+              "start": 12.80533,
+              "end": 18.544,
+              "text": "Training meets employers' needs through internships, apprenticeships and hands-on projects."
             },
             {
-              "start": 20.37867,
-              "end": 25.22133,
-              "text": "The University of Houston gets just under two hundred thousand dollars."
+              "start": 18.99,
+              "end": 22.55267,
+              "text": "Success means finishing that training—and getting hired."
             },
             {
-              "start": 25.88,
-              "end": 29.528,
-              "text": "The test is whether people finish the training and get hired."
-            },
-            {
-              "start": 29.688,
-              "end": 32.78133,
-              "text": "This announcement doesn't give us those results."
+              "start": 22.71267,
+              "end": 24.82467,
+              "text": "That's the result still to prove."
             }
           ],
           "chapters": [
@@ -3510,444 +3486,376 @@
               "kind": "ident",
               "label": "Bearing",
               "start": 0,
-              "end": 1.5
+              "end": 0.35
             },
             {
               "kind": "opening",
-              "label": "The Brief",
-              "start": 1.5,
-              "end": 6.68
+              "label": "The Shift",
+              "start": 0.35,
+              "end": 6.38
             },
             {
               "kind": "story",
-              "label": "The Connection",
-              "start": 6.68,
-              "end": 25.63
+              "label": "The Design",
+              "start": 6.38,
+              "end": 18.89
             },
             {
               "kind": "closing",
-              "label": "The Test",
-              "start": 25.63,
-              "end": 33.21
+              "label": "The Payoff",
+              "start": 18.89,
+              "end": 25.16
             },
             {
               "kind": "outro",
               "label": "Up next",
-              "start": 33.21,
-              "end": 34.71
+              "start": 25.16,
+              "end": 25.71
             }
           ],
-          "sha256": "0f75c112c715dd7efc14cea79f00858be0c41c2c12d0c489716e18d4914c29c6",
+          "sha256": "b6ffd3ddc94054a5335d16996fbdff48bd2023cff967a01c499866006a44ed75",
           "fullDecodePassed": true,
           "provider": "kokoro-local-cpu",
           "voiceName": "Michael",
-          "scriptSha256": "9f0264e759d201ff3e5ffcdb8f435b2c323c2daa0fd1e807938a5ed97a7bea8a",
+          "scriptSha256": "62782018cc250e44ceb70614aff574c95ad7d54548c99bcf0961dd0d15a1715b",
           "wordTimings": [
             {
               "text": "Federal",
-              "start": 1.88,
-              "end": 2.18
+              "start": 0.58,
+              "end": 0.88
             },
             {
               "text": "funding",
-              "start": 2.255,
-              "end": 2.93
+              "start": 0.955,
+              "end": 1.68
             },
             {
-              "text": "is",
-              "start": 3.03,
-              "end": 3.13
+              "text": "aims",
+              "start": 1.78,
+              "end": 2.03
             },
             {
-              "text": "backing",
-              "start": 3.205,
-              "end": 3.58
+              "text": "to",
+              "start": 2.08,
+              "end": 2.155
             },
             {
-              "text": "a",
-              "start": 3.63,
-              "end": 3.68
-            },
-            {
-              "text": "new",
-              "start": 3.755,
-              "end": 3.955
-            },
-            {
-              "text": "route",
-              "start": 4.03,
-              "end": 4.505
-            },
-            {
-              "text": "into",
-              "start": 4.555,
-              "end": 4.755
+              "text": "turn",
+              "start": 2.205,
+              "end": 2.505
             },
             {
               "text": "cybersecurity",
-              "start": 4.83,
-              "end": 5.68
+              "start": 2.58,
+              "end": 3.43
+            },
+            {
+              "text": "training",
+              "start": 3.505,
+              "end": 4.105
+            },
+            {
+              "text": "into",
+              "start": 4.155,
+              "end": 4.38
+            },
+            {
+              "text": "a",
+              "start": 4.43,
+              "end": 4.48
+            },
+            {
+              "text": "clearer",
+              "start": 4.555,
+              "end": 4.93
+            },
+            {
+              "text": "route",
+              "start": 5.005,
+              "end": 5.28
+            },
+            {
+              "text": "to",
+              "start": 5.33,
+              "end": 5.405
             },
             {
               "text": "work.",
-              "start": 5.73,
-              "end": 6.25133
+              "start": 5.48,
+              "end": 6.03933
             },
             {
               "text": "NIST",
-              "start": 7.08867,
-              "end": 7.41367
+              "start": 6.66,
+              "end": 6.985
             },
             {
               "text": "is",
-              "start": 7.48867,
-              "end": 7.56367
+              "start": 7.035,
+              "end": 7.135
             },
             {
-              "text": "awarding",
-              "start": 7.61367,
-              "end": 7.98867
-            },
-            {
-              "text": "more",
-              "start": 8.06367,
-              "end": 8.31367
-            },
-            {
-              "text": "than",
-              "start": 8.36367,
-              "end": 8.48867
-            },
-            {
-              "text": "one",
-              "start": 8.56367,
-              "end": 8.83867
-            },
-            {
-              "text": "point",
-              "start": 8.91367,
-              "end": 9.26367
-            },
-            {
-              "text": "seven",
-              "start": 9.33867,
-              "end": 9.63867
-            },
-            {
-              "text": "million",
-              "start": 9.71367,
-              "end": 10.06367
-            },
-            {
-              "text": "dollars",
-              "start": 10.11367,
-              "end": 10.81367
-            },
-            {
-              "text": "to",
-              "start": 10.88867,
-              "end": 10.96367
+              "text": "backing",
+              "start": 7.21,
+              "end": 7.56
             },
             {
               "text": "nine",
-              "start": 11.03867,
-              "end": 11.66367
+              "start": 7.635,
+              "end": 7.96
             },
             {
-              "text": "local",
-              "start": 11.76367,
-              "end": 12.08867
+              "text": "partnerships",
+              "start": 8.01,
+              "end": 8.66
             },
             {
-              "text": "partnerships.",
-              "start": 12.13867,
-              "end": 13.03133
+              "text": "in",
+              "start": 8.71,
+              "end": 8.81
             },
             {
-              "text": "The",
-              "start": 13.32633,
-              "end": 13.42633
+              "text": "eight",
+              "start": 8.86,
+              "end": 9.06
             },
             {
-              "text": "idea:",
-              "start": 13.50133,
-              "end": 14.30133
+              "text": "states,",
+              "start": 9.11,
+              "end": 9.835
             },
             {
-              "text": "match",
-              "start": 14.47633,
-              "end": 14.75133
+              "text": "with",
+              "start": 9.96,
+              "end": 10.06
             },
             {
-              "text": "training",
-              "start": 14.82633,
-              "end": 15.20133
+              "text": "over",
+              "start": 10.085,
+              "end": 10.31
             },
             {
-              "text": "to",
-              "start": 15.25133,
-              "end": 15.35133
+              "text": "one",
+              "start": 10.385,
+              "end": 10.66
             },
             {
-              "text": "employers’",
-              "start": 15.40133,
-              "end": 15.92633
+              "text": "point",
+              "start": 10.735,
+              "end": 11.085
             },
             {
-              "text": "needs,",
-              "start": 15.97633,
-              "end": 16.57633
+              "text": "seven",
+              "start": 11.185,
+              "end": 11.485
             },
             {
-              "text": "through",
-              "start": 16.72633,
-              "end": 16.92633
-            },
-            {
-              "text": "internships,",
-              "start": 16.97633,
-              "end": 17.82633
-            },
-            {
-              "text": "apprenticeships",
-              "start": 17.90133,
-              "end": 18.60133
-            },
-            {
-              "text": "and",
-              "start": 18.65133,
-              "end": 18.72633
-            },
-            {
-              "text": "hands-on",
-              "start": 18.80133,
-              "end": 19.32633
-            },
-            {
-              "text": "projects.",
-              "start": 19.37633,
-              "end": 20.21867
-            },
-            {
-              "text": "The",
-              "start": 20.48367,
-              "end": 20.55867
-            },
-            {
-              "text": "University",
-              "start": 20.63367,
-              "end": 21.35867
-            },
-            {
-              "text": "of",
-              "start": 21.40867,
-              "end": 21.50867
-            },
-            {
-              "text": "Houston",
-              "start": 21.58367,
-              "end": 22.38367
-            },
-            {
-              "text": "gets",
-              "start": 22.50867,
-              "end": 22.75867
-            },
-            {
-              "text": "just",
-              "start": 22.80867,
-              "end": 23.03367
-            },
-            {
-              "text": "under",
-              "start": 23.05867,
-              "end": 23.25867
-            },
-            {
-              "text": "two",
-              "start": 23.35867,
-              "end": 23.53367
-            },
-            {
-              "text": "hundred",
-              "start": 23.58367,
-              "end": 23.93367
-            },
-            {
-              "text": "thousand",
-              "start": 23.98367,
-              "end": 24.40867
+              "text": "million",
+              "start": 11.535,
+              "end": 11.86
             },
             {
               "text": "dollars.",
-              "start": 24.45867,
-              "end": 25.22133
+              "start": 11.91,
+              "end": 12.64533
             },
             {
-              "text": "The",
-              "start": 26.00633,
-              "end": 26.10633
+              "text": "Training",
+              "start": 12.91033,
+              "end": 13.28533
             },
             {
-              "text": "test",
-              "start": 26.18133,
-              "end": 26.65633
+              "text": "meets",
+              "start": 13.33533,
+              "end": 13.58533
             },
             {
-              "text": "is",
-              "start": 26.73133,
-              "end": 26.90633
+              "text": "employers'",
+              "start": 13.63533,
+              "end": 14.18533
             },
             {
-              "text": "whether",
-              "start": 26.95633,
-              "end": 27.18133
+              "text": "needs",
+              "start": 14.26033,
+              "end": 14.68533
             },
             {
-              "text": "people",
-              "start": 27.25633,
-              "end": 27.58133
+              "text": "through",
+              "start": 14.76033,
+              "end": 14.96033
             },
             {
-              "text": "finish",
-              "start": 27.65633,
-              "end": 27.88133
+              "text": "internships,",
+              "start": 15.01033,
+              "end": 16.06033
             },
             {
-              "text": "the",
-              "start": 27.93133,
-              "end": 27.98133
-            },
-            {
-              "text": "training",
-              "start": 28.05633,
-              "end": 28.50633
+              "text": "apprenticeships",
+              "start": 16.23533,
+              "end": 16.93533
             },
             {
               "text": "and",
-              "start": 28.55633,
-              "end": 28.63133
+              "start": 16.98533,
+              "end": 17.06033
             },
             {
-              "text": "get",
-              "start": 28.68133,
-              "end": 28.83133
+              "text": "hands-on",
+              "start": 17.13533,
+              "end": 17.66033
+            },
+            {
+              "text": "projects.",
+              "start": 17.71033,
+              "end": 18.544
+            },
+            {
+              "text": "Success",
+              "start": 19.12367,
+              "end": 19.62367
+            },
+            {
+              "text": "means",
+              "start": 19.67367,
+              "end": 19.92367
+            },
+            {
+              "text": "finishing",
+              "start": 19.97367,
+              "end": 20.32367
+            },
+            {
+              "text": "that",
+              "start": 20.37367,
+              "end": 20.52367
+            },
+            {
+              "text": "training—and",
+              "start": 20.59867,
+              "end": 21.49867
+            },
+            {
+              "text": "getting",
+              "start": 21.54867,
+              "end": 21.82367
             },
             {
               "text": "hired.",
-              "start": 28.90633,
-              "end": 29.528
+              "start": 21.89867,
+              "end": 22.55267
             },
             {
-              "text": "This",
-              "start": 29.882,
-              "end": 30.082
+              "text": "That's",
+              "start": 22.86033,
+              "end": 23.08533
             },
             {
-              "text": "announcement",
-              "start": 30.132,
-              "end": 30.857
+              "text": "the",
+              "start": 23.13533,
+              "end": 23.18533
             },
             {
-              "text": "doesn't",
-              "start": 30.932,
-              "end": 31.182
+              "text": "result",
+              "start": 23.23533,
+              "end": 23.58533
             },
             {
-              "text": "give",
-              "start": 31.232,
-              "end": 31.382
+              "text": "still",
+              "start": 23.66033,
+              "end": 23.91033
             },
             {
-              "text": "us",
-              "start": 31.407,
-              "end": 31.582
+              "text": "to",
+              "start": 23.96033,
+              "end": 24.03533
             },
             {
-              "text": "those",
-              "start": 31.632,
-              "end": 31.882
-            },
-            {
-              "text": "results.",
-              "start": 31.932,
-              "end": 32.78133
+              "text": "prove.",
+              "start": 24.08533,
+              "end": 24.82467
             }
           ],
           "visualCues": [
             {
-              "start": 7.08867,
-              "end": 13.32633,
+              "start": 6.66,
+              "end": 12.91033,
               "beat": 0,
               "reveals": [
                 {
-                  "start": 7.08867,
+                  "start": 6.66,
                   "reveal": 0
                 },
                 {
-                  "start": 8.06367,
+                  "start": 7.635,
                   "reveal": 1
                 },
                 {
-                  "start": 11.03867,
+                  "start": 8.86,
                   "reveal": 2
+                },
+                {
+                  "start": 10.085,
+                  "reveal": 3
                 }
               ]
             },
             {
-              "start": 13.32633,
-              "end": 20.48367,
+              "start": 12.91033,
+              "end": 18.89,
               "beat": 1,
               "reveals": [
                 {
-                  "start": 14.47633,
+                  "start": 12.91033,
                   "reveal": 0
                 },
                 {
-                  "start": 15.40133,
+                  "start": 13.63533,
                   "reveal": 1
                 },
                 {
-                  "start": 16.97633,
+                  "start": 15.01033,
                   "reveal": 2
                 },
                 {
-                  "start": 17.90133,
+                  "start": 16.23533,
                   "reveal": 3
                 },
                 {
-                  "start": 18.80133,
+                  "start": 17.13533,
                   "reveal": 4
-                }
-              ]
-            },
-            {
-              "start": 20.48367,
-              "end": 25.63,
-              "beat": 2,
-              "reveals": [
-                {
-                  "start": 20.48367,
-                  "reveal": 0
-                },
-                {
-                  "start": 22.80867,
-                  "reveal": 1
                 }
               ]
             }
           ],
           "closingCues": [
             {
-              "start": 27.65633,
+              "start": 19.12367,
               "reveal": 0
             },
             {
-              "start": 28.68133,
+              "start": 19.97367,
               "reveal": 1
             },
             {
-              "start": 30.932,
+              "start": 21.54867,
+              "reveal": 2
+            },
+            {
+              "start": 22.86033,
+              "reveal": 3
+            }
+          ],
+          "openingCues": [
+            {
+              "start": 0.58,
+              "reveal": 0
+            },
+            {
+              "start": 2.58,
+              "reveal": 1
+            },
+            {
+              "start": 4.43,
               "reveal": 2
             }
           ]
@@ -3974,50 +3882,80 @@
       "displayTitle": "A route into cybersecurity",
       "displayDek": "Nine NIST awards support practical training partnerships in eight states.",
       "format": "studio-programme",
-      "programmeVersion": "ca2ee6187725ad6aab25",
+      "programmeVersion": "a13c86a73eb39bfd92ce",
       "programme": {
-        "why": "Connecting training with the work employers need.",
-        "summary": "Will training lead to work?",
-        "lookAhead": "Do trainees finish—and get hired?",
+        "why": "Federal backing for a clearer route from training to work.",
+        "summary": "From skills to work.",
+        "lookAhead": "The measure of success: completed training and people getting hired.",
         "beats": [
           {
-            "kind": "investment",
+            "kind": "geography",
             "label": "THE INVESTMENT",
             "text": "$1.7M+",
-            "detail": "9 local partnerships",
-            "cue": "NIST is awarding",
+            "detail": "9 partnerships · 8 states",
+            "cue": "NIST is backing",
+            "states": [
+              "FL",
+              "KY",
+              "VA",
+              "NM",
+              "MI",
+              "OH",
+              "TX",
+              "TN"
+            ],
             "reveals": [
               {
-                "cue": "NIST is awarding",
-                "text": "NIST",
+                "cue": "NIST is backing",
+                "text": "NIST workforce awards",
                 "role": "source"
               },
               {
-                "cue": "more than one point seven million dollars",
-                "text": "$1.7M+",
-                "role": "amount"
+                "cue": "nine partnerships",
+                "text": "9 partnerships",
+                "role": "scope"
               },
               {
-                "cue": "nine local partnerships",
-                "text": "9 local partnerships",
-                "role": "scope"
+                "cue": "eight states",
+                "text": "8 states",
+                "role": "geography"
+              },
+              {
+                "cue": "over one point seven million dollars",
+                "text": "$1.7M+",
+                "role": "amount"
               }
-            ]
+            ],
+            "media": {
+              "kind": "map",
+              "src": "us-states.js",
+              "sourceUrl": "https://github.com/topojson/us-atlas/tree/v3.0.1",
+              "license": "ISC",
+              "licenseUrl": "https://github.com/topojson/us-atlas/blob/v3.0.1/LICENSE",
+              "author": "U.S. Census Bureau; Michael Bostock / us-atlas",
+              "courtesy": "U.S. Census Bureau",
+              "dateLabel": "State boundaries · 2017",
+              "sha256": "76af317485a3ed1fdb1d3b8e60d76b94fd7dd699d81216b75e6c0b970e9b67ee",
+              "usageApproved": true,
+              "title": "U.S. award recipient states",
+              "displayChanges": "Decoded and stitched TopoJSON arcs into SVG paths with coordinates rounded to two decimals. Preserves all 50 states plus District of Columbia. Original Albers USA projection with Alaska and Hawaii insets. Original bounds (-60,0,1040,620) uniformly scaled by 960/1040; coordinates translated 60 units right before scaling and vertically centered in 960x600. No distortion or clipping. Postal abbreviations are stable IDs; original FIPS retained separately. State abbreviations from USPS convention. Center is area centroid of the largest polygon and is for label placement only.",
+              "editorialUse": "States with award recipients, not statewide service coverage. Nine awards in eight states; Ohio has two. Highlights shown only with the eight-states phrase."
+            }
           },
           {
-            "kind": "pathway",
+            "kind": "mechanism",
             "label": "THE CONNECTION",
-            "text": "Training meets employer needs",
-            "detail": "Internships · Apprenticeships · Hands-on projects",
-            "cue": "The idea",
+            "text": "Train for the work",
+            "detail": "Learning connected to employer needs",
+            "cue": "Training meets",
             "reveals": [
               {
-                "cue": "match training",
+                "cue": "Training meets",
                 "text": "Training",
                 "role": "training"
               },
               {
-                "cue": "employers’ needs",
+                "cue": "employers' needs",
                 "text": "Employer needs",
                 "role": "employer"
               },
@@ -4037,80 +3975,82 @@
                 "role": "projects"
               }
             ]
-          },
-          {
-            "kind": "place",
-            "label": "ONE LOCAL AWARD",
-            "text": "University of Houston",
-            "detail": "$199,735",
-            "cue": "The University of Houston",
-            "reveals": [
-              {
-                "cue": "The University of Houston",
-                "text": "University of Houston",
-                "role": "place"
-              },
-              {
-                "cue": "just under two hundred thousand dollars",
-                "text": "$199,735",
-                "role": "amount"
-              }
-            ],
-            "media": {
-              "src": "assets/licensed/uh-cullen-rjn-2011.jpg",
-              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ezekiel_W._Cullen_Building_(Alternate).JPG",
-              "license": "CC BY-SA 3.0",
-              "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
-              "author": "RJN",
-              "courtesy": "RJN / Wikimedia Commons",
-              "dateLabel": "File photo, 2011",
-              "sha256": "24aa93cbdcabc27b024e0c782c52dac60abf95d8c39956158d54017dde19d558",
-              "usageApproved": true,
-              "title": "Ezekiel W. Cullen Building (Alternate)",
-              "alt": "Archival 2011 photograph of the Ezekiel W. Cullen Building and fountains at the University of Houston.",
-              "displayChanges": "Original file retained. Responsive crop, slow camera move and display overlay; any adaptation of this photograph is offered under CC BY-SA 3.0.",
-              "editorialUse": "Campus establishing view only during narration referring to the University of Houston award. File photo is not evidence of the funded project, participants, current campus appearance, training outcomes, or hiring outcomes."
-            }
           }
         ],
         "visualTreatment": "directed",
-        "soundTreatment": "bookends",
+        "soundTreatment": "editorial-score",
+        "openingReveals": [
+          {
+            "cue": "Federal funding",
+            "text": "Federal backing",
+            "role": "funding"
+          },
+          {
+            "cue": "cybersecurity training",
+            "text": "Cybersecurity training",
+            "role": "training"
+          },
+          {
+            "cue": "a clearer route to work",
+            "text": "A route to work.",
+            "role": "work"
+          }
+        ],
         "closingReveals": [
           {
-            "cue": "finish the training",
-            "text": "Complete training",
+            "cue": "Success means",
+            "text": "THE MEASURE OF SUCCESS",
+            "role": "goal"
+          },
+          {
+            "cue": "finishing that training",
+            "text": "Finish training",
             "role": "completion"
           },
           {
-            "cue": "get hired",
-            "text": "Get hired",
+            "cue": "getting hired",
+            "text": "Get hired.",
             "role": "employment"
           },
           {
-            "cue": "doesn't give us those results",
-            "text": "Results not reported",
+            "cue": "That's the result still to prove",
+            "text": "The result still to prove.",
             "role": "uncertainty"
           }
         ],
         "chapterLabels": {
-          "opening": "The Brief",
-          "story": "The Connection",
-          "closing": "The Test"
+          "opening": "The Shift",
+          "story": "The Design",
+          "closing": "The Payoff"
         },
-        "maxDuration": 45
+        "maxDuration": 32,
+        "editorialTiming": {
+          "mode": "context-example",
+          "developmentDate": "2026-09-18",
+          "sourcePublishedDate": "2026-09-18",
+          "checkedAt": "2026-09-29",
+          "reason": "Production review of September 18 announcement; no verified new September 29 development.",
+          "evidenceUrl": "https://www.nist.gov/news-events/news/2026/09/nist-awards-more-17-million-support-cybersecurity-workforce-development",
+          "sourceUpdatedDate": "2026-09-28",
+          "label": "Context example",
+          "liveEligible": false
+        }
       },
       "sourceScriptSha256": "c7f927a0587917c60f92d08e98a553f293ca057331957ec24b77f3ce6a2a10f4",
-      "builtAt": "2026-09-29T19:53:10.679606+00:00",
+      "builtAt": "2026-09-29T20:26:31.136095+00:00",
       "music": {
-        "drift": "assets/studio/music-ca2ee6187725ad6aab25-drift.mp3",
-        "piano": "assets/studio/music-ca2ee6187725ad6aab25-piano.mp3"
+        "drift": "assets/studio/score-a13c86a73eb39bfd92ce-drift.mp3",
+        "piano": "assets/studio/score-a13c86a73eb39bfd92ce-piano.mp3",
+        "signature": "assets/studio/score-a13c86a73eb39bfd92ce-signature.mp3",
+        "handoff": "assets/studio/score-a13c86a73eb39bfd92ce-handoff.mp3",
+        "bridge": "assets/studio/score-a13c86a73eb39bfd92ce-bridge.mp3"
       },
       "production": {
         "pipeline": "broadcast-v1",
         "visualDecision": "mixture",
         "renderer": "studio.js",
         "sourceBound": true,
-        "compositionHash": "cc78d70e4c900dd0d7212c2bbfef941379ae24ec24a3f8cd721271662b12ac74"
+        "compositionHash": "d57b53e9936b5f382244e99df56571c1e65bd07719467d9fec7cacbb6d07aed6"
       },
       "publishedTime": null,
       "coverage": null,
@@ -4159,7 +4099,7 @@
       "video": "assets/space-motion.mp4",
       "voices": {
         "warm": {
-          "audio": "assets/studio/c1cb40aaaeaf640d5e93-warm.mp3",
+          "audio": "assets/studio/148e97491d53214f3427-warm.mp3",
           "duration": 87.67,
           "captions": [
             {
@@ -4282,7 +4222,7 @@
           "scriptSha256": "65b34e084c622c32339f4bc35d1f462a046d14e995edd9805d1ebc787e778a44"
         },
         "measured": {
-          "audio": "assets/studio/c1cb40aaaeaf640d5e93-measured.mp3",
+          "audio": "assets/studio/148e97491d53214f3427-measured.mp3",
           "duration": 96.0,
           "captions": [
             {
@@ -4424,7 +4364,7 @@
         "motion": "Retained original CPU-composed loop"
       },
       "format": "studio-programme",
-      "programmeVersion": "c1cb40aaaeaf640d5e93",
+      "programmeVersion": "148e97491d53214f3427",
       "displayTitle": "How small can a star-like world be?",
       "programme": {
         "why": "Very low-mass brown dwarfs test ideas about how star-forming clouds build new objects.",
@@ -4443,20 +4383,26 @@
             "label": "THE QUESTION",
             "text": "How do they form?"
           }
-        ]
+        ],
+        "editorialTiming": {
+          "mode": "legacy-context",
+          "label": "Context archive",
+          "liveEligible": false,
+          "reason": "Unchanged presentation retained from before the why-now review requirement; not newly verified current news."
+        }
       },
       "sourceScriptSha256": "18c5beeafa84d886487af10686c6a4ce728d78054ee1da8b5cb502207bd28580",
-      "builtAt": "2026-09-29T19:53:12.135116+00:00",
+      "builtAt": "2026-09-29T20:26:32.594073+00:00",
       "music": {
-        "drift": "assets/studio/music-c1cb40aaaeaf640d5e93-drift.mp3",
-        "piano": "assets/studio/music-c1cb40aaaeaf640d5e93-piano.mp3"
+        "drift": "assets/studio/music-148e97491d53214f3427-drift.mp3",
+        "piano": "assets/studio/music-148e97491d53214f3427-piano.mp3"
       },
       "production": {
         "pipeline": "broadcast-v1",
         "visualDecision": "mixture",
         "renderer": "studio.js",
         "sourceBound": true,
-        "compositionHash": "754b6b702dda25545ac619862a1eb31e937828aab5caadf627c003536691ab35"
+        "compositionHash": "f83e813c1b7a8223db0d3c547ab64410cfc5277e3186f7d8ac7bbdb7d8c16a4e"
       },
       "publishedTime": null,
       "coverage": null,

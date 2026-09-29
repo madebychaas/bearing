@@ -1,0 +1,21 @@
+{
+  "title": "U.S. state map outlines",
+  "sourceOrganization": "U.S. Census Bureau",
+  "sourceData": "2017 cartographic boundary state shapefiles, redistributed and projected by us-atlas 3.0.1",
+  "upstreamPackage": "us-atlas@3.0.1",
+  "downloadUrl": "https://cdn.jsdelivr.net/npm/us-atlas@3.0.1/states-albers-10m.json",
+  "sourceUrl": "https://github.com/topojson/us-atlas/tree/v3.0.1",
+  "sourceSha256": "6e7bb086a3c791490361968a3094f377f7726c5d0c4900fec03cc42db2305a3d",
+  "outputSha256": "76af317485a3ed1fdb1d3b8e60d76b94fd7dd699d81216b75e6c0b970e9b67ee",
+  "license": "ISC",
+  "licenseUrl": "https://github.com/topojson/us-atlas/blob/v3.0.1/LICENSE",
+  "licenseNotice": "Copyright 2013-2019 Michael Bostock\n\nPermission to use, copy, modify, and/or distribute this software for any purpose\nwith or without fee is hereby granted, provided that the above copyright notice\nand this permission notice appear in all copies.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH\nREGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND\nFITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,\nINDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS\nOF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER\nTORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF\nTHIS SOFTWARE.\n",
+  "verifiedAt": "2026-09-29",
+  "permissionBasis": "The upstream package explicitly permits use, copying, modification and distribution for any purpose with or without fee, retaining the copyright and permission notice. The complete notice is embedded in us-states.js and this provenance record.",
+  "transformation": "Decoded and stitched TopoJSON arcs into SVG paths with coordinates rounded to two decimals. Preserves all 50 states plus District of Columbia. Original Albers USA projection with Alaska and Hawaii insets. Original bounds (-60,0,1040,620) uniformly scaled by 960/1040; coordinates translated 60 units right before scaling and vertically centered in 960x600. No distortion or clipping. Postal abbreviations are stable IDs; original FIPS retained separately. State abbreviations from USPS convention. Center is area centroid of the largest polygon and is for label placement only.",
+  "projection": "d3.geoAlbersUsa().scale(1300).translate([487.5,305])",
+  "viewBox": "0 0 960 600",
+  "courtesy": "U.S. Census Bureau",
+  "usageApproved": true,
+  "limitations": "2017 generalized state boundaries for national orientation, not current cadastral, territorial, or precision navigation use. Alaska and Hawaii are inset and not to the same map scale as the contiguous states. District of Columbia is included but is not a state. US territories are not represented in this inset projection."
+}
