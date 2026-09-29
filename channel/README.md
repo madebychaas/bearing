@@ -118,4 +118,4 @@ See ../product/EASYNEWS_REFERENCE_ADAPTATION.md for the pinned EasyNews referenc
 
 Private repository: https://github.com/madebychaas/bearing. The product was renamed from current. to Bearing without changing the player design or playback behavior. Existing `CURRENT_*` environment variables and the `current.preferences.v1` browser storage key remain compatibility identifiers. Historical media prompts and provenance retain their original wording. See the root README for repository exclusions and the one-story production milestone.
 
-EasyNews material is archival only; do not inspect or use it unless explicitly asked to compare against EasyNews.
+The old `easynews-reference` repository is archival only; do not inspect or use it unless explicitly asked to compare against EasyNews. The new Easy News producer workspace is native code in this repository and follows the current product direction.
