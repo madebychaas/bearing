@@ -1,7 +1,7 @@
 {
   "edition": "2026-09-28",
-  "version": "108a0bff8e2435277cf3e8b04702a9fe213d40256a3aecb08271985f8df4c218",
-  "builtAt": "2026-09-29T15:54:23.607943+00:00",
+  "version": "7dacf58d7c4ee4e7a813dcce6130910de9899ba9f12e37b88669c901234e2613",
+  "builtAt": "2026-09-29T18:27:15.521041+00:00",
   "stories": [
     {
       "id": "auto-a46bc2af204ae5",
@@ -30,7 +30,7 @@
       "video": "assets/swift-orbit-v2-motion.mp4",
       "voices": {
         "warm": {
-          "audio": "assets/studio/e8f54eef497dfbfcc9ca-warm.mp3",
+          "audio": "assets/studio/e3f730c5bf3c5fbbc03c-warm.mp3",
           "duration": 76.2,
           "captions": [
             {
@@ -147,7 +147,7 @@
           "scriptSha256": "1dd65b2e2edfc3a7af8f31cea58a89fad74528007e97999ec786bd6552920fb7"
         },
         "measured": {
-          "audio": "assets/studio/e8f54eef497dfbfcc9ca-measured.mp3",
+          "audio": "assets/studio/e3f730c5bf3c5fbbc03c-measured.mp3",
           "duration": 82.65,
           "captions": [
             {
@@ -285,7 +285,7 @@
       "displayTitle": "The next test for satellite servicing",
       "displayDek": "The mission ended without raising Swift’s orbit. NASA is sharing what the attempt taught its team.",
       "format": "studio-programme",
-      "programmeVersion": "e8f54eef497dfbfcc9ca",
+      "programmeVersion": "e3f730c5bf3c5fbbc03c",
       "programme": {
         "why": "An unsuccessful orbital boost can still show what future repair missions need to solve.",
         "summary": "The boost was not achieved. The engineering lessons are the result to follow.",
@@ -306,17 +306,17 @@
         ]
       },
       "sourceScriptSha256": "8ef2c76e88863cfc3e1b63a5986434e6b53b441c6cbca304a93de00f5aaa5780",
-      "builtAt": "2026-09-29T15:54:10.647957+00:00",
+      "builtAt": "2026-09-29T18:27:02.346547+00:00",
       "music": {
-        "drift": "assets/studio/music-e8f54eef497dfbfcc9ca-drift.mp3",
-        "piano": "assets/studio/music-e8f54eef497dfbfcc9ca-piano.mp3"
+        "drift": "assets/studio/music-e3f730c5bf3c5fbbc03c-drift.mp3",
+        "piano": "assets/studio/music-e3f730c5bf3c5fbbc03c-piano.mp3"
       },
       "production": {
         "pipeline": "broadcast-v1",
         "visualDecision": "mixture",
         "renderer": "studio.js",
         "sourceBound": true,
-        "compositionHash": "5338f9a5d03e5a93910854c14fe2ce4ea5616f230bd9a0344b9d4744ed28b96b"
+        "compositionHash": "ba6596a8b8ad6bced322cb842c68e91b2578684add7ce10c113bb37d4c02a737"
       },
       "publishedTime": null,
       "coverage": null,
@@ -366,7 +366,7 @@
       "video": "assets/crew-orbit-v2-motion.mp4",
       "voices": {
         "warm": {
-          "audio": "assets/studio/85e72b5e53aec7d68a29-warm.mp3",
+          "audio": "assets/studio/003a9bf6784326e9438b-warm.mp3",
           "duration": 69.45,
           "captions": [
             {
@@ -473,7 +473,7 @@
           "scriptSha256": "63b716aea3b663b841af728b4043b5ea8d93ffa4dd5bbdf493bc8c418c3de428"
         },
         "measured": {
-          "audio": "assets/studio/85e72b5e53aec7d68a29-measured.mp3",
+          "audio": "assets/studio/003a9bf6784326e9438b-measured.mp3",
           "duration": 78.08,
           "captions": [
             {
@@ -601,7 +601,7 @@
       "displayTitle": "Crew-13 prepares for the station",
       "displayDek": "Four crew members are set to carry out research, technology demonstrations, and maintenance on the space station.",
       "format": "studio-programme",
-      "programmeVersion": "85e72b5e53aec7d68a29",
+      "programmeVersion": "003a9bf6784326e9438b",
       "programme": {
         "why": "Crew rotations keep the orbiting laboratory's research and essential maintenance moving.",
         "summary": "Four crew members. Research, technology demonstrations, and station upkeep.",
@@ -622,17 +622,17 @@
         ]
       },
       "sourceScriptSha256": "d405037f8e59bac1729b302063be9f5b2dc95d7f6c62c71806e09e4e148bd7a5",
-      "builtAt": "2026-09-29T15:54:11.903617+00:00",
+      "builtAt": "2026-09-29T18:27:03.638610+00:00",
       "music": {
-        "drift": "assets/studio/music-85e72b5e53aec7d68a29-drift.mp3",
-        "piano": "assets/studio/music-85e72b5e53aec7d68a29-piano.mp3"
+        "drift": "assets/studio/music-003a9bf6784326e9438b-drift.mp3",
+        "piano": "assets/studio/music-003a9bf6784326e9438b-piano.mp3"
       },
       "production": {
         "pipeline": "broadcast-v1",
         "visualDecision": "mixture",
         "renderer": "studio.js",
         "sourceBound": true,
-        "compositionHash": "708abddb54580becfb247c59be724a934638363eb51ec38c43ce577bb364c9e0"
+        "compositionHash": "249aab7daf095f167e1bec473c063bb71a5a6b9df703e26d8db80b45d0b8667f"
       },
       "publishedTime": null,
       "coverage": null,
@@ -685,7 +685,7 @@
       "video": "assets/isotope-ecology-v2-motion.mp4",
       "voices": {
         "warm": {
-          "audio": "assets/studio/a77c4ba5acd913b3a5f4-warm.mp3",
+          "audio": "assets/studio/b7732f63498685b06de0-warm.mp3",
           "duration": 72.84,
           "captions": [
             {
@@ -782,7 +782,7 @@
           "scriptSha256": "7adcd0734f5b8cb02ec9e1a9ba76866ec50eecefbba5a08e76afd58f08967c58"
         },
         "measured": {
-          "audio": "assets/studio/a77c4ba5acd913b3a5f4-measured.mp3",
+          "audio": "assets/studio/b7732f63498685b06de0-measured.mp3",
           "duration": 81.35,
           "captions": [
             {
@@ -900,7 +900,7 @@
       "displayTitle": "Nature leaves a chemical trail",
       "displayDek": "Stable isotopes offer clues to grizzly bear diets and mercury in river fish.",
       "format": "studio-programme",
-      "programmeVersion": "a77c4ba5acd913b3a5f4",
+      "programmeVersion": "b7732f63498685b06de0",
       "programme": {
         "why": "Chemical signatures can reveal how wildlife feeds and how contaminants move through ecosystems.",
         "summary": "One analytical tool is helping investigate two very different ecosystems.",
@@ -921,17 +921,17 @@
         ]
       },
       "sourceScriptSha256": "02ae55956864e0613fa7ba4aae20bb208f17a70d20094b1ace0f1625d6b35c2b",
-      "builtAt": "2026-09-29T15:54:13.175279+00:00",
+      "builtAt": "2026-09-29T18:27:04.925457+00:00",
       "music": {
-        "drift": "assets/studio/music-a77c4ba5acd913b3a5f4-drift.mp3",
-        "piano": "assets/studio/music-a77c4ba5acd913b3a5f4-piano.mp3"
+        "drift": "assets/studio/music-b7732f63498685b06de0-drift.mp3",
+        "piano": "assets/studio/music-b7732f63498685b06de0-piano.mp3"
       },
       "production": {
         "pipeline": "broadcast-v1",
         "visualDecision": "mixture",
         "renderer": "studio.js",
         "sourceBound": true,
-        "compositionHash": "27529d5977d3f7eb11aa8fb7b5b22a40dba50b9d2907a3a478981987ac67ed49"
+        "compositionHash": "5f8d3904a5473d6aec96047f43f22012bed59891323468de617aea379009bbc1"
       },
       "publishedTime": "2026-09-28T16:00:00+00:00",
       "coverage": {
@@ -998,7 +998,7 @@
       "video": "assets/yellowstone-monitoring-v2-motion.mp4",
       "voices": {
         "warm": {
-          "audio": "assets/studio/de75ec9db7ebc579d892-warm.mp3",
+          "audio": "assets/studio/b828b99901d0e68f9c7f-warm.mp3",
           "duration": 69.95,
           "captions": [
             {
@@ -1105,7 +1105,7 @@
           "scriptSha256": "c194fd8ce005981ffe25015c4e61dffcefde7dd3966fdba0184552c3c1e1241c"
         },
         "measured": {
-          "audio": "assets/studio/de75ec9db7ebc579d892-measured.mp3",
+          "audio": "assets/studio/b828b99901d0e68f9c7f-measured.mp3",
           "duration": 78.03,
           "captions": [
             {
@@ -1233,7 +1233,7 @@
       "displayTitle": "A closer watch on Yellowstone",
       "displayDek": "A new monitoring station and a renewed lake camera expand the park’s scientific observations.",
       "format": "studio-programme",
-      "programmeVersion": "de75ec9db7ebc579d892",
+      "programmeVersion": "b828b99901d0e68f9c7f",
       "programme": {
         "why": "Better observations help scientists follow changes in the park's hydrothermal features.",
         "summary": "A new station and a renewed camera expand Yellowstone's observations.",
@@ -1254,17 +1254,17 @@
         ]
       },
       "sourceScriptSha256": "39805e72b31a99f95dc6598b86bb9a6de0daacc5f2b5dcad36e3b578e5bac8fc",
-      "builtAt": "2026-09-29T15:54:14.421357+00:00",
+      "builtAt": "2026-09-29T18:27:06.201215+00:00",
       "music": {
-        "drift": "assets/studio/music-de75ec9db7ebc579d892-drift.mp3",
-        "piano": "assets/studio/music-de75ec9db7ebc579d892-piano.mp3"
+        "drift": "assets/studio/music-b828b99901d0e68f9c7f-drift.mp3",
+        "piano": "assets/studio/music-b828b99901d0e68f9c7f-piano.mp3"
       },
       "production": {
         "pipeline": "broadcast-v1",
         "visualDecision": "mixture",
         "renderer": "studio.js",
         "sourceBound": true,
-        "compositionHash": "776697f3684fd6a80391e3534fa479ecbc404ef3ffe525e882578c0b860bbab4"
+        "compositionHash": "ce08569a3c290a74f5f0cf74a52a368d284bce289b0586466e15a73e58bf1f6f"
       },
       "publishedTime": "2026-09-28T04:30:00+00:00",
       "coverage": {
@@ -1328,7 +1328,7 @@
       "script": "Recognition for human rights work. The Havel Prize brings international attention to Nasrin Sotoudeh's legal advocacy. Iranian lawyer Nasrin Sotoudeh has received this year's Václav Havel human rights prize. The Council of Europe announced the award at its parliamentary assembly in Strasbourg. Her daughter accepted on her behalf, while Sotoudeh sent a video message from Tehran. The Council cited her legal advocacy and campaigning for human rights. The annual award recognizes civil society work in Europe and beyond, and includes sixty thousand euros, a trophy, and a diploma. The Council of Europe has recognized Sotoudeh's civil society work. What to watch next. Will the recognition lead to more sustained international attention to her work? That is the next question to follow.",
       "voices": {
         "warm": {
-          "audio": "assets/studio/c96e51ca1efb5d042385-warm.mp3",
+          "audio": "assets/studio/9632b28c3dc072f85fcb-warm.mp3",
           "duration": 78.4,
           "captions": [
             {
@@ -1435,7 +1435,7 @@
           "scriptSha256": "32467b146aee07560e1b04968aab51719f4e298d028eeff9b7dbc9e9114e9c71"
         },
         "measured": {
-          "audio": "assets/studio/c96e51ca1efb5d042385-measured.mp3",
+          "audio": "assets/studio/9632b28c3dc072f85fcb-measured.mp3",
           "duration": 83.33,
           "captions": [
             {
@@ -1563,7 +1563,7 @@
       "displayTitle": "Recognition for human rights work",
       "displayDek": "The Council of Europe recognizes the Iranian lawyer’s human rights advocacy.",
       "format": "studio-programme",
-      "programmeVersion": "c96e51ca1efb5d042385",
+      "programmeVersion": "9632b28c3dc072f85fcb",
       "programme": {
         "why": "The Havel Prize brings international attention to Nasrin Sotoudeh's legal advocacy.",
         "summary": "The Council of Europe has recognized Sotoudeh's civil society work.",
@@ -1584,17 +1584,17 @@
         ]
       },
       "sourceScriptSha256": "fa6a6788b46c460970b4cdee1c2947648a5d7444708d05768acec6ba64a54dc8",
-      "builtAt": "2026-09-29T15:54:15.710957+00:00",
+      "builtAt": "2026-09-29T18:27:07.554011+00:00",
       "music": {
-        "drift": "assets/studio/music-c96e51ca1efb5d042385-drift.mp3",
-        "piano": "assets/studio/music-c96e51ca1efb5d042385-piano.mp3"
+        "drift": "assets/studio/music-9632b28c3dc072f85fcb-drift.mp3",
+        "piano": "assets/studio/music-9632b28c3dc072f85fcb-piano.mp3"
       },
       "production": {
         "pipeline": "broadcast-v1",
         "visualDecision": "mixture",
         "renderer": "studio.js",
         "sourceBound": true,
-        "compositionHash": "d242222e79c4ad0abc63984dec4e74b9b8efec419035ebc12d5a2285f18a9ed4"
+        "compositionHash": "028e9a2e39c5eac34819611c88eb74952b403cb4d309736d65b8e869f320c434"
       },
       "publishedTime": null,
       "coverage": null,
@@ -1644,7 +1644,7 @@
       "video": "assets/culture-motion.mp4",
       "voices": {
         "warm": {
-          "audio": "assets/studio/cdf98aba2f73643a4193-warm.mp3",
+          "audio": "assets/studio/451476a9cd3d176ca965-warm.mp3",
           "duration": 82.03,
           "captions": [
             {
@@ -1761,7 +1761,7 @@
           "scriptSha256": "f9dd38b70f14e2f51181b2aff702797aefbcc3aa9da4f25c0e172113bdc398af"
         },
         "measured": {
-          "audio": "assets/studio/cdf98aba2f73643a4193-measured.mp3",
+          "audio": "assets/studio/451476a9cd3d176ca965-measured.mp3",
           "duration": 92.63,
           "captions": [
             {
@@ -1897,7 +1897,7 @@
         "motion": "Retained original CPU-composed loop"
       },
       "format": "studio-programme",
-      "programmeVersion": "cdf98aba2f73643a4193",
+      "programmeVersion": "451476a9cd3d176ca965",
       "displayTitle": "The journeys inside the art",
       "programme": {
         "why": "How an artwork travels can shape its meaning as much as how it was made.",
@@ -1919,17 +1919,17 @@
         ]
       },
       "sourceScriptSha256": "58c8909a8c43e0bf7813db9f8d1b1499cfa7d80c23dcd3510aa3fb27961b8372",
-      "builtAt": "2026-09-29T15:54:17.084875+00:00",
+      "builtAt": "2026-09-29T18:27:08.932404+00:00",
       "music": {
-        "drift": "assets/studio/music-cdf98aba2f73643a4193-drift.mp3",
-        "piano": "assets/studio/music-cdf98aba2f73643a4193-piano.mp3"
+        "drift": "assets/studio/music-451476a9cd3d176ca965-drift.mp3",
+        "piano": "assets/studio/music-451476a9cd3d176ca965-piano.mp3"
       },
       "production": {
         "pipeline": "broadcast-v1",
         "visualDecision": "mixture",
         "renderer": "studio.js",
         "sourceBound": true,
-        "compositionHash": "4a8bf36038975a53a4e99b1d9961f048384c02a3f49e5d418c2eb90024ca5b00"
+        "compositionHash": "8364d35b403a0517ea15b4693d0630420684a89b674173be3f217b75338b80bb"
       },
       "publishedTime": null,
       "coverage": null,
@@ -1982,7 +1982,7 @@
       "video": "assets/lake-depths-v2-motion.mp4",
       "voices": {
         "warm": {
-          "audio": "assets/studio/8c61056d5d741683027a-warm.mp3",
+          "audio": "assets/studio/e9d9a937176a3388932c-warm.mp3",
           "duration": 69.14,
           "captions": [
             {
@@ -2089,7 +2089,7 @@
           "scriptSha256": "8860b2ce79aa71feaef9bf13e74f225163025fb09bcff12cffca640a60aa026b"
         },
         "measured": {
-          "audio": "assets/studio/8c61056d5d741683027a-measured.mp3",
+          "audio": "assets/studio/e9d9a937176a3388932c-measured.mp3",
           "duration": 79.15,
           "captions": [
             {
@@ -2217,7 +2217,7 @@
       "displayTitle": "Reading the floor of Lake Chelan",
       "displayDek": "A USGS survey explores the lakebed through depth measurements and sediment sampling.",
       "format": "studio-programme",
-      "programmeVersion": "8c61056d5d741683027a",
+      "programmeVersion": "e9d9a937176a3388932c",
       "programme": {
         "why": "Mapping a lake's depths and sediments creates a record of a landscape hidden from view.",
         "summary": "Depth measurements and sediment samples document the lake beneath the surface.",
@@ -2238,17 +2238,17 @@
         ]
       },
       "sourceScriptSha256": "f9a90ed7e72c9a99cbee9090e22c2c2d96f952d0d8516d5a0fb6a82da3808ab9",
-      "builtAt": "2026-09-29T15:54:18.353466+00:00",
+      "builtAt": "2026-09-29T18:27:10.188603+00:00",
       "music": {
-        "drift": "assets/studio/music-8c61056d5d741683027a-drift.mp3",
-        "piano": "assets/studio/music-8c61056d5d741683027a-piano.mp3"
+        "drift": "assets/studio/music-e9d9a937176a3388932c-drift.mp3",
+        "piano": "assets/studio/music-e9d9a937176a3388932c-piano.mp3"
       },
       "production": {
         "pipeline": "broadcast-v1",
         "visualDecision": "mixture",
         "renderer": "studio.js",
         "sourceBound": true,
-        "compositionHash": "55bd4e961b1edfa50ca813d8fba602df08502fbc44ac237bb1a279c6d51bbab2"
+        "compositionHash": "a7de59e234817909ccf0b21688aabbbe847b9ccd61552fa51f688ab5536bb6e1"
       },
       "publishedTime": "2026-09-24T18:22:42+00:00",
       "coverage": {
@@ -2312,7 +2312,7 @@
       "script": "Stablecoin rules enter the debate. Reserve and risk requirements would shape how supervised banks issue payment stablecoins. The Federal Reserve is asking for public feedback on proposed rules for payment stablecoins. One proposal covers the assets that would back them, along with capital and risk controls. Another describes how supervised banks would apply for permission to issue them. These are proposed requirements, not a statement that the rules are already in effect. The comment window runs for sixty days after the notices appear in the Federal Register. These are proposals open for comment, not requirements already in effect. What to watch next. Follow the public comments and any changes before final rules. The response window begins with publication in the Federal Register.",
       "voices": {
         "warm": {
-          "audio": "assets/studio/c8b76b76e4ec5d9eb345-warm.mp3",
+          "audio": "assets/studio/2cb9af1260ad54860b56-warm.mp3",
           "duration": 76.15,
           "captions": [
             {
@@ -2429,7 +2429,7 @@
           "scriptSha256": "0bc35f00ebe3e0b7eb3e37edb78f511422204ad13587e2a901960393ae4d42a1"
         },
         "measured": {
-          "audio": "assets/studio/c8b76b76e4ec5d9eb345-measured.mp3",
+          "audio": "assets/studio/2cb9af1260ad54860b56-measured.mp3",
           "duration": 85.03,
           "captions": [
             {
@@ -2567,7 +2567,7 @@
       "displayTitle": "Stablecoin rules enter the debate",
       "displayDek": "Federal Reserve proposals address reserve assets, risk controls, and bank applications. The requirements are not yet in effect.",
       "format": "studio-programme",
-      "programmeVersion": "c8b76b76e4ec5d9eb345",
+      "programmeVersion": "2cb9af1260ad54860b56",
       "programme": {
         "why": "Reserve and risk requirements would shape how supervised banks issue payment stablecoins.",
         "summary": "These are proposals open for comment, not requirements already in effect.",
@@ -2588,17 +2588,17 @@
         ]
       },
       "sourceScriptSha256": "b28d373acecbfa30331663e20c6339638fbfa9f9c0beea82a93d96e5d76c7e9d",
-      "builtAt": "2026-09-29T15:54:19.659152+00:00",
+      "builtAt": "2026-09-29T18:27:11.502483+00:00",
       "music": {
-        "drift": "assets/studio/music-c8b76b76e4ec5d9eb345-drift.mp3",
-        "piano": "assets/studio/music-c8b76b76e4ec5d9eb345-piano.mp3"
+        "drift": "assets/studio/music-2cb9af1260ad54860b56-drift.mp3",
+        "piano": "assets/studio/music-2cb9af1260ad54860b56-piano.mp3"
       },
       "production": {
         "pipeline": "broadcast-v1",
         "visualDecision": "mixture",
         "renderer": "studio.js",
         "sourceBound": true,
-        "compositionHash": "faddf1f264cea1c9096e77029099c9f97fc9255e8de10fc0191efdfe6f2550bd"
+        "compositionHash": "4256f26a6f080bf8f15709cd0162559977bb729b82dfdeed21a40b4ad8805a58"
       },
       "publishedTime": null,
       "coverage": null,
@@ -2651,7 +2651,7 @@
       "video": "assets/warbler-record-v2-motion.mp4",
       "voices": {
         "warm": {
-          "audio": "assets/studio/108730b4eb09cbca1329-warm.mp3",
+          "audio": "assets/studio/56231f7ae5a64713ab71-warm.mp3",
           "duration": 68.73,
           "captions": [
             {
@@ -2753,7 +2753,7 @@
           "scriptSha256": "7fefc1f80aad6ce05eb9bb75692c2c193a8662ca5439ed22aec0cebfa4dd2956"
         },
         "measured": {
-          "audio": "assets/studio/108730b4eb09cbca1329-measured.mp3",
+          "audio": "assets/studio/56231f7ae5a64713ab71-measured.mp3",
           "duration": 79.28,
           "captions": [
             {
@@ -2876,7 +2876,7 @@
       "displayTitle": "A first in Maryland's bird record",
       "displayDek": "A MacGillivray’s warbler at Patuxent marks a newly confirmed species record for the state.",
       "format": "studio-programme",
-      "programmeVersion": "108730b4eb09cbca1329",
+      "programmeVersion": "56231f7ae5a64713ab71",
       "programme": {
         "why": "A confirmed observation adds a precise piece of evidence to a state's wildlife record.",
         "summary": "One confirmed record adds to what observers know about Maryland's birds.",
@@ -2897,17 +2897,17 @@
         ]
       },
       "sourceScriptSha256": "5c2baf2196c173c9626b4aa56f35832ce3b0dec82b8fd74edbd6c31dacdd29fc",
-      "builtAt": "2026-09-29T15:54:20.900623+00:00",
+      "builtAt": "2026-09-29T18:27:12.763680+00:00",
       "music": {
-        "drift": "assets/studio/music-108730b4eb09cbca1329-drift.mp3",
-        "piano": "assets/studio/music-108730b4eb09cbca1329-piano.mp3"
+        "drift": "assets/studio/music-56231f7ae5a64713ab71-drift.mp3",
+        "piano": "assets/studio/music-56231f7ae5a64713ab71-piano.mp3"
       },
       "production": {
         "pipeline": "broadcast-v1",
         "visualDecision": "mixture",
         "renderer": "studio.js",
         "sourceBound": true,
-        "compositionHash": "e90f108fc436f0b523e3fe8afb1386c1de1096918468d9a2da549aa130d10d42"
+        "compositionHash": "ceb4b35427611d7488424cbadf5773ee02fd7ecd70076b09ec3eb95763e69e73"
       },
       "publishedTime": "2026-09-24T14:13:04+00:00",
       "coverage": {
@@ -2956,7 +2956,7 @@
       "id": "reviewed-nist-workforce-20260918-v1",
       "topic": "technology",
       "topicLabel": "Technology",
-      "title": "Building routes into cybersecurity",
+      "title": "Cybersecurity training. A route to work?",
       "dek": "NIST announced nine awards across eight states for education and practical training.",
       "publishedAt": "2026-09-18",
       "dateLabel": "18 Sep 2026",
@@ -2968,81 +2968,91 @@
       },
       "publisherGroup": "NIST",
       "editorialNote": "A dated context segment from the September 18 announcement, checked September 28. Funding awards are not proof of completed training or jobs created. Illustration does not depict a recipient.",
-      "script": "Building routes into cybersecurity. Practical training partnerships aim to connect education with employers' cybersecurity needs. NIST has announced more than one point seven million dollars for cybersecurity workforce projects in eight states. Nine awards will support partnerships between training organizations and local employers. The projects include practical routes into the field, such as internships, apprenticeships, and hands-on learning. The goal is to connect education with the skills communities need. This is a funding announcement; the eventual number of people trained or hired is not yet established. Nine awards support training partnerships across eight states. What to watch next. The outcomes to follow are participation, completed training, and employment. The funding announcement does not yet establish those results.",
+      "script": "New federal funding is trying to turn cybersecurity training into a clearer route to work. On September eighteenth, the National Institute of Standards and Technology announced new funding. More than one point seven million dollars will support nine partnerships in eight states. The idea is to connect what local employers need with what people learn. Education and community organizations will work with businesses and nonprofits. Projects include internships, apprenticeships, and hands-on practice. One award goes to the University of Houston: just under two hundred thousand dollars. That is one local effort within this wider round of funding. But an award is a starting point. This announcement does not show how many people will finish training or get hired. The useful test comes next: who gets access to training, who completes it, and whether it leads to work.",
       "voices": {
         "warm": {
-          "audio": "assets/studio/e7af8c5b434460d4308a-warm.mp3",
-          "duration": 79.57,
+          "audio": "assets/studio/3e89d626a639aa91c7f4-warm.mp3",
+          "duration": 80.98,
           "captions": [
             {
               "start": 6.3,
-              "end": 8.56395,
-              "text": "Building routes into cybersecurity."
+              "end": 10.59569,
+              "text": "New federal funding is trying to turn cybersecurity training into a"
             },
             {
-              "start": 8.77392,
-              "end": 15.06653,
-              "text": "Practical training partnerships aim to connect education with employers' cybersecurity needs."
+              "start": 10.66567,
+              "end": 12.24463,
+              "text": "clearer route to work."
             },
             {
-              "start": 18.94,
-              "end": 23.03832,
-              "text": "NIST has announced more than one point seven million dollars for"
+              "start": 16.12,
+              "end": 17.7454,
+              "text": "On September eighteenth,"
             },
             {
-              "start": 23.1083,
-              "end": 26.82349,
-              "text": "cybersecurity workforce projects in eight states."
+              "start": 17.81537,
+              "end": 22.74961,
+              "text": "the National Institute of Standards and Technology announced new funding."
             },
             {
-              "start": 27.03347,
-              "end": 32.81524,
-              "text": "Nine awards will support partnerships between training organizations and local employers."
+              "start": 22.95959,
+              "end": 28.42789,
+              "text": "More than one point seven million dollars will support nine partnerships in eight states."
             },
             {
-              "start": 33.02522,
-              "end": 39.5268,
-              "text": "The projects include practical routes into the field, such as internships, apprenticeships,"
+              "start": 28.63787,
+              "end": 33.88558,
+              "text": "The idea is to connect what local employers need with what people learn."
             },
             {
-              "start": 39.59678,
-              "end": 41.16413,
-              "text": "and hands-on learning."
+              "start": 34.09556,
+              "end": 43.12812,
+              "text": "Education and community organizations will work with businesses and nonprofits. Projects include internships, apprenticeships,"
             },
             {
-              "start": 41.3741,
-              "end": 45.65578,
-              "text": "The goal is to connect education with the skills communities need."
+              "start": 43.1981,
+              "end": 44.96281,
+              "text": "and hands-on practice."
             },
             {
-              "start": 45.86576,
-              "end": 47.79302,
-              "text": "This is a funding announcement;"
+              "start": 45.17279,
+              "end": 48.19138,
+              "text": "One award goes to the University of Houston:"
             },
             {
-              "start": 47.86299,
-              "end": 52.57664,
-              "text": "the eventual number of people trained or hired is not yet established."
+              "start": 48.26136,
+              "end": 50.82717,
+              "text": "just under two hundred thousand dollars."
             },
             {
-              "start": 56.45,
-              "end": 60.62959,
-              "text": "Nine awards support training partnerships across eight states."
+              "start": 51.03714,
+              "end": 54.60141,
+              "text": "That is one local effort within this wider round of funding."
             },
             {
-              "start": 60.83957,
-              "end": 62.16311,
-              "text": "What to watch next."
+              "start": 54.81138,
+              "end": 57.65583,
+              "text": "But an award is a starting point."
             },
             {
-              "start": 62.37308,
-              "end": 68.14324,
-              "text": "The outcomes to follow are participation, completed training, and employment."
+              "start": 57.8658,
+              "end": 63.05546,
+              "text": "This announcement does not show how many people will finish training or get hired."
             },
             {
-              "start": 68.35322,
-              "end": 72.99721,
-              "text": "The funding announcement does not yet establish those results."
+              "start": 66.92,
+              "end": 68.8937,
+              "text": "The useful test comes next:"
+            },
+            {
+              "start": 68.96367,
+              "end": 71.75007,
+              "text": "who gets access to training, who completes it,"
+            },
+            {
+              "start": 71.82005,
+              "end": 74.39746,
+              "text": "and whether it leads to work."
             }
           ],
           "chapters": [
@@ -3056,105 +3066,137 @@
               "kind": "opening",
               "label": "Why it matters",
               "start": 4.5,
-              "end": 17.14
+              "end": 14.32
             },
             {
               "kind": "story",
               "label": "The story",
-              "start": 17.14,
-              "end": 54.65
+              "start": 14.32,
+              "end": 65.12
             },
             {
               "kind": "closing",
               "label": "What to watch",
-              "start": 54.65,
-              "end": 75.07
+              "start": 65.12,
+              "end": 76.48
             },
             {
               "kind": "outro",
               "label": "Up next",
-              "start": 75.07,
-              "end": 79.57
+              "start": 76.48,
+              "end": 80.98
             }
           ],
-          "sha256": "0526d661a382822dc7b143084ec79dfaa5b785fd3abedf880e2ef0f5925da7eb",
+          "sha256": "4e077b0d8931a13303744896e63f7b57ee4df156e424240b7402cccfa32e5733",
           "fullDecodePassed": true,
           "provider": "piper-local-cpu",
-          "scriptSha256": "df9540f6aa06dcbaf438f23da468afc2548f826103f5f4eccba7c14e7c0e5863"
+          "scriptSha256": "fdde4593734981f7848953db36d6bdb20a7613f05d6dde34bfd92174cd517046",
+          "visualCues": [
+            {
+              "start": 14.32,
+              "end": 28.63787,
+              "beat": 0
+            },
+            {
+              "start": 28.63787,
+              "end": 45.17279,
+              "beat": 1
+            },
+            {
+              "start": 45.17279,
+              "end": 54.81138,
+              "beat": 2
+            },
+            {
+              "start": 54.81138,
+              "end": 65.12,
+              "beat": 3
+            }
+          ]
         },
         "measured": {
-          "audio": "assets/studio/e7af8c5b434460d4308a-measured.mp3",
-          "duration": 87.56,
+          "audio": "assets/studio/3e89d626a639aa91c7f4-measured.mp3",
+          "duration": 91.77,
           "captions": [
             {
               "start": 6.3,
-              "end": 9.23293,
-              "text": "Building routes into cybersecurity."
+              "end": 12.17605,
+              "text": "New federal funding is trying to turn cybersecurity training into a"
             },
             {
-              "start": 9.4429,
-              "end": 16.64014,
-              "text": "Practical training partnerships aim to connect education with employers' cybersecurity needs."
+              "start": 12.24603,
+              "end": 14.08041,
+              "text": "clearer route to work."
             },
             {
-              "start": 20.51,
-              "end": 25.15399,
-              "text": "NIST has announced more than one point seven million dollars for"
+              "start": 17.95,
+              "end": 19.76533,
+              "text": "On September eighteenth,"
             },
             {
-              "start": 25.22397,
-              "end": 29.36873,
-              "text": "cybersecurity workforce projects in eight states."
+              "start": 19.83531,
+              "end": 25.38488,
+              "text": "the National Institute of Standards and Technology announced new funding."
             },
             {
-              "start": 29.57871,
-              "end": 36.57952,
-              "text": "Nine awards will support partnerships between training organizations and local employers."
+              "start": 25.59485,
+              "end": 32.2822,
+              "text": "More than one point seven million dollars will support nine partnerships in eight states."
             },
             {
-              "start": 36.7895,
-              "end": 43.3763,
-              "text": "The projects include practical routes into the field, such as internships, apprenticeships,"
+              "start": 32.49218,
+              "end": 38.54098,
+              "text": "The idea is to connect what local employers need with what people learn."
             },
             {
-              "start": 43.44628,
-              "end": 44.99041,
-              "text": "and hands-on learning."
+              "start": 38.75095,
+              "end": 49.29857,
+              "text": "Education and community organizations will work with businesses and nonprofits. Projects include internships, apprenticeships,"
             },
             {
-              "start": 45.20039,
-              "end": 50.38769,
-              "text": "The goal is to connect education with the skills communities need."
+              "start": 49.36855,
+              "end": 51.24937,
+              "text": "and hands-on practice."
             },
             {
-              "start": 50.59766,
-              "end": 53.07109,
-              "text": "This is a funding announcement;"
+              "start": 51.45934,
+              "end": 55.26741,
+              "text": "One award goes to the University of Houston:"
             },
             {
-              "start": 53.14107,
-              "end": 58.82941,
-              "text": "the eventual number of people trained or hired is not yet established."
+              "start": 55.33739,
+              "end": 58.46048,
+              "text": "just under two hundred thousand dollars."
             },
             {
-              "start": 62.69,
-              "end": 67.85644,
-              "text": "Nine awards support training partnerships across eight states."
+              "start": 58.67045,
+              "end": 63.48859,
+              "text": "That is one local effort within this wider round of funding."
             },
             {
-              "start": 68.06642,
-              "end": 69.71503,
-              "text": "What to watch next."
+              "start": 63.69857,
+              "end": 66.55463,
+              "text": "But an award is a starting point."
             },
             {
-              "start": 69.92501,
-              "end": 75.85363,
-              "text": "The outcomes to follow are participation, completed training, and employment."
+              "start": 66.7646,
+              "end": 72.41866,
+              "text": "This announcement does not show how many people will finish training or get hired."
             },
             {
-              "start": 76.06361,
-              "end": 80.99785,
-              "text": "The funding announcement does not yet establish those results."
+              "start": 76.3,
+              "end": 78.98367,
+              "text": "The useful test comes next:"
+            },
+            {
+              "start": 79.05365,
+              "end": 82.61741,
+              "text": "who gets access to training, who completes it,"
+            },
+            {
+              "start": 82.68739,
+              "end": 85.20676,
+              "text": "and whether it leads to work."
             }
           ],
           "chapters": [
@@ -3168,31 +3210,53 @@
               "kind": "opening",
               "label": "Why it matters",
               "start": 4.5,
-              "end": 18.71
+              "end": 16.15
             },
             {
               "kind": "story",
               "label": "The story",
-              "start": 18.71,
-              "end": 60.89
+              "start": 16.15,
+              "end": 74.5
             },
             {
               "kind": "closing",
               "label": "What to watch",
-              "start": 60.89,
-              "end": 83.06
+              "start": 74.5,
+              "end": 87.27
             },
             {
               "kind": "outro",
               "label": "Up next",
-              "start": 83.06,
-              "end": 87.56
+              "start": 87.27,
+              "end": 91.77
             }
           ],
-          "sha256": "49d4674805ec8ffcde8bf574e23baed69aff511d5883a8bcb1fe560c64434feb",
+          "sha256": "fe277ccb27497fc339ec7444f40bf42765356c336a10c070b6635cbed6f25427",
           "fullDecodePassed": true,
           "provider": "piper-local-cpu",
-          "scriptSha256": "df9540f6aa06dcbaf438f23da468afc2548f826103f5f4eccba7c14e7c0e5863"
+          "scriptSha256": "fdde4593734981f7848953db36d6bdb20a7613f05d6dde34bfd92174cd517046",
+          "visualCues": [
+            {
+              "start": 16.15,
+              "end": 32.49218,
+              "beat": 0
+            },
+            {
+              "start": 32.49218,
+              "end": 51.45934,
+              "beat": 1
+            },
+            {
+              "start": 51.45934,
+              "end": 63.69857,
+              "beat": 2
+            },
+            {
+              "start": 63.69857,
+              "end": 74.5,
+              "beat": 3
+            }
+          ]
         }
       },
       "status": "ready",
@@ -3213,41 +3277,73 @@
         "inspection": "Visually inspected: one open unbranded laptop in spare studio, abstract screen circuitry with no legible text, one light strip; no attack imagery.",
         "motion": "12 second seamless cosine zoom, 1.00 to 1.02, 24 fps, CPU-composed"
       },
-      "displayTitle": "Building routes into cybersecurity",
+      "displayTitle": "Cybersecurity training. A route to work?",
       "displayDek": "Nine NIST awards support practical training partnerships in eight states.",
       "format": "studio-programme",
-      "programmeVersion": "e7af8c5b434460d4308a",
+      "programmeVersion": "3e89d626a639aa91c7f4",
       "programme": {
-        "why": "Practical training partnerships aim to connect education with employers' cybersecurity needs.",
-        "summary": "Nine awards support training partnerships across eight states.",
-        "lookAhead": "The outcomes to follow are participation, completed training, and employment. The funding announcement does not yet establish those results.",
+        "why": "New funding connects local training with employers’ needs.",
+        "summary": "Funding is a start. Outcomes are the test.",
+        "lookAhead": "Who gets access, completes training, and moves into work?",
         "beats": [
           {
-            "label": "THE FUNDING",
-            "text": "More than $1.7 million"
+            "label": "THE INVESTMENT",
+            "text": "$1.7M+",
+            "detail": "9 awards · 8 states",
+            "cue": "On September eighteenth",
+            "nodes": [
+              "Federal funding",
+              "Local partnerships"
+            ]
           },
           {
-            "label": "THE REACH",
-            "text": "Nine awards · eight states"
+            "label": "HOW IT WORKS",
+            "text": "Learning meets work",
+            "detail": "Internships · Apprenticeships · Hands-on practice",
+            "cue": "The idea is to connect",
+            "nodes": [
+              "Employer needs",
+              "Training partners",
+              "Practical experience"
+            ]
           },
           {
-            "label": "THE APPROACH",
-            "text": "Practical training"
+            "label": "ONE LOCAL EXAMPLE",
+            "text": "$199,735",
+            "detail": "University of Houston · One of nine awards",
+            "cue": "One award goes to the University of Houston",
+            "nodes": [
+              "Houston, Texas",
+              "Local workforce needs"
+            ]
+          },
+          {
+            "label": "WHAT IS STILL UNKNOWN",
+            "text": "An award is a start",
+            "detail": "Training and hiring results are not established by this announcement.",
+            "cue": "But an award is a starting point",
+            "nodes": [
+              "Access",
+              "Completion",
+              "Employment"
+            ]
           }
-        ]
+        ],
+        "visualTreatment": "explanatory",
+        "soundTreatment": "bookends"
       },
       "sourceScriptSha256": "c7f927a0587917c60f92d08e98a553f293ca057331957ec24b77f3ce6a2a10f4",
-      "builtAt": "2026-09-29T15:54:22.198099+00:00",
+      "builtAt": "2026-09-29T18:27:14.147560+00:00",
       "music": {
-        "drift": "assets/studio/music-e7af8c5b434460d4308a-drift.mp3",
-        "piano": "assets/studio/music-e7af8c5b434460d4308a-piano.mp3"
+        "drift": "assets/studio/music-3e89d626a639aa91c7f4-drift.mp3",
+        "piano": "assets/studio/music-3e89d626a639aa91c7f4-piano.mp3"
       },
       "production": {
         "pipeline": "broadcast-v1",
         "visualDecision": "mixture",
         "renderer": "studio.js",
         "sourceBound": true,
-        "compositionHash": "00cf70604cf20ce406f5609b05f39e2b20e6aa6afebf1bae9e83a547e025d2ae"
+        "compositionHash": "e6f746ba141a4e79c54742c191f6fce3296d7585a0f9981ef780c7c977b9c660"
       },
       "publishedTime": null,
       "coverage": null,
@@ -3296,7 +3392,7 @@
       "video": "assets/space-motion.mp4",
       "voices": {
         "warm": {
-          "audio": "assets/studio/ddf4cdf77f438a3e0385-warm.mp3",
+          "audio": "assets/studio/6c2f87ea20b942db260f-warm.mp3",
           "duration": 87.67,
           "captions": [
             {
@@ -3418,7 +3514,7 @@
           "scriptSha256": "65b34e084c622c32339f4bc35d1f462a046d14e995edd9805d1ebc787e778a44"
         },
         "measured": {
-          "audio": "assets/studio/ddf4cdf77f438a3e0385-measured.mp3",
+          "audio": "assets/studio/6c2f87ea20b942db260f-measured.mp3",
           "duration": 96.0,
           "captions": [
             {
@@ -3559,7 +3655,7 @@
         "motion": "Retained original CPU-composed loop"
       },
       "format": "studio-programme",
-      "programmeVersion": "ddf4cdf77f438a3e0385",
+      "programmeVersion": "6c2f87ea20b942db260f",
       "displayTitle": "How small can a star-like world be?",
       "programme": {
         "why": "Very low-mass brown dwarfs test ideas about how star-forming clouds build new objects.",
@@ -3581,17 +3677,17 @@
         ]
       },
       "sourceScriptSha256": "18c5beeafa84d886487af10686c6a4ce728d78054ee1da8b5cb502207bd28580",
-      "builtAt": "2026-09-29T15:54:23.599353+00:00",
+      "builtAt": "2026-09-29T18:27:15.512546+00:00",
       "music": {
-        "drift": "assets/studio/music-ddf4cdf77f438a3e0385-drift.mp3",
-        "piano": "assets/studio/music-ddf4cdf77f438a3e0385-piano.mp3"
+        "drift": "assets/studio/music-6c2f87ea20b942db260f-drift.mp3",
+        "piano": "assets/studio/music-6c2f87ea20b942db260f-piano.mp3"
       },
       "production": {
         "pipeline": "broadcast-v1",
         "visualDecision": "mixture",
         "renderer": "studio.js",
         "sourceBound": true,
-        "compositionHash": "ed4b09e682f50d70a233cb3612ec4d800eb40b48334460ae687df56ece086c14"
+        "compositionHash": "1d74c35a7197ca6d53d43db167a647cac1295ace4c7bd35ff31237048ab5229a"
       },
       "publishedTime": null,
       "coverage": null,

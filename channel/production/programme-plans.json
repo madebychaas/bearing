@@ -200,24 +200,78 @@
     },
     "reviewed-nist-workforce-20260918-v1": {
       "sourceScriptSha256": "c7f927a0587917c60f92d08e98a553f293ca057331957ec24b77f3ce6a2a10f4",
-      "title": "Building routes into cybersecurity",
-      "why": "Practical training partnerships aim to connect education with employers' cybersecurity needs.",
-      "summary": "Nine awards support training partnerships across eight states.",
-      "lookAhead": "The outcomes to follow are participation, completed training, and employment. The funding announcement does not yet establish those results.",
+      "title": "Cybersecurity training. A route to work?",
+      "why": "New funding connects local training with employers’ needs.",
+      "summary": "Funding is a start. Outcomes are the test.",
+      "lookAhead": "Who gets access, completes training, and moves into work?",
       "beats": [
         {
-          "label": "THE FUNDING",
-          "text": "More than $1.7 million"
+          "label": "THE INVESTMENT",
+          "text": "$1.7M+",
+          "detail": "9 awards · 8 states",
+          "cue": "On September eighteenth",
+          "nodes": [
+            "Federal funding",
+            "Local partnerships"
+          ]
         },
         {
-          "label": "THE REACH",
-          "text": "Nine awards · eight states"
+          "label": "HOW IT WORKS",
+          "text": "Learning meets work",
+          "detail": "Internships · Apprenticeships · Hands-on practice",
+          "cue": "The idea is to connect",
+          "nodes": [
+            "Employer needs",
+            "Training partners",
+            "Practical experience"
+          ]
         },
         {
-          "label": "THE APPROACH",
-          "text": "Practical training"
+          "label": "ONE LOCAL EXAMPLE",
+          "text": "$199,735",
+          "detail": "University of Houston · One of nine awards",
+          "cue": "One award goes to the University of Houston",
+          "nodes": [
+            "Houston, Texas",
+            "Local workforce needs"
+          ]
+        },
+        {
+          "label": "WHAT IS STILL UNKNOWN",
+          "text": "An award is a start",
+          "detail": "Training and hiring results are not established by this announcement.",
+          "cue": "But an award is a starting point",
+          "nodes": [
+            "Access",
+            "Completion",
+            "Employment"
+          ]
         }
-      ]
+      ],
+      "openingNarration": "New federal funding is trying to turn cybersecurity training into a clearer route to work.",
+      "body": "On September eighteenth, the National Institute of Standards and Technology announced new funding. More than one point seven million dollars will support nine partnerships in eight states. The idea is to connect what local employers need with what people learn. Education and community organizations will work with businesses and nonprofits. Projects include internships, apprenticeships, and hands-on practice. One award goes to the University of Houston: just under two hundred thousand dollars. That is one local effort within this wider round of funding. But an award is a starting point. This announcement does not show how many people will finish training or get hired.",
+      "closingNarration": "The useful test comes next: who gets access to training, who completes it, and whether it leads to work.",
+      "visualTreatment": "explanatory",
+      "soundTreatment": "bookends",
+      "review": {
+        "reviewedAt": "2026-09-29",
+        "sourceUrl": "https://www.nist.gov/news-events/news/2026/09/nist-awards-more-17-million-support-cybersecurity-workforce-development",
+        "basis": "Primary announcement checked for amount, award count, state count, partnership model and Houston award. Outcomes framed as questions, not promised results.",
+        "reviewer": "Codex editorial pass; not user listening approval",
+        "checkedFacts": {
+          "total": "More than $1.7 million",
+          "awards": 9,
+          "states": 8,
+          "houstonAwardUSD": 199735,
+          "recipient": "University of Houston",
+          "approach": [
+            "internships",
+            "apprenticeships",
+            "hands-on projects"
+          ],
+          "outcomes": "Not established by the funding announcement"
+        }
+      }
     },
     "webb-small-worlds-2026-09": {
       "sourceScriptSha256": "18c5beeafa84d886487af10686c6a4ce728d78054ee1da8b5cb502207bd28580",

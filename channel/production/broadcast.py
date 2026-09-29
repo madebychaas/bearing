@@ -24,9 +24,10 @@ class Run:
 
 def write_and_edit(run,story,plan):
     evidence={'url':story['source']['url'],'sourceTitle':story['source']['title'],'sourceScript':story['script'],'sourceScriptSha256':digest(story['script']),'date':story.get('publishedTime') or story.get('publishedAt') or story.get('dateLabel')}
+    if plan.get('review'):evidence['presentationReview']=plan['review']
     pipeline.write_json(run.folder/'source-evidence.json',evidence)
     run.finish('source',artifact='source-evidence.json',sourceScriptSha256=evidence['sourceScriptSha256'])
-    scripts={'opening':f"{plan['title']}. {plan['why']}",'story':plan.get('body',story['script']),'closing':f"{plan['summary']} What to watch next. {plan['lookAhead']}"}
+    scripts={'opening':plan.get('openingNarration',f"{plan['title']}. {plan['why']}"),'story':plan.get('body',story['script']),'closing':plan.get('closingNarration',f"{plan['summary']} What to watch next. {plan['lookAhead']}")}
     pipeline.write_json(run.folder/'script-draft.json',{'scripts':scripts,'method':'Compile the source-bound editorial presentation plan','sourceScriptSha256':plan['sourceScriptSha256']})
     run.finish('write_script',artifact='script-draft.json',format='Spoken opening, context, narrative, takeaway and look-ahead')
     if plan['sourceScriptSha256']!=evidence['sourceScriptSha256']:raise ValueError('Source revision requires a new accuracy edit')
@@ -38,6 +39,25 @@ def write_and_edit(run,story,plan):
     pipeline.write_json(run.folder/'script-edited.json',{'scripts':scripts,'review':checks})
     run.finish('edit_script',artifact='script-edited.json',**checks)
     return scripts
+
+def timed_beats(beats,captions,chapter):
+    """Bind authored graphics to actual spoken phrases, independently for each voice."""
+    if not any(beat.get('cue') for beat in beats):return None
+    if not all(beat.get('cue') for beat in beats):raise ValueError('Every explanatory beat needs a narration cue')
+    normalize=lambda text: ' '.join(re.findall(r"[a-z0-9]+",text.lower()))
+    phrases=[c for c in captions if chapter['start']<=c['start']<chapter['end']]
+    words=[];times=[]
+    for caption in phrases:
+        tokens=normalize(caption['text']).split();words.extend(tokens);times.extend([caption['start']]*len(tokens))
+    starts=[]
+    for beat in beats:
+        cue=normalize(beat['cue']).split()
+        matches=[i for i in range(len(words)-len(cue)+1) if words[i:i+len(cue)]==cue]
+        if len(matches)!=1:raise ValueError('Visual cue must match exactly one spoken phrase')
+        starts.append(times[matches[0]])
+    if any(b<=a for a,b in zip(starts,starts[1:])):raise ValueError('Visual cues must follow narration order')
+    starts[0]=chapter['start']
+    return [{'start':start,'end':starts[i+1] if i+1<len(starts) else chapter['end'],'beat':i} for i,start in enumerate(starts)]
 
 def visuals(run,story,plan):
     decisions=[{'phase':'opening','kind':'text-motion','purpose':'Introduce this story and why it matters'}, {'phase':'story','kind':'illustration-video-and-motion-graphics','purpose':'Story-specific illustrative scene and source-bound supporting facts','image':story['image'],'video':story['video'],'beats':plan['beats']}, {'phase':'closing','kind':'text-motion','purpose':'Takeaway and a qualified look-ahead'}]

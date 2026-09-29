@@ -91,7 +91,7 @@ def prepare_queue(candidates,reports,root):
 def production_brief(story,plan):
     """Structured script and shot instructions for Bearing's existing studio renderer."""
     source={'id':story['id'],'url':story['source']['url'],'scriptSha256':fingerprint(story['script'])}
-    sections=[('opening',f"{plan['title']}. {plan['why']}",'title-and-consequence'),('story',plan.get('body',story['script']),'illustrated-explainer'),('closing',f"{plan['summary']} What to watch next. {plan['lookAhead']}",'takeaway-and-look-ahead')]
+    sections=[('opening',plan.get('openingNarration',f"{plan['title']}. {plan['why']}"),'title-and-consequence'),('story',plan.get('body',story['script']),'illustrated-explainer'),('closing',plan.get('closingNarration',f"{plan['summary']} What to watch next. {plan['lookAhead']}"),'takeaway-and-look-ahead')]
     blocks=[{'phase':phase,'spokenText':text,'estimatedSeconds':round(len(text.split())/2.25,1),'source':source,'visualRole':role} for phase,text,role in sections]
     shots=[]
     for beat in plan['beats']:

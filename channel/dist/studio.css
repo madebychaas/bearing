@@ -20,4 +20,14 @@
 @media(max-width:650px){.studio-player .studio-credit,.bulletin-player.studio-player .studio-credit{bottom:200px}}
 .studio-credit{font-size:12px;line-height:1.4}.studio-chapter{min-height:32px}
 .bulletin-player.studio-player .bulletin-stage{isolation:auto}
+.studio-beat-detail:empty,.studio-beat-flow:empty{display:none}
+.studio-layer[data-visual-treatment=explanatory][data-phase=story]:before{opacity:1;background:linear-gradient(120deg,#08141dfc,#112734fa)}
+.studio-layer[data-visual-treatment=explanatory] .studio-beat{left:6%;top:14%;width:88%;max-width:none;padding:0;border:0;background:none;backdrop-filter:none;transform:translateY(var(--beat-travel))}
+.studio-layer[data-visual-treatment=explanatory][data-phase=story] .studio-beat{opacity:var(--beat-opacity)}
+.studio-layer[data-visual-treatment=explanatory] .studio-beat-text{font-size:clamp(29px,6cqw,76px);font-weight:500;letter-spacing:-.035em;line-height:1.08}
+.studio-beat-detail{font-size:clamp(13px,1.8cqw,22px);line-height:1.45;color:#b9cfd7;margin:13px 0 0;max-width:90%}
+.studio-beat-flow{display:flex;align-items:center;gap:14px;margin-top:26px;max-width:96%}
+.studio-flow-node{padding:13px 16px;border:1px solid #a9d5df38;border-radius:7px;background:#abcbd409;color:#dce9ed;font-size:clamp(12px,1.7cqw,21px);line-height:1.3;flex:1;min-width:0}
+.studio-flow-arrow{color:#88b6c4;font-size:22px}
+@media(max-width:650px){.studio-player .studio-layer[data-visual-treatment=explanatory] .studio-beat{top:10%;left:7%;width:86%;max-width:none}.studio-layer[data-visual-treatment=explanatory] .studio-beat-text{font-size:26px}.studio-beat-detail{font-size:13px;line-height:1.35;margin-top:8px;max-width:100%}.studio-beat-flow{align-items:stretch;gap:4px;margin-top:12px;max-width:100%}.studio-flow-node{padding:6px 5px;font-size:12px}.studio-flow-arrow{align-self:center;font-size:14px}}
 @media(max-width:650px){.studio-player .studio-credit{font-size:12px}.studio-chapter,.studio-player .studio-eyebrow,.studio-player .studio-why-label,.studio-player .studio-beat-label{font-size:12px}}

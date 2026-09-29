@@ -16,3 +16,6 @@ Thumbs.db
 /channel/dist/source-status.json
 /channel/dist/latest-edition.json
 /channel/dist/assets/latest/
+# Keep only explicitly reviewed/published programme deliveries versioned.
+# Already tracked assets stay tracked; force-add reviewed new deliveries.
+/channel/dist/assets/studio/

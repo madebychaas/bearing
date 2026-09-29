@@ -9,7 +9,7 @@ import scriptdesk
 
 DIST=pipeline.DIST
 WORK=pipeline.WORK
-STYLE='studio-programme-v3-pipeline-bearing'
+STYLE='studio-programme-v4.1-narration-cues'
 TRANSITION_LEAD=1.8
 TRANSITION_TAIL=1.8
 IDENT_DURATION=4.5
@@ -99,7 +99,11 @@ def produce_story(story,plan,settings):
             if not 25<duration<160 or captions[-1]['end']>duration:raise ValueError('Programme duration or captions invalid')
             os.replace(temp,output)
             voices[voice]={'audio':output.relative_to(DIST).as_posix(),'duration':round(duration,3),'captions':captions,'chapters':chapters,'sha256':hashlib.sha256(output.read_bytes()).hexdigest(),'fullDecodePassed':True,'provider':'piper-local-cpu','scriptSha256':sha(' '.join(scripts.values()))}
+            cues=broadcast.timed_beats(plan['beats'],captions,next(c for c in chapters if c['kind']=='story'))
+            if cues:voices[voice]['visualCues']=cues
         result={**story,'format':'studio-programme','programmeVersion':identity,'title':plan['title'],'displayTitle':plan['title'],'script':' '.join(scripts.values()),'voices':voices,'programme':{k:plan[k] for k in ('why','summary','lookAhead','beats')},'sourceScriptSha256':plan['sourceScriptSha256'],'builtAt':pipeline.stamp(),'music':music,'production':{'pipeline':'broadcast-v1','visualDecision':'mixture','renderer':'studio.js','sourceBound':True,'compositionHash':sha(json.dumps(visual_composition,sort_keys=True))}}
+        for key in ('visualTreatment','soundTreatment'):
+            if plan.get(key):result['programme'][key]=plan[key]
         run.finish('assemble',voices={v:{'audio':t['audio'],'duration':t['duration'],'sha256':t['sha256'],'fullDecodePassed':t['fullDecodePassed']} for v,t in voices.items()},delivery='Timed browser composition of voice, motion video, generated graphics and ducked music; one story per playlist entry')
         pipeline.write_json(record,result);return result
     except Exception as exc:
