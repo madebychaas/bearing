@@ -8,6 +8,8 @@ Before broad product work:
 2. Read `product/NEXT.md` for the current mission.
 3. Review the existing implementation and preserve what already works.
 
+Before writing or revising Bearing scripts, read `product/EDITORIAL_VOICE.md` and the relevant before/after examples in `product/SCRIPT_REWRITES_20260930.md`. The machine-readable standard is `channel/production/editorial-voice.json`. Treat it as editorial guidance, not factual evidence or a trained model. Preserve the distinction between viewer-accepted performances and newly rewritten candidates. A text revision must not silently change a published story's script while its narration, captions and graphics still represent the older version.
+
 ## How to work
 
 - Work autonomously toward the current mission. Do not wait for implementation-level instructions when the product intent is clear.

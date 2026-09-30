@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "version": "bearing-editorial-2026-09-30-v1",
+  "purpose": "Persistent editorial guidance and reference examples for drafting and editing; not model-weight training and not factual evidence.",
+  "basis": "Direct viewer feedback and the accepted September 30 PCE revision. New library rewrites are editorial exercises, not viewer-approved performances.",
+  "budget": {
+    "targetWords": [
+      50,
+      75
+    ],
+    "minimumWords": 35,
+    "maximumWords": 80,
+    "maximumSeconds": 45,
+    "measuredWordsPerSecond": 2,
+    "framingSeconds": 2.5
+  },
+  "principles": [
+    "Find the one change or discovery the viewer needs to understand. Write that before drafting the script.",
+    "Lead with a concrete consequence or compelling finding. Be catchy through specificity and active verbs, not hype or a slogan.",
+    "For a genuinely new report, establish that the finding comes from a new report in the lead. Name the source and verified release weekday in sentence two or three when useful. Do not turn every event into a report or make an old report new.",
+    "A script is a complete story. Its opening poses one useful idea, its body explains that idea, and its closing resolves its consequence or identifies a supported next step. No unseen headline or previous clip should be needed.",
+    "Prefer spoken language and short connected sentences. Vary sentence lengths. Read it aloud at a measured pace; remove awkward syntax, duplicated context and filler instead of speeding up the voice.",
+    "Preserve natural breaths. Do not insert dramatic dead air or artificial reading pauses. Let relevant pictures hold while the narration continues.",
+    "Use the minimum numbers, names and dates needed to understand the story. Put less useful precision in source notes, not the first sentence. Explain unfamiliar terms through their function.",
+    "Keep the claim's status exact: proposal versus rule, funding versus delivered result, finding versus explanation, aggregate versus every person. Never add an unsupported benefit to create impact.",
+    "For science, art and nature, curiosity and understanding can be the payoff. Do not force a wallet angle, public danger or personal instruction where the evidence does not support it.",
+    "End on this story's consequence, a verified deadline, a useful unresolved question or a specific limit of the evidence. Do not default every ending to 'The next test' or 'What to watch next'.",
+    "Visuals answer the same question as the current line. Reveal in normal reading order, top to bottom and left to right. Change visual form when the explanatory task changes. Courtesy credits and permission remain mandatory for third-party media.",
+    "Treat the examples below as lessons in structure and phrasing only. Never import their facts, dates, numbers, quotes or attribution into a new story; use only the supplied evidence packet."
+  ],
+  "editPass": [
+    "State the news and its significance in one plain sentence; compare the lead against it.",
+    "Check each sentence against the current evidence, including who, when, status and uncertainty.",
+    "Read opening, body and closing as one spoken passage. Remove repetitions and template transitions.",
+    "Mark awkward names and phrases for pronunciation review. Keep the voice's speaking rate measured.",
+    "Match each visual to a spoken phrase and reading order. Hold pictures for clarity without padding the track.",
+    "Check word budget and then measured TTS duration. An estimate is not a rendered runtime or listening review."
+  ],
+  "examples": [
+    {
+      "id": "report-consequence",
+      "status": "viewer-accepted-delivered-script",
+      "beforeLead": "Americans spent more, but inflation erased the gain in after-tax income.",
+      "after": {
+        "opening": "A new report shows inflation swallowed Americans' income gains.",
+        "body": "The Bureau of Economic Analysis said Wednesday that after-tax income rose in August. Prices rose too, leaving buying power flat. Annual inflation was three point four percent, above the Fed's two percent goal.",
+        "closing": "The next test: can income start outpacing prices? That's what gives households more room to breathe."
+      },
+      "lesson": "Establish that this is a new finding while keeping the practical consequence first. Put agency and Wednesday in the next sentence, then explain the mechanism. This accepted example is not a template for every ending."
+    },
+    {
+      "id": "proposal-and-participation",
+      "status": "source-checked-editorial-exercise-not-viewer-approved",
+      "beforeLead": "Stablecoin rules enter the debate.",
+      "after": {
+        "opening": "Payment stablecoins would need full backing under new Federal Reserve proposals.",
+        "body": "These digital tokens are designed to hold a steady value. The plans, published Tuesday, cover issuers overseen by the Fed. They would need assets, such as Treasury bills, covering the tokens' full value.",
+        "closing": "Comments are due November thirtieth. This is the public's chance to weigh in before the Fed settles the requirements."
+      },
+      "lesson": "Explain what the proposed safeguard does before listing regulatory machinery. Define the unfamiliar object, preserve supervisory scope and use the verified deadline for a useful close."
+    },
+    {
+      "id": "consequence-and-uncertainty",
+      "status": "source-checked-editorial-exercise-not-viewer-approved",
+      "beforeLead": "The next test for satellite servicing.",
+      "after": {
+        "opening": "A rescue attempt failed to buy NASA's Swift space telescope more time.",
+        "body": "NASA says the robot sent to raise Swift's orbit developed communication and control problems. Swift has studied cosmic explosions for more than twenty years. The agency is gathering lessons for future satellite repairs.",
+        "closing": "Without a boost, the agency expects Swift to re-enter Earth's atmosphere by year's end."
+      },
+      "lesson": "Replace a generic mission overview with the result that changes the outlook. Name the failure, explain why it matters and attribute the conditional forecast rather than promising a future rescue."
+    }
+  ]
+}

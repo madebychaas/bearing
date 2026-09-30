@@ -2,6 +2,12 @@
 
 One watch-first news page: a large player, a playlist of individual stories, and a latest-news desk alongside it (below it on mobile). Every video has its own source, duration, thumbnail, and selection control. One initial Play starts continuous playback. Stories remain independently playable; they are not stitched into a multi-story compilation.
 
+## Current milestone: editorial voice and script rewrites
+
+The September 30 writing pass completed **13 source-checked drafts**, taking the existing scripts from about **106 to 60 words on average**, with a **52–68 word** range. The [rewrite book](../product/SCRIPT_REWRITES_20260930.md) retains the before/after copy, evidence, timing caveats, visual cues and specific editing lessons. The [editorial playbook](../product/EDITORIAL_VOICE.md) and [editable voice profile](production/editorial-voice.json) supply persistent guidance and selected examples to both drafting and editing in `production/scriptdesk.py`.
+
+These examples guide style; they are not evidence for another story or model-weight training. New copy still requires editorial review, a current why-now check, rights and pronunciation checks, and newly rendered narration and media before publication. No TTS or media was generated in this pass. The accepted PCE and NIST media remain unchanged, and the new alternatives do not imply viewer approval. Estimated script runtimes are planning aids, not measured delivery durations. See [the current handoff](../product/NEXT.md).
+
 ## Programmes
 
 - **The Brief** — fresh, attributed publisher headlines, automatically produced as short video updates. No invented contextual narration.
@@ -73,6 +79,8 @@ For another machine, create a virtual environment, install `production/requireme
 ## Source and production records
 
 - `production/edition-source.json`: original sourced scripts and editorial distinctions.
+- `production/editorial-voice.json`: editable voice principles, word budget, editing pass and selected style examples supplied to the native draft/edit desk.
+- `production/editorial-rewrites-20260930.json`: thirteen versioned writing alternatives with source checks, timing status and visual cues; not live playlist or approved production plans.
 - `production/art-provenance.json`: exact image-generation prompts and artifact lineage.
 - `production/visuals.json`: active bespoke visual registry, prompts, review notes, story/script bindings, and media hashes.
 - `production/runs/visual-requests.json`: eligible source candidates waiting for bespoke art; these have not been published as video segments.

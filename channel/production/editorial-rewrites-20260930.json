@@ -1,0 +1,1045 @@
+{
+  "schema": 1,
+  "revision": "bearing-script-rewrites-20260930-v1",
+  "createdAt": "2026-09-30",
+  "status": "editorial-rewrites-for-production-review",
+  "purpose": "User-requested rewrite and editorial learning library. No model weights were trained. Not a playlist or production approval.",
+  "scope": "Eleven published full programmes, the accepted PCE film and one retained unproduced habitat story; machine-generated publisher-headline briefs are not authored full stories.",
+  "playbackPolicy": "Published scripts, voices, captions, graphics and accepted media remain an immutable matched delivery. These text candidates need a current evidence/timing check and complete production before replacing one.",
+  "statistics": {
+    "stories": 13,
+    "beforeWords": 1375,
+    "afterWords": 780,
+    "rangeWords": [
+      52,
+      68
+    ],
+    "meanBefore": 105.8,
+    "meanAfter": 60
+  },
+  "stories": [
+    {
+      "id": "reviewed-pce-buying-power-20260930-v1",
+      "title": "Inflation erased the income gain.",
+      "beforeScript": "A new report shows inflation swallowed Americans' income gains. The Bureau of Economic Analysis said Wednesday that after-tax income rose in August. Prices rose too, leaving buying power flat. Annual inflation was three point four percent, above the Fed's two percent goal. The next test: can income start outpacing prices? That's what gives households more room to breathe.",
+      "opening": "A new report shows inflation swallowed Americans' income gains.",
+      "body": "The Bureau of Economic Analysis said Wednesday that after-tax income rose in August. Prices rose too, leaving buying power flat. Annual inflation was three point four percent, above the Fed's two percent goal.",
+      "closing": "For households, more breathing room starts with income outpacing prices.",
+      "sourceUrl": "https://www.bea.gov/news/2026/personal-income-and-outlays-august-2026",
+      "sourceName": "U.S. Bureau of Economic Analysis",
+      "sourcePublishedDate": "2026-09-30",
+      "sourceCheck": {
+        "status": "verified-primary",
+        "checkedAt": "2026-09-30T14:05:56Z",
+        "notes": "Uses the source check for the accepted revised film earlier in this session; no new factual assertion. This lighter closing is a writing alternate, not a replacement for the accepted delivered movie."
+      },
+      "timeliness": {
+        "mode": "current",
+        "reason": "September 30 BEA release; existing review valid through October 2. Recheck before later publication."
+      },
+      "editorialChanges": [
+        "Preserve the user-approved new-report lead and clear Wednesday attribution; good copy need not be changed for variety alone.",
+        "Replace the question-plus-answer closing with one consequence: income must outpace prices for more room in household budgets.",
+        "Keep the month-to-month income mechanism distinct from annual inflation; do not imply each household had the same result."
+      ],
+      "visualPlan": [
+        {
+          "cue": "A new report",
+          "purpose": "State the verified buying-power takeaway.",
+          "layout": "One clear lead, top to bottom; no dramatic pause."
+        },
+        {
+          "cue": "after-tax income rose",
+          "purpose": "Explain monthly income, prices and real buying power.",
+          "layout": "Income left, prices center, buying power right; reveal at each phrase."
+        },
+        {
+          "cue": "three point four percent",
+          "purpose": "Compare annual PCE inflation with the longer-run goal.",
+          "layout": "Current value left, goal right; zero baseline and labeled units."
+        },
+        {
+          "cue": "more breathing room",
+          "purpose": "Finish on the income-versus-prices condition.",
+          "layout": "Hold comparison into the closing bridge; resolve to one condition, no invented forecast."
+        }
+      ],
+      "pronunciations": [],
+      "claimChecks": [
+        {
+          "claim": "After-tax income rose but real buying power was flat in August.",
+          "sourceUrl": "https://www.bea.gov/news/2026/personal-income-and-outlays-august-2026",
+          "support": "BEA reported nominal disposable income up 0.3 percent and real disposable income unchanged."
+        },
+        {
+          "claim": "Annual inflation was 3.4 percent.",
+          "sourceUrl": "https://www.bea.gov/news/2026/personal-income-and-outlays-august-2026",
+          "support": "Headline PCE price index rose 3.4 percent from a year earlier."
+        },
+        {
+          "claim": "Fed longer-run goal is 2 percent.",
+          "sourceUrl": "https://www.federalreserve.gov/faqs/economy_14400.htm",
+          "support": "Federal Reserve defines its longer-run goal using annual PCE price changes."
+        }
+      ],
+      "issues": [
+        "Alternate closing has not received viewer approval or new TTS/media assembly."
+      ],
+      "script": "A new report shows inflation swallowed Americans' income gains. The Bureau of Economic Analysis said Wednesday that after-tax income rose in August. Prices rose too, leaving buying power flat. Annual inflation was three point four percent, above the Fed's two percent goal. For households, more breathing room starts with income outpacing prices.",
+      "originalSha256": "82847a09c0964c125dabb5ac0f6a8534b5dca6adbe7a3672f15484abedb0cac3",
+      "scriptSha256": "24efe325915440b2e0508fccc364f14f6a56575aa7b2a7de7f7f2a1df9e8a8f1",
+      "wordCount": 52,
+      "beforeWordCount": 58,
+      "estimatedSeconds": 28.5,
+      "durationBasis": "Planning only: two words per second plus 2.5 seconds framing; not synthesized or measured.",
+      "productionStatus": "not-rendered",
+      "viewerApproved": false,
+      "baselineViewerAcceptance": "accepted-cut"
+    },
+    {
+      "id": "reviewed-fed-stablecoin-20260924-v1",
+      "title": "What would back payment stablecoins",
+      "opening": "Payment stablecoins would need full backing under new Federal Reserve proposals.",
+      "body": "These digital tokens are designed to hold a steady value. The plans, published Tuesday, cover issuers overseen by the Fed. They would need assets, such as Treasury bills, covering the tokens' full value.",
+      "closing": "Comments are due November thirtieth. This is the public's chance to weigh in before the Fed settles the requirements.",
+      "sourceUrl": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260924a.htm",
+      "sourceName": "Federal Reserve; Federal Register",
+      "sourcePublishedDate": "2026-09-24",
+      "sourceCheck": {
+        "status": "verified-primary",
+        "checkedAt": "2026-09-30",
+        "notes": "Announcement and both September 29 proposed-rule notices checked. Both notices specify November 30, 2026 for comments. No final rule is claimed."
+      },
+      "timeliness": {
+        "mode": "current",
+        "reason": "The September 29 Federal Register notices supply a newly fixed public-comment deadline, replacing the earlier relative timing. Recheck status and deadline before airing later."
+      },
+      "editorialChanges": [
+        "Explain the safeguard before the regulatory process.",
+        "Define an unfamiliar financial term once, in spoken language.",
+        "Replace the now-resolved sixty-day clock with the verified calendar deadline.",
+        "Use proposed/would throughout; an application framework does not imply an approved issuer.",
+        "Final desk edit keeps one consumer explanation: what backs the token. Application procedures and an unexplained risk-control list stay in source notes rather than overloading the spoken story."
+      ],
+      "visualPlan": [
+        {
+          "cue": "full backing",
+          "purpose": "Explain backing without implying a government guarantee.",
+          "layout": "Original token-and-reserve diagram; issuer on left, permitted backing on right; persistent Proposed label."
+        },
+        {
+          "cue": "Treasury bills",
+          "purpose": "Make the permitted backing example concrete.",
+          "layout": "Reveal the Treasury bills label at its spoken reference within the backing diagram; no market-price chart or deposit-insurance promise."
+        },
+        {
+          "cue": "November thirtieth",
+          "purpose": "Give the audience the verified participation deadline.",
+          "layout": "Quiet deadline card: November 30, 2026; source links available; proposal status remains visible."
+        }
+      ],
+      "pronunciations": [],
+      "claimChecks": [
+        {
+          "claim": "Fed-supervised issuers would fully back payment stablecoins.",
+          "sourceUrl": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260924a.htm",
+          "support": "The first proposal sets permissible reserve assets, capital requirements and risk standards."
+        },
+        {
+          "claim": "Payment stablecoins are designed to maintain stable monetary value.",
+          "sourceUrl": "https://www.federalregister.gov/documents/2026/09/29/2026-19860/implementing-the-federal-reserve-boards-responsibilities-under-the-genius-act",
+          "support": "The proposed definition covers payment assets with fixed monetary redemption and a stable-value representation."
+        },
+        {
+          "claim": "Publication was Tuesday, September 29; comments close November 30.",
+          "sourceUrl": "https://www.federalregister.gov/documents/2026/09/29/2026-19860/implementing-the-federal-reserve-boards-responsibilities-under-the-genius-act",
+          "support": "Notice date September 29, 2026; DATES section gives November 30, 2026."
+        },
+        {
+          "claim": "Banks would follow a separate application process.",
+          "sourceUrl": "https://www.federalregister.gov/documents/2026/09/29/2026-19899/application-procedures-for-board-supervised-insured-depository-institutions-seeking-approval-for-a",
+          "support": "The second notice proposes approval procedures; it has the same comment deadline."
+        }
+      ],
+      "issues": [
+        "This writing draft is not a final-rule claim or investment advice. Recheck proposal status before any later production."
+      ],
+      "beforeScript": "Stablecoin rules enter the debate. Reserve and risk requirements would shape how supervised banks issue payment stablecoins. The Federal Reserve is asking for public feedback on proposed rules for payment stablecoins. One proposal covers the assets that would back them, along with capital and risk controls. Another describes how supervised banks would apply for permission to issue them. These are proposed requirements, not a statement that the rules are already in effect. The comment window runs for sixty days after the notices appear in the Federal Register. These are proposals open for comment, not requirements already in effect. What to watch next. Follow the public comments and any changes before final rules. The response window begins with publication in the Federal Register.",
+      "script": "Payment stablecoins would need full backing under new Federal Reserve proposals. These digital tokens are designed to hold a steady value. The plans, published Tuesday, cover issuers overseen by the Fed. They would need assets, such as Treasury bills, covering the tokens' full value. Comments are due November thirtieth. This is the public's chance to weigh in before the Fed settles the requirements.",
+      "originalSha256": "0bc35f00ebe3e0b7eb3e37edb78f511422204ad13587e2a901960393ae4d42a1",
+      "scriptSha256": "5d3c76d61f2b97af02f8c155b5807dde2342618ccb87631a4096a8de31ddf2bd",
+      "wordCount": 63,
+      "beforeWordCount": 122,
+      "estimatedSeconds": 34.0,
+      "durationBasis": "Planning only: two words per second plus 2.5 seconds framing; not synthesized or measured.",
+      "productionStatus": "not-rendered",
+      "viewerApproved": false,
+      "baselineViewerAcceptance": "not-established"
+    },
+    {
+      "id": "reviewed-nist-workforce-20260918-v1",
+      "title": "A route into cybersecurity",
+      "opening": "Federal funding aims to connect cybersecurity training with jobs employers need filled.",
+      "body": "The federal standards agency, NIST, announced over one point seven million dollars for nine partnerships in eight states. The projects are meant to connect local employers with training, including internships and apprenticeships.",
+      "closing": "Completing the training is one measure. Getting hired is the other.",
+      "sourceUrl": "https://www.nist.gov/news-events/news/2026/09/nist-awards-more-17-million-support-cybersecurity-workforce-development",
+      "sourceName": "National Institute of Standards and Technology",
+      "sourcePublishedDate": "2026-09-18",
+      "sourceCheck": {
+        "status": "verified-primary",
+        "checkedAt": "2026-09-30",
+        "notes": "September 18 award announcement checked; page also says updated September 28. No new employment results or material September 30 development verified."
+      },
+      "timeliness": {
+        "mode": "dated-context",
+        "reason": "This remains a September 18 funding announcement. A page update alone is not a new event. Alternate writing exercise only; the accepted NIST script and media remain unchanged."
+      },
+      "editorialChanges": [
+        "Retain the accepted script's training-to-work purpose rather than forcing a new angle.",
+        "Explain NIST briefly for a standalone audience.",
+        "Use aims and meant to so funding is not confused with achieved employment.",
+        "Close on two concrete outcome measures instead of repeating funding totals."
+      ],
+      "visualPlan": [
+        {
+          "cue": "cybersecurity training",
+          "purpose": "State the human purpose before institutional detail.",
+          "layout": "Original training-to-work title composition; no simulated student or hiring testimonial."
+        },
+        {
+          "cue": "nine partnerships in eight states",
+          "purpose": "Show the verified scope.",
+          "layout": "Number pair left to right; reviewed recipient-state map only, not implied statewide availability."
+        },
+        {
+          "cue": "internships and apprenticeships",
+          "purpose": "Explain the route into practical learning.",
+          "layout": "Two distinct learning-path labels revealed in spoken order."
+        },
+        {
+          "cue": "Completing the training",
+          "purpose": "Separate inputs from outcomes.",
+          "layout": "Completion, then hiring; present them as measures to track, without filled progress bars or invented rates."
+        }
+      ],
+      "pronunciations": [
+        {
+          "term": "NIST",
+          "instruction": "Read as the one-syllable name nist; verify the synthesized take."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claim": "More than $1.7 million funds nine partnerships in eight states.",
+          "sourceUrl": "https://www.nist.gov/news-events/news/2026/09/nist-awards-more-17-million-support-cybersecurity-workforce-development",
+          "support": "NIST announces nine cooperative agreements across eight states."
+        },
+        {
+          "claim": "Projects align training with local employer needs and include practical learning.",
+          "sourceUrl": "https://www.nist.gov/news-events/news/2026/09/nist-awards-more-17-million-support-cybersecurity-workforce-development",
+          "support": "The announcement describes employer alignment, internships and apprenticeships."
+        },
+        {
+          "claim": "Completion and hiring are outcomes to measure, not established results.",
+          "sourceUrl": "https://www.nist.gov/news-events/news/2026/09/nist-awards-more-17-million-support-cybersecurity-workforce-development",
+          "support": "Editorial evaluation of a programme described through career-pathway goals; no outcome totals are reported."
+        }
+      ],
+      "issues": [
+        "Explicit alternate writing exercise. Do not replace or regenerate the accepted NIST segment from this file.",
+        "No new timeliness trigger has been established."
+      ],
+      "beforeScript": "Federal funding aims to turn cybersecurity training into a clearer route to work. NIST is backing nine partnerships in eight states, with over one point seven million dollars. Training meets employers' needs through internships, apprenticeships and hands-on projects. Success means finishing that training—and getting hired. That's the result still to prove.",
+      "script": "Federal funding aims to connect cybersecurity training with jobs employers need filled. The federal standards agency, NIST, announced over one point seven million dollars for nine partnerships in eight states. The projects are meant to connect local employers with training, including internships and apprenticeships. Completing the training is one measure. Getting hired is the other.",
+      "originalSha256": "62782018cc250e44ceb70614aff574c95ad7d54548c99bcf0961dd0d15a1715b",
+      "scriptSha256": "6352e9b53849b53faa0ffe372950da3f854d8d8e8aeb07f09ef40b602a8a3dac",
+      "wordCount": 55,
+      "beforeWordCount": 51,
+      "estimatedSeconds": 30.0,
+      "durationBasis": "Planning only: two words per second plus 2.5 seconds framing; not synthesized or measured.",
+      "productionStatus": "not-rendered",
+      "viewerApproved": false,
+      "baselineViewerAcceptance": "accepted-cut"
+    },
+    {
+      "id": "reviewed-havel-prize-20260928-v1",
+      "title": "Recognition for a lawyer at risk",
+      "opening": "Nasrin Sotoudeh, an Iranian human rights lawyer, has won the Václav Havel Prize.",
+      "body": "The Council of Europe announced the award Monday. It cited her defense of activists and children facing execution, despite repeated arrests and imprisonment. Her daughter accepted in Strasbourg.",
+      "closing": "The Council says concerns about her safety remain. The honor recognizes her work while the risks to independent lawyers continue.",
+      "sourceUrl": "https://www.coe.int/en/web/portal/-/2026-v%C3%A1clav-havel-prize-awarded-to-iranian-human-rights-lawyer-nasrin-sotoudeh",
+      "sourceName": "Council of Europe",
+      "sourcePublishedDate": "2026-09-28",
+      "sourceCheck": {
+        "status": "verified-primary",
+        "checkedAt": "2026-09-30",
+        "notes": "Award announcement checked, including its September 28 dateline and continuing safety concerns. No later change in safety or legal status verified."
+      },
+      "timeliness": {
+        "mode": "dated-context",
+        "reason": "A clearly dated account of Monday's award, not a new September 30 development or a current assessment of the recipient's whereabouts or freedom."
+      },
+      "editorialChanges": [
+        "Name the person and recognition directly, with the awarding institution in sentence two.",
+        "Explain the work recognized instead of listing cash, trophy and diploma.",
+        "Separate an award from any improvement in legal status or personal safety.",
+        "End on the specific unresolved risk rather than a generic question about future attention."
+      ],
+      "visualPlan": [
+        {
+          "cue": "Nasrin Sotoudeh",
+          "purpose": "Identify the recipient without fabricating documentary imagery.",
+          "layout": "Restrained name-and-profession card; a portrait only after separate rights clearance, with an upper-left courtesy."
+        },
+        {
+          "cue": "defense of activists and children facing execution",
+          "purpose": "Explain the work recognized.",
+          "layout": "Two editorial text panels, revealed left to right; no courtroom reenactment."
+        },
+        {
+          "cue": "Her daughter accepted in Strasbourg",
+          "purpose": "Explain representation at the ceremony.",
+          "layout": "Small ceremony-context card; no implication that the recipient was present."
+        },
+        {
+          "cue": "concerns about her safety remain",
+          "purpose": "Keep recognition and safety distinct.",
+          "layout": "Close on an attributed safety-concern line; no freedom or release imagery."
+        }
+      ],
+      "pronunciations": [
+        {
+          "term": "Nasrin Sotoudeh",
+          "instruction": "Confirm against the recipient's own recording or a reliable native-speaker reference before TTS; no guessed phonetic spelling supplied."
+        },
+        {
+          "term": "Vaclav Havel",
+          "display": "Václav Havel",
+          "instruction": "Check Czech name pronunciation in the rendered take before approval."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claim": "Sotoudeh received the 2026 Havel Prize; her daughter accepted.",
+          "sourceUrl": "https://www.coe.int/en/web/portal/-/2026-v%C3%A1clav-havel-prize-awarded-to-iranian-human-rights-lawyer-nasrin-sotoudeh",
+          "support": "The awarding institution identifies recipient, ceremony and daughter's participation."
+        },
+        {
+          "claim": "Her legal work includes activists and children facing execution.",
+          "sourceUrl": "https://www.coe.int/en/web/portal/-/2026-v%C3%A1clav-havel-prize-awarded-to-iranian-human-rights-lawyer-nasrin-sotoudeh",
+          "support": "The institution describes these clients and repeated arrests and imprisonment."
+        },
+        {
+          "claim": "Safety concerns and risks to independent lawyers continue.",
+          "sourceUrl": "https://www.coe.int/en/web/portal/-/2026-v%C3%A1clav-havel-prize-awarded-to-iranian-human-rights-lawyer-nasrin-sotoudeh",
+          "support": "The announcement notes ongoing concern and a broader crackdown on independent lawyers and defenders."
+        }
+      ],
+      "issues": [
+        "Do not turn past imprisonment into a claim that she is currently imprisoned.",
+        "No portrait or ceremony video is cleared for reuse by this writing review.",
+        "Pronunciation requires audio review before production."
+      ],
+      "beforeScript": "Recognition for human rights work. The Havel Prize brings international attention to Nasrin Sotoudeh's legal advocacy. Iranian lawyer Nasrin Sotoudeh has received this year's Václav Havel human rights prize. The Council of Europe announced the award at its parliamentary assembly in Strasbourg. Her daughter accepted on her behalf, while Sotoudeh sent a video message from Tehran. The Council cited her legal advocacy and campaigning for human rights. The annual award recognizes civil society work in Europe and beyond, and includes sixty thousand euros, a trophy, and a diploma. The Council of Europe has recognized Sotoudeh's civil society work. What to watch next. Will the recognition lead to more sustained international attention to her work? That is the next question to follow.",
+      "script": "Nasrin Sotoudeh, an Iranian human rights lawyer, has won the Václav Havel Prize. The Council of Europe announced the award Monday. It cited her defense of activists and children facing execution, despite repeated arrests and imprisonment. Her daughter accepted in Strasbourg. The Council says concerns about her safety remain. The honor recognizes her work while the risks to independent lawyers continue.",
+      "originalSha256": "32467b146aee07560e1b04968aab51719f4e298d028eeff9b7dbc9e9114e9c71",
+      "scriptSha256": "17521c8899836e237b6a49170fd33524576e5d1afb320cdd2af494bbfd8b545b",
+      "wordCount": 61,
+      "beforeWordCount": 121,
+      "estimatedSeconds": 33.0,
+      "durationBasis": "Planning only: two words per second plus 2.5 seconds framing; not synthesized or measured.",
+      "productionStatus": "not-rendered",
+      "viewerApproved": false,
+      "baselineViewerAcceptance": "not-established"
+    },
+    {
+      "id": "louvre-smithsonian-2026-09",
+      "title": "The journeys inside the art",
+      "opening": "You can now see twenty-six Islamic artworks from the Louvre in Washington.",
+      "body": "The Smithsonian's National Museum of Asian Art is tracing how the objects moved through royal courts, diplomatic exchanges and private collections. The works come from a region stretching from Spain to India.",
+      "closing": "The show runs through January eighteenth, twenty twenty-seven. Look beyond the craftsmanship: who owned an object can help explain what it came to mean.",
+      "sourceUrl": "https://asia.si.edu/whats-on/exhibitions/from-the-louvre-masterpieces-of-islamic-art/",
+      "sourceName": "Smithsonian National Museum of Asian Art; Musée du Louvre",
+      "sourcePublishedDate": null,
+      "sourceCheck": {
+        "status": "verified-primary",
+        "checkedAt": "2026-09-30",
+        "notes": "Both museum listings checked. Smithsonian confirms twenty-six works and September 26, 2026–January 18, 2027 dates. No publication date is shown; opening date is not substituted."
+      },
+      "timeliness": {
+        "mode": "current",
+        "reason": "A currently listed exhibition that opened September 26, useful as a specific arts/visitor story. Verify museum operating status if turning it into same-day travel guidance."
+      },
+      "editorialChanges": [
+        "Lead with the concrete chance to see the works and the correct city.",
+        "Use the hosting museum's exact object count instead of an invented example object.",
+        "Explain ownership and meaning without narrating an unsupported individual route.",
+        "Give the closing date once and end with a useful way to look at the art."
+      ],
+      "visualPlan": [
+        {
+          "cue": "twenty-six Islamic artworks",
+          "purpose": "Introduce the exhibition with its verified scope.",
+          "layout": "Original exhibition title/count composition; use a real listed work only after image-rights review and courtesy clearance."
+        },
+        {
+          "cue": "National Museum of Asian Art",
+          "purpose": "Locate the exhibition clearly.",
+          "layout": "Washington, D.C. and museum name; no invented gallery footage."
+        },
+        {
+          "cue": "royal courts, diplomatic exchanges and private collections",
+          "purpose": "Explain changing ownership as the interpretive lens.",
+          "layout": "Three panels in spoken order; no invented object-specific journey arrows."
+        },
+        {
+          "cue": "January eighteenth, twenty twenty-seven",
+          "purpose": "Give a usable end date while finishing the interpretive point.",
+          "layout": "January 18, 2027 beneath the museum name; hold a cleared artwork or original typography under the final line."
+        }
+      ],
+      "pronunciations": [
+        {
+          "term": "Louvre",
+          "instruction": "Check the museum name in the chosen voice before production."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claim": "Twenty-six Islamic artworks from the Louvre are shown in Washington.",
+          "sourceUrl": "https://asia.si.edu/whats-on/exhibitions/from-the-louvre-masterpieces-of-islamic-art/",
+          "support": "The host museum describes twenty-six loans and identifies the exhibition."
+        },
+        {
+          "claim": "Works come from Spain to India and changed meaning through ownership.",
+          "sourceUrl": "https://asia.si.edu/whats-on/exhibitions/from-the-louvre-masterpieces-of-islamic-art/",
+          "support": "The museum describes geographic breadth, exchanges and changing owners."
+        },
+        {
+          "claim": "The exhibition runs through January 18, 2027 at the named Washington museum.",
+          "sourceUrl": "https://musee.louvre.fr/expositions-et-evenements/expositions/from-the-louvre-masterpieces-of-islamic-art",
+          "support": "The Louvre listing independently confirms venue and the full run dates."
+        }
+      ],
+      "issues": [
+        "Museum publication date is unknown and remains null.",
+        "Listed object photographs have specific copyright credits; no assumption of open reuse or blanket museum permission.",
+        "Do not show the old imagined ceramic as an actual exhibited object."
+      ],
+      "beforeScript": "The journeys inside the art. How an artwork travels can shape its meaning as much as how it was made. In Washington, an exhibition invites visitors to follow the journeys of Islamic artworks across centuries. The Louvre and the Smithsonian’s National Museum of Asian Art are presenting objects connected to places stretching from Spain to India. Alongside their craftsmanship, the exhibition considers how diplomacy, collecting, and movement between owners shaped their meaning. Its announced run began September twenty-sixth and continues through January eighteenth, twenty twenty-seven. The focus is both the objects themselves and the histories they carry. This exhibition brings craftsmanship and the histories of collecting into the same frame. What to watch next. For visitors, the next question is how those histories change the way they see the objects. The announced run ends January eighteenth, twenty twenty-seven.",
+      "script": "You can now see twenty-six Islamic artworks from the Louvre in Washington. The Smithsonian's National Museum of Asian Art is tracing how the objects moved through royal courts, diplomatic exchanges and private collections. The works come from a region stretching from Spain to India. The show runs through January eighteenth, twenty twenty-seven. Look beyond the craftsmanship: who owned an object can help explain what it came to mean.",
+      "originalSha256": "f9dd38b70f14e2f51181b2aff702797aefbcc3aa9da4f25c0e172113bdc398af",
+      "scriptSha256": "f363cac104912b0f6817536c46ff9620f97bcf28b361b31085617d057d8495c0",
+      "wordCount": 68,
+      "beforeWordCount": 138,
+      "estimatedSeconds": 36.5,
+      "durationBasis": "Planning only: two words per second plus 2.5 seconds framing; not synthesized or measured.",
+      "productionStatus": "not-rendered",
+      "viewerApproved": false,
+      "baselineViewerAcceptance": "not-established"
+    },
+    {
+      "id": "auto-a46bc2af204ae5",
+      "title": "Swift's rescue attempt falls short",
+      "beforeScript": "The next test for satellite servicing. An unsuccessful orbital boost can still show what future repair missions need to solve. NASA's Swift observatory was the target of a commercial mission intended to raise its orbit. That mission has now ended without achieving the boost. NASA says the agency and its industry partner nevertheless gained experience that can inform future servicing programmes. The distinction matters: engineering lessons are a result, but they are not the same as a successful orbital change. Swift's attempted boost puts that gap between ambition and execution into focus. The boost was not achieved. The engineering lessons are the result to follow. What to watch next. What changes will those lessons bring to the design and testing of future servicing missions?",
+      "opening": "A rescue attempt failed to buy NASA's Swift space telescope more time.",
+      "body": "NASA says the robot sent to raise Swift's orbit developed communication and control problems. Swift has studied cosmic explosions for more than twenty years. The agency is gathering lessons for future satellite repairs.",
+      "closing": "Without a boost, the agency expects Swift to re-enter Earth's atmosphere by year's end.",
+      "sourceUrl": "https://science.nasa.gov/missions/swift/nasa-highlights-lessons-learned-from-swift-boost-mission/",
+      "sourceName": "NASA",
+      "sourcePublishedDate": "2026-09-28",
+      "sourceCheck": {
+        "status": "verified-primary",
+        "checkedAt": "2026-09-30T14:46:07Z",
+        "notes": "Full NASA article checked; publication September 28, updated September 29. Update's materiality unverified."
+      },
+      "timeliness": {
+        "mode": "dated-context",
+        "reason": "Retrospective on a completed mission; no verified September 30 development. Keep the source date visible."
+      },
+      "editorialChanges": [
+        "Repeated 'engineering lessons' framing -> a specific failed rescue and its consequence.",
+        "Abstract ambition-versus-execution commentary -> concrete mechanical difficulty.",
+        "Generic future-design question -> an attributed, conditional end-of-mission outlook."
+      ],
+      "visualPlan": [
+        {
+          "cue": "failed to buy NASA's Swift space telescope more time",
+          "purpose": "Establish the actual outcome.",
+          "layout": "Original two-orbit schematic; attempted boost remains dashed. Label illustration and credit NASA."
+        },
+        {
+          "cue": "communication and control problems",
+          "purpose": "Explain failure without staging documentary evidence.",
+          "layout": "Two restrained callouts, left to right: signal, then pointing control."
+        },
+        {
+          "cue": "re-enter Earth's atmosphere by year's end",
+          "purpose": "Separate forecast from confirmed outcome.",
+          "layout": "Single timeline ending at year-end; 'NASA expectation' stays visible. No exact re-entry date or simulated crash."
+        }
+      ],
+      "pronunciations": [],
+      "claimChecks": [
+        {
+          "claim": "The attempt did not raise Swift's orbit.",
+          "sourceUrl": "https://science.nasa.gov/missions/swift/nasa-highlights-lessons-learned-from-swift-boost-mission/",
+          "support": "NASA reports the boost failed."
+        },
+        {
+          "claim": "Control and communications faults; a twenty-year observatory.",
+          "sourceUrl": "https://science.nasa.gov/missions/swift/nasa-highlights-lessons-learned-from-swift-boost-mission/",
+          "support": "LINK faults and Swift's 2004 launch are described."
+        },
+        {
+          "claim": "Conditional re-entry outlook and servicing lessons.",
+          "sourceUrl": "https://science.nasa.gov/missions/swift/nasa-highlights-lessons-learned-from-swift-boost-mission/",
+          "support": "NASA's official gives the year-end expectation without intervention; lessons are being collected."
+        }
+      ],
+      "issues": [
+        "Recheck Swift's status before production; the re-entry statement is NASA's forecast, not an observed event."
+      ],
+      "script": "A rescue attempt failed to buy NASA's Swift space telescope more time. NASA says the robot sent to raise Swift's orbit developed communication and control problems. Swift has studied cosmic explosions for more than twenty years. The agency is gathering lessons for future satellite repairs. Without a boost, the agency expects Swift to re-enter Earth's atmosphere by year's end.",
+      "originalSha256": "1dd65b2e2edfc3a7af8f31cea58a89fad74528007e97999ec786bd6552920fb7",
+      "scriptSha256": "9260ad922d851b1fd847beef317f7dcae07e1e35c950dc9d7e6dcf5fc754a1cb",
+      "wordCount": 59,
+      "beforeWordCount": 124,
+      "estimatedSeconds": 32.0,
+      "durationBasis": "Planning only: two words per second plus 2.5 seconds framing; not synthesized or measured.",
+      "productionStatus": "not-rendered",
+      "viewerApproved": false,
+      "baselineViewerAcceptance": "not-established"
+    },
+    {
+      "id": "auto-3480bbae929c06",
+      "title": "Crew-13's medical mission in orbit",
+      "beforeScript": "Crew-13 prepares for the station. Crew rotations keep the orbiting laboratory's research and essential maintenance moving. Four crew members are preparing to launch to the International Space Station as part of NASA's SpaceX Crew-13 mission. Their work is set to span research, technology demonstrations, and maintenance aboard the station. That combination is central to an orbiting laboratory: experiments depend on the equipment and people that keep it running. The launch and work are still ahead in this mission announcement. Four crew members. Research, technology demonstrations, and station upkeep. What to watch next. The milestones to follow are the launch, arrival, and the results of the work aboard the station.",
+      "opening": "Four people bound for the space station will help investigate heart disease and Parkinson's.",
+      "body": "NASA's Crew Thirteen could launch Thursday, October first. Their research includes human tissue grown from stem cells. The work is part of a long stay aboard the orbiting laboratory.",
+      "closing": "The aim is better ways to model disease and test medicines here on Earth.",
+      "sourceUrl": "https://www.nasa.gov/missions/station/commercial-crew/what-you-need-to-know-about-nasas-spacex-crew-13-mission/",
+      "sourceName": "NASA",
+      "sourcePublishedDate": "2026-09-28",
+      "sourceCheck": {
+        "status": "verified-primary",
+        "checkedAt": "2026-09-30T14:46:07Z",
+        "notes": "Mission explainer checked against NASA's September 29 launch-coverage advisory."
+      },
+      "timeliness": {
+        "mode": "current",
+        "reason": "Specific near-term preview: launch targeted October 1. Recheck after the September 30 prelaunch briefing."
+      },
+      "editorialChanges": [
+        "Generic research-and-maintenance list -> one supported medical purpose.",
+        "Four-person count without consequence -> people doing work relevant on Earth.",
+        "Launch-arrival-results checklist -> the specific research goal, without promising treatment."
+      ],
+      "visualPlan": [
+        {
+          "cue": "heart disease and Parkinson's",
+          "purpose": "Name the research questions.",
+          "layout": "Original heart and neural-cell diagrams appear left to right; label research aims, not clinical results."
+        },
+        {
+          "cue": "Thursday, October first",
+          "purpose": "Explain the current peg.",
+          "layout": "Compact launch calendar with 'Target / subject to change' and NASA credit; no exact countdown."
+        },
+        {
+          "cue": "human tissue grown from stem cells",
+          "purpose": "Explain what will be studied.",
+          "layout": "Original simple stem-cell-to-tissue sequence, explicitly illustrative; hold through the closing research goal."
+        }
+      ],
+      "pronunciations": [
+        {
+          "term": "Crew-13",
+          "spoken": "Crew Thirteen"
+        }
+      ],
+      "claimChecks": [
+        {
+          "claim": "Four-person mission and planned tissue research.",
+          "sourceUrl": "https://www.nasa.gov/missions/station/commercial-crew/what-you-need-to-know-about-nasas-spacex-crew-13-mission/",
+          "support": "NASA describes the crew and human stem-cell-derived tissue work."
+        },
+        {
+          "claim": "Launch could be October 1.",
+          "sourceUrl": "https://www.nasa.gov/news-release/nasa-sets-crew-13-launch-docking-coverage/",
+          "support": "September 29 advisory targets Thursday; operations may change."
+        },
+        {
+          "claim": "Disease models and medicine testing are goals.",
+          "sourceUrl": "https://www.nasa.gov/missions/station/commercial-crew/what-you-need-to-know-about-nasas-spacex-crew-13-mission/",
+          "support": "NASA identifies these potential research benefits, not achieved therapies."
+        }
+      ],
+      "issues": [
+        "Schedule must be checked again before air; rewrite after liftoff or postponement.",
+        "Medical benefit is a research aim, not a treatment announcement."
+      ],
+      "script": "Four people bound for the space station will help investigate heart disease and Parkinson's. NASA's Crew Thirteen could launch Thursday, October first. Their research includes human tissue grown from stem cells. The work is part of a long stay aboard the orbiting laboratory. The aim is better ways to model disease and test medicines here on Earth.",
+      "originalSha256": "63b716aea3b663b841af728b4043b5ea8d93ffa4dd5bbdf493bc8c418c3de428",
+      "scriptSha256": "84901a8e416aaa241ee54702a59a7838b0a95f7faa129d316b6b3de9887d0815",
+      "wordCount": 57,
+      "beforeWordCount": 109,
+      "estimatedSeconds": 31.0,
+      "durationBasis": "Planning only: two words per second plus 2.5 seconds framing; not synthesized or measured.",
+      "productionStatus": "not-rendered",
+      "viewerApproved": false,
+      "baselineViewerAcceptance": "not-established"
+    },
+    {
+      "id": "webb-small-worlds-2026-09",
+      "title": "Born like stars, smaller than expected",
+      "beforeScript": "How small can a star-like world be?. Very low-mass brown dwarfs test ideas about how star-forming clouds build new objects. About a thousand light-years away, a cloud called IC 348 is making stars, and much smaller objects. NASA reports that Webb observations have identified brown dwarfs with masses as low as twice Jupiter’s. Brown dwarfs form much like stars, but cannot sustain the ordinary hydrogen fusion that powers them. These unusually small examples challenge existing formation models. The observations also show young stars sending jets into surrounding material. The discovery gives researchers a closer look at how varied stellar nurseries can be. Webb's observations show an unusually varied stellar nursery. What to watch next. The research question ahead is how formation models explain objects at these low masses. More observations can help test those ideas.",
+      "opening": "The Webb space telescope found objects so small they challenge how scientists think stars form.",
+      "body": "NASA says some have just twice Jupiter's mass. They are brown dwarfs: objects formed from collapsing clouds, like stars, without the sustained hydrogen fusion that makes a star shine.",
+      "closing": "How small can that process go? These observations push the question into territory the models struggle to explain.",
+      "sourceUrl": "https://science.nasa.gov/missions/webb/nasas-webb-reveals-dynamic-panorama-of-star-formation/",
+      "sourceName": "NASA",
+      "sourcePublishedDate": "2026-09-15",
+      "sourceCheck": {
+        "status": "verified-primary",
+        "checkedAt": "2026-09-30T14:46:07Z",
+        "notes": "NASA article verified; September 21 update does not establish a fresh September 30 finding."
+      },
+      "timeliness": {
+        "mode": "dated-context",
+        "reason": "September 15 science finding; useful discovery context, not today's breaking news."
+      },
+      "editorialChanges": [
+        "Distance and catalogue name before meaning -> the formation-model puzzle first.",
+        "Brown dwarfs, jets and a nursery panorama -> one coherent scientific question.",
+        "Repeated summary and generic observation forecast -> a specific limit researchers still cannot explain."
+      ],
+      "visualPlan": [
+        {
+          "cue": "objects so small",
+          "purpose": "Introduce the puzzle without fabricated telescope footage.",
+          "layout": "Original restrained field diagram; identify it as an illustration."
+        },
+        {
+          "cue": "twice Jupiter's mass",
+          "purpose": "Make the scale understandable.",
+          "layout": "Mass comparison using two equal units; never represent mass as a claimed diameter."
+        },
+        {
+          "cue": "formed from collapsing clouds",
+          "purpose": "Explain the process, then its limit.",
+          "layout": "Cloud-collapse diagram becomes a brown dwarf; use NASA source credit and hold the final question."
+        }
+      ],
+      "pronunciations": [],
+      "claimChecks": [
+        {
+          "claim": "Objects as light as twice Jupiter's mass.",
+          "sourceUrl": "https://science.nasa.gov/missions/webb/nasas-webb-reveals-dynamic-panorama-of-star-formation/",
+          "support": "NASA reports that minimum among the observed brown dwarfs."
+        },
+        {
+          "claim": "Star-like formation without ordinary stellar fusion.",
+          "sourceUrl": "https://science.nasa.gov/missions/webb/nasas-webb-reveals-dynamic-panorama-of-star-formation/",
+          "support": "Collapsing clouds produce objects unable to sustain ordinary hydrogen fusion."
+        },
+        {
+          "claim": "Their small masses challenge formation models.",
+          "sourceUrl": "https://science.nasa.gov/missions/webb/nasas-webb-reveals-dynamic-panorama-of-star-formation/",
+          "support": "NASA says the observations are below theoretical expectations."
+        }
+      ],
+      "issues": [
+        "No immediate household consequence is supported; the value is scientific understanding.",
+        "Any eventual NASA/ESA/CSA image use needs asset-specific rights and full courtesy review."
+      ],
+      "script": "The Webb space telescope found objects so small they challenge how scientists think stars form. NASA says some have just twice Jupiter's mass. They are brown dwarfs: objects formed from collapsing clouds, like stars, without the sustained hydrogen fusion that makes a star shine. How small can that process go? These observations push the question into territory the models struggle to explain.",
+      "originalSha256": "65b34e084c622c32339f4bc35d1f462a046d14e995edd9805d1ebc787e778a44",
+      "scriptSha256": "ea0bd845cb44226fcd1b04f463919980132936a035d4583f45b5ec4ad5d57ac1",
+      "wordCount": 62,
+      "beforeWordCount": 135,
+      "estimatedSeconds": 33.5,
+      "durationBasis": "Planning only: two words per second plus 2.5 seconds framing; not synthesized or measured.",
+      "productionStatus": "not-rendered",
+      "viewerApproved": false,
+      "baselineViewerAcceptance": "not-established"
+    },
+    {
+      "id": "auto-f615b1c9d3fe7f",
+      "title": "The mercury problem in a changing food web",
+      "beforeScript": "Nature leaves a chemical trail. Chemical signatures can reveal how wildlife feeds and how contaminants move through ecosystems. Two different wildlife questions share a common tool. USGS scientists used stable isotope analysis to study grizzly bear diets in Alaska and mercury contamination in fish in the Upper Colorado River Basin. The analyses took place at a laboratory specializing in chemical and isotopic tracers. Together, the studies show how these signatures can help researchers examine relationships between animals and their environments. One analytical tool is helping investigate two very different ecosystems. What to watch next. Watch for the detailed findings and how researchers connect those measurements to wildlife management.",
+      "opening": "Mercury may be complicating efforts to bring native fish back.",
+      "body": "A U.S. Geological Survey study examined fish in the Upper Colorado River Basin. It linked more non-native species with higher mercury levels. Chemical tracers helped map who eats whom, showing how contamination can build up through a food chain.",
+      "closing": "Recovery plans may need to consider pollution alongside which fish live there.",
+      "sourceUrl": "https://www.usgs.gov/centers/fort-collins-science-center/news/fort-science-action-2026-part-15-stable-isotope-analyses",
+      "sourceName": "U.S. Geological Survey",
+      "sourcePublishedDate": "2026-09-28",
+      "sourceCheck": {
+        "status": "verified-primary",
+        "checkedAt": "2026-09-30T14:46:07Z",
+        "notes": "Outreach article and linked June 30 research abstract checked. Fish samples date to 2016–17."
+      },
+      "timeliness": {
+        "mode": "dated-context",
+        "reason": "September recap of earlier research; no verified new September 30 environmental event."
+      },
+      "editorialChanges": [
+        "Bears and fish joined only by a laboratory method -> one conservation consequence.",
+        "Wait for detailed findings -> explain the findings already available.",
+        "Broad wildlife-management ending -> the specific interaction between species and contamination."
+      ],
+      "visualPlan": [
+        {
+          "cue": "bring native fish back",
+          "purpose": "Establish the conservation stakes.",
+          "layout": "Original river cross-section with neutral fish silhouettes; no unreviewed species labels."
+        },
+        {
+          "cue": "Upper Colorado River Basin",
+          "purpose": "Locate the study.",
+          "layout": "Accurate reviewed basin outline with U.S. Geological Survey credit; no new contamination heatmap."
+        },
+        {
+          "cue": "who eats whom",
+          "purpose": "Explain the proposed pathway.",
+          "layout": "Illustrative food-web arrows reveal in order; mercury markers grow without numeric claims. Label schematic and retain uncertainty."
+        }
+      ],
+      "pronunciations": [],
+      "claimChecks": [
+        {
+          "claim": "Mercury may complicate native fish recovery.",
+          "sourceUrl": "https://www.usgs.gov/publications/mercury-biomagnification-across-food-webs-varying-non-native-fish-presence",
+          "support": "Authors identify a potential combined conservation threat."
+        },
+        {
+          "claim": "Non-native diversity associated with higher mercury.",
+          "sourceUrl": "https://www.usgs.gov/centers/fort-collins-science-center/news/fort-science-action-2026-part-15-stable-isotope-analyses",
+          "support": "The summary reports the association and a possible longer-food-chain explanation."
+        },
+        {
+          "claim": "Chemical tracers reveal food-web relationships.",
+          "sourceUrl": "https://www.usgs.gov/publications/mercury-biomagnification-across-food-webs-varying-non-native-fish-presence",
+          "support": "Stable isotopes characterize feeding positions; mercury magnification is observed."
+        }
+      ],
+      "issues": [
+        "Association does not prove non-native fish caused the measured mercury differences.",
+        "Do not present old samples as today's river conditions or as a new fish-consumption advisory."
+      ],
+      "script": "Mercury may be complicating efforts to bring native fish back. A U.S. Geological Survey study examined fish in the Upper Colorado River Basin. It linked more non-native species with higher mercury levels. Chemical tracers helped map who eats whom, showing how contamination can build up through a food chain. Recovery plans may need to consider pollution alongside which fish live there.",
+      "originalSha256": "7adcd0734f5b8cb02ec9e1a9ba76866ec50eecefbba5a08e76afd58f08967c58",
+      "scriptSha256": "2f67402348844ac7f0a27df271142b3d97542358bb4c5a3f7fde00e64f00a09f",
+      "wordCount": 61,
+      "beforeWordCount": 108,
+      "estimatedSeconds": 33.0,
+      "durationBasis": "Planning only: two words per second plus 2.5 seconds framing; not synthesized or measured.",
+      "productionStatus": "not-rendered",
+      "viewerApproved": false,
+      "baselineViewerAcceptance": "not-established"
+    },
+    {
+      "id": "auto-d736032e980afd",
+      "title": "Listening for Yellowstone's geysers",
+      "beforeScript": "A closer watch on Yellowstone. Better observations help scientists follow changes in the park's hydrothermal features. Yellowstone's monitoring network received two additions in early September, according to the USGS. A new station was installed at Geyser Hill, near Old Faithful. The Yellowstone Lake camera was also renewed. The two changes expand the tools available for observing the park. They are improvements to monitoring capability. Their installation alone does not establish a new hazard or predict an eruption. A new station and a renewed camera expand Yellowstone's observations. What to watch next. The useful next chapter is what the monitoring records and how scientists interpret any changes.",
+      "opening": "Yellowstone's new sensors have already helped pinpoint a geyser eruption by listening from two places.",
+      "body": "The U.S. Geological Survey says a station added near Old Faithful in September detected low-frequency sound from Giant Geyser. Another station heard it, too. Comparing the directions traced the sound back to its source.",
+      "closing": "Together, the stations could help researchers locate other unusual sounds across the geyser basin.",
+      "sourceUrl": "https://www.usgs.gov/observatories/yvo/news/yellowstones-newest-hydrothermal-monitoring-station-and-renewed-camera",
+      "sourceName": "U.S. Geological Survey / Yellowstone Volcano Observatory",
+      "sourcePublishedDate": "2026-09-28",
+      "sourceCheck": {
+        "status": "primary-verified",
+        "checkedAt": "2026-09-30T14:48:03Z",
+        "notes": "Full primary article checked. September installation; September 10 example. Publication is not today's event."
+      },
+      "timeliness": {
+        "mode": "dated-context",
+        "reason": "A recent science explainer, not a September 30 development. Label the September 2026 context; recheck before any current-news promotion."
+      },
+      "editorialChanges": [
+        "Before: the opening promised better observations without showing their value. After: the first line states a demonstrated result.",
+        "Before: installation, camera renewal and monitoring capability repeated the same idea. After: one audible mechanism carries the story from detection to location.",
+        "Before: the ending asked vaguely what scientists would learn. After: it names the practical use, with 'could' preserving the proof-of-concept limit.",
+        "Before: a hazard disclaimer introduced an alarm the segment had not earned. After: the script stays on measurement and makes no danger or eruption-prediction claim."
+      ],
+      "visualPlan": [
+        {
+          "cue": "helped pinpoint a geyser eruption",
+          "purpose": "Orient the viewer to the actual place and scientific task.",
+          "layout": "Use the source's public-domain station photograph or an original restrained basin locator. Upper-left courtesy USGS. No explosive imagery or invented seismic trace."
+        },
+        {
+          "cue": "Another station heard it, too",
+          "purpose": "Make the two observations distinct and readable.",
+          "layout": "Original two-station diagram; first station appears left, second right. Name the sites from the source. Keep it labelled schematic, not a surveyed map."
+        },
+        {
+          "cue": "Comparing the directions",
+          "purpose": "Explain how direction supplies the location.",
+          "layout": "Two directional rays converge on the Giant Geyser label at the spoken cue. Hold the completed geometry through the closing; do not imply a future eruption forecast."
+        }
+      ],
+      "pronunciations": [],
+      "claimChecks": [
+        {
+          "claim": "The newly added station helped locate a geyser eruption.",
+          "sourceUrl": "https://www.usgs.gov/observatories/yvo/news/yellowstones-newest-hydrothermal-monitoring-station-and-renewed-camera",
+          "support": "September 10 signals from Geyser Hill and Biscuit Basin converged on Giant Geyser."
+        },
+        {
+          "claim": "The new station is near Old Faithful and detects low-frequency sound.",
+          "sourceUrl": "https://www.usgs.gov/observatories/yvo/news/yellowstones-newest-hydrothermal-monitoring-station-and-renewed-camera",
+          "support": "USGS describes September installation and infrasound observations."
+        },
+        {
+          "claim": "Two stations could locate unusual sounds.",
+          "sourceUrl": "https://www.usgs.gov/observatories/yvo/news/yellowstones-newest-hydrothermal-monitoring-station-and-renewed-camera",
+          "support": "The article calls the example a triangulation proof of concept."
+        }
+      ],
+      "issues": [
+        "The renewed lake camera is intentionally omitted to preserve one explanatory thread. It updates every 15 minutes and must not be presented as continuous live video.",
+        "The source marks the station photograph and triangulation figure Public Domain. Record the selected asset's exact page and credit before production."
+      ],
+      "script": "Yellowstone's new sensors have already helped pinpoint a geyser eruption by listening from two places. The U.S. Geological Survey says a station added near Old Faithful in September detected low-frequency sound from Giant Geyser. Another station heard it, too. Comparing the directions traced the sound back to its source. Together, the stations could help researchers locate other unusual sounds across the geyser basin.",
+      "originalSha256": "c194fd8ce005981ffe25015c4e61dffcefde7dd3966fdba0184552c3c1e1241c",
+      "scriptSha256": "74bf916642342f01f5c63222148726ff0aaa03fa04bd892e558ac90ed2808b7c",
+      "wordCount": 63,
+      "beforeWordCount": 106,
+      "estimatedSeconds": 34.0,
+      "durationBasis": "Planning only: two words per second plus 2.5 seconds framing; not synthesized or measured.",
+      "productionStatus": "not-rendered",
+      "viewerApproved": false,
+      "baselineViewerAcceptance": "not-established"
+    },
+    {
+      "id": "auto-3f566565c3f92f",
+      "title": "The history under Lake Chelan",
+      "beforeScript": "Reading the floor of Lake Chelan. Mapping a lake's depths and sediments creates a record of a landscape hidden from view. Lake Chelan is the third-deepest lake in the contiguous United States. A USGS report describes a three-week survey carried out there in 2023. The team collected sediment cores, high-resolution depth measurements, and profiles of material below the lakebed. Those are different ways of documenting what lies beneath the surface. Together, those materials form a detailed survey of the lakebed. Depth measurements and sediment samples document the lake beneath the surface. What to watch next. Watch for how researchers use the survey and its sediment record to understand the lake's history.",
+      "opening": "Lake Chelan's floor holds evidence of underwater landslides in at least eighty-nine places.",
+      "body": "The U.S. Geological Survey described the findings in September. The team mapped the Washington lake and collected sediment cores. Those layers preserve traces of past earthquakes, volcanic eruptions and moving glaciers.",
+      "closing": "That gives scientists a longer view of how this hidden landscape was shaped.",
+      "sourceUrl": "https://www.usgs.gov/programs/cmhrp/news/high-resolution-bathymetry-lake-chelan-washington",
+      "sourceName": "U.S. Geological Survey / Coastal and Marine Hazards and Resources Program",
+      "sourcePublishedDate": "2026-09-24",
+      "sourceCheck": {
+        "status": "primary-verified",
+        "checkedAt": "2026-09-30T14:48:03Z",
+        "notes": "Full primary account checked. Its September publication describes 2023 fieldwork and historical deposits."
+      },
+      "timeliness": {
+        "mode": "dated-context",
+        "reason": "No September 30 result or public-safety development established. Useful background with the September publication and 2023 survey kept distinct."
+      },
+      "editorialChanges": [
+        "Before: the lake's depth ranking and a list of instruments led the body. After: the script opens with the survey's specific finding.",
+        "Before: several sentences said that researchers documented the lakebed. After: the sediment record explains what the work can reveal.",
+        "Before: an unspecified future research step carried the ending. After: the close resolves the segment's central idea.",
+        "Before: technical terms and a survey year crowded the explanation. After: ordinary language carries the mechanism; 2023 stays in source notes and the archive-footage label."
+      ],
+      "visualPlan": [
+        {
+          "cue": "eighty-nine places",
+          "purpose": "Show the finding without inventing exact event locations.",
+          "layout": "A calm lake locator and a single 89+ typographic reveal, labelled 'locations with landslide evidence.' Do not scatter fabricated geospatial dots."
+        },
+        {
+          "cue": "mapped the Washington lake and collected sediment cores",
+          "purpose": "Connect measurement with the resulting evidence.",
+          "layout": "Use the source's public-domain 2023 fieldwork footage, dated 2023 with upper-left courtesy USGS; edit only to footage that actually shows the narrated action."
+        },
+        {
+          "cue": "Those layers preserve traces",
+          "purpose": "Explain why sediment is a historical record.",
+          "layout": "Original labelled sediment-layer schematic. Reveal earthquake, volcanic and glacial record labels in spoken order; mark illustration and avoid fabricated dates or a predictive hazard map."
+        }
+      ],
+      "pronunciations": [],
+      "claimChecks": [
+        {
+          "claim": "Evidence of underwater landslides appears in at least 89 locations.",
+          "sourceUrl": "https://www.usgs.gov/programs/cmhrp/news/high-resolution-bathymetry-lake-chelan-washington",
+          "support": "USGS reports slope failures and mass-transport deposits at 89 or more sites."
+        },
+        {
+          "claim": "The Washington survey took place in 2023 and collected sediment cores.",
+          "sourceUrl": "https://www.usgs.gov/programs/cmhrp/news/high-resolution-bathymetry-lake-chelan-washington",
+          "support": "The article dates and describes the field operation."
+        },
+        {
+          "claim": "The lake's record includes earthquakes, volcanism and glacial change.",
+          "sourceUrl": "https://www.usgs.gov/programs/cmhrp/news/high-resolution-bathymetry-lake-chelan-washington",
+          "support": "USGS links the sediment and mapping evidence to these past processes."
+        }
+      ],
+      "issues": [
+        "89 is a count of locations, not a count of earthquakes or dated landslide events. The rewrite does not imply present danger.",
+        "Confirm the local pronunciation of Chelan before TTS; no verified pronunciation guide captured.",
+        "The primary page labels its fieldwork video Public Domain. Retain the selected media URL and courtesy before use."
+      ],
+      "script": "Lake Chelan's floor holds evidence of underwater landslides in at least eighty-nine places. The U.S. Geological Survey described the findings in September. The team mapped the Washington lake and collected sediment cores. Those layers preserve traces of past earthquakes, volcanic eruptions and moving glaciers. That gives scientists a longer view of how this hidden landscape was shaped.",
+      "originalSha256": "8860b2ce79aa71feaef9bf13e74f225163025fb09bcff12cffca640a60aa026b",
+      "scriptSha256": "2e3ba60edb42d1e75306025e93b4d40f3ff69c2fcd1daac7c844c7441cf3a1d5",
+      "wordCount": 57,
+      "beforeWordCount": 111,
+      "estimatedSeconds": 31.0,
+      "durationBasis": "Planning only: two words per second plus 2.5 seconds framing; not synthesized or measured.",
+      "productionStatus": "not-rendered",
+      "viewerApproved": false,
+      "baselineViewerAcceptance": "not-established"
+    },
+    {
+      "id": "auto-ee02773a8c2a86",
+      "title": "The clues behind Maryland's first",
+      "beforeScript": "A first in Maryland's bird record. A confirmed observation adds a precise piece of evidence to a state's wildlife record. A fall migration station at Patuxent Research Refuge recorded a first for Maryland in September. The USGS Bird Banding Laboratory reported a confirmed MacGillivray's warbler, adding the species to the state's record. The finding comes from a particular observation at a particular place and time. Its location and timing make it a specific addition to the state's wildlife record. One confirmed record adds to what observers know about Maryland's birds. What to watch next. Future confirmed observations may add context. A single record, by itself, does not establish a migration trend.",
+      "opening": "A western songbird has turned up in Maryland, giving the state its first confirmed record of the species.",
+      "body": "The U.S. Geological Survey identified a MacGillivray's warbler at Patuxent Research Refuge in September. Broad white markings around its eyes were one clue. Measurements and expert review helped confirm it.",
+      "closing": "The photographs and identification notes leave a record other observers can check for themselves.",
+      "sourceUrl": "https://www.usgs.gov/labs/bird-banding-laboratory/news/macgillivrays-warbler-first-confirmed-state-record-maryland",
+      "sourceName": "U.S. Geological Survey / Bird Banding Laboratory",
+      "sourcePublishedDate": "2026-09-24",
+      "sourceCheck": {
+        "status": "primary-verified",
+        "checkedAt": "2026-09-30T14:48:03Z",
+        "notes": "Full primary account checked. Bird captured September 2; article published September 24. No later development established."
+      },
+      "timeliness": {
+        "mode": "dated-context",
+        "reason": "A documented September observation suited to a nature segment. No new September 30 observation or migration trend established."
+      },
+      "editorialChanges": [
+        "Before: the script repeatedly said a record adds evidence. After: it shows the actual identification clues.",
+        "Before: the finding came from a 'particular place and time' without useful detail. After: the refuge, diagnostic feature and confirmation process carry the explanation.",
+        "Before: the close speculated about future sightings; the first rewrite added another date and repeated measurements. After: the close explains why a published identification is useful: others can inspect the evidence.",
+        "Before: generated species-inspired artwork could only decorate the story. After: the proposed visuals let the viewer inspect the documented bird."
+      ],
+      "visualPlan": [
+        {
+          "cue": "first confirmed record",
+          "purpose": "Establish that the story concerns a verified observation.",
+          "layout": "Actual public-domain source photograph with restrained Maryland locator, September 2, 2026 capture date and upper-left courtesy USGS. Avoid a generated substitute for the documented individual."
+        },
+        {
+          "cue": "Broad white markings around its eyes",
+          "purpose": "Show the evidence exactly when the script discusses it.",
+          "layout": "A slow, stable crop into the source photograph and one fine callout to the white eye arcs. No exaggerated movement or invented physical features."
+        },
+        {
+          "cue": "other observers can check for themselves",
+          "purpose": "Show why a documented identification becomes evidence others can examine.",
+          "layout": "Resolve into the actual source photograph beside a restrained excerpt of the published diagnostic notes. Retain upper-left courtesy USGS; highlight only details visible in the supplied image, without adding a timeline or repeating measurement cards."
+        }
+      ],
+      "pronunciations": [],
+      "claimChecks": [
+        {
+          "claim": "This is Maryland's first confirmed record of MacGillivray's warbler.",
+          "sourceUrl": "https://www.usgs.gov/labs/bird-banding-laboratory/news/macgillivrays-warbler-first-confirmed-state-record-maryland",
+          "support": "USGS calls it the state's first documented and photographed record."
+        },
+        {
+          "claim": "Eye markings, measurements and expert review supported identification.",
+          "sourceUrl": "https://www.usgs.gov/labs/bird-banding-laboratory/news/macgillivrays-warbler-first-confirmed-state-record-maryland",
+          "support": "The identification account names all three."
+        },
+        {
+          "claim": "The published record lets other observers inspect the identification evidence.",
+          "sourceUrl": "https://www.usgs.gov/labs/bird-banding-laboratory/news/macgillivrays-warbler-first-confirmed-state-record-maryland",
+          "support": "The public USGS account supplies photographs and diagnostic notes; independent inspectability is the editorial inference."
+        }
+      ],
+      "issues": [
+        "No climate cause, population change or new migration route is inferred from this bird.",
+        "Listening-check MacGillivray's and Patuxent before TTS; no verified phonetic guide captured.",
+        "USGS marks both source photographs Public Domain. Record the chosen media page and precise credit during production."
+      ],
+      "script": "A western songbird has turned up in Maryland, giving the state its first confirmed record of the species. The U.S. Geological Survey identified a MacGillivray's warbler at Patuxent Research Refuge in September. Broad white markings around its eyes were one clue. Measurements and expert review helped confirm it. The photographs and identification notes leave a record other observers can check for themselves.",
+      "originalSha256": "7fefc1f80aad6ce05eb9bb75692c2c193a8662ca5439ed22aec0cebfa4dd2956",
+      "scriptSha256": "80282505ae838dc572897c3f23911aba148b9a8a2c00cfa067c8176d0a4f9430",
+      "wordCount": 62,
+      "beforeWordCount": 111,
+      "estimatedSeconds": 33.5,
+      "durationBasis": "Planning only: two words per second plus 2.5 seconds framing; not synthesized or measured.",
+      "productionStatus": "not-rendered",
+      "viewerApproved": false,
+      "baselineViewerAcceptance": "not-established"
+    },
+    {
+      "id": "habitat-restoration-2026-09",
+      "title": "Rebuilding the habitat fisheries need",
+      "beforeScript": "Healthy fisheries begin with places where fish can feed, grow, and reproduce. NOAA Fisheries says it has awarded 103 million dollars to sixteen habitat restoration projects across the country. The work includes planting corals in the Caribbean, reconnecting rivers for salmon, and restoring salt marsh habitat for shrimp and oysters. These are funding awards, rather than completed recoveries. The next chapter is the work itself: rebuilding the habitats that support aquatic life, and tracking what changes as those projects move forward.",
+      "opening": "Federal funding is targeting the places fish need to survive, from salmon rivers to coral reefs.",
+      "body": "NOAA Fisheries announced one hundred three million dollars for sixteen restoration projects earlier in September. Plans include reconnecting rivers and rebuilding salt marsh nurseries for shrimp and oysters.",
+      "closing": "Funding is the first step. The benefit comes when fish can reach and use healthier habitat.",
+      "sourceUrl": "https://www.fisheries.noaa.gov/feature-story/103-million-noaa-funding-awarded-restore-habitat-fisheries",
+      "sourceName": "NOAA Fisheries",
+      "sourcePublishedDate": "2026-09-10",
+      "sourceCheck": {
+        "status": "primary-verified",
+        "checkedAt": "2026-09-30T14:48:03Z",
+        "notes": "Award announcement checked. Published September 10, updated September 15. Project delivery or ecological outcomes were not verified."
+      },
+      "timeliness": {
+        "mode": "dated-context",
+        "reason": "The award is twenty days old. Retain as a dated explainer or hold from current news until a verified project milestone supplies a new peg."
+      },
+      "editorialChanges": [
+        "Before: a general biology sentence delayed the development. After: funding and its practical purpose arrive together.",
+        "Before: a list of habitats accumulated without a governing idea. After: access and nursery habitat explain what restoration is trying to change.",
+        "Before: the ending asked broadly to track what changes. After: it identifies usable habitat as the intended benefit.",
+        "Before: an old award could appear new in a fresh edition. After: the narration says September and the classification prevents current-news promotion."
+      ],
+      "visualPlan": [
+        {
+          "cue": "places fish need to survive",
+          "purpose": "Establish what the funding is for.",
+          "layout": "Original river-to-reef graphic with generous space and two distinctive habitat forms. Clearly illustrative; no documentary claim or claimed funded-project location."
+        },
+        {
+          "cue": "one hundred three million dollars for sixteen restoration projects",
+          "purpose": "Let the audience retain the scale without a busy map.",
+          "layout": "Reveal $103 million, then 16 projects in reading order. Label 'Awards announced September 10, 2026'; upper-left source courtesy NOAA Fisheries."
+        },
+        {
+          "cue": "reconnecting rivers and rebuilding salt marsh nurseries",
+          "purpose": "Make the restoration mechanism visible.",
+          "layout": "Two sequential original schematics: an interrupted river connection opens, then marsh nursery habitat appears. Label proposed work; do not simulate measured ecological recovery."
+        }
+      ],
+      "pronunciations": [],
+      "claimChecks": [
+        {
+          "claim": "NOAA announced $103 million for 16 restoration projects.",
+          "sourceUrl": "https://www.fisheries.noaa.gov/feature-story/103-million-noaa-funding-awarded-restore-habitat-fisheries",
+          "support": "The September 10 announcement states the award amount and project count."
+        },
+        {
+          "claim": "Work includes river connections, reefs and marsh nurseries.",
+          "sourceUrl": "https://www.fisheries.noaa.gov/feature-story/103-million-noaa-funding-awarded-restore-habitat-fisheries",
+          "support": "The announcement and project list specify these restoration types."
+        },
+        {
+          "claim": "Healthy habitat supports access, feeding and reproduction.",
+          "sourceUrl": "https://www.fisheries.noaa.gov/feature-story/103-million-noaa-funding-awarded-restore-habitat-fisheries",
+          "support": "NOAA explains these functions as the purpose of restoration."
+        }
+      ],
+      "issues": [
+        "Unproduced baseline comes only from edition-source.json. This draft does not create or authorize a playlist item.",
+        "The source hero photo is credited Adobe Stock, not NOAA. Do not reuse it without the required rights.",
+        "Use the announced headline total; do not add grant figures or claim awarded funds have produced completed recovery."
+      ],
+      "script": "Federal funding is targeting the places fish need to survive, from salmon rivers to coral reefs. NOAA Fisheries announced one hundred three million dollars for sixteen restoration projects earlier in September. Plans include reconnecting rivers and rebuilding salt marsh nurseries for shrimp and oysters. Funding is the first step. The benefit comes when fish can reach and use healthier habitat.",
+      "originalSha256": "82129284bf9749577cddfa81d51f31d5361ea05cc9cf9c9f8ef2f26ab890f6a5",
+      "scriptSha256": "a89149271d9a61504cfdbd8dbb5aee6176bbd460535e2561d22bc12c28561c4a",
+      "wordCount": 60,
+      "beforeWordCount": 81,
+      "estimatedSeconds": 32.5,
+      "durationBasis": "Planning only: two words per second plus 2.5 seconds framing; not synthesized or measured.",
+      "productionStatus": "not-rendered",
+      "viewerApproved": false,
+      "baselineViewerAcceptance": "not-established"
+    }
+  ]
+}

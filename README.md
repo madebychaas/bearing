@@ -6,6 +6,10 @@ The application lives in [`channel/`](channel/README.md). Run **`channel/Start B
 
 ## Milestone status
 
+The September 30 editorial pass rewrote **13 existing scripts**, reducing average length from about **106 to 60 words**; the drafts range from **52 to 68 words**. The [rewrite book](product/SCRIPT_REWRITES_20260930.md) preserves source checks, before/after copy and the lessons from each edit. The [voice playbook](product/EDITORIAL_VOICE.md) and [editable profile with selected examples](channel/production/editorial-voice.json) now guide both native drafting and editing. This is maintained editorial guidance, not model-weight training. The drafts need fresh editorial review and a new rendered delivery before publication; they are not all viewer-approved, and no TTS or media was generated in this pass. Accepted PCE and NIST media remain untouched. See [the current handoff](product/NEXT.md).
+
+The previous production milestone remains available:
+
 The first story-quality milestone was accepted on September 29, 2026. The accepted cybersecurity cut remains intact. On September 30, the user requested a major domestic story produced through the same complete path. **Inflation erased the income gain** uses that morning's BEA release, a 58-word script, flowing measured narration, original animated explanatory graphics and a complete scored 1080p movie for each voice. See [the story review](product/IN_FOCUS_PCE_REVIEW.md) for source evidence, rights, pacing and delivery details, and [the handoff](product/NEXT.md) for verification.
 
 Easy News adds an editorial view over the same source intake and event IDs: separate immediate-awareness and deeper-treatment recommendations, source inspection, change history, and reversible producer decisions. Its sample news cycle is explicitly separated from live reporting. Recommendations do not assign, generate or publish stories. See [the V1 guide](product/EASY_NEWS_V1.md) and [current handoff](product/NEXT.md).
