@@ -26,7 +26,9 @@ Configuration lives in `production/producer-strategy.json`. Editorial history an
 
 ## Production feel
 
-Studio graphics ease in and out over **1.5 seconds of viewing time**, including at the chosen narration speed. Opening and closing idents last 4.5 seconds, while narration has 1.8 seconds of lead and tail space per chapter. Supporting facts fade smoothly at their own boundaries. A 1.5-second branded transition separates playlist entries. Sound cues are optional, music ducks under speech, and master mute covers all audio. Reduced movement removes transitions and freezes the illustration.
+The September 30 **Inflation erased the income gain** story is a complete, individually playable 1080p film: 63 words, 33.9 seconds Warm or 37.767 seconds Measured at Natural pace. Original data graphics reveal at narration cues, with 1.5-second scene blends and an authored reading pause after the inflation comparison. Voice begins at 0.52 seconds under the musical signature. The accepted cybersecurity segment keeps its prior production. [The new story review](../product/IN_FOCUS_PCE_REVIEW.md) documents the decisions and evidence.
+
+Earlier studio graphics ease in and out over **1.5 seconds of viewing time**, including at the chosen narration speed. Those legacy opening and closing idents last 4.5 seconds, while narration has 1.8 seconds of lead and tail space per chapter. These longer timings are historical treatments, not the standard for new narration-only stories. A 1.5-second branded transition separates playlist entries. Sound cues are optional, music ducks under speech, and master mute covers all audio. Reduced movement removes transitions and freezes legacy illustrations; finished films step between their narrated graphic states.
 
 All eleven complete studio stories were re-timed in both voices. Verified speech fragments were reused and remixed; previous media and editions remain intact. The local server supports byte-range delivery for MP3, MP4, and WAV, making chapter seeking reliable. See `../product/STUDIO_PRODUCTION.md` for the detailed format and verification.
 
@@ -59,6 +61,7 @@ python production/latest_video.py --limit 8
 python production/produce_programmes.py
 python production/pipeline.py check
 python production/produce_reviewed.py --input production/reviewed-additions-20260928.json
+python production/produce_film.py --input production/reviewed-pce-20260930.json
 python -m unittest discover -s tests -v
 node --test tests/*.test.mjs
 ```
@@ -81,6 +84,9 @@ For another machine, create a virtual environment, install `production/requireme
 - `dist/reporting.json` and `dist/source-status.json`: source links and source availability for the viewer; raw excerpts stay in local production records.
 - `dist/edition.json`: the complete illustrated Watch edition.
 - `dist/programmes.json`: source-bound complete studio programmes, narration, chapters, opening/closing copy and visual beats; consumed by Watch and Latest's produced-story mode.
+- `dist/films.json`: reviewed finished-film deliveries merged into the same viewer playlist, with a complete MP4 and clean narration for each voice. This is delivery inventory, not an additional source collection system.
+- `production/reviewed-pce-20260930.json`: the September 30 source-bound script, accuracy review, visual direction, exact data and current-news expiry.
+- `production/produce_film.py` and `film_visuals.py`: assemble a reviewed complete film with original cue-aligned graphics, a per-story narration pace and authored reading pauses. Uses the existing production lock, editorial gates, speech provider and original score. Failed production preserves the published edition; new deliveries use immutable paths.
 - `production/programme-plans.json`: individual editorial presentation plans, each bound to its underlying sourced script.
 - `dist/latest-edition.json`: the complete headline-video edition, with source times, captions and media hashes.
 - `production/runs/latest-video/`: per-revision narration provenance and completed segment records.

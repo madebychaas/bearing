@@ -1,0 +1,220 @@
+{
+  "schema": 1,
+  "story": {
+    "id": "reviewed-pce-buying-power-20260930-v1",
+    "topic": "business",
+    "topicLabel": "Money & economy",
+    "title": "Inflation erased the income gain.",
+    "dek": "New federal figures show inflation absorbed the gain in after-tax income, even as Americans spent more.",
+    "script": "Americans spent more, but inflation erased the gain in after-tax income. Today's federal report puts annual price growth at three point four percent, above the Fed's two percent goal. After-tax income rose in August. Prices rose, too, leaving buying power flat. Spending still grew, even after inflation. The next test: can income start outpacing prices? That's what gives households more room to breathe.",
+    "source": {
+      "name": "U.S. Bureau of Economic Analysis",
+      "title": "Personal Income and Outlays, August 2026",
+      "url": "https://www.bea.gov/news/2026/personal-income-and-outlays-august-2026"
+    },
+    "publisherGroup": "U.S. Bureau of Economic Analysis",
+    "publishedAt": "2026-09-30",
+    "publishedTime": "2026-09-30T12:30:00Z",
+    "dateLabel": "30 Sep 2026",
+    "expiresAt": "2026-10-03T00:00:00Z",
+    "reviewStatus": "verified",
+    "reviewedAt": "2026-09-30",
+    "reviewMethod": "Editorial accuracy review against BEA release 26-43 and the Federal Reserve definition of its longer-run PCE inflation goal. Aggregate estimates, not every household's experience.",
+    "editorialNote": "BEA released these August estimates on September 30, 2026, with its annual update. Annual headline PCE inflation was 3.4%; the Federal Reserve goal is 2% over the longer run. After-tax income rose 0.3% in current dollars and was unchanged after inflation; real spending rose 0.6%. No comparison uses unrevised July figures. The closing is a question, not a forecast.",
+    "visualDisclosure": "Original Bearing explanatory graphics drawn from public-domain federal data, with source credits. No documentary footage or third-party photographs. Locally synthesized AI narration; original synthesized music.",
+    "facts": []
+  },
+  "editorialSource": {
+    "domestic": true,
+    "publisherGroup": "U.S. Bureau of Economic Analysis"
+  },
+  "plan": {
+    "sourceScriptSha256": "a418b4aeb2d7e30afafa4ee8113afae1091324a8155e696d0d1848dde094defe",
+    "title": "Inflation erased the income gain.",
+    "why": "Inflation absorbed the gain in after-tax income, even as spending rose.",
+    "openingNarration": "Americans spent more, but inflation erased the gain in after-tax income.",
+    "body": "Today's federal report puts annual price growth at three point four percent, above the Fed's two percent goal. After-tax income rose in August. Prices rose, too, leaving buying power flat. Spending still grew, even after inflation.",
+    "closingNarration": "The next test: can income start outpacing prices? That's what gives households more room to breathe.",
+    "summary": "More spending did not mean more buying power from income.",
+    "lookAhead": "Can income begin outpacing prices and give households more room to breathe?",
+    "visualTreatment": "finished-film",
+    "soundTreatment": "editorial-score",
+    "narrationRate": 0.93,
+    "maxDuration": 45,
+    "timing": {
+      "ident": 0.4,
+      "lead": 0.12,
+      "tail": 0.8,
+      "outro": 1.25
+    },
+    "chapterLabels": {
+      "opening": "The Shift",
+      "story": "The Pressure",
+      "closing": "What Counts"
+    },
+    "editorialTiming": {
+      "mode": "current",
+      "developmentDate": "2026-09-30",
+      "sourcePublishedDate": "2026-09-30",
+      "checkedAt": "2026-09-30",
+      "basis": "new-development",
+      "triggerDate": "2026-09-30",
+      "validThrough": "2026-10-02",
+      "reason": "BEA released new August income, spending and inflation estimates today at 8:30 a.m. EDT. The new purchasing-power finding is the news peg; August is the reference period.",
+      "evidenceUrl": "https://www.bea.gov/news/2026/personal-income-and-outlays-august-2026"
+    },
+    "openingReveals": [
+      {
+        "cue": "Americans spent more",
+        "role": "lead"
+      },
+      {
+        "cue": "inflation erased",
+        "role": "impact"
+      }
+    ],
+    "beats": [
+      {
+        "kind": "pce_comparison",
+        "label": "THE PRICE PRESSURE",
+        "text": "Annual PCE inflation: 3.4%",
+        "cue": "Today's federal report",
+        "reveals": [
+          {
+            "cue": "three point four percent",
+            "role": "current"
+          },
+          {
+            "cue": "two percent goal",
+            "role": "goal"
+          }
+        ]
+      },
+      {
+        "kind": "pce_mechanism",
+        "label": "BUYING POWER",
+        "text": "Income rose. Prices absorbed the gain.",
+        "cue": "After-tax income rose",
+        "reveals": [
+          {
+            "cue": "After-tax income rose",
+            "role": "income"
+          },
+          {
+            "cue": "Prices rose",
+            "role": "prices"
+          },
+          {
+            "cue": "buying power flat",
+            "role": "flat"
+          },
+          {
+            "cue": "Spending still grew",
+            "role": "spending"
+          }
+        ]
+      }
+    ],
+    "closingReveals": [
+      {
+        "cue": "can income start outpacing prices",
+        "role": "hinge"
+      },
+      {
+        "cue": "more room to breathe",
+        "role": "meaning"
+      }
+    ],
+    "review": {
+      "date": "2026-09-30",
+      "accuracy": "Every quantitative claim checked against BEA release 26-43; 2% longer-run PCE goal checked against the Federal Reserve FAQ. No claim about each person's pay, no CPI substitution, no market prediction.",
+      "voice": "63 words; calm, concrete, clear consequence before detail. Whole sentences, pitch-preserving per-story pace reduction, deliberate reading space.",
+      "visuals": "Original data chart starts at zero. Each number and mechanism element enters at its spoken cue. No unspoken monthly decimals on screen.",
+      "rights": {
+        "bea": "https://www.bea.gov/help/faq/147",
+        "graphics": "Original Bearing code and composition",
+        "music": "Original Bearing composition and synthesis; no third-party samples",
+        "sourceLogoUsed": false
+      }
+    },
+    "narrationPauses": [
+      {
+        "phase": "story",
+        "after": "two percent goal.",
+        "seconds": 1.7
+      }
+    ]
+  },
+  "visuals": {
+    "assets": [],
+    "description": "Original 1080p editorial film: a concise buying-power lead, a zero-baseline annual inflation comparison, a narrated income/prices/buying-power mechanism, and a consequential closing question.",
+    "eyebrow": "IN FOCUS / THE U.S. ECONOMY",
+    "headline": "Income rose.\nBuying power didn't.",
+    "subline": "Inflation absorbed the income gain.",
+    "comparisonTitle": "Annual price growth",
+    "metricLabel": "PCE inflation / Year over year",
+    "currentLabel": "August 2026",
+    "currentValue": 3.4,
+    "previousLabel": "Fed longer-run goal",
+    "previousValue": 2,
+    "valueSuffix": "%",
+    "ceiling": 4,
+    "baseline": 0,
+    "comparisonLabel": "U.S. prices: August vs. a year earlier. Goal: Federal Reserve.",
+    "mechanism": {
+      "eyebrow": "AUGUST VS. JULY / U.S. TOTALS",
+      "title": "What happened to the income gain?",
+      "steps": [
+        {
+          "label": "After-tax income",
+          "role": "income",
+          "value": "UP"
+        },
+        {
+          "label": "Prices",
+          "role": "prices",
+          "value": "UP"
+        },
+        {
+          "label": "Buying power",
+          "role": "flat",
+          "value": "FLAT"
+        }
+      ],
+      "note": "Spending still rose after inflation.",
+      "noteRole": "spending",
+      "qualifier": "National aggregate · Change from July to August 2026"
+    },
+    "closing": {
+      "eyebrow": "WHAT COUNTS NEXT",
+      "title": "Can income\noutpace prices?",
+      "text": "More room to breathe."
+    },
+    "credit": "COURTESY / BEA · FEDERAL RESERVE"
+  },
+  "evidence": {
+    "releaseNumber": "BEA 26-43",
+    "retrievedAt": "2026-09-30T12:30:48Z",
+    "sources": [
+      {
+        "url": "https://www.bea.gov/news/2026/personal-income-and-outlays-august-2026",
+        "purpose": "All August estimates and annual update notice",
+        "rightsUrl": "https://www.bea.gov/help/faq/147"
+      },
+      {
+        "url": "https://www.federalreserve.gov/faqs/economy_14400.htm",
+        "purpose": "Annual PCE inflation target of 2% over the longer run"
+      }
+    ],
+    "facts": {
+      "headlinePceYearOverYearPct": 3.4,
+      "pceMonthlyPct": 0.3,
+      "nominalDpiMonthlyPct": 0.3,
+      "realDpiMonthlyPct": 0,
+      "realPceMonthlyPct": 0.6,
+      "fedLongRunGoalPct": 2
+    },
+    "scope": "National aggregate estimates; changes are rounded to one decimal. Not an individual household budget.",
+    "comparisonPolicy": "No prior-month annual comparison; avoid mixing pre-update and revised data."
+  }
+}

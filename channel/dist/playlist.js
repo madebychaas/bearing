@@ -8,6 +8,7 @@ export function validStory(s){
  if(!s||s.status!=='ready'||typeof s.id!=='string'||typeof s.title!=='string'||!asset(s.image)||!/^https:\/\//.test(s.source?.url||''))return false;
  const brief=s.format==='headline-video';
  if(!brief&&(!s.programme||s.visual?.scope!=='story'||s.visual.storyId!==s.id||!asset(s.video)))return false;
+ if(s.programme?.visualTreatment==='finished-film'&&!['warm','measured'].every(v=>asset(s.voices?.[v]?.video)))return false;
  return ['warm','measured'].every(v=>s.voices?.[v]&&asset(brief?s.voices[v].video:s.voices[v].audio)&&Array.isArray(s.voices[v].captions)&&s.voices[v].duration>1);
 }
 export function mergeEditions(editions){

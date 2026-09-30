@@ -2,8 +2,10 @@ import {createCameras} from './cameras.js';
 import {franchise, mergeEditions, selectPlaylist} from './playlist.js';
 import { createLatest } from './latest.js';
 import { createStudio } from './studio.js';
+import {isFinishedFilm,pictureSource,editionFamily,syncFinishedPicture} from './film-playback.js';
 const $ = id => document.getElementById(id);
 let cameraController=null;
+let pictureBuffering=false;
 const audio = $('narration'), film = $('film'), music = $('music');
 const topicNames={space:'Space & discovery',nature:'Nature & our planet',culture:'Art & culture',world:'U.S. & policy',technology:'Technology',business:'Money & economy',health:'Health',sport:'Sport',local:'North Texas'};
 const defaults = {topics:Object.keys(topicNames).filter(t=>t!=='local'),pace:1,voice:'warm',music:'drift',musicVolume:.12,captions:true,transitionSounds:true,reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches};
@@ -20,7 +22,14 @@ const eligible=(cycle=rotationCycle)=>selectPlaylist(stories,{topics:preferences
 const displayTitle=story=>story.displayTitle||story.title;
 const studio=createStudio({host:$('player'),media:audio,music,getPreferences:()=>preferences,getState:()=>({playing,started,muted:audio.muted}),getNextTitle:()=>{const list=eligible();return displayTitle(list[(list.findIndex(s=>s.id===current?.id)+1)%list.length]||{});}});
 const upcomingMedia=document.createElement('audio');upcomingMedia.preload='metadata';
-function prepareNext(){const list=eligible();const index=list.findIndex(s=>s.id===current?.id);const candidate=list[(index+1)%list.length];const track=candidate?.voices[preferences.voice];const url=track?.audio||track?.video;if(url&&candidate.id!==current?.id&&upcomingMedia.getAttribute('src')!==url){upcomingMedia.src=url;upcomingMedia.load();}}
+const upcomingPicture=document.createElement('video');upcomingPicture.preload='auto';upcomingPicture.muted=true;
+function prepareNext(){
+ const list=eligible(),index=list.findIndex(s=>s.id===current?.id),candidate=list[(index+1)%list.length],track=candidate?.voices[preferences.voice],url=track?.audio||track?.video;
+ if(url&&candidate.id!==current?.id&&upcomingMedia.getAttribute('src')!==url){upcomingMedia.src=url;upcomingMedia.load();}
+ const picture=isFinishedFilm(candidate)&&candidate.id!==current?.id?pictureSource(candidate,preferences.voice):null;
+ if(picture&&upcomingPicture.getAttribute('src')!==picture){upcomingPicture.src=picture;upcomingPicture.load();}
+ else if(!picture&&upcomingPicture.hasAttribute('src')){upcomingPicture.removeAttribute('src');upcomingPicture.load();}
+}
 const transitionSound=new Audio('assets/studio/sweep-v2.wav');
 function cancelTransition(){clearTimeout(transitionTimer);transitionTimer=null;$('channel-transition').classList.remove('active');transitionSound.pause();}
 function node(tag,cls,text){const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;}
@@ -45,7 +54,8 @@ function renderRotation(){
  $('rotation-meta').textContent=`${list.length} stories selected for you`;
  if(current)$('start-duration').textContent=`${formatTime(current.voices[preferences.voice].duration/preferences.pace)} · ${franchise(current).name.toUpperCase()}`;
 }
-function updateMotion(){document.body.classList.toggle('reduced-motion',!!preferences.reducedMotion);if(preferences.reducedMotion)film.pause();else if(playing)film.play().catch(()=>{});}
+function syncFilm(force=false){return syncFinishedPicture({story:current,track:current?.voices[voiceForStory],film,narration:audio,started,playing,reducedMotion:preferences.reducedMotion,buffering:pictureBuffering,force});}
+function updateMotion(){document.body.classList.toggle('reduced-motion',!!preferences.reducedMotion);if(syncFilm(true))return;if(preferences.reducedMotion)film.pause();else if(playing)film.play().catch(()=>{});}
 function renderPreferences(){
  const list=$('topic-options');list.replaceChildren();for(const [topic,label] of Object.entries(topicNames)){
   const button=node('button','topic-option',label);button.type='button';button.setAttribute('aria-pressed',String(preferences.topics.includes(topic)));
@@ -70,17 +80,17 @@ function updateTransport(){
 function pause(){cancelTransition();playRevision++;playing=false;audio.pause();film.pause();music.pause();updateTransport();}
 async function play(){
  if(!current||switching)return;cameraController?.stop();const revision=++playRevision;message('');started=true;playing=true;updateTransport();
- try{audio.playbackRate=preferences.pace;await audio.play();if(!playing||revision!==playRevision)return;if(!preferences.reducedMotion)film.play().catch(()=>{});configureMusic();}catch{if(revision===playRevision){pause();message('Playback needs a tap. Press Play to try again.');}}
+ try{audio.playbackRate=preferences.pace;await audio.play();if(!playing||revision!==playRevision)return;if(!syncFilm(true)&&!preferences.reducedMotion)film.play().catch(()=>{});configureMusic();}catch{if(revision===playRevision){pause();message('Playback needs a tap. Press Play to try again.');}}
 }
 function loadStory(story,autoplay=false){
- if(!story)return;switching=true;pause();current=story;started=false;voiceForStory=preferences.voice;const track=story.voices[voiceForStory];captions=track.captions;
+ if(!story)return;switching=true;pause();current=story;started=false;pictureBuffering=false;voiceForStory=preferences.voice;const track=story.voices[voiceForStory];captions=track.captions;
  $('start').disabled=false;$('play').disabled=false;$('sources').disabled=false;
- audio.src=track.audio||track.video;audio.defaultPlaybackRate=preferences.pace;audio.load();audio.playbackRate=preferences.pace;film.src=story.video||track.video;film.poster=story.image;film.loop=story.format!=='headline-video';film.muted=true;film.load();
+ audio.src=track.audio||track.video;audio.defaultPlaybackRate=preferences.pace;audio.load();audio.playbackRate=preferences.pace;film.src=pictureSource(story,voiceForStory);film.poster=story.image;film.loop=story.format!=='headline-video'&&!isFinishedFilm(story);film.muted=true;film.playbackRate=isFinishedFilm(story)?preferences.pace:1;film.load();
  const brand=franchise(story);$('player').dataset.storyId=story.id;$('player').dataset.series=brand.tone;$('programme-name').textContent=brand.name;$('programme-note').textContent=brand.note;
  $('brief-design').hidden=story.format!=='headline-video';$('brief-design').dataset.long=String(story.title.length>170);$('brief-title').textContent=story.title;$('brief-source').textContent=story.source.name;$('brief-topic').textContent=story.topicLabel;
  $('topic-label').textContent=story.topicLabel.toUpperCase();$('story-byline').textContent=`${story.source.name} · ${story.dateLabel||new Date(story.publishedTime).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})}`.toUpperCase();$('story-title').textContent=displayTitle(story);$('story-dek').textContent=story.programme?.why||story.displayDek||story.dek||'A quick, attributed headline. Read the original report for the full context.';
  $('on-air-title').textContent=displayTitle(story);$('selection-reason').textContent=story.editorial?.focus!=='general'&&story.editorial?.reason?story.editorial.reason:`For your interest in ${story.topicLabel.toLowerCase()}`;$('story-insight').hidden=true;
- film.setAttribute('aria-label',story.visual?.alt||'AI-illustrated story');document.querySelector('.visual-label').textContent=story.format==='headline-video'?'HEADLINE GRAPHIC':'AI ILLUSTRATION';document.querySelector('.visual-label').title=story.visualDisclosure;
+ film.setAttribute('aria-label',story.visual?.alt||'AI-illustrated story');document.querySelector('.visual-label').textContent=isFinishedFilm(story)?'PRODUCED STORY':story.format==='headline-video'?'HEADLINE GRAPHIC':'AI ILLUSTRATION';document.querySelector('.visual-label').title=story.visualDisclosure;
  studio.setStory(story,voiceForStory);
  $('time').textContent=`00:00 / ${formatTime(track.duration)}`;$('seek').value=0;message('');switching=false;renderRotation();updateTransport();if(autoplay)play();
 }
@@ -97,11 +107,12 @@ async function next(){
 }
 function applyPending(){if(!pendingEdition)return;stories=pendingEdition.stories;editionVersion=pendingEdition.version;editionMetadata(pendingEdition);pendingEdition=null;failedIds.clear();$('update-status').textContent='New arrivals are in your playlist.';renderRotation();}
 async function fetchEditions(){
- const results=await Promise.allSettled(['programmes.json','latest-edition.json'].map(async url=>{const response=await fetch(url,{cache:'no-cache',signal:AbortSignal.timeout(8000)});if(!response.ok)throw new Error('Edition unavailable');const data=await response.json();if(!Array.isArray(data.stories))throw new Error('Invalid edition');return data;}));
+ const feeds=['films.json','programmes.json','latest-edition.json'];
+ const results=await Promise.allSettled(feeds.map(async url=>{const response=await fetch(url,{cache:'no-cache',signal:AbortSignal.timeout(8000)});if(!response.ok)throw new Error('Edition unavailable');const data=await response.json();if(!Array.isArray(data.stories))throw new Error('Invalid edition');return data;}));
  if(results.every(result=>result.status==='rejected'))throw new Error('Editions unavailable');
  // Keep the last playable part if only one edition could be reached.
- const editions=results.map((result,i)=>result.status==='fulfilled'?result.value:{stories:stories.filter(s=>(s.format==='headline-video')===(i===1)),version:`retained-${i}`});
- return {stories:mergeEditions(editions),version:editions.map(e=>e.version||e.builtAt).join(':'),edition:editions[0].edition||new Date().toISOString().slice(0,10)};
+ const editions=results.map((result,i)=>result.status==='fulfilled'?result.value:{stories:stories.filter(s=>editionFamily(s)===feeds[i]),version:`retained-${i}`});
+ return {stories:mergeEditions(editions),version:editions.map(e=>e.version||e.builtAt).join(':'),edition:editions.find(e=>e.edition)?.edition||new Date().toISOString().slice(0,10)};
 }
 async function refreshEdition(){
  if(refreshing)return refreshing;if(Date.now()-lastRefresh<30000)return;lastRefresh=Date.now();
@@ -112,6 +123,7 @@ function progress(){
  $('time').textContent=`${formatTime(time)} / ${formatTime(duration)}`;$('seek').value=ratio*100;
  const caption=captions.find(c=>time>=c.start&&time<c.end);$('caption').textContent=caption?.text||'';$('caption').hidden=!preferences.captions||!started||!caption;
  if(current.format==='headline-video'){if(!preferences.reducedMotion&&Math.abs(film.currentTime-time)>.4)film.currentTime=time;if(preferences.music!=='off')music.volume=preferences.musicVolume*(caption?.28:.85);}
+ syncFilm();
  const index=Math.min(2,Math.floor(ratio*3));const fact=current.facts?.[index];$('story-insight').hidden=!started||!fact||ratio<.09||ratio>.89;if(fact)$('insight-text').textContent=fact;
 }
 function openDialog(dialog){resumeAfterDialog=playing;pause();dialog.showModal();}
@@ -143,8 +155,11 @@ $('music-volume').oninput=()=>{preferences.musicVolume=Number($('music-volume').
 $('transition-sounds').onchange=()=>{preferences.transitionSounds=$('transition-sounds').checked;studio.update();storePreferences();};
 $('reduce-motion').onchange=()=>{preferences.reducedMotion=$('reduce-motion').checked;updateMotion();storePreferences();};
 audio.addEventListener('timeupdate',progress);audio.addEventListener('loadedmetadata',progress);audio.addEventListener('ended',next);
+for(const event of ['seeking','seeked','ratechange'])audio.addEventListener(event,()=>syncFilm(true));film.addEventListener('loadedmetadata',()=>{if(started)syncFilm(true);});
+for(const event of ['waiting','stalled'])audio.addEventListener(event,()=>{pictureBuffering=true;syncFilm(true);});
+for(const event of ['playing','canplay'])audio.addEventListener(event,()=>{pictureBuffering=false;syncFilm(true);});
 audio.addEventListener('error',()=>{if(!current||switching)return;const continuePlaying=playing;failedIds.add(current.id);pause();renderRotation();if(continuePlaying&&eligible().length){message('This story is unavailable. Moving to the next.');next();}else message('This story’s audio is unavailable. Press Next for another story.');});
-film.addEventListener('error',()=>{if(current&&film.hasAttribute('src')){film.removeAttribute('src');film.load();}});
+film.addEventListener('error',()=>{if(current&&film.hasAttribute('src')){film.removeAttribute('src');film.load();if(isFinishedFilm(current)&&!switching){const continuePlaying=playing;failedIds.add(current.id);pause();renderRotation();if(continuePlaying&&eligible().length){message('This story’s picture is unavailable. Moving to the next.');next();}else message('This story’s picture is unavailable. Press Next for another story.');}}});
 music.addEventListener('error',()=>{music.pause();preferences.music='off';storePreferences();});
 document.addEventListener('keydown',e=>{if(document.querySelector('dialog[open]')||e.target.closest('#rotation')||/INPUT|TEXTAREA|SELECT|BUTTON|A/.test(e.target.tagName)||e.ctrlKey||e.altKey||e.metaKey)return;if(e.code==='Space'||e.key==='k'){e.preventDefault();playing?pause():play();}else if(e.key==='ArrowRight'||e.key==='n'){e.preventDefault();next();}else if(e.key==='ArrowLeft'&&current){audio.currentTime=0;progress();}});
 async function boot(){

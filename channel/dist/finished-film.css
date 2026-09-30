@@ -1,0 +1,15 @@
+/* Only authored finished films use these rules. Accepted browser compositions keep their treatment. */
+.studio-player[data-visual-treatment="finished-film"] .studio-layer,
+.studio-player[data-visual-treatment="finished-film"] .stage-top,
+.studio-player[data-visual-treatment="finished-film"] .stage-shade,
+.studio-player[data-visual-treatment="finished-film"] .story-insight{display:none!important}
+.studio-player[data-visual-treatment="finished-film"] #film{inset:0 auto auto 0;width:100%;height:calc(100% - 60px);object-fit:contain;object-position:center top;opacity:1;background:#0b1518}
+.studio-player[data-visual-treatment="finished-film"] .caption{max-width:75%;font-size:clamp(13px,1.05vw,16px);line-height:1.35;padding:4px 10px}
+@media(max-width:650px){
+ .studio-player.player[data-visual-treatment="finished-film"]:not(:fullscreen){aspect-ratio:.95}
+ .studio-player[data-visual-treatment="finished-film"]:not(:fullscreen) #film{inset:0 auto auto 0;height:calc(100% - 155px);object-position:center top}
+ .studio-player[data-visual-treatment="finished-film"]:not(:fullscreen) .caption{top:calc(100% - 151px);bottom:auto;max-width:94%;padding:3px 8px;font-size:13px;line-height:1.35;background:transparent;backdrop-filter:none}
+ .studio-player[data-visual-treatment="finished-film"]:not(:fullscreen) .studio-chapters{left:3%;right:3%;bottom:66px;padding:3px}
+ .studio-player[data-visual-treatment="finished-film"]:not(:fullscreen) .studio-chapter{min-height:32px;padding:6px;font-size:10px}
+ .studio-player[data-visual-treatment="finished-film"]:not(:fullscreen) .story-intro{left:50%;right:auto;top:calc((100% - 155px)/2);bottom:auto;transform:translate(-50%,-50%)}
+}

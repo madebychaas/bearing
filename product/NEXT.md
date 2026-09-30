@@ -1,52 +1,53 @@
-# Easy News — V1 producer handoff
+# Bearing — current handoff
 
-**Status: V1 working proof complete. Stop here pending a new mission.**
+**September 30, 2026: one current domestic story produced and ready for viewer review.**
 
-Delivered September 29, 2026 in implementation commit `312011e`. This closes the implementation proof activated by `4083efd`; it does not claim that the user has accepted the new producer experience. Do not begin a generalized platform, more profiles, automatic assignments, or expanded media production without a new mission.
+The user requested a major story from today, taken through the complete quality path. The result is **Inflation erased the income gain**, based on this morning's BEA Personal Income and Outlays release. This mission did not reopen the accepted cybersecurity cut or expand the producer platform.
 
-## Open it
+## Watch
 
-Run `channel/Start Bearing.cmd` and open **http://127.0.0.1:8796/producer.html**. The existing Bearing viewer remains at **http://127.0.0.1:8796/**. The normal local server is running with automatic source refresh enabled. The temporary test server was stopped.
+Open **http://127.0.0.1:8796/**. Choose **In Focus**, then **Inflation erased the income gain.** One Play continues into the next independent story. The preview uses Natural pace; the user's previous A little quicker setting had been accelerating playback by 15%.
 
-The [V1 guide](EASY_NEWS_V1.md) describes operation, configuration, the representative cycle and the implementation boundaries. [EASY_NEWS_DIRECTION.md](EASY_NEWS_DIRECTION.md) remains the enduring producer direction. [COVERAGE_RADAR.md](COVERAGE_RADAR.md) remains supporting exploration, not a separately activated build.
+- Story: `reviewed-pce-buying-power-20260930-v1`
+- Final delivery: `0b3b3c40a075da4bed57`
+- Script: **63 words**
+- Warm / Heart: **33.900 seconds**
+- Measured / Michael: **37.767 seconds**
+- Standalone complete movie: `channel/dist/assets/films/0b3b3c40a075da4bed57/measured.mp4` (Warm is alongside it)
+- [Editorial, source, rights and production review](IN_FOCUS_PCE_REVIEW.md)
 
-## What works
+The current-news record is valid through October 2 and expires from the playlist at October 3, 00:00 UTC. The released August estimates are the source period; September 30 is the actual news peg. Future corrections or updates require a new editorial review, not an automatic claim that this fixed film remains current.
 
-- A producer workspace over the existing collector, retained source reports and canonical coverage IDs. No second ingestion system or manually maintained story library.
-- Independent **The Brief** and **In Focus** recommendations. Product-specific reasons expose practical consequence, immediacy, explanatory potential, evidence and gaps. Top candidates stay manageable; alternatives remain inspectable.
-- Source publication time, feed health and refresh time remain distinct. Rechecks and cosmetic wording do not create material-update alerts. Potential material changes show exact retained before/after reporting for inspection.
-- Shortlist, watch, dismiss and reset with notes and persistent decision history. A dismissed story with a detected material change resurfaces in Updates without reversing the human decision. No action assigns, generates or publishes a story.
-- Local-to-national leads require identified original reporting from three separate owners and markets, with wire and near-duplicate exclusion. Actual contributing reports are inspectable across stories. The sample proves this; current live intake has no qualifying provenance-backed pattern.
-- An explicitly synthetic, isolated representative cycle proves product differentiation, expanded recall scope, cosmetic revisions, additional reporting, developing stories, held material and local convergence. Sample actions never affect live decisions or Bearing's playlist.
+## What was produced
 
-At verification, the live intake contained **220 reports / 217 grouped events**, with **16 of 16 configured feeds available**. These counts are observations, not fixed product guarantees. The Brief prioritized a student-loan deadline, an effective trade restriction and layoffs; In Focus gave more weight to economic research and housing affordability. The default primary view narrowed the pool to roughly twenty practical-impact candidates while preserving the alternatives.
+A consequence-led script, locally synthesized narration, original 1080p animated explanatory graphics, an original ducked musical bed and sound punctuation, two complete MP4s with English subtitles, clean voice tracks, source-specific posters, and an entry in the existing continuous playlist.
+
+The film leads with buying power, compares 3.4% annual PCE inflation with the Fed's 2% longer-run goal, explains the monthly income/price mechanism, and closes on whether income can outpace prices. Four different compositions serve The Shift / The Pressure / What Counts. Numbers and labels reveal at spoken cues; no unrelated footage is used. The upper-left courtesy names BEA and the Federal Reserve.
+
+Per-story pitch-preserving pacing is 0.93; the opening voice starts at 0.52 seconds. A 1.7-second musical reading breath leaves the goal comparison fully settled for 2.17 seconds Warm / 2.59 seconds Measured before its transition. Short exact-word captions and a picture safe area protect graphic reading time. On a narrow phone the film sits above the captions and existing controls; fine chart text remains better suited to landscape/fullscreen viewing.
+
+## Implementation boundary
+
+- `production/produce_film.py` reuses the existing source/script gates, current-news check, CPU speech, score and production lock. `film_visuals.py` supplies original narration-timed graphics.
+- `dist/films.json` is approved delivery inventory merged into the same playlist with existing source-URL deduplication and boundary updates. There is no new editorial intake, automatic assignment service or manually managed source library.
+- Voice-specific picture follows the narration clock. Buffer starvation pauses picture; recovery resynchronizes. Both voice movies must be valid before playlist admission. Less movement steps through settled narrated states.
+- Asset copies use verified temporary files and atomic replacement. Both complete voice versions must decode and meet the duration budget before the manifest changes. Intermediate revisions remain local; only the final reviewed delivery and its score are committed.
+- Changes to picture fitting and caption spacing apply only to finished films. The outer player, accepted story renderer, broader interface and producer desk retain their existing design.
 
 ## Verification
 
-- **115 Python tests passed**, including twenty producer-intelligence/state tests and four HTTP-boundary tests. The targeted twenty producer tests passed again after the final local-pattern precedence refinement.
-- **38 JavaScript tests passed**, including six producer-view tests and the unchanged playback suite.
-- Browser-tested the live desk, different product rankings, source excerpts, strategy definitions, sample-cycle advancement, a dismissed story resurfacing on a material update, persistence through a server restart, reversal of the decision, and the three-market reporting basis.
-- Desktop at **1280 × 720** has no document overflow. A **390 px** mobile viewport has no horizontal overflow and uses the flowing layout. Browser warning/error logs were empty after the final checks.
-- The server still serves the existing viewer and media ranges. Player code, accepted media, programme assets and source-ingestion code were not changed. Live producer decisions remain untouched by QA; the disposable sample was reset to its baseline.
+- **126 Python tests and 46 JavaScript tests passed.** JavaScript ran with `node --test channel/tests/*.test.mjs`; the machine's npm launcher points at a missing npm installation, so the equivalent package script was invoked directly.
+- Both final MP4s fully decode and match their authored duration. The final AAC mixes decode with peaks 0.8094 Warm / 0.8170 Measured, below clipping. Captions and standalone subtitles reproduce every word and punctuation mark of the approved script: 13 chunks per voice, at most eight words / fifty characters.
+- Both movies return HTTP 206 and correct byte ranges from the normal local server.
+- Actual browser checks cover voice-specific media, Natural and Unhurried rates, pause and forward/backward seek, caption and graphic alignment, master mute, reduced movement, the source/script dialog, and automatic progression into the next independent item. The authored poster remains visible until Play. Live delivery updates wait for a story boundary.
+- Desktop at 1280 × 720 remains scroll-less. The 390 px mobile layout has no horizontal overflow; picture, captions and controls stay separated.
+- Independent source and visual review checked numbers, periods, zero-baseline geometry, courtesy and the qualified closing. Buffering, malformed voice-video entries and interrupted-copy recovery have regression tests.
+- The accepted NIST story record and all nine referenced media/score assets are **byte-for-byte unchanged**, still delivery `a315989abeedc6ee7f60`.
 
-## What the proof taught us
+Physical speaker output and subjective voice appeal are not independently listening-verified. The viewer's judgment remains the final creative acceptance; successful software checks do not stand in for it.
 
-1. Broad keyword counting was not useful enough. It elevated AI model training, a political recall and a music-rights dispute as practical consumer leads. Using a bounded lead excerpt, contextual impact checks and neutral reaction/framing rules corrected those false positives. This remains inspectable curation assistance, not general semantic understanding.
-2. Different product weights are necessary. Clamping scores at one hundred hid meaningful distinctions and let arbitrary IDs break ties; independent, unsaturated rankings and ordered reasons are clearer. The UI does not present a universal importance score.
-3. Change and source count are different. Additional reporting can improve an opportunity without creating a new fact. Recent material flags must survive later cosmetic edits, and decisions must survive refreshes, outages and restarts.
-4. Evidence must be reachable. An unexplained count of three local markets was insufficient; the producer needs the actual markets, publishers and reports. Specific configured patterns should take precedence over broader matches using the same evidence.
-5. Source integrity matters during file handoffs. Mismatched reporting/candidate revisions withhold the excerpt and preserve the last coherent comparison baseline. Corrupt inputs or decision files fail closed instead of erasing the editorial record.
+## Earlier work and stop boundary
 
-## Known limits to carry forward
+The native producer desk remains at **http://127.0.0.1:8796/producer.html**. Its completed September 29 proof is preserved in [EASY_NEWS_V1_HANDOFF.md](EASY_NEWS_V1_HANDOFF.md), with operation in [EASY_NEWS_V1.md](EASY_NEWS_V1.md).
 
-Recommendations use rules over attributed feed titles and excerpts; they are leads for judgment, not verified factual summaries or assignments. The engine cannot reconstruct unseen historical revisions, reliably detect every subtle correction, or join every new URL into an ongoing story. Live local reporting lacks enough explicit original-reporting provenance to claim national patterns. AP/CNN are still source links pending suitable access. Source cadence retains publisher TTLs and the existing production worker's schedule.
-
-The local store assumes **one server per checkout**. It is not a multi-user database or a remote editorial service. Strategy and the two product definitions are configured in `channel/production/producer-strategy.json` and loaded on server restart. State is ignored under `channel/production/runs/`; no credentials, local excerpts, decisions or runtime caches were committed.
-
-## Bearing milestone preserved
-
-The previously accepted cybersecurity segment remains delivery `a315989abeedc6ee7f60`, with the 51-word, 23.11-second Warm / 25.71-second Measured cut. Future production should preserve graphic reading time and avoid pushing the voice faster. That production milestone was not reopened.
-
-The old `easynews-reference` repository is archival only and was not inspected or used. The new Easy News workspace is native code in this repository. Its name is not authorization to inspect the archive.
-
-**No next development mission is active.** The next useful input is the user's assessment of the producer desk's actual editorial usefulness; that is not an instruction to keep building in the meantime.
+The archival reference repository was not inspected or used. No dependency on it was introduced. This completes the requested single-story production pass; do not begin another story or broad feature mission without new direction.

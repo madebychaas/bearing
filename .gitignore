@@ -19,3 +19,5 @@ Thumbs.db
 # Keep only explicitly reviewed/published programme deliveries versioned.
 # Already tracked assets stay tracked; force-add reviewed new deliveries.
 /channel/dist/assets/studio/
+# Finished film attempts stay local; force-add only the reviewed delivery.
+/channel/dist/assets/films/
