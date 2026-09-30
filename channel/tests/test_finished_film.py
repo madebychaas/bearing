@@ -1,5 +1,6 @@
 import sys,tempfile,unittest
-from unittest.mock import patch
+from types import SimpleNamespace
+from unittest.mock import Mock,patch
 import numpy as np
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'production'))
@@ -7,6 +8,33 @@ import produce_film as film
 
 
 class FinishedFilmTests(unittest.TestCase):
+ def test_held_selection_stops_before_validation_or_production(self):
+  def held():raise ValueError('Reporting changed; reassess')
+  with patch.object(film,'validate_packet') as validate:
+   with self.assertRaisesRegex(ValueError,'reassess'):film.produce({},publish_result=False,completion_guard=held)
+   validate.assert_not_called()
+ def test_preview_completion_retains_asset_without_playlist_publication(self):
+  with tempfile.TemporaryDirectory() as directory:
+   run=SimpleNamespace(data={'state':'working','stages':[{}]*8},path=Path(directory)/'production.json')
+   with patch.object(film,'validate_packet') as validate,patch.object(film,'publish') as publish:
+    guard=Mock();story={'id':'selected-story'}
+    result=film.finish_delivery({},story,run,False,guard)
+   self.assertEqual(result,story);guard.assert_called_once_with();validate.assert_called_once_with({})
+   publish.assert_not_called();self.assertEqual(run.data['state'],'produced');self.assertTrue(run.path.is_file())
+ def test_completion_rechecks_changed_evidence_and_current_timing(self):
+  run=SimpleNamespace(data={'state':'working'},path=Path('unused.json'))
+  def changed():raise ValueError('Material change requires reassessment')
+  with patch.object(film,'validate_packet'),patch.object(film,'publish') as publish:
+   with self.assertRaisesRegex(ValueError,'reassessment'):film.finish_delivery({}, {},run,True,changed)
+   publish.assert_not_called();self.assertEqual(run.data['state'],'working')
+  with patch.object(film,'validate_packet',side_effect=ValueError('Current-news review expired')),patch.object(film,'publish') as publish:
+   with self.assertRaisesRegex(ValueError,'expired'):film.finish_delivery({}, {},run,True,None)
+   publish.assert_not_called()
+ def test_default_completion_keeps_existing_publication_path(self):
+  run=SimpleNamespace(data={'state':'working'})
+  with patch.object(film,'validate_packet'),patch.object(film,'publish') as publish:
+   film.finish_delivery({}, {'id':'story'},run,True,None)
+   publish.assert_called_once_with({'id':'story'},run)
  def clips(self,seconds=9):
   return {phase:(Path('unused.wav'),{'duration':seconds,'voiceName':'Michael','captions':[{'text':text,'start':0,'end':seconds-.2}],'wordTimings':[{'text':word,'start':i*.5,'end':i*.5+.4} for i,word in enumerate(text.split())]}) for phase,text in [('opening','The new development matters'),('story','Prices rose while income lagged'),('closing','Watch the next spending report')]}
  def plan(self):

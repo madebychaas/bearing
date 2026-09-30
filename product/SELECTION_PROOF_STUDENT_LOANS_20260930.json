@@ -1,0 +1,449 @@
+{
+  "schema": 1,
+  "status": "prepared-awaiting-user-approval",
+  "preparedDate": "2026-09-30",
+  "context": {
+    "eventId": "event-a347e2e1848fea",
+    "reportId": "auto-bf2e58c53bb630",
+    "selectionId": "selection-6fa7e2370b86374d3e57fb74",
+    "treatment": "focus",
+    "whyNow": "Treasury and Education launched the Defaulted Loans Support Center on September 30; explain the new online process and distinguish applying from leaving default.",
+    "discoveryUrl": "https://www.cnbc.com/2026/09/30/student-loan-default-support-center.html"
+  },
+  "draft": {
+    "title": "Default help moves online",
+    "opening": [
+      {
+        "text": "Borrowers with defaulted federal student loans have a new online route toward repayment.",
+        "evidence": [
+          {
+            "id": "treasury-launch",
+            "quote": "September 30, 2026. The U.S. Department of the Treasury (Treasury) and the U.S. Department of Education (ED) announced the launch of the Defaulted Loans Support Center, a new online portal that gives Americans with defaulted federal student loans a simpler way to understand their options, address default, and return to repayment."
+          }
+        ]
+      }
+    ],
+    "body": [
+      {
+        "text": "Treasury and the Education Department launched a support center Wednesday.",
+        "evidence": [
+          {
+            "id": "treasury-launch",
+            "quote": "September 30, 2026. The U.S. Department of the Treasury (Treasury) and the U.S. Department of Education (ED) announced the launch of the Defaulted Loans Support Center, a new online portal that gives Americans with defaulted federal student loans a simpler way to understand their options, address default, and return to repayment."
+          }
+        ]
+      },
+      {
+        "text": "It lets borrowers compare rehabilitation and consolidation, upload documents and track progress.",
+        "evidence": [
+          {
+            "id": "treasury-launch",
+            "quote": "Now, defaulted borrowers have a centralized portal to: Understand the consequences of default; Compare available paths out of default; Apply online for loan rehabilitation or consolidation; Make a payment on a defaulted loan; and Review repayment plans and loan-discharge options. Borrowers can also complete the loan rehabilitation application online, upload documents, review an estimated payment, electronically sign their agreement, and track progress without leaving StudentAid.gov."
+          }
+        ]
+      }
+    ],
+    "closing": [
+      {
+        "text": "Applying is only the start. Borrowers still need to meet the requirements of their chosen path to leave default.",
+        "evidence": [
+          {
+            "id": "treasury-launch",
+            "quote": "Now, defaulted borrowers have a centralized portal to: Understand the consequences of default; Compare available paths out of default; Apply online for loan rehabilitation or consolidation; Make a payment on a defaulted loan; and Review repayment plans and loan-discharge options. Borrowers can also complete the loan rehabilitation application online, upload documents, review an estimated payment, electronically sign their agreement, and track progress without leaving StudentAid.gov."
+          },
+          {
+            "id": "fsa-requirements",
+            "quote": "Loan rehabilitation is a method of getting your federal student loan(s) out of default. You make a certain number of consecutive, on-time payments to ED or the guaranty agency (FFEL borrowers only) under a rehabilitation agreement. You must also sign a Rehabilitation Agreement Letter."
+          }
+        ]
+      }
+    ],
+    "pronunciations": [],
+    "issues": [],
+    "visuals": [
+      {
+        "kind": "motion",
+        "purpose": "Show the two options and administrative tools at their spoken cues without suggesting an application clears default.",
+        "evidenceIds": [
+          "treasury-launch",
+          "fsa-requirements"
+        ],
+        "description": "Original two-option diagram: rehabilitation left, consolidation right; document upload and progress appear below as spoken. No borrowed media or imitation account interface."
+      }
+    ]
+  },
+  "packet": {
+    "schema": 1,
+    "story": {
+      "id": "selected-student-loan-support-20260930-v1",
+      "topic": "business",
+      "topicLabel": "Money & economy",
+      "title": "Default help moves online",
+      "dek": "A new federal portal brings default-resolution applications and paperwork online.",
+      "script": "Borrowers with defaulted federal student loans have a new online route toward repayment. Treasury and the Education Department launched a support center Wednesday. It lets borrowers compare rehabilitation and consolidation, upload documents and track progress. Applying is only the start. Borrowers still need to meet the requirements of their chosen path to leave default.",
+      "source": {
+        "name": "U.S. Department of the Treasury",
+        "title": "U.S. Department of the Treasury and U.S. Department of Education Launch New Defaulted Loans Support Center",
+        "url": "https://home.treasury.gov/news/press-releases/sb0639/"
+      },
+      "publisherGroup": "U.S. Department of the Treasury",
+      "publishedAt": "2026-09-30",
+      "dateLabel": "30 Sep 2026",
+      "expiresAt": "2026-10-03T00:00:00Z",
+      "reviewStatus": "verified",
+      "reviewedAt": "2026-09-30",
+      "reviewMethod": "Assistant editorial accuracy and rights review of the official launch announcement and FSA requirements. Separate producer approval is required through the selection workflow.",
+      "editorialNote": "The September 30 launch is the news peg. The 9.3 million default figure refers to June and is deliberately omitted. No claim of new eligibility, debt forgiveness or completed default resolution; portal features are attributed announcements, not independently tested application outcomes.",
+      "visualDisclosure": "Original Bearing explanatory graphics, locally synthesized AI narration and original synthesized music. No third-party photographs, footage, logos or screenshots.",
+      "facts": []
+    },
+    "editorialSource": {
+      "domestic": true,
+      "publisherGroup": "U.S. Department of the Treasury"
+    },
+    "plan": {
+      "sourceScriptSha256": "f043217bc0c7463d86aeb704b5c04b4961b4024daa98432b5e4dd1b58e71b2b6",
+      "title": "Default help moves online",
+      "why": "Borrowers can handle default-resolution applications and supporting paperwork online.",
+      "openingNarration": "Borrowers with defaulted federal student loans have a new online route toward repayment.",
+      "body": "Treasury and the Education Department launched a support center Wednesday. It lets borrowers compare rehabilitation and consolidation, upload documents and track progress.",
+      "closingNarration": "Applying is only the start. Borrowers still need to meet the requirements of their chosen path to leave default.",
+      "summary": "Applying starts a process; it does not clear a default.",
+      "lookAhead": "The requirements of the selected route still have to be met.",
+      "visualTreatment": "finished-film",
+      "soundTreatment": "editorial-score",
+      "narrationRate": 0.93,
+      "maxDuration": 45,
+      "timing": {
+        "ident": 0.28,
+        "lead": 0.08,
+        "tail": 0.16,
+        "outro": 1.15
+      },
+      "chapterLabels": {
+        "opening": "The Shift",
+        "story": "The Options",
+        "closing": "What Comes Next"
+      },
+      "editorialTiming": {
+        "mode": "current",
+        "developmentDate": "2026-09-30",
+        "sourcePublishedDate": "2026-09-30",
+        "checkedAt": "2026-09-30",
+        "basis": "new-development",
+        "triggerDate": "2026-09-30",
+        "validThrough": "2026-10-02",
+        "reason": "Treasury and Education launched the Defaulted Loans Support Center September 30. Explain the newly announced online process, while distinguishing applying from completing default resolution.",
+        "evidenceUrl": "https://home.treasury.gov/news/press-releases/sb0639/"
+      },
+      "openingReveals": [
+        {
+          "cue": "Borrowers",
+          "role": "lead"
+        },
+        {
+          "cue": "defaulted federal student loans",
+          "role": "impact"
+        }
+      ],
+      "beats": [
+        {
+          "kind": "service",
+          "label": "THE ONLINE PROCESS",
+          "text": "Two options, with paperwork and progress online.",
+          "cue": "Treasury and the Education Department",
+          "reveals": [
+            {
+              "cue": "rehabilitation",
+              "role": "rehabilitation"
+            },
+            {
+              "cue": "consolidation",
+              "role": "consolidation"
+            },
+            {
+              "cue": "upload documents",
+              "role": "documents"
+            },
+            {
+              "cue": "track progress",
+              "role": "progress"
+            }
+          ]
+        }
+      ],
+      "closingReveals": [
+        {
+          "cue": "Applying is only the start",
+          "role": "hinge"
+        },
+        {
+          "cue": "requirements",
+          "role": "meaning"
+        }
+      ],
+      "review": {
+        "date": "2026-09-30",
+        "accuracy": "Launch and announced features checked against Treasury sb0639; default-resolution requirements checked against FSA. 9.3 million is older background and is omitted. No individual eligibility advice or promise of approval.",
+        "voice": "54 words, three coherent sections, measured Kokoro at0.93 without inserted reading pauses. Source and Wednesday follow the practical opening.",
+        "visuals": "Original options reveal left to right and hold. A single separate band labels document upload and progress as rehabilitation tools, matching the source scope. The closing supplies the verified official destination. Three distinct compositions change with the editorial task; all key content remains above the caption-safe area.",
+        "rights": {
+          "graphics": "Original Bearing code and composition; no third-party visual assets or logos.",
+          "music": "Original Bearing composition and synthesis; no external samples.",
+          "facts": "Independently written prose from official federal announcements. CNBC discovery link is retained for lineage; no CNBC article prose or imagery is republished."
+        }
+      },
+      "narrationPauses": [],
+      "narrationFlow": {
+        "minimumSentenceGap": 0.2,
+        "minimumPhraseGap": 0.12
+      }
+    },
+    "visuals": {
+      "assets": [],
+      "description": "Original1080p film: a concise online-help lead, two narrated default-resolution options with upload/progress tools, and a closing distinguishing an application from an outcome.",
+      "eyebrow": "IN FOCUS / STUDENT LOANS",
+      "headline": "Default help\nmoves online.",
+      "subline": "Federal student loans",
+      "service": {
+        "eyebrow": "THE ONLINE PROCESS",
+        "title": "Defaulted Loans Support Center",
+        "options": [
+          {
+            "label": "Rehabilitation",
+            "role": "rehabilitation"
+          },
+          {
+            "label": "Consolidation",
+            "role": "consolidation"
+          }
+        ],
+        "tools": [
+          {
+            "label": "Upload documents",
+            "role": "documents"
+          },
+          {
+            "label": "Track progress",
+            "role": "progress"
+          }
+        ],
+        "toolsLabel": "REHABILITATION TOOLS"
+      },
+      "closing": {
+        "eyebrow": "WHAT COMES NEXT",
+        "title": "Applying is\nonly the start.",
+        "text": "Requirements still apply.",
+        "destination": "StudentAid.gov/default-support"
+      },
+      "credit": "SOURCE / U.S. TREASURY · FEDERAL STUDENT AID"
+    },
+    "evidence": {
+      "sources": [
+        {
+          "id": "treasury-launch",
+          "publisher": "U.S. Department of the Treasury",
+          "title": "U.S. Department of the Treasury and U.S. Department of Education Launch New Defaulted Loans Support Center",
+          "url": "https://home.treasury.gov/news/press-releases/sb0639/",
+          "excerpt": "September 30, 2026. The U.S. Department of the Treasury (Treasury) and the U.S. Department of Education (ED) announced the launch of the Defaulted Loans Support Center, a new online portal that gives Americans with defaulted federal student loans a simpler way to understand their options, address default, and return to repayment. Now, defaulted borrowers have a centralized portal to: Understand the consequences of default; Compare available paths out of default; Apply online for loan rehabilitation or consolidation; Make a payment on a defaulted loan; and Review repayment plans and loan-discharge options. Borrowers can also complete the loan rehabilitation application online, upload documents, review an estimated payment, electronically sign their agreement, and track progress without leaving StudentAid.gov.",
+          "checkedAt": "2026-09-30T22:07:54Z",
+          "publishedTime": null,
+          "publishedDate": "2026-09-30",
+          "reviewNote": "Official September 30 release read in the web search index; direct web open was unavailable. Facts and announced features only, partisan claims excluded. No publication clock time is asserted."
+        },
+        {
+          "id": "fsa-requirements",
+          "publisher": "Federal Student Aid",
+          "title": "Student Loan Default and Collections: FAQs",
+          "url": "https://studentaid.gov/articles/default/",
+          "excerpt": "Loan rehabilitation is a method of getting your federal student loan(s) out of default. You make a certain number of consecutive, on-time payments to ED or the guaranty agency (FFEL borrowers only) under a rehabilitation agreement. You must also sign a Rehabilitation Agreement Letter.",
+          "checkedAt": "2026-09-30T22:07:54Z",
+          "publishedTime": null,
+          "reviewNote": "Direct official borrower guidance read September 30. Use only the distinction between applying and satisfying requirements; older mail/fax instructions are superseded by the launch announcement and are not narrated."
+        }
+      ],
+      "review": {
+        "version": 1,
+        "status": "research-complete-not-approved",
+        "checkedAt": "2026-09-30T22:07:54Z",
+        "discovery": {
+          "eventId": "event-a347e2e1848fea",
+          "reportId": "auto-bf2e58c53bb630",
+          "publisher": "CNBC",
+          "url": "https://www.cnbc.com/2026/09/30/student-loan-default-support-center.html",
+          "title": "Treasury launches student loan support center as new data show 9.3 million borrowers in default",
+          "feedPublishedAt": "2026-09-30T15:56:15Z",
+          "provenance": "Candidate identity and feed metadata supplied by the active producer task; full CNBC article not used as primary evidence."
+        },
+        "angle": "A newly launched federal portal moves default-resolution applications and supporting paperwork online; applying starts a process with conditions.",
+        "whyNow": {
+          "mode": "current",
+          "eventDate": "2026-09-30",
+          "publicationDate": "2026-09-30",
+          "publicationTime": null,
+          "weekday": "Wednesday",
+          "reason": "Treasury's dated joint announcement says the Defaulted Loans Support Center launched September 30. The launch, rather than the older default-count release, is the current action.",
+          "reviewBeforeProduction": true
+        },
+        "sourceCheck": {
+          "status": "primary-announcement-verified",
+          "checkedAt": "2026-09-30T22:07:54Z",
+          "method": "Read the full official Treasury release through its indexed web result; read the FSA quarterly update and borrower guidance directly.",
+          "limits": [
+            "The announcement displays a date but no publication clock time. CNBC feed time is not the government's publication time.",
+            "StudentAid.gov/default-support/ returned no readable text to the web tool. No account access, eligibility decision or application was tested.",
+            "Some FSA guidance still describes mail/fax and MyEdDebt. For the newly announced online process, the September 30 release takes precedence; detailed eligibility and implementation must be rechecked before a how-to treatment."
+          ]
+        },
+        "sources": [
+          {
+            "id": "treasury-launch",
+            "url": "https://home.treasury.gov/news/press-releases/sb0639/",
+            "name": "U.S. Department of the Treasury",
+            "title": "U.S. Department of the Treasury and U.S. Department of Education Launch New Defaulted Loans Support Center",
+            "publishedDate": "2026-09-30",
+            "publishedTime": null,
+            "checkedAt": "2026-09-30T22:07:54Z",
+            "role": "Primary launch evidence",
+            "excerpt": "Borrowers can also complete the loan rehabilitation application online, upload documents, review an estimated payment, electronically sign their agreement, and track progress",
+            "excerptType": "verbatim",
+            "summary": "The jointly announced portal offers comparisons and online applications for rehabilitation or consolidation, plus document handling and progress tracking. It supplies the official support-center link.",
+            "evidenceSha256": "e88a4bb0791dc6bc93e27051dc5d5d6437ea8a8d60fb281257c2376e4ed40431"
+          },
+          {
+            "id": "fsa-quarterly-data",
+            "url": "https://fsapartners.ed.gov/knowledge-center/library/electronic-announcements/2026-09-22/federal-student-aid-posts-updated-reports-fsa-data-center",
+            "name": "Federal Student Aid",
+            "title": "Federal Student Aid Posts Updated Reports to FSA Data Center",
+            "publishedDate": "2026-09-22",
+            "publishedTime": null,
+            "referencePeriodEnd": "2026-06-30",
+            "checkedAt": "2026-09-30T22:07:54Z",
+            "role": "Background verification, not proposed narration",
+            "excerpt": "This quarter, the cumulative number of recipients in default increased by approximately 400,000 to more than 9.3 million.",
+            "excerptType": "verbatim",
+            "summary": "The count concerns the federally managed loan portfolio through June. It is not a September 30 count or today's increase.",
+            "evidenceSha256": "c1832424ed49efa937df643e8b5765c0ab84308551fb6a8160d2ef034f4c7954"
+          },
+          {
+            "id": "fsa-requirements",
+            "url": "https://studentaid.gov/articles/default/",
+            "name": "Federal Student Aid",
+            "title": "Student Loan Default and Collections: FAQs",
+            "publishedDate": null,
+            "publishedTime": null,
+            "checkedAt": "2026-09-30T22:07:54Z",
+            "role": "Support for bounded closing",
+            "excerpt": "You must also sign a Rehabilitation Agreement Letter.",
+            "excerptType": "verbatim",
+            "summary": "Default resolution has conditions. Rehabilitation requires an agreement and payments; loan holder and route affect the process. The article's older mail/fax instructions are not used as current portal instructions.",
+            "evidenceSha256": "0942e00bcebe9c3cdbdd8688c86f67285a5f86e66d381caed9255804bd83d45b"
+          },
+          {
+            "id": "official-portal",
+            "url": "https://studentaid.gov/default-support/",
+            "name": "Federal Student Aid",
+            "title": "Defaulted Loans Support Center",
+            "publishedDate": null,
+            "publishedTime": null,
+            "checkedAt": "2026-09-30T22:07:54Z",
+            "role": "Official public destination linked by Treasury",
+            "excerpt": null,
+            "excerptType": null,
+            "summary": "Link authenticity verified through Treasury's announcement. User-facing portal functionality not independently tested.",
+            "evidenceSha256": "845a09ce962251d7b5af2f0ab6e6cc6be0e4b1e94ff799497946be217ccbe7dd"
+          }
+        ],
+        "claimChecks": [
+          {
+            "id": "new-portal",
+            "claim": "A new online support center for defaulted federal student loans launched Wednesday, September 30.",
+            "sourceIds": [
+              "treasury-launch"
+            ],
+            "status": "supported",
+            "scope": "Reported agency launch; no claim that every borrower or loan type qualifies."
+          },
+          {
+            "id": "portal-tools",
+            "claim": "Borrowers can compare rehabilitation and consolidation, upload documents and track progress.",
+            "sourceIds": [
+              "treasury-launch"
+            ],
+            "status": "supported-as-announced",
+            "scope": "Features stated in the official launch release; this audit did not run an application."
+          },
+          {
+            "id": "requirements-remain",
+            "claim": "Applying does not itself complete default resolution; the selected route has requirements.",
+            "sourceIds": [
+              "fsa-requirements",
+              "treasury-launch"
+            ],
+            "status": "supported-synthesis",
+            "scope": "No promise of approval, debt cancellation, a payment amount, a credit-score result or stopped collections."
+          },
+          {
+            "id": "default-count",
+            "claim": "More than 9.3 million recipients were in default in the federally managed portfolio as of June 2026.",
+            "sourceIds": [
+              "fsa-quarterly-data"
+            ],
+            "status": "supported-background-only",
+            "scope": "Released September 22 and deliberately omitted from the short script; never label this as today's count."
+          }
+        ],
+        "rights": {
+          "proposedTreatment": "Original narrated text and original typographic/process graphics derived from facts; no third-party photographs, footage, screenshots, music or logos.",
+          "thirdPartyMedia": [],
+          "downloadedMedia": false,
+          "thirdPartyMediaApproved": false,
+          "basis": "Copyright Office guidance distinguishes unprotected facts from protected expression. The proposed film would use independently written copy and original graphics, not a copied page or news clip.",
+          "sourceLinks": [
+            {
+              "url": "https://www.copyright.gov/help/faq/faq-protect.html",
+              "finding": "Facts are not protected by copyright, although their expression may be."
+            },
+            {
+              "url": "https://www.usa.gov/government-copyright",
+              "finding": "Government-hosted content and agency logos are not blanket-cleared for reuse."
+            }
+          ],
+          "proposedCredit": "Source: U.S. Treasury / Federal Student Aid",
+          "instructions": "Use restrained source text in the upper left. Do not use seals or imitate official account screens. Any later third-party asset needs its own rights record and courtesy."
+        },
+        "editorialBoundaries": [
+          "Do not repeat the partisan praise or blame in the release.",
+          "Do not imply that the portal creates new forgiveness or repayment eligibility.",
+          "Do not turn this short segment into individualized debt advice.",
+          "Recheck the announcement, official link and relevant requirements if the source materially changes before production."
+        ],
+        "changedSourcePolicy": {
+          "action": "require-editorial-reassessment",
+          "materialExamples": [
+            "Portal availability or eligible loan scope changes.",
+            "An announced feature is corrected or withdrawn.",
+            "Requirements used in the closing change."
+          ],
+          "hashScope": "Retained evidence fragments, not full HTML or an independently verified live producer snapshot."
+        },
+        "evidenceSetSha256": "cd8f1167cdf2af8cdbf533fd4c4f925118e8799dc64b0bb457298213cceec88b"
+      },
+      "scriptSha256": "f043217bc0c7463d86aeb704b5c04b4961b4024daa98432b5e4dd1b58e71b2b6",
+      "discovery": {
+        "eventId": "event-a347e2e1848fea",
+        "reportId": "auto-bf2e58c53bb630",
+        "publisher": "CNBC",
+        "url": "https://www.cnbc.com/2026/09/30/student-loan-default-support-center.html",
+        "title": "Treasury launches student loan support center as new data show 9.3 million borrowers in default",
+        "feedPublishedAt": "2026-09-30T15:56:15Z",
+        "provenance": "Candidate identity and feed metadata supplied by the active producer task; full CNBC article not used as primary evidence."
+      }
+    }
+  },
+  "limitations": [
+    "This is an unapproved editorial preparation, not a delivered film or playlist item.",
+    "Source excerpts and dates are a retained research snapshot. Re-read the primary sources and current intake before review or production.",
+    "The pictured timing is illustrative; actual TTS, mix, rendered duration and playback have not been evaluated."
+  ]
+}

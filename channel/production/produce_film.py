@@ -42,7 +42,7 @@ def validate_packet(packet):
     if not all(story['source'].get(key) for key in ('name','title')):raise ValueError('Name the supporting reporting')
     if plan.get('sourceScriptSha256')!=sha(story['script']):raise ValueError('Reviewed script hash changed')
     if plan.get('soundTreatment')!='editorial-score':raise ValueError('The finished film needs its reviewed score treatment')
-    if not 2<=len(plan.get('beats',[]))<=4:raise ValueError('Review two to four body scenes')
+    if not 1<=len(plan.get('beats',[]))<=4:raise ValueError('Review one to four body scenes')
     timing=broadcast.validate_editorial_timing(plan.get('editorialTiming'))
     if timing.get('mode')!='current' or not timing.get('liveEligible'):raise ValueError('This current-news film needs a valid current editorial reason')
     expires=pipeline.date_value(story['expiresAt'])
@@ -243,7 +243,22 @@ def publish(story,run):
     run.data['state']='published';pipeline.write_json(run.path,run.data)
 
 
-def produce(packet):
+def finish_delivery(packet,story,run,publish_result,completion_guard):
+    """Recheck editorial authority at the last boundary, including cached output."""
+    validate_packet(packet)
+    if completion_guard:completion_guard()
+    if publish_result:publish(story,run)
+    else:
+        # A producer preview is a complete asset, not a playlist publication.
+        # Preserve a pre-existing published run if this packet is only previewed.
+        if run.data.get('state')!='published':
+            run.data.update(state='produced',completedAt=pipeline.stamp(),publication='Preview only; not admitted to films.json')
+            pipeline.write_json(run.path,run.data)
+    return story
+
+
+def produce(packet,publish_result=True,completion_guard=None):
+    if completion_guard:completion_guard()
     editorial_timing=validate_packet(packet);story=copy.deepcopy(packet['story']);plan=copy.deepcopy(packet['plan']);settings=read(WORK/'runtime.json')
     os.environ['CURRENT_FFMPEG']=settings['ffmpeg']
     renderer_path=WORK/'film_visuals.py'
@@ -254,7 +269,8 @@ def produce(packet):
     output=DIST/'assets'/'films'/identity;output.mkdir(parents=True,exist_ok=True)
     record_path=folder/'film.json';cached=read(record_path,{})
     if cache_valid(cached):
-        run=broadcast.Run(folder,story,identity);run.data=read(run.path);publish(cached['story'],run);return cached['story']
+        run=broadcast.Run(folder,story,identity);run.data=read(run.path)
+        return finish_delivery(packet,cached['story'],run,publish_result,completion_guard)
     run=broadcast.Run(folder,story,identity)
     pipeline.write_json(folder/'reviewed-packet.json',packet)
     try:
@@ -300,6 +316,9 @@ def produce(packet):
                 if target.exists() and broadcast.file_hash(target)!=digest:raise ValueError('Immutable film output differs; preserve it under a new production identity')
                 deliveries.append((source,target));assets.append({'path':target.relative_to(DIST).as_posix(),'sha256':digest})
             track.update(audio=(output/f'{voice}.mp3').relative_to(DIST).as_posix(),video=(output/f'{voice}.mp4').relative_to(DIST).as_posix(),videoSha256=broadcast.file_hash(movie),subtitles=(output/f'{voice}.srt').relative_to(DIST).as_posix())
+        # Recheck pinned selection evidence before giving staged work delivery paths.
+        validate_packet(packet)
+        if completion_guard:completion_guard()
         # Neither the manifest nor any existing story is touched by a failed render.
         for source,target in deliveries:
             deliver_asset(source,target,broadcast.file_hash(source))
@@ -307,11 +326,15 @@ def produce(packet):
         programme={key:copy.deepcopy(value) for key,value in plan.items() if key in ('why','summary','lookAhead','beats','openingReveals','closingReveals','chapterLabels','maxDuration')}
         programme.update(visualTreatment='finished-film',soundTreatment='editorial-score',editorialTiming=editorial_timing)
         result={**story,'title':plan['title'],'displayTitle':plan['title'],'script':full_script,'status':'ready','format':'studio-programme','programmeVersion':identity,'programme':programme,'voices':tracks,'music':music,'image':image,'video':video,'builtAt':pipeline.stamp(),'sourceScriptSha256':plan['sourceScriptSha256'],'production':{'pipeline':'finished-film-v1','visualDecision':'original produced film','renderer':'film_visuals.py','sourceBound':True,'standaloneMaster':video,'compositionHash':sha(json.dumps(render_evidence,sort_keys=True))}}
+        if packet.get('selection'):result['production']['selection']=copy.deepcopy(packet['selection'])
         result['visual']={'scope':'story','storyId':story['id'],'scriptSha256':sha(full_script),'reviewedAt':story['reviewedAt'],'image':image,'video':video,'imageSha256':broadcast.file_hash(DIST/image),'videoSha256':broadcast.file_hash(DIST/video),'alt':packet['visuals']['description']}
         result['editorial']=copy.deepcopy(story.get('editorial')) or editorial.assess(result,packet.get('editorialSource'))
         assets.extend({'path':value,'sha256':broadcast.file_hash(DIST/value)} for value in music.values())
         run.finish('assemble',voices={voice:{'duration':track['duration'],'video':track['video'],'sha256':track['videoSha256'],'fullDecodePassed':True} for voice,track in tracks.items()},mixes=mixes,delivery='Standalone MP4 with mastered sound and optional captions; same muted picture and configurable audio in Bearing')
-        pipeline.write_json(record_path,{'story':result,'assets':assets,'fingerprints':fingerprints,'mixes':mixes});publish(result,run);return result
+        # The final guard runs after assembly as well: a hold or source change
+        # cannot be cleared by a successful encode or a reusable cache entry.
+        pipeline.write_json(record_path,{'story':result,'assets':assets,'fingerprints':fingerprints,'mixes':mixes})
+        return finish_delivery(packet,result,run,publish_result,completion_guard)
     except Exception as error:
         run.hold(error);raise
 

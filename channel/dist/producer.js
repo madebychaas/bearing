@@ -39,6 +39,25 @@ export function localSignalSources(snapshot,signal){
  const ids=[...new Set(signal?.reportIds||[])];return {reports:ids.map(id=>reports.get(id)).filter(Boolean),missingIds:ids.filter(id=>!reports.has(id))};
 }
 
+export function handoffActions(selection,{dirty=false,busy=false,actor='',reviewed=false}={}){
+ const blocked=!!selection?.reassessment?.required||selection?.state==='needs-reassessment';
+ const running=selection?.state==='producing'||selection?.production?.state==='running';
+ const idle=!!selection&&!busy&&!running;
+ return {save:idle&&!blocked,review:!!selection&&!busy&&!dirty&&!!actor.trim(),approve:idle&&!dirty&&!blocked&&!!actor.trim()&&reviewed&&!!selection?.draft&&!!selection?.prepared&&!selection?.draft?.issues?.length,
+  reassess:idle&&!dirty&&blocked,produce:idle&&!dirty&&!blocked&&selection?.state==='approved'&&!!selection?.approval};
+}
+export function handoffPreviewURL(value){
+ if(typeof value!=='string'||!value||value.includes('\\'))return null;
+ try{const url=new URL(value,'http://bearing.local/');return url.origin==='http://bearing.local'&&url.pathname.startsWith('/assets/films/')&&/\.(mp4|vtt)$/.test(url.pathname)&&!url.search&&!url.hash?url.pathname:null;}catch{return null;}
+}
+export function handoffScriptWords(draft){return ['opening','body','closing'].flatMap(phase=>(draft?.[phase]||[]).map(block=>block.text||'')).join(' ').trim().split(/\s+/).filter(Boolean).length;}
+export function handoffDraft(selection,fields){
+ const refs=[...new Set(['opening','body','closing'].flatMap(phase=>(fields[phase]||[]).flatMap(block=>block.evidence.map(ref=>ref.id))))];
+ const previous=selection?.draft?.visuals||[],oldIntent=previous.map(visual=>visual.description||visual.purpose).join('\n');
+ return {title:fields.title.trim(),opening:fields.opening,body:fields.body,closing:fields.closing,pronunciations:fields.pronunciations.split('\n').map(x=>x.trim()).filter(Boolean),issues:fields.issues.split('\n').map(x=>x.trim()).filter(Boolean),
+  visuals:fields.visualIntent===oldIntent&&previous.length?structuredClone(previous):[{kind:'motion',purpose:'Explain the supported story at its spoken cues.',description:fields.visualIntent.trim(),evidenceIds:refs}]};
+}
+
 if(typeof document!=='undefined')boot();
 
 function boot(){
@@ -159,5 +178,120 @@ function boot(){
  for(const button of document.querySelectorAll('[data-action]'))button.addEventListener('click',async()=>{if(busy||!selected())return;const event=selected(),key=draftKey(),note=$('decision-note').value,action=button.dataset.action;text('decision-feedback','Saving the editorial decision…');const data=await request('/api/producer/decision',{eventId:event.id,action,note,mode});if(data){if(drafts.get(key)===note)drafts.delete(key);if(selectedId===event.id)$('decision-note').value=drafts.get(key)||'';text('decision-feedback',`${actionNames[action]} · saved to the editorial record. You can change this decision at any time.`);}else text('decision-feedback','The decision was not saved. Your note is retained; try again.');});
  $('cycle-advance').addEventListener('click',()=>{if(!busy&&mode==='demo')void request('/api/producer/demo',{action:'advance'});});$('cycle-reset').addEventListener('click',()=>{if(!busy&&mode==='demo'){drafts.forEach((_,key)=>{if(key.startsWith('demo:'))drafts.delete(key);});void request('/api/producer/demo',{action:'reset'});}});
  $('strategy-open').addEventListener('click',()=>$('strategy-dialog').showModal());$('strategy-close').addEventListener('click',()=>$('strategy-dialog').close());$('strategy-dialog').addEventListener('click',event=>{if(event.target===$('strategy-dialog')){const rect=$('strategy-dialog').getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)$('strategy-dialog').close();}});
+ bootHandoff(()=>({event:selected(),mode,product}));
  void request('/api/producer?mode=live');setInterval(()=>{if(!document.hidden)refresh();},30000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
+}
+
+function bootHandoff(current){
+ const $=id=>document.getElementById(id),dialog=$('handoff-dialog');if(!dialog)return;
+ const node=(tag,cls,text)=>{const element=document.createElement(tag);if(cls)element.className=cls;if(text!==undefined)element.textContent=text;return element;};
+ const labels={selected:'Story selected',draft:'Script awaiting review',approved:'Script and plan approved',held:'Held for editorial work',rejected:'Rejected', 'needs-reassessment':'Reporting needs reassessment',producing:'Producing preview',complete:'Preview complete'};
+ const memory=new Map(),selectionNotes=new Map(),reviewNotes=new Map();let target=null,selection=null,loadedRevision=null,dirty=false,busy=false,ticket=0,checked=0,conflict=false;
+ const key=()=>`${target?.mode}:${target?.event?.id}`;
+ const message=(id,text)=>{$(id).textContent=text||'';};
+ const date=value=>{const parsed=new Date(value);return value&&Number.isFinite(parsed.getTime())?parsed.toLocaleString():'Time not recorded';};
+ const evidence=()=>selection?.evidence||[];
+ function fields(){
+  const data={title:$('handoff-script-title').value,pronunciations:$('handoff-pronunciations').value,visualIntent:$('handoff-visual-intent').value,issues:$('handoff-issues').value};
+  for(const phase of ['opening','body','closing'])data[phase]=[...$('handoff-passages').querySelectorAll(`[data-phase="${phase}"]`)].map(block=>({text:block.querySelector('[data-copy]').value.trim(),evidence:[...block.querySelectorAll('[data-citation]')].map(ref=>({id:ref.querySelector('select').value,quote:ref.querySelector('textarea').value.trim()}))}));
+  return data;
+ }
+ function remember(){if(!target)return;reviewNotes.set(key(),$('handoff-review-note').value);if(selection&&dirty)memory.set(key(),{fields:fields(),revision:loadedRevision});if(!selection)selectionNotes.set(key(),{product:$('handoff-treatment').value,why:$('handoff-why').value,note:$('handoff-note').value});}
+ function sourceSelect(value){const select=node('select');select.setAttribute('aria-label','Source supporting this passage');for(const source of evidence()){const option=node('option','',`${source.publisher} · ${source.headline||source.title||source.id}`);option.value=source.id;select.append(option);}if(value&&!evidence().some(source=>source.id===value)){const option=node('option','','Earlier source · reassessment needed');option.value=value;select.append(option);}if(value)select.value=value;return select;}
+ function citation(parent,ref={}){const row=node('div','handoff-citation');row.dataset.citation='';const select=sourceSelect(ref.id),quote=node('textarea');quote.rows=2;quote.required=true;quote.placeholder='Paste the exact supporting excerpt';quote.value=ref.quote||'';quote.setAttribute('aria-label','Exact supporting source excerpt');const remove=node('button','quiet-button','Remove citation');remove.type='button';remove.addEventListener('click',()=>{if(parent.querySelectorAll('[data-citation]').length>1){row.remove();edited();}});row.append(select,quote,remove);parent.append(row);}
+ function fillDraft(saved=null){
+  const draft=selection?.draft,cache=saved||null;
+  $('handoff-script-title').value=cache?.title??draft?.title??target.event.title;
+  $('handoff-pronunciations').value=cache?.pronunciations??(draft?.pronunciations||[]).map(x=>typeof x==='string'?x:[x.word||x.term,x.pronunciation||x.sayAs].filter(Boolean).join(' — ')).join('\n');
+  $('handoff-visual-intent').value=cache?.visualIntent??(draft?.visuals||[]).map(x=>x.description||x.purpose).join('\n');
+  $('handoff-issues').value=cache?.issues??(draft?.issues||[]).join('\n');
+  const passages=$('handoff-passages');passages.replaceChildren();
+  for(const phase of ['opening','body','closing']){
+   const section=node('fieldset','handoff-passage-group');section.append(node('legend','',({opening:'Opening',body:'Story',closing:'Close'})[phase]));
+   for(const [index,block] of (cache?.[phase]||draft?.[phase]||[{text:'',evidence:[]}]).entries()){
+    const passage=node('div','handoff-passage');passage.dataset.phase=phase;const copy=node('textarea');copy.rows=phase==='body'?3:2;copy.required=true;copy.dataset.copy='';copy.value=block.text;copy.setAttribute('aria-label',`${phase} passage ${index+1}`);passage.append(copy);
+    const support=node('details','handoff-citations');support.open=!block.evidence?.length;support.append(node('summary','','Source support · exact excerpts'));
+    for(const ref of block.evidence?.length?block.evidence:[{}])citation(support,ref);
+    const add=node('button','quiet-button','Add supporting source');add.type='button';add.addEventListener('click',()=>{citation(support);edited();});support.append(add);passage.append(support);section.append(passage);
+   }passages.append(section);
+  }
+  $('handoff-reviewed').checked=false;
+ }
+ function edited(){dirty=true;remember();updateActions();}
+ function updateActions(){
+  const allowed=handoffActions(selection,{dirty:dirty||conflict,busy,actor:$('handoff-actor').value,reviewed:$('handoff-reviewed').checked});
+  $('handoff-select').disabled=busy;$('handoff-check').disabled=busy;$('handoff-save').disabled=!allowed.save;
+  for(const action of ['approve','hold','reject','reassess','produce'])$('handoff-'+action).disabled=action==='hold'||action==='reject'?!allowed.review:!allowed[action];
+  $('handoff-load').disabled=busy||!selection;
+  if(selection){const count=handoffScriptWords(fields());message('handoff-word-count',`${count} words`);message('handoff-unsaved',conflict?'A newer saved revision exists. Your edits are retained. Load the saved draft to reconcile before continuing.':dirty?'Unsaved edits · save before making a review decision.':'Saved copy · source checks and the prepared plan still govern approval.');}
+ }
+ function renderEvidence(){
+  const panel=$('handoff-evidence');panel.replaceChildren();
+  if(evidence().some(source=>source.origin==='reviewed-primary'))panel.append(node('p','supporting-detail','Primary sources must be reread before production; reviews expire after one hour. A local reporting check does not verify an unseen change on the source website.'));
+  for(const source of evidence()){
+   const block=node('div','handoff-source'),url=safeSourceURL(source.url),link=node(url?'a':'strong','',source.publisher||source.id);if(url){link.href=url;link.target='_blank';link.rel='noopener noreferrer';}block.append(link,node('p','',source.headline||source.title||''),node('span','supporting-detail',`${source.origin==='reviewed-primary'?'Reviewed primary source':'Carried reporting'} · Published ${date(source.publishedTime)}${source.checkedAt?` · Checked ${date(source.checkedAt)}`:''}`),node('blockquote','',source.excerpt||'Headline only. Full supporting evidence is still needed.'));if(source.reviewNote)block.append(node('p','supporting-detail',source.reviewNote));panel.append(block);
+  }
+  const view=current(),latest=view.mode===target.mode&&view.event?.id===target.event.id?view.event:target.event;
+  if(selection?.reassessment?.required){const changed=(latest?.evidence||[]).filter(source=>{const prior=evidence().find(item=>item.id===source.id);return prior&&(prior.excerpt!==source.excerpt||prior.headline!==source.title);});
+   if(changed.length){const compare=node('section','handoff-source');compare.append(node('h3','','Latest reporting for reassessment'),node('p','supporting-detail','Compare this current desk excerpt with the carried evidence above. It has not yet replaced the selected evidence.'));for(const source of changed)compare.append(node('p','',`${source.publisher} · ${source.title}`),node('blockquote','',source.excerpt||'Only headline evidence is available.'));panel.append(compare);}
+  }
+ }
+ function renderPlan(){
+  const panel=$('handoff-plan');panel.replaceChildren();const packet=selection?.prepared?.packet;
+  if(!packet){panel.append(node('p','','Visual plan needed. The producer must prepare a script-matched picture, sound and rights plan before approval.'));return;}
+  const plan=packet.plan||{},review=plan.review||packet.review||{},details=node('dl','handoff-plan-details');
+  for(const [name,value] of [['Treatment',plan.visualTreatment],['Narration',plan.speech?.provider||plan.narrationProvider],['Music',plan.soundTreatment],['Duration ceiling',plan.maxDuration?`${plan.maxDuration} seconds`:null],['Rights / disclosure',packet.story?.visualDisclosure],['Accuracy review',packet.story?.reviewMethod]])if(value){details.append(node('dt','',name),node('dd','',String(value)));}
+  panel.append(details);
+  if(packet.visuals?.description)panel.append(node('p','',packet.visuals.description));
+  const beats=plan.beats||plan.visuals||[];if(Array.isArray(beats)&&beats.length){const ul=node('ul','gap-list');for(const beat of beats){if(typeof beat==='string')ul.append(node('li','',beat));else ul.append(node('li','',[beat.cue?`At “${beat.cue}”`:null,beat.layout||beat.kind,beat.title||beat.purpose||beat.description].filter(Boolean).join(' · ')));}panel.append(ul);}
+  const reviewItems=Object.entries(review).filter(([,v])=>typeof v==='string'||typeof v==='boolean');if(reviewItems.length)for(const [k,v] of reviewItems)panel.append(node('p','supporting-detail',`${k.replace(/([A-Z])/g,' $1')}: ${v===true?'reviewed':v===false?'not reviewed':v}`));
+  if(review.rights&&typeof review.rights==='object')for(const [name,basis] of Object.entries(review.rights)){
+   const row=node('p','supporting-detail',`${name.replace(/([A-Z])/g,' $1')}: `),url=typeof basis==='string'?safeSourceURL(basis):null;
+   if(url){const link=node('a','','Source rights');link.href=url;link.target='_blank';link.rel='noopener noreferrer';row.append(link);}else row.append(document.createTextNode(typeof basis==='boolean'?(basis?'yes':'no'):typeof basis==='string'?basis:'See the prepared asset review'));panel.append(row);
+  }
+  const cues=[...(plan.openingReveals||[]),...(Array.isArray(beats)?beats.flatMap(beat=>[beat,...(beat.reveals||[])]):[]),...(plan.closingReveals||[])].filter(beat=>beat.cue);
+  if(cues.length){const detail=node('details','handoff-cue-details');detail.append(node('summary','','Narration-linked picture cues'));const list=node('ul','gap-list');for(const cue of cues)list.append(node('li','',`“${cue.cue}” · ${cue.label||cue.text||cue.role||'picture change'}`));detail.append(list);panel.append(detail);}
+  const media=plan.media||[];if(Array.isArray(media))for(const item of media)panel.append(node('p','supporting-detail',[item.kind,item.courtesy||item.credit,item.licenseName||item.license,item.reviewNote].filter(x=>typeof x==='string').join(' · ')));
+  panel.append(node('p','supporting-detail','This prepared plan is bound to the saved script. Editing the script requires a matching new plan.'));
+ }
+ function renderProduction(){
+  const production=selection?.production,items=$('handoff-artifacts');items.replaceChildren();
+  message('handoff-production-note',production?.state==='running'||selection?.state==='producing'?'Producing the approved preview. You can close this review while the local worker finishes.':production?.error?`Production stopped: ${production.error}`:production?.result?'Finished preview. Inspect sound, picture and timing before any separate publication decision.':'Production starts only after explicit editorial approval. It creates a preview, without changing the viewer playlist.');
+  for(const [name,voice] of Object.entries(production?.result?.voices||{})){const url=handoffPreviewURL(voice.video);if(!url)continue;const link=node('a','decision-button',`${name==='warm'?'Warm':'Measured'} · ${Number.isFinite(voice.duration)?voice.duration.toFixed(1)+' seconds':'complete film'} ↗`);link.href=url;link.target='_blank';link.rel='noopener noreferrer';items.append(link);}
+  const provenance=node('p','supporting-detail');if(selection?.id)provenance.textContent=`Selection ${selection.id} · revision ${selection.revision}${production?.completedAt?` · Completed ${date(production.completedAt)}`:''}`;items.append(provenance);
+ }
+ function renderHistory(){const list=$('handoff-history');list.replaceChildren();for(const entry of [...(selection?.history||[])].reverse()){const li=node('li','');li.append(node('strong','',entry.action||entry.decision||entry.state||'Editorial update'),node('time','',date(entry.at||entry.createdAt)));const copy=[entry.actor?`By ${entry.actor}`:'',entry.note||entry.reason||entry.detail||'',entry.revision?`Revision ${entry.revision}`:''].filter(x=>typeof x==='string'&&x);if(copy.length)li.append(node('p','',copy.join(' · ')));list.append(li);}}
+ function renderRecord({force=false}={}){
+  $('handoff-selection').hidden=!!selection;$('handoff-work').hidden=!selection;if(!selection)return;
+  const cached=memory.get(key());if(force){memory.delete(key());dirty=false;conflict=false;loadedRevision=selection.revision;fillDraft();}
+  else if(dirty||cached){if(!dirty&&cached){loadedRevision=cached.revision;fillDraft(cached.fields);dirty=true;}conflict=loadedRevision!==selection.revision;}
+  else if(loadedRevision!==selection.revision){loadedRevision=selection.revision;fillDraft();}
+  message('handoff-state',labels[selection.state]||selection.state);message('handoff-revision',`Revision ${selection.revision}`);message('handoff-context',`${selection.product?.name||productNames[selection.productId]||selection.productId} · ${selection.whyNow||''}`);
+  const blocked=selection.reassessment?.required||selection.state==='needs-reassessment';$('handoff-blocker').hidden=!blocked;message('handoff-blocker',selection.reassessment?.reason||'Reporting changed. Review the carried evidence, explain the reassessment and revise before production.');
+  renderEvidence();renderPlan();renderProduction();renderHistory();updateActions();
+ }
+ async function request(action=null,payload={}){
+  if(!target||busy)return;const context=target,requestKey=key(),serial=++ticket;busy=true;updateActions();$('handoff-error').hidden=true;
+  const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),20000);
+  try{
+   const url='/api/producer/handoff'+(action?'':`?eventId=${encodeURIComponent(context.event.id)}&mode=${context.mode}`),body=action?{action,eventId:context.event.id,mode:context.mode,...payload}:null;
+   const response=await fetch(url,{method:action?'POST':'GET',headers:action?{'Content-Type':'application/json'}:{},body:body?JSON.stringify(body):undefined,cache:'no-store',signal:controller.signal});let data;try{data=await response.json();}catch{throw new Error('Story preparation is unavailable. Your edits are retained; check the saved state shortly.');}
+   if(!response.ok){if(response.status===409)conflict=true;throw new Error(data.error||'Story preparation could not be saved.');}
+   if(serial!==ticket||requestKey!==key())return;if(!Object.hasOwn(data,'selection'))throw new Error('The story response is incomplete. Your edits are retained.');
+   selection=data.selection;checked=Date.now();renderRecord({force:action==='save'||action==='select'||action==='reassess'});message('handoff-feedback',action==='select'?'Source evidence and editorial context carried forward.':action==='save'?'Script revision saved.':action==='review'?'Editorial decision recorded.':action==='produce'?'Approved preview requested.':action==='reassess'?'Reassessment recorded. Review the current evidence and script.':selection?`${labels[selection.state]||selection.state} · ${context.mode==='demo'?'representative cycle':'live reporting'}`:'Choose the treatment and a concrete reason to cover this story now.');
+  }catch(error){if(serial===ticket&&requestKey===key()){remember();message('handoff-error',error.name==='AbortError'?'The request took too long. Your edits remain here; the saved state will be checked again.':error.message);$('handoff-error').hidden=false;}}
+  finally{clearTimeout(timeout);if(serial===ticket){busy=false;updateActions();}}
+ }
+ $('handoff-open').addEventListener('click',()=>{const next=current();if(!next.event)return;remember();target=next;selection=null;loadedRevision=null;dirty=false;conflict=false;busy=false;ticket++;$('handoff-work').hidden=true;$('handoff-selection').hidden=true;$('handoff-error').hidden=true;message('handoff-story',next.event.title);message('handoff-feedback','Loading the carried reporting and editorial record…');const notes=selectionNotes.get(key());$('handoff-treatment').value=notes?.product||next.product;$('handoff-why').value=notes?.why||'';$('handoff-note').value=notes?.note||'';$('handoff-review-note').value=reviewNotes.get(key())||'';$('handoff-reviewed').checked=false;dialog.showModal();void request();});
+ $('handoff-close').addEventListener('click',()=>dialog.close());dialog.addEventListener('close',remember);
+ $('handoff-check').addEventListener('click',()=>void request());
+ $('handoff-selection').addEventListener('submit',event=>{event.preventDefault();void request('select',{productId:$('handoff-treatment').value,whyNow:$('handoff-why').value.trim(),note:$('handoff-note').value.trim()});});
+ $('handoff-script').addEventListener('input',edited);$('handoff-script').addEventListener('change',edited);
+ $('handoff-script').addEventListener('submit',event=>{event.preventDefault();if(!selection)return;void request('save',{expectedRevision:loadedRevision,draft:handoffDraft(selection,fields())});});
+ $('handoff-load').addEventListener('click',()=>{if(selection){renderRecord({force:true});message('handoff-feedback','Loaded the saved draft. Local unsaved edits were replaced.');}});
+ for(const id of ['handoff-actor','handoff-reviewed'])$(id).addEventListener('input',updateActions);
+ for(const decision of ['approve','hold','reject'])$('handoff-'+decision).addEventListener('click',()=>{if(selection)void request('review',{expectedRevision:selection.revision,decision,actor:$('handoff-actor').value.trim(),note:$('handoff-review-note').value.trim()});});
+ $('handoff-reassess').addEventListener('click',()=>{const reason=$('handoff-review-note').value.trim();if(!reason){message('handoff-error','Explain the editorial reassessment in the decision note.');$('handoff-error').hidden=false;$('handoff-review-note').focus();return;}void request('reassess',{expectedRevision:selection.revision,reason});});
+ $('handoff-produce').addEventListener('click',()=>{if(selection)void request('produce',{expectedRevision:selection.revision});});
+ setInterval(()=>{if(dialog.open&&!document.hidden&&!busy&&(selection?.state==='producing'||Date.now()-checked>30000))void request();},5000);
 }

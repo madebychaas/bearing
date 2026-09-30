@@ -7,6 +7,25 @@ from film_visuals import Film, IVORY, SCALE, TEAL, chart_spec, reveal_progress, 
 
 
 class FilmVisualTests(unittest.TestCase):
+    def test_service_choices_reveal_left_to_right_and_hold_during_tool_explanation(self):
+        packet={'plan':{'title':'Default help','summary':'Requirements still apply','beats':[{'kind':'service','reveals':[{'role':'rehabilitation'},{'role':'consolidation'},{'role':'documents'},{'role':'progress'}]}]},
+                'visuals':{'service':{'title':'Defaulted Loans Support Center','options':[{'label':'Rehabilitation','role':'rehabilitation'},{'label':'Consolidation','role':'consolidation'}],
+                           'tools':[{'label':'Upload documents','role':'documents'},{'label':'Track progress','role':'progress'}]}}}
+        track={'duration':30,'chapters':[{'kind':'opening','start':.3,'end':7},{'kind':'story','start':7,'end':20},{'kind':'closing','start':20,'end':29}],
+               'visualCues':[{'start':7,'end':20,'beat':0,'reveals':[{'start':12,'reveal':0},{'start':14,'reveal':1},{'start':16,'reveal':2},{'start':18,'reveal':3}]}]}
+        movie=Film(packet,track)
+        self.assertIsNone(movie.chart)
+        def colors(image,x):
+            region=image.crop(tuple(round(v*SCALE) for v in (x,260,x+540,359)))
+            return set(region.getdata())
+        initial=movie.frame(11)
+        self.assertEqual(colors(initial,82),{IVORY});self.assertEqual(colors(initial,650),{IVORY})
+        first=movie.frame(13)
+        self.assertGreater(len(colors(first,82)),1);self.assertEqual(colors(first,650),{IVORY})
+        later=movie.frame(19)
+        self.assertEqual(colors(first,82),colors(later,82));self.assertGreater(len(colors(later,650)),1)
+        self.assertEqual([s['kind'] for s in movie.scenes],['headline','service','close'])
+
     def test_bars_preserve_zero_and_reject_misleading_or_invalid_domain(self):
         self.assertEqual(chart_spec({'previousValue': 2, 'currentValue': 3.7})['baseline'], 0)
         for data in ({'previousValue': 2, 'currentValue': 3.7, 'baseline': 2},

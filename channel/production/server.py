@@ -23,6 +23,14 @@ def get_producer():
             producer_store=ProducerStore(ROOT)
         return producer_store
 
+def get_handoff():
+    desk=get_producer()
+    with desk.lock:
+        if not hasattr(desk,'selection_store'):
+            from selection import SelectionStore
+            desk.selection_store=SelectionStore(desk)
+        return desk.selection_store
+
 def observe_reporting():
     while not stop.is_set():
         try:get_producer().snapshot()
@@ -56,20 +64,26 @@ class Handler(SimpleHTTPRequestHandler):
 
     def do_POST(self):
         path=urlsplit(self.path).path
-        if path not in ('/api/producer/decision','/api/producer/demo'):
+        if path not in ('/api/producer/decision','/api/producer/demo','/api/producer/handoff'):
             self.json_response({'error':'Unknown endpoint.'},404);return
         if not self.local_request():return
         if self.headers.get('Content-Type','').split(';')[0].strip().lower()!='application/json':
             self.json_response({'error':'Send an application/json request.'},415);return
         try:length=int(self.headers.get('Content-Length','0'))
         except ValueError:length=0
-        if not 1<=length<=8192:
-            self.json_response({'error':'Request body must be between 1 and 8192 bytes.'},413);return
+        maximum=131072 if path.endswith('/handoff') else 8192
+        if not 1<=length<=maximum:
+            self.json_response({'error':f'Request body must be between 1 and {maximum} bytes.'},413);return
         try:
             payload=json.loads(self.rfile.read(length))
             if not isinstance(payload,dict):raise ValueError('Expected a JSON object.')
             action=payload.get('action')
-            if path.endswith('/demo'):
+            if path.endswith('/handoff'):
+                from selection import Conflict
+                try:result=get_handoff().mutate(payload)
+                except Conflict as exc:
+                    self.json_response({'error':str(exc)},409);return
+            elif path.endswith('/demo'):
                 if action not in ('advance','reset'):raise ValueError('Choose advance or reset for the sample cycle.')
                 result=get_producer().demo(action)
             else:
@@ -114,6 +128,13 @@ class Handler(SimpleHTTPRequestHandler):
             if not chunk:break
             outputfile.write(chunk);remaining-=len(chunk)
     def do_GET(self):
+        if urlsplit(self.path).path=='/api/producer/handoff':
+            if not self.local_request():return
+            query=parse_qs(urlsplit(self.path).query)
+            try:self.json_response(get_handoff().get(query.get('eventId',[''])[0],query.get('mode',['live'])[0]))
+            except (ValueError,UnicodeError) as exc:self.json_response({'error':str(exc)},400)
+            except (OSError,RuntimeError):self.json_response({'error':'The production handoff is temporarily unavailable; retained decisions were preserved.'},503)
+            return
         if urlsplit(self.path).path=='/api/producer':
             if not self.local_request():return
             mode=parse_qs(urlsplit(self.path).query).get('mode',['live'])[0]

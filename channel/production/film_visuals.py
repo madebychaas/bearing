@@ -138,7 +138,7 @@ def scene_schedule(packet, track):
     for cue in cues:
         beat = plan['beats'][cue['beat']]
         kind = aliases.get(beat.get('kind'), beat.get('kind'))
-        if kind not in ('headline', 'comparison', 'mechanism', 'close'):
+        if kind not in ('headline', 'comparison', 'mechanism', 'service', 'close'):
             raise ValueError(f'No reviewed film layout for scene kind {kind!r}')
         result.append({**cue, 'kind': kind, 'definitions': beat.get('reveals', []), 'label': beat.get('label', ''),
                        'voiceStart': cue['start']})
@@ -185,7 +185,7 @@ class Film:
         self.packet, self.track = packet, track
         self.plan = packet['plan']; self.visuals = packet.get('visuals', {})
         self.scenes = scene_schedule(packet, track)
-        self.chart = chart_spec(self.visuals)
+        self.chart = chart_spec(self.visuals) if any(s['kind']=='comparison' for s in self.scenes) else None
         self.duration = float(track['duration'])
         self.bases = {}
 
@@ -285,6 +285,39 @@ class Film:
                 _text(draw, 157, 433, m['note'], 23, _mix(INK, IVORY, np))
             # Period and aggregate scope belong in the scene eyebrow. A second
             # tiny footer would fall behind the native captions at laptop sizes.
+        elif kind == 'service':
+            # One explanatory composition holds the two choices while the voice
+            # moves into paperwork and tracking. No imitation government UI.
+            service = self.visuals.get('service', {})
+            options, tools = service.get('options', []), service.get('tools', [])
+            if len(options)!=2 or len(tools)!=2:
+                raise ValueError('Service graphic needs two reviewed options and two tools')
+            _text(draw, 82, 116, service.get('eyebrow', 'THE ONLINE PROCESS'), 13, MUTED)
+            _paragraph(draw, 78, 157, service['title'], 43, 1090, INK, 'light', 2)
+            for index, option in enumerate(options):
+                x=82+index*568
+                p=reveal_progress(time,role_start(scene,option['role']),.7)
+                border=_mix(IVORY,TEAL,p*.65)
+                draw.rounded_rectangle((*_point(x,260),*_point(x+540,359)),radius=round(12*SCALE),outline=border,width=round(1.5*SCALE))
+                _text(draw,x+24,283,option['label'],32,_mix(IVORY,INK,p),'light')
+                _line(draw,[(x+24,335),(x+24+110*p,335)],_mix(IVORY,TEAL,p),2)
+            # A single labeled band avoids implying that each tool belongs to
+            # the option directly above it. The packet names the supported scope.
+            tools_progress=reveal_progress(time,role_start(scene,tools[0]['role']),.7)
+            draw.rounded_rectangle((*_point(82,385),*_point(1190,458)),radius=round(12*SCALE),
+                                   outline=_mix(IVORY,TEAL,tools_progress*.35),width=round(SCALE))
+            _text(draw,106,404,service.get('toolsLabel','ONLINE TOOLS'),14,_mix(IVORY,MUTED,tools_progress))
+            for index, tool in enumerate(tools):
+                x=437+index*371
+                p=reveal_progress(time,role_start(scene,tool['role']),.7)
+                color=_mix(IVORY,TEAL,p)
+                _circle(draw,x,430,12,IVORY,color,1.5)
+                if index==0:
+                    _line(draw,[(x,437),(x,423),(x-4,427)],color,1.5)
+                    _line(draw,[(x,423),(x+4,427)],color,1.5)
+                else:
+                    _line(draw,[(x-5,434),(x-5,430),(x,430),(x,426),(x+5,426)],color,1.5)
+                _text(draw,x+25,412,tool['label'],23,_mix(IVORY,INK,p))
         elif kind == 'close':
             close = self.visuals.get('closing', {})
             start = role_start(scene, ('hinge', 'payoff', 'closing', 'target'))
@@ -297,9 +330,12 @@ class Film:
             _paragraph(draw, 84, 400, detail, 25, 950, _mix(IVORY, TEAL, dp), max_lines=2)
             # A route resolves on an open circle: a question, not an invented outcome.
             route = ease((time-start)/1.5)
-            _line(draw, [(84, 455), (84+960*route, 455)], _mix(IVORY, TEAL, .5), 2)
-            if route:
-                _circle(draw, 84+960*route, 455, 7, IVORY, TEAL, 2)
+            if close.get('destination'):
+                _text(draw,84,444,close['destination'],19,_mix(IVORY,MUTED,dp))
+            else:
+                _line(draw, [(84, 455), (84+960*route, 455)], _mix(IVORY, TEAL, .5), 2)
+                if route:
+                    _circle(draw, 84+960*route, 455, 7, IVORY, TEAL, 2)
         return image
 
     def frame(self, time):
@@ -362,4 +398,4 @@ def render(packet, track, output_mp4: Path, poster_png: Path, ffmpeg: str):
             'chart': movie.chart, 'scenes': movie.scenes, 'contactSheet': str(contact),
             'sampleFrames': sample_frames, 'videoSha256': hashlib.sha256(output_mp4.read_bytes()).hexdigest(),
             'posterSha256': hashlib.sha256(poster_png.read_bytes()).hexdigest(),
-            'thirdPartyImages': [], 'attribution': 'Data: U.S. Bureau of Economic Analysis; original Bearing graphics'}
+            'thirdPartyImages': [], 'attribution': packet.get('visuals',{}).get('credit','Data: U.S. Bureau of Economic Analysis')+'; original Bearing graphics'}

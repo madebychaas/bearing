@@ -31,6 +31,17 @@ class FakeProducer:
         return {**self.snapshot('demo'), 'action': action}
 
 
+class FakeHandoff:
+    def __init__(self):self.calls=[]
+    def get(self,event_id,mode='live'):
+        if not event_id or mode not in ('live','demo'):raise ValueError('Choose a valid opportunity and news mode')
+        self.calls.append(('get',event_id,mode));return {'selection':None}
+    def mutate(self,payload):
+        from selection import Conflict
+        if payload.get('expectedRevision')==1:raise Conflict('The selection changed; refresh before approving')
+        self.calls.append(('mutate',payload));return {'selection':{'eventId':payload.get('eventId'),'state':'selected','revision':1}}
+
+
 class QuietHandler(server.Handler):
     def log_message(self, *args):
         pass
@@ -106,6 +117,37 @@ class ProducerServerTests(unittest.TestCase):
         self.assertEqual(self.request(path, 'POST', {'eventId': 'missing', 'action': 'watch'})[0], 404)
         self.assertEqual(self.request('/api/producer/demo', 'POST', {'action': 'publish'})[0], 400)
         self.assertFalse(self.producer.decisions)
+
+    def test_handoff_keeps_its_review_record_separate_from_curation(self):
+        handoff=FakeHandoff()
+        with patch.object(server,'get_handoff',return_value=handoff):
+            status,headers,body=self.request('/api/producer/handoff?eventId=event-one&mode=live')
+            self.assertEqual(status,200);self.assertEqual(json.loads(body),{'selection':None})
+            self.assertEqual(headers['Cache-Control'],'no-store')
+            payload={'action':'select','eventId':'event-one','mode':'live','productId':'focus','whyNow':'A current consequential development.'}
+            status,_,body=self.request('/api/producer/handoff','POST',payload)
+            self.assertEqual(status,200);self.assertEqual(json.loads(body)['selection']['state'],'selected')
+            self.assertEqual(self.producer.decisions,[])
+            self.assertEqual(handoff.calls[-1],('mutate',payload))
+
+    def test_handoff_conflicts_and_larger_bounded_review_payload(self):
+        handoff=FakeHandoff()
+        with patch.object(server,'get_handoff',return_value=handoff):
+            status,_,body=self.request('/api/producer/handoff','POST',{'action':'review','eventId':'event-one','expectedRevision':1})
+            self.assertEqual(status,409);self.assertIn('refresh',json.loads(body)['error'])
+            self.assertFalse(handoff.calls)
+            self.assertEqual(self.request('/api/producer/handoff','POST',{'action':'save','eventId':'event-one','draft':{'notes':'x'*9000}})[0],200)
+            before=len(handoff.calls)
+            self.assertEqual(self.request('/api/producer/handoff','POST','x'*131073)[0],413)
+            self.assertEqual(self.request('/api/producer/handoff','POST',{'action':'select'},{'Origin':'https://foreign.example'})[0],403)
+            self.assertEqual(self.request('/api/producer/handoff?eventId=event-one',headers={'Origin':'null'})[0],403)
+            self.assertEqual(len(handoff.calls),before)
+
+    def test_handoff_bad_json_and_missing_selection_fail_cleanly(self):
+        with patch.object(server,'get_handoff',return_value=FakeHandoff()):
+            self.assertEqual(self.request('/api/producer/handoff')[0],400)
+            self.assertEqual(self.request('/api/producer/handoff?eventId=one&mode=unknown')[0],400)
+            for body in ('{bad',[]):self.assertEqual(self.request('/api/producer/handoff','POST',body)[0],400)
 
 
 if __name__ == '__main__':

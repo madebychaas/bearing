@@ -32,11 +32,48 @@
       </section>
       <aside class="detail-panel" aria-label="Selected story">
         <div class="detail-scroll" id="detail-scroll"><div class="detail-empty" id="detail-empty"><span class="empty-mark" aria-hidden="true">↗</span><h2>The story behind the signal.</h2><p>Select a candidate to inspect the change, the reporting and its potential fit.</p></div><article id="story-detail" hidden></article></div>
-        <section class="decision-panel" id="decision-panel" aria-label="Editorial decision" hidden><div class="decision-heading"><span>Your editorial decision</span><span id="decision-current">Not yet reviewed</span></div><label for="decision-note" class="sr-only">Optional editorial note</label><textarea id="decision-note" rows="1" maxlength="1500" placeholder="Add an editorial note (optional)"></textarea><div class="decision-actions"><button data-action="shortlist" class="decision-button primary">Shortlist <span aria-hidden="true">↗</span></button><button data-action="watch" class="decision-button">Watch</button><button data-action="dismiss" class="decision-button">Dismiss</button><button data-action="reset" class="quiet-button reset-decision" title="Return this story to unreviewed candidates">Reset</button></div><p id="decision-feedback" role="status" aria-live="polite">Decisions are saved here. Nothing is assigned or published.</p></section>
+        <section class="decision-panel" id="decision-panel" aria-label="Editorial decision" hidden><div class="decision-heading"><span>Your editorial decision</span><span id="decision-current">Not yet reviewed</span></div><label for="decision-note" class="sr-only">Optional editorial note</label><textarea id="decision-note" rows="1" maxlength="500" placeholder="Add an editorial note (optional)"></textarea><div class="decision-actions"><button data-action="shortlist" class="decision-button primary">Shortlist <span aria-hidden="true">↗</span></button><button data-action="watch" class="decision-button">Watch</button><button data-action="dismiss" class="decision-button">Dismiss</button><button data-action="reset" class="quiet-button reset-decision" title="Return this story to unreviewed candidates">Reset</button></div><div class="handoff-entry"><button id="handoff-open" class="quiet-button">Prepare a Bearing story <span aria-hidden="true">→</span></button><span>Choose a treatment. Review before production.</span></div><p id="decision-feedback" role="status" aria-live="polite">Decisions are saved here. Nothing is assigned or published.</p></section>
       </aside>
     </div>
   </main>
   <dialog id="strategy-dialog" aria-labelledby="strategy-title"><div class="dialog-heading"><div><span class="eyebrow">EDITORIAL REQUIREMENTS</span><h2 id="strategy-title">Strategy &amp; products</h2></div><button id="strategy-close" class="close-button" aria-label="Close strategy and products">×</button></div><div id="strategy-content"></div><p class="dialog-note">These definitions guide recommendations. Editorial choices stay with the producer.</p></dialog>
+  <dialog id="handoff-dialog" aria-labelledby="handoff-title">
+    <div class="dialog-heading"><div><span class="eyebrow">STORY PREPARATION</span><h2 id="handoff-title">From reporting to Bearing</h2><p id="handoff-story" class="handoff-story"></p></div><button id="handoff-close" class="close-button" aria-label="Close story preparation">×</button></div>
+    <p id="handoff-feedback" class="handoff-feedback" role="status" aria-live="polite"></p>
+    <button id="handoff-check" class="quiet-button" type="button">Check saved state</button>
+    <p id="handoff-error" class="request-error" role="alert" hidden></p>
+    <form id="handoff-selection" class="handoff-section">
+      <label for="handoff-treatment">Product treatment</label><select id="handoff-treatment"><option value="focus">In Focus · explain the story</option><option value="brief">The Brief · immediate awareness</option></select>
+      <p class="supporting-detail">This is a production choice, separate from the ranking view. The current finished-film path supports In Focus.</p>
+      <label for="handoff-why">Why this story, now?</label><textarea id="handoff-why" rows="3" maxlength="2000" required placeholder="Name the verified development and its consequence. A recent source check alone is not a news peg."></textarea>
+      <label for="handoff-note">Editorial intent <span>(optional)</span></label><textarea id="handoff-note" rows="2" maxlength="1500" placeholder="What should the viewer understand by the end?"></textarea>
+      <button id="handoff-select" class="decision-button primary" type="submit">Carry this story forward</button>
+    </form>
+    <div id="handoff-work" hidden>
+      <section class="handoff-section"><div class="handoff-status-row"><strong id="handoff-state"></strong><span id="handoff-revision"></span></div><p id="handoff-context"></p><p id="handoff-blocker" class="handoff-blocker" hidden></p></section>
+      <details class="handoff-section"><summary>Carried source evidence</summary><div id="handoff-evidence"></div></details>
+      <form id="handoff-script" class="handoff-section">
+        <h3>Script review</h3><p class="supporting-detail">Write one coherent story. Cite the exact source support for each passage. Aim for 50–75 words; finished narration normally stays within 45 seconds.</p>
+        <label for="handoff-script-title">Story title</label><input id="handoff-script-title" maxlength="180" required>
+        <div id="handoff-passages"></div>
+        <label for="handoff-pronunciations">Pronunciation notes <span>(one per line)</span></label><textarea id="handoff-pronunciations" rows="2"></textarea>
+        <label for="handoff-visual-intent">Visual intent</label><textarea id="handoff-visual-intent" rows="3" required placeholder="Describe how the pictures will explain the spoken story. A prepared, reviewed visual plan is still required before approval."></textarea>
+        <label for="handoff-issues">Unresolved editorial questions <span>(one per line)</span></label><textarea id="handoff-issues" rows="2"></textarea>
+        <div class="handoff-inline-actions"><button id="handoff-save" class="decision-button primary" type="submit">Save script revision</button><button id="handoff-load" class="quiet-button" type="button">Load saved draft</button><span id="handoff-word-count"></span></div>
+        <p id="handoff-unsaved" class="supporting-detail"></p>
+      </form>
+      <section class="handoff-section"><h3>Picture, sound &amp; rights</h3><div id="handoff-plan"></div></section>
+      <section class="handoff-section"><h3>Editorial decision</h3><p class="supporting-detail">Approval applies to this exact script, evidence and prepared production plan. It does not publish to the viewer playlist.</p>
+        <label for="handoff-actor">Reviewer name</label><input id="handoff-actor" maxlength="100" autocomplete="name" placeholder="Name of the person making this decision">
+        <label for="handoff-review-note">Decision note / reassessment reason</label><textarea id="handoff-review-note" rows="2" maxlength="2000"></textarea>
+        <label class="handoff-check"><input id="handoff-reviewed" type="checkbox">I have reviewed the script, supporting evidence and prepared visual/rights plan.</label>
+        <div class="handoff-inline-actions"><button id="handoff-approve" class="decision-button primary" type="button">Approve script &amp; plan</button><button id="handoff-hold" class="decision-button" type="button">Hold</button><button id="handoff-reject" class="decision-button" type="button">Reject</button><button id="handoff-reassess" class="quiet-button" type="button">Reassess reporting</button></div>
+      </section>
+      <section class="handoff-section"><h3>Finished preview</h3><p id="handoff-production-note"></p><div id="handoff-artifacts"></div><button id="handoff-produce" class="decision-button primary" type="button">Produce approved preview</button></section>
+      <details class="handoff-section"><summary>Selection &amp; review history</summary><ol id="handoff-history" class="history-list"></ol></details>
+    </div>
+    <p class="dialog-note">Your current edits stay here when the reporting desk refreshes. Preview production does not publish or replace an accepted Bearing segment.</p>
+  </dialog>
   <script type="module" src="producer.js"></script>
 </body>
 </html>

@@ -44,10 +44,12 @@ def validate_draft(draft,pack,profile=None):
         blocks=draft.get(phase)
         if not isinstance(blocks,list) or not blocks:raise ValueError(f'Missing {phase} copy')
         for block in blocks:
+            if not isinstance(block,dict):raise ValueError('Script blocks must be objects')
             text=block.get('text','');refs=block.get('evidence',[])
-            if not isinstance(text,str) or not text.strip() or not refs:raise ValueError('Every sentence needs evidence')
+            if not isinstance(text,str) or not text.strip() or not isinstance(refs,list) or not refs:raise ValueError('Every sentence needs evidence')
             quotes=[]
             for ref in refs:
+                if not isinstance(ref,dict) or not isinstance(ref.get('id'),str):raise ValueError('Evidence references must have a source ID')
                 source=sources.get(ref.get('id'));quote=ref.get('quote','')
                 if not source or not isinstance(quote,str) or len(quote.strip())<12 or quote not in source['headline']+' '+source['excerpt']:raise ValueError('Evidence reference or excerpt does not match this revision')
                 quotes.append(quote)
@@ -60,8 +62,9 @@ def validate_draft(draft,pack,profile=None):
     if not isinstance(draft.get('issues'),list) or not isinstance(draft.get('pronunciations'),list):raise ValueError('Missing edit notes')
     if not isinstance(draft.get('visuals'),list) or not draft['visuals']:raise ValueError('Missing visual decisions')
     for visual in draft['visuals']:
+        if not isinstance(visual,dict):raise ValueError('Visual decisions must be objects')
         if visual.get('kind') not in ('text','illustration','video','motion','chart','map') or not visual.get('purpose') or not visual.get('description'):raise ValueError('Incomplete visual direction')
-        if not visual.get('evidenceIds') or any(i not in sources for i in visual['evidenceIds']):raise ValueError('Visual is not source-bound')
+        if not isinstance(visual.get('evidenceIds'),list) or not visual['evidenceIds'] or any(not isinstance(i,str) or i not in sources for i in visual['evidenceIds']):raise ValueError('Visual is not source-bound')
     return {'words':count,'estimatedSeconds':round(count/budget['measuredWordsPerSecond']+budget['framingSeconds'],1),'durationBasis':'Planning estimate; actual TTS and framing must fit 45 seconds','voiceRevision':fingerprint(profile),'sourceRevision':pack['sourceRevision'],'state':'needs-editor-review','checks':['evidence IDs','exact supporting excerpts','numeric support','structure','length'],'limitations':['Excerpt matching is not fact verification','Named people, interpretation, causality, quotes, visual rights and pronunciation require review']}
 
 class NoRedirect(urllib.request.HTTPRedirectHandler):
@@ -87,7 +90,10 @@ def generate(pack,folder,base,model):
     profile=editorial_voice()
     generation={'schema':1,'asOf':pipeline.stamp(),'model':model,'sourceRevision':pack['sourceRevision'],'voiceRevision':fingerprint(profile),'voiceVersion':profile['version']}
     pipeline.write_json(folder/'generation.json',generation)
-    request=[{'role':'system','content':voice_instruction(profile)},{'role':'user','content':json.dumps({'asOf':generation['asOf'],'clockPurpose':'UTC generation clock for assessing time-relative wording; never evidence that a development is new. Compare with verified source dates and flag dated context or missing current triggers.','evidence':pack['evidence'],'schema':SCHEMA})}]
+    if pack.get('editorialContext') is not None:
+        generation.update(selectionId=pack.get('selectionId'),editorialContext=pack['editorialContext'])
+        pipeline.write_json(folder/'generation.json',generation)
+    request=[{'role':'system','content':voice_instruction(profile)},{'role':'user','content':json.dumps({'asOf':generation['asOf'],'clockPurpose':'UTC generation clock for assessing time-relative wording; never evidence that a development is new. Compare with verified source dates and flag dated context or missing current triggers.','evidence':pack['evidence'],'editorialContext':pack.get('editorialContext'),'contextPurpose':'Producer intent and opportunity reasoning, not additional factual evidence. Source claims only from the evidence records.','schema':SCHEMA})}]
     draft=model_call(base,model,request);pipeline.write_json(folder/'draft.json',draft)
     validate_draft(draft,pack,profile)
     edited=model_call(base,model,request+[{'role':'assistant','content':json.dumps(draft)},{'role':'user','content':'Edit this draft for source support, clear spoken wording, qualified uncertainty, repetition, a self-contained impact-first lead, natural spoken rhythm and visual reveals in reading order. Remove unsupported claims. Preserve the JSON schema and exact supporting excerpts. Flag unresolved issues.'}])

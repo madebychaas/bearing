@@ -6,6 +6,8 @@ The application lives in [`channel/`](channel/README.md). Run **`channel/Start B
 
 ## Milestone status
 
+The active [selection-to-production proof](product/SELECTION_TO_PRODUCTION.md) now connects a producer's story and treatment choice to carried evidence, cited script review, reversible approval and an unpublished film preview. Changed reporting blocks stale completion. One real student-loan story is prepared and awaiting the user's script approval; its finished asset is still outstanding. See the [tested checkpoint and continuation](product/SELECTION_PROOF_20260930.md).
+
 The September 30 editorial pass rewrote **13 existing scripts**, reducing average length from about **106 to 60 words**; the drafts range from **52 to 68 words**. The [rewrite book](product/SCRIPT_REWRITES_20260930.md) preserves source checks, before/after copy and the lessons from each edit. The [voice playbook](product/EDITORIAL_VOICE.md) and [editable profile with selected examples](channel/production/editorial-voice.json) now guide both native drafting and editing. This is maintained editorial guidance, not model-weight training. The drafts need fresh editorial review and a new rendered delivery before publication; they are not all viewer-approved, and no TTS or media was generated in this pass. Accepted PCE and NIST media remain untouched. See [the current handoff](product/NEXT.md).
 
 The previous production milestone remains available:
