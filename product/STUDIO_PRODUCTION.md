@@ -2,7 +2,7 @@
 
 Direction chosen by the viewer: **polished news studio**. Implemented September 28, 2026.
 
-**Current production note, September 30:** the long timings below document the initial studio format. New narration-only stories should usually remain under 45 seconds, with no long empty ident. The [September 30 PCE story](IN_FOCUS_PCE_REVIEW.md) is a complete 1080p film in two voices, with source-bound animated data graphics, measured pacing and a specific reading pause. It enters the same native playlist through `films.json`. The accepted cybersecurity cut also has its own shorter directed treatment. Neither requires rebuilding the legacy stories described below.
+**Current production note, September 30:** the long timings below document the initial studio format. New narration-only stories should usually remain under 45 seconds, with no long empty ident. The [September 30 PCE story](IN_FOCUS_PCE_REVIEW.md) is a complete 1080p film in two voices, with source-bound animated data graphics and continuous, measured narration. Its revised cut removes the inserted reading pause; graphics earn reading time through their placement under narration. It enters the same native playlist through `films.json`. The accepted cybersecurity cut also has its own shorter directed treatment. Neither requires rebuilding the legacy stories described below.
 
 Each complete story is now a short programme, usually about a minute, with five timed phases:
 

@@ -62,6 +62,10 @@ It should not feel like:
 
 Every production choice should serve the story.
 
+Scripts lead with the new development and its human impact. For a report-driven story, the opening establishes that the takeaway comes from a new report; the next sentence or two names the source and verified release weekday when useful. Each segment must make sense on its own, from opening through explanation to closing.
+
+News needs rhythm and flow. Keep clear articulation and natural sentence breathing, without long empty pauses or an opening fade that swallows words. Give graphics reading time through relevant picture holds, not dead air. Reveals follow normal reading order, top to bottom and left to right. Music supports the editorial subject and voice, without sentimental or dramatic decoration.
+
 ## Product principles
 
 ### Understanding over volume

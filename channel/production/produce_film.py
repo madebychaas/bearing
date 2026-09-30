@@ -10,7 +10,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 import numpy as np
-import broadcast, editorial, pipeline
+import broadcast, editorial, film_audio, pipeline
 from speech import synthesize, provider_fingerprint
 
 DIST=pipeline.DIST
@@ -54,6 +54,9 @@ def validate_packet(packet):
     if not isinstance(rate,(float,int)) or not .85<=rate<=1:raise ValueError('Narration performance must preserve a measured pace')
     for pause in plan.get('narrationPauses',[]):
         if pause.get('phase') not in ('opening','story','closing') or not pause.get('after') or not isinstance(pause.get('seconds'),(float,int)) or not .15<=pause['seconds']<=3:raise ValueError('Invalid reviewed narration pause')
+    if plan.get('narrationFlow'):
+        flow=plan['narrationFlow']
+        if not .16<=flow.get('minimumSentenceGap',.20)<=.4 or not .1<=flow.get('minimumPhraseGap',.12)<=.25:raise ValueError('Invalid reviewed narration flow policy')
     if not isinstance(visuals.get('description'),str) or not visuals['description'].strip():raise ValueError('Explain the reviewed visual treatment')
     if not isinstance(visuals.get('assets'),list):raise ValueError('Explicit visual asset review is required, including an empty list for original code graphics')
     for asset in visuals['assets']:
@@ -146,7 +149,7 @@ def readable_captions(captions,word_timings):
 def build_track(clips,plan):
     timing={'ident':.35,'lead':.1,'tail':.45,'outro':1.1,**plan.get('timing',{})}
     if any(not isinstance(value,(int,float)) or value<0 for value in timing.values()):raise ValueError('Invalid film timing')
-    captions=[];words=[];placements=[];pauses=[];cursor=timing['ident'];chapters=[{'kind':'ident','label':'Bearing','start':0,'end':round(cursor,3)}]
+    captions=[];words=[];placements=[];pauses=[];silence_edits=[];cursor=timing['ident'];chapters=[{'kind':'ident','label':'Bearing','start':0,'end':round(cursor,3)}]
     for phase,label in [('opening','The shift'),('story','The story'),('closing','What follows')]:
         meta=clips[phase][1];start=cursor;audio_start=start+timing['lead'];cursor=audio_start+meta['duration']+timing['tail']
         chapters.append({'kind':phase,'label':plan.get('chapterLabels',{}).get(phase,label),'start':round(start,3),'end':round(cursor,3)})
@@ -154,11 +157,13 @@ def build_track(clips,plan):
         captions.extend({**c,'start':round(c['start']+audio_start,5),'end':round(c['end']+audio_start,5)} for c in meta['captions'])
         words.extend({**c,'start':round(c['start']+audio_start,5),'end':round(c['end']+audio_start,5)} for c in meta.get('wordTimings',[]))
         pauses.extend({**pause,'phase':phase,'at':round(pause['at']+audio_start,5)} for pause in meta.get('narrationPauses',[]))
+        silence_edits.extend({**edit,'phase':phase} for edit in meta.get('silenceEdits',[]))
     duration=math.ceil((cursor+timing['outro'])*30)/30
     if not 10<duration<=plan.get('maxDuration',45):raise ValueError(f'Film exceeds the reviewed duration budget: {duration:.2f}s')
     chapters.append({'kind':'outro','label':'Up next','start':round(cursor,3),'end':round(duration,3)})
     track={'duration':round(duration,3),'captions':captions,'wordTimings':words,'chapters':chapters,'provider':PROVIDER,'voiceName':clips['story'][1]['voiceName'],'performanceRate':plan.get('narrationRate',.93)}
     if pauses:track['narrationPauses']=pauses
+    if plan.get('narrationFlow'):track.update(silenceEdits=silence_edits,narrationFlow=plan['narrationFlow'])
     for name,phase,values in [('openingCues','opening',plan.get('openingReveals')),('closingCues','closing',plan.get('closingReveals'))]:
         if values:track[name]=broadcast.timed_reveals(values,captions,next(c for c in chapters if c['kind']==phase),words)
     cues=broadcast.timed_beats(plan['beats'],captions,next(c for c in chapters if c['kind']=='story'),words)
@@ -178,23 +183,8 @@ def assemble_narration(settings,placements,duration,path):
 
 
 def score_mix(settings,narration,track,music,path):
-    rate=24000;duration=len(narration)/rate;frames=np.arange(math.ceil(duration*60)+1)/60
-    def ease(value):return np.clip(value,0,1)**2*(3-2*np.clip(value,0,1))
-    speech=np.zeros(len(frames),dtype=bool)
-    for caption in track['captions']:speech|=(frames>=caption['start']-.2)&(frames<caption['end']+.25)
-    desired=.12*np.where(speech,.55,.95)*ease(frames/.035)*ease((duration-frames)/.5)
-    gain=np.zeros(len(frames))
-    for index in range(1,len(frames)):
-        tau=.09 if desired[index]<gain[index-1] else .35
-        gain[index]=gain[index-1]+(desired[index]-gain[index-1])*(1-math.exp(-1/60/tau))
-    envelope=np.interp(np.arange(len(narration))/rate,frames,gain);bed=pcm(settings,DIST/music['drift']);bed=np.resize(bed,len(narration))
-    mixed=narration+bed*envelope
-    for key,start in [('signature',0),('handoff',max(0,track['captions'][-1]['end']-.3))]:
-        clip=pcm(settings,DIST/music[key])*.62;offset=round(start*rate);length=min(len(clip),len(mixed)-offset)
-        if length>0:mixed[offset:offset+length]+=clip[:length]
-    peak=float(np.max(np.abs(mixed)));attenuation=min(1,.94/max(.001,peak));mixed*=attenuation
-    write_wave(path,mixed)
-    return {'music':'drift','musicVolume':.12,'dialogueDuck':.55,'effectsGain':.62,'peakBeforeLimiter':round(peak,6),'uniformAttenuation':round(attenuation,6),'rights':'Original synthesis; no third-party music or samples','physicalListeningVerified':False}
+    mixed,evidence=film_audio.mix(narration,track,*(pcm(settings,DIST/music[key]) for key in ('drift','signature','handoff')))
+    write_wave(path,mixed);return evidence
 
 
 def subtitle_time(seconds):
@@ -229,6 +219,20 @@ def deliver_asset(source,target,digest):
         if temporary and temporary.exists():temporary.unlink()
 
 
+def create_film_music(run,settings,tracks):
+    seconds=max(track['duration'] for track in tracks.values())+.25
+    assets={};durations={'drift':seconds,'piano':seconds,'signature':.28,'handoff':.28,'bridge':1.5}
+    for style,duration in durations.items():
+        wav=run.folder/f'film-score-{style}.wav';mp3=run.folder/f'film-score-{style}.mp3'
+        write_wave(wav,film_audio.editorial_score(style,duration))
+        run_ffmpeg(settings,['-i',wav,'-c:a','libmp3lame','-b:a','128k','-y',mp3]);decode(settings,mp3)
+        target=DIST/'assets'/'studio'/f"score-{run.data['version']}-{style}.mp3"
+        deliver_asset(mp3,target,broadcast.file_hash(mp3));assets[style]=target.relative_to(DIST).as_posix()
+    pipeline.write_json(run.folder/'music.json',{'assets':assets,'composer':'Original Bearing dry low-register pulse and muted-key variation','rights':'Original composition and synthesis; no samples, borrowed music or external services','profile':'restrained-editorial-v2','durations':durations,'treatment':'editorial-score','sha256':{key:broadcast.file_hash(DIST/value) for key,value in assets.items()}})
+    run.finish('create_music',artifact='music.json',method='Brief dry opening accent; finite sparse editorial pulse and muted-key option underneath intact dialogue')
+    return assets
+
+
 def publish(story,run):
     previous=read(DIST/'films.json',{'stories':[]});entries=[entry for entry in previous['stories'] if entry['id']!=story['id']]+[story]
     version=sha(json.dumps([(entry['id'],entry['programmeVersion']) for entry in entries],sort_keys=True))
@@ -244,7 +248,7 @@ def produce(packet):
     os.environ['CURRENT_FFMPEG']=settings['ffmpeg']
     renderer_path=WORK/'film_visuals.py'
     if not renderer_path.is_file():raise RuntimeError('The reviewed finished-film picture renderer is unavailable')
-    fingerprints={path.name:broadcast.file_hash(path) for path in (Path(__file__),renderer_path,WORK/'broadcast.py',WORK/'speech.py',WORK/'speech_kokoro.py')}
+    fingerprints={path.name:broadcast.file_hash(path) for path in (Path(__file__),renderer_path,WORK/'film_audio.py',WORK/'broadcast.py',WORK/'speech.py',WORK/'speech_kokoro.py')}
     identity=sha(json.dumps([VERSION,packet,fingerprints,provider_fingerprint(PROVIDER,settings['modelDir'])],sort_keys=True))[:20]
     folder=WORK/'runs'/'films'/identity;folder.mkdir(parents=True,exist_ok=True)
     output=DIST/'assets'/'films'/identity;output.mkdir(parents=True,exist_ok=True)
@@ -264,7 +268,10 @@ def produce(packet):
                 paced=folder/f'{voice}-{phase}-paced.wav'
                 run_ffmpeg(settings,['-i',source,'-af',f'atempo={rate}','-ar','24000','-ac','1','-c:a','pcm_s16le','-y',paced])
                 with wave.open(str(paced),'rb') as handle:duration=handle.getnframes()/handle.getframerate()
-                paced_meta=scale_metadata(meta,rate,duration);pauses=[pause for pause in plan.get('narrationPauses',[]) if pause.get('phase')==phase]
+                paced_meta=scale_metadata(meta,rate,duration)
+                if plan.get('narrationFlow'):
+                    flowing,paced_meta=film_audio.compact_silence(pcm(settings,paced),paced_meta,plan['narrationFlow']);write_wave(paced,flowing)
+                pauses=[pause for pause in plan.get('narrationPauses',[]) if pause.get('phase')==phase]
                 if pauses:
                     held,paced_meta=insert_narration_pauses(pcm(settings,paced),paced_meta,pauses);write_wave(paced,held)
                 clips[phase]=(paced,paced_meta)
@@ -281,7 +288,7 @@ def produce(packet):
             decode(settings,folder/f'{voice}-picture.mp4')
         pipeline.write_json(folder/'visual-composition.json',{'renderers':fingerprints,'renders':render_evidence,'assets':packet['visuals']['assets']})
         run.finish('create_visuals',artifact='visual-composition.json',method='Full-frame original animated story composition, separately timed for both voices')
-        music=broadcast.create_music(run,settings,plan);mixes={};deliveries=[];assets=[]
+        music=create_film_music(run,settings,tracks);mixes={};deliveries=[];assets=[]
         for voice,track in tracks.items():
             mixed=folder/f'{voice}-mixed.wav';mixes[voice]=score_mix(settings,narrations[voice],track,music,mixed)
             subtitle=folder/f'{voice}.srt';subtitles(subtitle,track['captions']);movie=folder/f'{voice}-finished.mp4'

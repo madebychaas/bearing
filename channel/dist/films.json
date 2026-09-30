@@ -1,16 +1,16 @@
 {
   "schema": 1,
   "edition": "2026-09-30",
-  "version": "24687960e983dd185542b38f01933c2d8adfeeac2c1ef904e55d177d87fd21ec",
-  "builtAt": "2026-09-30T12:43:59.006794+00:00",
+  "version": "2f7e5f4b5be47bcf7fab7d03c7c44fdecf3e0438249c53dc1aedbe96ae4359dc",
+  "builtAt": "2026-09-30T14:14:24.119319+00:00",
   "stories": [
     {
       "id": "reviewed-pce-buying-power-20260930-v1",
       "topic": "business",
       "topicLabel": "Money & economy",
       "title": "Inflation erased the income gain.",
-      "dek": "New federal figures show inflation absorbed the gain in after-tax income, even as Americans spent more.",
-      "script": "Americans spent more, but inflation erased the gain in after-tax income. Today's federal report puts annual price growth at three point four percent, above the Fed's two percent goal. After-tax income rose in August. Prices rose, too, leaving buying power flat. Spending still grew, even after inflation. The next test: can income start outpacing prices? That's what gives households more room to breathe.",
+      "dek": "New federal figures show inflation absorbed the gain in after-tax income.",
+      "script": "A new report shows inflation swallowed Americans' income gains. The Bureau of Economic Analysis said Wednesday that after-tax income rose in August. Prices rose too, leaving buying power flat. Annual inflation was three point four percent, above the Fed's two percent goal. The next test: can income start outpacing prices? That's what gives households more room to breathe.",
       "source": {
         "name": "U.S. Bureau of Economic Analysis",
         "title": "Personal Income and Outlays, August 2026",
@@ -30,10 +30,10 @@
       "displayTitle": "Inflation erased the income gain.",
       "status": "ready",
       "format": "studio-programme",
-      "programmeVersion": "0b3b3c40a075da4bed57",
+      "programmeVersion": "a7ab64e194631e40f31c",
       "programme": {
-        "why": "Inflation absorbed the gain in after-tax income, even as spending rose.",
-        "summary": "More spending did not mean more buying power from income.",
+        "why": "Inflation absorbed the gain in after-tax income.",
+        "summary": "Income grew, but buying power did not.",
         "lookAhead": "Can income begin outpacing prices and give households more room to breathe?",
         "maxDuration": 45,
         "chapterLabels": {
@@ -43,39 +43,23 @@
         },
         "openingReveals": [
           {
-            "cue": "Americans spent more",
+            "cue": "A new report",
             "role": "lead"
           },
           {
-            "cue": "inflation erased",
+            "cue": "inflation swallowed",
             "role": "impact"
           }
         ],
         "beats": [
           {
-            "kind": "pce_comparison",
-            "label": "THE PRICE PRESSURE",
-            "text": "Annual PCE inflation: 3.4%",
-            "cue": "Today's federal report",
-            "reveals": [
-              {
-                "cue": "three point four percent",
-                "role": "current"
-              },
-              {
-                "cue": "two percent goal",
-                "role": "goal"
-              }
-            ]
-          },
-          {
             "kind": "pce_mechanism",
             "label": "BUYING POWER",
             "text": "Income rose. Prices absorbed the gain.",
-            "cue": "After-tax income rose",
+            "cue": "The Bureau of Economic Analysis",
             "reveals": [
               {
-                "cue": "After-tax income rose",
+                "cue": "after-tax income rose",
                 "role": "income"
               },
               {
@@ -85,10 +69,22 @@
               {
                 "cue": "buying power flat",
                 "role": "flat"
+              }
+            ]
+          },
+          {
+            "kind": "pce_comparison",
+            "label": "THE PRICE PRESSURE",
+            "text": "Annual PCE inflation: 3.4%",
+            "cue": "Annual inflation",
+            "reveals": [
+              {
+                "cue": "three point four percent",
+                "role": "current"
               },
               {
-                "cue": "Spending still grew",
-                "role": "spending"
+                "cue": "two percent goal",
+                "role": "goal"
               }
             ]
           }
@@ -121,389 +117,354 @@
       },
       "voices": {
         "warm": {
-          "duration": 33.9,
+          "duration": 26.867,
           "captions": [
             {
-              "text": "Americans spent more,",
-              "start": 0.59814,
-              "end": 2.02287
+              "text": "A new report shows inflation swallowed Americans'",
+              "start": 0.43814,
+              "end": 3.39513
             },
             {
-              "text": "but inflation erased the gain in after-tax income.",
-              "start": 2.15728,
-              "end": 5.36014
+              "text": "income gains.",
+              "start": 3.44889,
+              "end": 4.42022
             },
             {
-              "text": "Today's federal report puts annual price growth at",
-              "start": 6.615,
-              "end": 9.65263
+              "text": "The Bureau of Economic Analysis said Wednesday that",
+              "start": 4.97902,
+              "end": 8.15107
             },
             {
-              "text": "three point four percent,",
-              "start": 9.76016,
-              "end": 11.50747
+              "text": "after-tax income rose in August.",
+              "start": 8.23171,
+              "end": 10.59372
             },
             {
-              "text": "above the Fed's two percent goal.",
-              "start": 11.69564,
-              "end": 13.53327
-            },
-            {
-              "text": "After-tax income rose in August.",
-              "start": 15.60711,
-              "end": 17.84188
-            },
-            {
-              "text": "Prices rose, too,",
-              "start": 18.10958,
-              "end": 19.48054
+              "text": "Prices rose too,",
+              "start": 10.79373,
+              "end": 12.11094
             },
             {
               "text": "leaving buying power flat.",
-              "start": 19.64183,
-              "end": 21.08627
+              "start": 12.24535,
+              "end": 13.72455
             },
             {
-              "text": "Spending still grew,",
-              "start": 21.46835,
-              "end": 22.62426
+              "text": "Annual inflation was three point four percent,",
+              "start": 13.92454,
+              "end": 16.82777
             },
             {
-              "text": "even after inflation.",
-              "start": 22.78555,
-              "end": 24.18878
+              "text": "above the Fed's two percent goal.",
+              "start": 16.96217,
+              "end": 18.70159
             },
             {
               "text": "The next test:",
-              "start": 25.37386,
-              "end": 26.34161
+              "start": 19.23973,
+              "end": 20.20748
             },
             {
               "text": "can income start outpacing prices?",
-              "start": 26.47601,
-              "end": 28.74053
+              "start": 20.34188,
+              "end": 22.6064
             },
             {
               "text": "That's what gives households more room to breathe.",
-              "start": 29.09967,
-              "end": 31.63658
+              "start": 22.80641,
+              "end": 25.34333
             }
           ],
           "wordTimings": [
             {
-              "text": "Americans",
-              "start": 0.59814,
-              "end": 1.16266
+              "text": "A",
+              "start": 0.43814,
+              "end": 0.4919
             },
             {
-              "text": "spent",
-              "start": 1.21642,
-              "end": 1.43147
-            },
-            {
-              "text": "more,",
-              "start": 1.48524,
-              "end": 2.02287
-            },
-            {
-              "text": "but",
-              "start": 2.15728,
-              "end": 2.26481
-            },
-            {
-              "text": "inflation",
-              "start": 2.31857,
-              "end": 2.93685
-            },
-            {
-              "text": "erased",
-              "start": 3.01749,
-              "end": 3.42072
-            },
-            {
-              "text": "the",
-              "start": 3.4476,
-              "end": 3.50137
-            },
-            {
-              "text": "gain",
-              "start": 3.55513,
-              "end": 3.93147
-            },
-            {
-              "text": "in",
-              "start": 3.98524,
-              "end": 4.09276
-            },
-            {
-              "text": "after-tax",
-              "start": 4.17341,
-              "end": 4.81857
-            },
-            {
-              "text": "income.",
-              "start": 4.87233,
-              "end": 5.36014
-            },
-            {
-              "text": "Today's",
-              "start": 6.615,
-              "end": 7.09887
-            },
-            {
-              "text": "federal",
-              "start": 7.17951,
-              "end": 7.44833
+              "text": "new",
+              "start": 0.54567,
+              "end": 0.65319
             },
             {
               "text": "report",
-              "start": 7.50209,
-              "end": 8.06661
+              "start": 0.70696,
+              "end": 1.16395
             },
             {
-              "text": "puts",
-              "start": 8.12037,
-              "end": 8.30854
+              "text": "shows",
+              "start": 1.21771,
+              "end": 1.40588
             },
             {
-              "text": "annual",
-              "start": 8.38919,
-              "end": 8.73865
+              "text": "inflation",
+              "start": 1.45965,
+              "end": 2.15857
             },
             {
-              "text": "price",
-              "start": 8.79241,
-              "end": 9.08811
+              "text": "swallowed",
+              "start": 2.29298,
+              "end": 2.74997
             },
             {
-              "text": "growth",
-              "start": 9.14188,
-              "end": 9.49134
-            },
-            {
-              "text": "at",
-              "start": 9.5451,
-              "end": 9.65263
-            },
-            {
-              "text": "three",
-              "start": 9.76016,
-              "end": 10.02897
-            },
-            {
-              "text": "point",
-              "start": 10.08274,
-              "end": 10.40532
-            },
-            {
-              "text": "four",
-              "start": 10.48596,
-              "end": 10.64725
-            },
-            {
-              "text": "percent,",
-              "start": 10.70102,
-              "end": 11.50747
-            },
-            {
-              "text": "above",
-              "start": 11.69564,
-              "end": 11.91069
-            },
-            {
-              "text": "the",
-              "start": 11.93758,
-              "end": 11.99134
-            },
-            {
-              "text": "Fed's",
-              "start": 12.07198,
-              "end": 12.47521
-            },
-            {
-              "text": "two",
-              "start": 12.58274,
-              "end": 12.74403
-            },
-            {
-              "text": "percent",
-              "start": 12.79779,
-              "end": 13.12037
-            },
-            {
-              "text": "goal.",
-              "start": 13.17414,
-              "end": 13.53327
-            },
-            {
-              "text": "After-tax",
-              "start": 15.60711,
-              "end": 16.25227
+              "text": "Americans'",
+              "start": 2.80373,
+              "end": 3.39513
             },
             {
               "text": "income",
-              "start": 16.30604,
-              "end": 16.68238
+              "start": 3.44889,
+              "end": 3.79835
             },
             {
-              "text": "rose",
-              "start": 16.76303,
-              "end": 17.08561
-            },
-            {
-              "text": "in",
-              "start": 17.11249,
-              "end": 17.19314
-            },
-            {
-              "text": "August.",
-              "start": 17.2469,
-              "end": 17.84188
-            },
-            {
-              "text": "Prices",
-              "start": 18.10958,
-              "end": 18.53968
-            },
-            {
-              "text": "rose,",
-              "start": 18.59345,
-              "end": 18.91603
-            },
-            {
-              "text": "too,",
-              "start": 19.02355,
-              "end": 19.48054
-            },
-            {
-              "text": "leaving",
-              "start": 19.64183,
-              "end": 19.88377
-            },
-            {
-              "text": "buying",
-              "start": 19.93753,
-              "end": 20.26011
-            },
-            {
-              "text": "power",
-              "start": 20.31388,
-              "end": 20.60958
-            },
-            {
-              "text": "flat.",
-              "start": 20.66334,
-              "end": 21.08627
-            },
-            {
-              "text": "Spending",
-              "start": 21.46835,
-              "end": 21.79093
-            },
-            {
-              "text": "still",
-              "start": 21.84469,
-              "end": 22.08663
-            },
-            {
-              "text": "grew,",
-              "start": 22.14039,
-              "end": 22.62426
-            },
-            {
-              "text": "even",
-              "start": 22.78555,
-              "end": 23.02749
-            },
-            {
-              "text": "after",
-              "start": 23.08125,
-              "end": 23.37695
-            },
-            {
-              "text": "inflation.",
-              "start": 23.40383,
-              "end": 24.18878
+              "text": "gains.",
+              "start": 3.85212,
+              "end": 4.42022
             },
             {
               "text": "The",
-              "start": 25.37386,
-              "end": 25.42763
+              "start": 4.97902,
+              "end": 5.03279
             },
             {
-              "text": "next",
-              "start": 25.48139,
-              "end": 25.72333
+              "text": "Bureau",
+              "start": 5.08655,
+              "end": 5.46289
             },
             {
-              "text": "test:",
-              "start": 25.77709,
-              "end": 26.34161
+              "text": "of",
+              "start": 5.51666,
+              "end": 5.62418
             },
             {
-              "text": "can",
-              "start": 26.47601,
-              "end": 26.6373
+              "text": "Economic",
+              "start": 5.67795,
+              "end": 6.1887
+            },
+            {
+              "text": "Analysis",
+              "start": 6.21558,
+              "end": 6.80698
+            },
+            {
+              "text": "said",
+              "start": 6.88763,
+              "end": 6.99515
+            },
+            {
+              "text": "Wednesday",
+              "start": 7.04892,
+              "end": 7.90913
+            },
+            {
+              "text": "that",
+              "start": 8.01666,
+              "end": 8.15107
+            },
+            {
+              "text": "after-tax",
+              "start": 8.23171,
+              "end": 8.90375
             },
             {
               "text": "income",
-              "start": 26.69107,
-              "end": 27.09429
+              "start": 8.95752,
+              "end": 9.44139
+            },
+            {
+              "text": "rose",
+              "start": 9.52203,
+              "end": 9.89838
+            },
+            {
+              "text": "in",
+              "start": 9.95214,
+              "end": 10.03279
+            },
+            {
+              "text": "August.",
+              "start": 10.08655,
+              "end": 10.59372
+            },
+            {
+              "text": "Prices",
+              "start": 10.79373,
+              "end": 11.22384
+            },
+            {
+              "text": "rose",
+              "start": 11.2776,
+              "end": 11.5733
+            },
+            {
+              "text": "too,",
+              "start": 11.65395,
+              "end": 12.11094
+            },
+            {
+              "text": "leaving",
+              "start": 12.24535,
+              "end": 12.48728
+            },
+            {
+              "text": "buying",
+              "start": 12.54105,
+              "end": 12.89051
+            },
+            {
+              "text": "power",
+              "start": 12.94427,
+              "end": 13.23997
+            },
+            {
+              "text": "flat.",
+              "start": 13.29373,
+              "end": 13.72455
+            },
+            {
+              "text": "Annual",
+              "start": 13.92454,
+              "end": 14.274
+            },
+            {
+              "text": "inflation",
+              "start": 14.30088,
+              "end": 14.89228
+            },
+            {
+              "text": "was",
+              "start": 14.94605,
+              "end": 15.13422
+            },
+            {
+              "text": "three",
+              "start": 15.24174,
+              "end": 15.48368
+            },
+            {
+              "text": "point",
+              "start": 15.53744,
+              "end": 15.77938
+            },
+            {
+              "text": "four",
+              "start": 15.83314,
+              "end": 15.99443
+            },
+            {
+              "text": "percent,",
+              "start": 16.0482,
+              "end": 16.82777
+            },
+            {
+              "text": "above",
+              "start": 16.96217,
+              "end": 17.17723
+            },
+            {
+              "text": "the",
+              "start": 17.20411,
+              "end": 17.25787
+            },
+            {
+              "text": "Fed's",
+              "start": 17.33852,
+              "end": 17.6611
+            },
+            {
+              "text": "two",
+              "start": 17.74174,
+              "end": 17.90303
+            },
+            {
+              "text": "percent",
+              "start": 17.9568,
+              "end": 18.27938
+            },
+            {
+              "text": "goal.",
+              "start": 18.33314,
+              "end": 18.70159
+            },
+            {
+              "text": "The",
+              "start": 19.23973,
+              "end": 19.2935
+            },
+            {
+              "text": "next",
+              "start": 19.34726,
+              "end": 19.5892
+            },
+            {
+              "text": "test:",
+              "start": 19.64296,
+              "end": 20.20748
+            },
+            {
+              "text": "can",
+              "start": 20.34188,
+              "end": 20.50317
+            },
+            {
+              "text": "income",
+              "start": 20.55694,
+              "end": 20.96016
             },
             {
               "text": "start",
-              "start": 27.14806,
-              "end": 27.38999
+              "start": 21.01393,
+              "end": 21.25586
             },
             {
               "text": "outpacing",
-              "start": 27.44376,
-              "end": 28.00827
+              "start": 21.30963,
+              "end": 21.87414
             },
             {
               "text": "prices?",
-              "start": 28.06204,
-              "end": 28.74053
+              "start": 21.92791,
+              "end": 22.6064
             },
             {
               "text": "That's",
-              "start": 29.09967,
-              "end": 29.34161
+              "start": 22.80641,
+              "end": 23.04836
             },
             {
               "text": "what",
-              "start": 29.39537,
-              "end": 29.52978
+              "start": 23.10211,
+              "end": 23.23653
             },
             {
               "text": "gives",
-              "start": 29.58354,
-              "end": 29.74483
+              "start": 23.29028,
+              "end": 23.45158
             },
             {
               "text": "households",
-              "start": 29.79859,
-              "end": 30.38999
+              "start": 23.50534,
+              "end": 24.09674
             },
             {
               "text": "more",
-              "start": 30.47064,
-              "end": 30.65881
+              "start": 24.17738,
+              "end": 24.36555
             },
             {
               "text": "room",
-              "start": 30.71257,
-              "end": 30.92763
+              "start": 24.41931,
+              "end": 24.63438
             },
             {
               "text": "to",
-              "start": 30.98139,
-              "end": 31.03515
+              "start": 24.68813,
+              "end": 24.74189
             },
             {
               "text": "breathe.",
-              "start": 31.08892,
-              "end": 31.63658
+              "start": 24.79566,
+              "end": 25.34333
             }
           ],
           "chapters": [
@@ -511,497 +472,482 @@
               "kind": "ident",
               "label": "Bearing",
               "start": 0,
-              "end": 0.4
+              "end": 0.28
             },
             {
               "kind": "opening",
               "label": "The Shift",
-              "start": 0.4,
-              "end": 6.394
+              "start": 0.28,
+              "end": 4.825
             },
             {
               "kind": "story",
               "label": "The Pressure",
-              "start": 6.394,
-              "end": 25.18
+              "start": 4.825,
+              "end": 19.086
             },
             {
               "kind": "closing",
               "label": "What Counts",
-              "start": 25.18,
-              "end": 32.617
+              "start": 19.086,
+              "end": 25.684
             },
             {
               "kind": "outro",
               "label": "Up next",
-              "start": 32.617,
-              "end": 33.9
+              "start": 25.684,
+              "end": 26.867
             }
           ],
           "provider": "kokoro-local-cpu",
           "voiceName": "Heart",
           "performanceRate": 0.93,
-          "narrationPauses": [
+          "silenceEdits": [
             {
-              "after": "two percent goal.",
-              "at": 13.63759,
-              "seconds": 1.7,
-              "gapRms": 0.0,
+              "after": "August.",
+              "before": "Prices",
+              "removedSeconds": 0.143,
+              "gapBefore": 0.34301,
+              "gapAfter": 0.20001,
+              "quietPeak": 0.0,
               "phase": "story"
+            },
+            {
+              "after": "flat.",
+              "before": "Annual",
+              "removedSeconds": 0.15629,
+              "gapBefore": 0.35628,
+              "gapAfter": 0.19999,
+              "quietPeak": 0.0005188,
+              "phase": "story"
+            },
+            {
+              "after": "prices?",
+              "before": "That's",
+              "removedSeconds": 0.15912,
+              "gapBefore": 0.35914,
+              "gapAfter": 0.20002,
+              "quietPeak": 0.0007019,
+              "phase": "closing"
             }
           ],
+          "narrationFlow": {
+            "minimumSentenceGap": 0.2,
+            "minimumPhraseGap": 0.12
+          },
           "openingCues": [
             {
-              "start": 0.59814,
+              "start": 0.43814,
               "reveal": 0
             },
             {
-              "start": 2.31857,
+              "start": 1.45965,
               "reveal": 1
             }
           ],
           "closingCues": [
             {
-              "start": 26.47601,
+              "start": 20.34188,
               "reveal": 0
             },
             {
-              "start": 30.47064,
+              "start": 24.17738,
               "reveal": 1
             }
           ],
           "visualCues": [
             {
-              "start": 6.615,
-              "end": 15.60711,
+              "start": 4.97902,
+              "end": 13.92454,
               "beat": 0,
               "reveals": [
                 {
-                  "start": 9.76016,
+                  "start": 8.23171,
                   "reveal": 0
                 },
                 {
-                  "start": 12.58274,
+                  "start": 10.79373,
                   "reveal": 1
+                },
+                {
+                  "start": 12.54105,
+                  "reveal": 2
                 }
               ]
             },
             {
-              "start": 15.60711,
-              "end": 25.18,
+              "start": 13.92454,
+              "end": 19.086,
               "beat": 1,
               "reveals": [
                 {
-                  "start": 15.60711,
+                  "start": 15.24174,
                   "reveal": 0
                 },
                 {
-                  "start": 18.10958,
+                  "start": 17.74174,
                   "reveal": 1
-                },
-                {
-                  "start": 19.93753,
-                  "reveal": 2
-                },
-                {
-                  "start": 21.46835,
-                  "reveal": 3
                 }
               ]
             }
           ],
-          "scriptSha256": "a418b4aeb2d7e30afafa4ee8113afae1091324a8155e696d0d1848dde094defe",
-          "sha256": "c4f069943c3d603460a1e94d41f00555e2d75ecf3398865d372e2a12b4deebf6",
+          "scriptSha256": "82847a09c0964c125dabb5ac0f6a8534b5dca6adbe7a3672f15484abedb0cac3",
+          "sha256": "021a11ae5309de10bf54418f3b4ed04897a36fa77697de5e5cec9d2b7f943bb1",
           "fullDecodePassed": true,
-          "audio": "assets/films/0b3b3c40a075da4bed57/warm.mp3",
-          "video": "assets/films/0b3b3c40a075da4bed57/warm.mp4",
-          "videoSha256": "035b87187c7551370e441a7b6af24a39371fcf29f2bb4e2002be4ef800037694",
-          "subtitles": "assets/films/0b3b3c40a075da4bed57/warm.srt"
+          "audio": "assets/films/a7ab64e194631e40f31c/warm.mp3",
+          "video": "assets/films/a7ab64e194631e40f31c/warm.mp4",
+          "videoSha256": "57175421b7a19de0bb1943f78fde39ebd1c4de276ba9ac9b8e54c2c84e5277ea",
+          "subtitles": "assets/films/a7ab64e194631e40f31c/warm.srt"
         },
         "measured": {
-          "duration": 37.767,
+          "duration": 30.5,
           "captions": [
             {
-              "text": "Americans spent more,",
-              "start": 0.70567,
-              "end": 2.26481
+              "text": "A new report shows inflation swallowed Americans'",
+              "start": 0.5686,
+              "end": 3.71376
             },
             {
-              "text": "but inflation erased the gain in after-tax income.",
-              "start": 2.39922,
-              "end": 6.09419
+              "text": "income gains.",
+              "start": 3.79441,
+              "end": 5.08545
             },
             {
-              "text": "Today's federal report puts annual price growth at",
-              "start": 7.27577,
-              "end": 10.55534
+              "text": "The Bureau of Economic Analysis said Wednesday that",
+              "start": 5.58669,
+              "end": 9.00067
             },
             {
-              "text": "three point four percent,",
-              "start": 10.66287,
-              "end": 12.54459
+              "text": "after-tax income rose in August.",
+              "start": 9.1082,
+              "end": 11.94261
             },
             {
-              "text": "above the Fed's two percent goal.",
-              "start": 12.73277,
-              "end": 15.09979
-            },
-            {
-              "text": "After-tax income rose in August.",
-              "start": 17.19514,
-              "end": 19.75821
-            },
-            {
-              "text": "Prices rose, too,",
-              "start": 20.03921,
-              "end": 21.51771
+              "text": "Prices rose too,",
+              "start": 12.14259,
+              "end": 13.54044
             },
             {
               "text": "leaving buying power flat.",
-              "start": 21.67901,
-              "end": 23.53169
+              "start": 13.70173,
+              "end": 15.58918
             },
             {
-              "text": "Spending still grew,",
-              "start": 23.86645,
-              "end": 25.18365
+              "text": "Annual inflation was three point four percent,",
+              "start": 15.8382,
+              "end": 19.03712
             },
             {
-              "text": "even after inflation.",
-              "start": 25.37184,
-              "end": 27.12166
+              "text": "above the Fed's two percent goal.",
+              "start": 19.22529,
+              "end": 21.45217
             },
             {
               "text": "The next test:",
-              "start": 28.30236,
-              "end": 29.37763
+              "start": 21.95386,
+              "end": 23.02913
             },
             {
               "text": "can income start outpacing prices?",
-              "start": 29.53892,
-              "end": 32.13498
+              "start": 23.19042,
+              "end": 25.78648
             },
             {
               "text": "That's what gives households more room to breathe.",
-              "start": 32.51562,
-              "end": 35.54143
+              "start": 25.98649,
+              "end": 29.0123
             }
           ],
           "wordTimings": [
             {
-              "text": "Americans",
-              "start": 0.70567,
-              "end": 1.27018
+              "text": "A",
+              "start": 0.5686,
+              "end": 0.62237
             },
             {
-              "text": "spent",
-              "start": 1.32395,
-              "end": 1.59276
-            },
-            {
-              "text": "more,",
-              "start": 1.64653,
-              "end": 2.26481
-            },
-            {
-              "text": "but",
-              "start": 2.39922,
-              "end": 2.50674
-            },
-            {
-              "text": "inflation",
-              "start": 2.56051,
-              "end": 3.23255
-            },
-            {
-              "text": "erased",
-              "start": 3.31319,
-              "end": 3.71642
-            },
-            {
-              "text": "the",
-              "start": 3.77018,
-              "end": 3.85083
-            },
-            {
-              "text": "gain",
-              "start": 3.93147,
-              "end": 4.36158
-            },
-            {
-              "text": "in",
-              "start": 4.41534,
-              "end": 4.52287
-            },
-            {
-              "text": "after-tax",
-              "start": 4.60352,
-              "end": 5.27556
-            },
-            {
-              "text": "income.",
-              "start": 5.32932,
-              "end": 6.09419
-            },
-            {
-              "text": "Today's",
-              "start": 7.27577,
-              "end": 7.78653
-            },
-            {
-              "text": "federal",
-              "start": 7.86717,
-              "end": 8.18975
+              "text": "new",
+              "start": 0.67613,
+              "end": 0.81054
             },
             {
               "text": "report",
-              "start": 8.24352,
-              "end": 8.78116
+              "start": 0.8643,
+              "end": 1.32129
             },
             {
-              "text": "puts",
-              "start": 8.83491,
-              "end": 9.04997
+              "text": "shows",
+              "start": 1.40194,
+              "end": 1.64387
             },
             {
-              "text": "annual",
-              "start": 9.15749,
-              "end": 9.53384
+              "text": "inflation",
+              "start": 1.69763,
+              "end": 2.42344
             },
             {
-              "text": "price",
-              "start": 9.61449,
-              "end": 9.96395
+              "text": "swallowed",
+              "start": 2.53097,
+              "end": 3.0686
             },
             {
-              "text": "growth",
-              "start": 10.04459,
-              "end": 10.39405
-            },
-            {
-              "text": "at",
-              "start": 10.44782,
-              "end": 10.55534
-            },
-            {
-              "text": "three",
-              "start": 10.66287,
-              "end": 10.93169
-            },
-            {
-              "text": "point",
-              "start": 11.01234,
-              "end": 11.3618
-            },
-            {
-              "text": "four",
-              "start": 11.44244,
-              "end": 11.63061
-            },
-            {
-              "text": "percent,",
-              "start": 11.68438,
-              "end": 12.54459
-            },
-            {
-              "text": "above",
-              "start": 12.73277,
-              "end": 13.00158
-            },
-            {
-              "text": "the",
-              "start": 13.02847,
-              "end": 13.10911
-            },
-            {
-              "text": "Fed's",
-              "start": 13.21664,
-              "end": 13.64674
-            },
-            {
-              "text": "two",
-              "start": 13.75427,
-              "end": 13.96932
-            },
-            {
-              "text": "percent",
-              "start": 14.02309,
-              "end": 14.48007
-            },
-            {
-              "text": "goal.",
-              "start": 14.56072,
-              "end": 15.09979
-            },
-            {
-              "text": "After-tax",
-              "start": 17.19514,
-              "end": 17.84029
+              "text": "Americans'",
+              "start": 3.12237,
+              "end": 3.71376
             },
             {
               "text": "income",
-              "start": 17.89406,
-              "end": 18.29729
+              "start": 3.79441,
+              "end": 4.22452
             },
             {
-              "text": "rose",
-              "start": 18.37792,
-              "end": 18.7274
-            },
-            {
-              "text": "in",
-              "start": 18.78115,
-              "end": 18.88868
-            },
-            {
-              "text": "August.",
-              "start": 18.96932,
-              "end": 19.75821
-            },
-            {
-              "text": "Prices",
-              "start": 20.03921,
-              "end": 20.46932
-            },
-            {
-              "text": "rose,",
-              "start": 20.52309,
-              "end": 20.87255
-            },
-            {
-              "text": "too,",
-              "start": 20.98007,
-              "end": 21.51771
-            },
-            {
-              "text": "leaving",
-              "start": 21.67901,
-              "end": 21.97471
-            },
-            {
-              "text": "buying",
-              "start": 22.02846,
-              "end": 22.40481
-            },
-            {
-              "text": "power",
-              "start": 22.45857,
-              "end": 22.78115
-            },
-            {
-              "text": "flat.",
-              "start": 22.8618,
-              "end": 23.53169
-            },
-            {
-              "text": "Spending",
-              "start": 23.86645,
-              "end": 24.21591
-            },
-            {
-              "text": "still",
-              "start": 24.26968,
-              "end": 24.51161
-            },
-            {
-              "text": "grew,",
-              "start": 24.59227,
-              "end": 25.18365
-            },
-            {
-              "text": "even",
-              "start": 25.37184,
-              "end": 25.66754
-            },
-            {
-              "text": "after",
-              "start": 25.7213,
-              "end": 26.04387
-            },
-            {
-              "text": "inflation.",
-              "start": 26.07075,
-              "end": 27.12166
+              "text": "gains.",
+              "start": 4.30516,
+              "end": 5.08545
             },
             {
               "text": "The",
-              "start": 28.30236,
-              "end": 28.35613
+              "start": 5.58669,
+              "end": 5.66734
             },
             {
-              "text": "next",
-              "start": 28.40989,
-              "end": 28.67871
+              "text": "Bureau",
+              "start": 5.74798,
+              "end": 6.15121
             },
             {
-              "text": "test:",
-              "start": 28.73247,
-              "end": 29.37763
+              "text": "of",
+              "start": 6.20497,
+              "end": 6.3125
             },
             {
-              "text": "can",
-              "start": 29.53892,
-              "end": 29.70021
+              "text": "Economic",
+              "start": 6.39314,
+              "end": 6.93078
+            },
+            {
+              "text": "Analysis",
+              "start": 6.98454,
+              "end": 7.54906
+            },
+            {
+              "text": "said",
+              "start": 7.60282,
+              "end": 7.79099
+            },
+            {
+              "text": "Wednesday",
+              "start": 7.84476,
+              "end": 8.78562
+            },
+            {
+              "text": "that",
+              "start": 8.86626,
+              "end": 9.00067
+            },
+            {
+              "text": "after-tax",
+              "start": 9.1082,
+              "end": 9.80712
             },
             {
               "text": "income",
-              "start": 29.75398,
-              "end": 30.1572
+              "start": 9.88777,
+              "end": 10.45228
+            },
+            {
+              "text": "rose",
+              "start": 10.55981,
+              "end": 10.98992
+            },
+            {
+              "text": "in",
+              "start": 11.04368,
+              "end": 11.15121
+            },
+            {
+              "text": "August.",
+              "start": 11.23185,
+              "end": 11.94261
+            },
+            {
+              "text": "Prices",
+              "start": 12.14259,
+              "end": 12.59958
+            },
+            {
+              "text": "rose",
+              "start": 12.65335,
+              "end": 12.94905
+            },
+            {
+              "text": "too,",
+              "start": 13.02969,
+              "end": 13.54044
+            },
+            {
+              "text": "leaving",
+              "start": 13.70173,
+              "end": 13.99743
+            },
+            {
+              "text": "buying",
+              "start": 14.0512,
+              "end": 14.42754
+            },
+            {
+              "text": "power",
+              "start": 14.4813,
+              "end": 14.80388
+            },
+            {
+              "text": "flat.",
+              "start": 14.88453,
+              "end": 15.58918
+            },
+            {
+              "text": "Annual",
+              "start": 15.8382,
+              "end": 16.21454
+            },
+            {
+              "text": "inflation",
+              "start": 16.2683,
+              "end": 16.88658
+            },
+            {
+              "text": "was",
+              "start": 16.94035,
+              "end": 17.10164
+            },
+            {
+              "text": "three",
+              "start": 17.20916,
+              "end": 17.50486
+            },
+            {
+              "text": "point",
+              "start": 17.55863,
+              "end": 17.85433
+            },
+            {
+              "text": "four",
+              "start": 17.93497,
+              "end": 18.12314
+            },
+            {
+              "text": "percent,",
+              "start": 18.17691,
+              "end": 19.03712
+            },
+            {
+              "text": "above",
+              "start": 19.22529,
+              "end": 19.46723
+            },
+            {
+              "text": "the",
+              "start": 19.49411,
+              "end": 19.57476
+            },
+            {
+              "text": "Fed's",
+              "start": 19.68228,
+              "end": 20.03174
+            },
+            {
+              "text": "two",
+              "start": 20.11239,
+              "end": 20.32744
+            },
+            {
+              "text": "percent",
+              "start": 20.38121,
+              "end": 20.81131
+            },
+            {
+              "text": "goal.",
+              "start": 20.86508,
+              "end": 21.45217
+            },
+            {
+              "text": "The",
+              "start": 21.95386,
+              "end": 22.00763
+            },
+            {
+              "text": "next",
+              "start": 22.06139,
+              "end": 22.33021
+            },
+            {
+              "text": "test:",
+              "start": 22.38397,
+              "end": 23.02913
+            },
+            {
+              "text": "can",
+              "start": 23.19042,
+              "end": 23.35171
+            },
+            {
+              "text": "income",
+              "start": 23.40548,
+              "end": 23.8087
             },
             {
               "text": "start",
-              "start": 30.21097,
-              "end": 30.47978
+              "start": 23.86247,
+              "end": 24.13128
             },
             {
               "text": "outpacing",
-              "start": 30.53355,
-              "end": 31.12494
+              "start": 24.18505,
+              "end": 24.77644
             },
             {
               "text": "prices?",
-              "start": 31.17871,
-              "end": 32.13498
+              "start": 24.83021,
+              "end": 25.78648
             },
             {
               "text": "That's",
-              "start": 32.51562,
-              "end": 32.75756
+              "start": 25.98649,
+              "end": 26.22844
             },
             {
               "text": "what",
-              "start": 32.81132,
-              "end": 32.94573
+              "start": 26.28219,
+              "end": 26.4166
             },
             {
               "text": "gives",
-              "start": 32.99949,
-              "end": 33.18766
+              "start": 26.47037,
+              "end": 26.65853
             },
             {
               "text": "households",
-              "start": 33.24143,
-              "end": 33.91347
+              "start": 26.7123,
+              "end": 27.38434
             },
             {
               "text": "more",
-              "start": 33.99412,
-              "end": 34.20917
+              "start": 27.465,
+              "end": 27.68005
             },
             {
               "text": "room",
-              "start": 34.28981,
-              "end": 34.55863
+              "start": 27.76068,
+              "end": 28.02951
             },
             {
               "text": "to",
-              "start": 34.6124,
-              "end": 34.69304
+              "start": 28.08327,
+              "end": 28.16392
             },
             {
               "text": "breathe.",
-              "start": 34.7468,
-              "end": 35.54143
+              "start": 28.21767,
+              "end": 29.0123
             }
           ],
           "chapters": [
@@ -1009,143 +955,163 @@
               "kind": "ident",
               "label": "Bearing",
               "start": 0,
-              "end": 0.4
+              "end": 0.28
             },
             {
               "kind": "opening",
               "label": "The Shift",
-              "start": 0.4,
-              "end": 7.043
+              "start": 0.28,
+              "end": 5.394
             },
             {
               "kind": "story",
               "label": "The Pressure",
-              "start": 7.043,
-              "end": 28.069
+              "start": 5.394,
+              "end": 21.761
             },
             {
               "kind": "closing",
               "label": "What Counts",
-              "start": 28.069,
-              "end": 36.49
+              "start": 21.761,
+              "end": 29.32
             },
             {
               "kind": "outro",
               "label": "Up next",
-              "start": 36.49,
-              "end": 37.767
+              "start": 29.32,
+              "end": 30.5
             }
           ],
           "provider": "kokoro-local-cpu",
           "voiceName": "Michael",
           "performanceRate": 0.93,
-          "narrationPauses": [
+          "silenceEdits": [
             {
-              "after": "two percent goal.",
-              "at": 15.11809,
-              "seconds": 1.7,
-              "gapRms": 0.0,
+              "after": "August.",
+              "before": "Prices",
+              "removedSeconds": 0.10396,
+              "gapBefore": 0.30394,
+              "gapAfter": 0.19998,
+              "quietPeak": 0.0007019,
               "phase": "story"
+            },
+            {
+              "after": "flat.",
+              "before": "Annual",
+              "removedSeconds": 0.13558,
+              "gapBefore": 0.3846,
+              "gapAfter": 0.24902,
+              "quietPeak": 0.0010071,
+              "phase": "story"
+            },
+            {
+              "after": "prices?",
+              "before": "That's",
+              "removedSeconds": 0.18063,
+              "gapBefore": 0.38064,
+              "gapAfter": 0.20001,
+              "quietPeak": 0.000946,
+              "phase": "closing"
             }
           ],
+          "narrationFlow": {
+            "minimumSentenceGap": 0.2,
+            "minimumPhraseGap": 0.12
+          },
           "openingCues": [
             {
-              "start": 0.70567,
+              "start": 0.5686,
               "reveal": 0
             },
             {
-              "start": 2.56051,
+              "start": 1.69763,
               "reveal": 1
             }
           ],
           "closingCues": [
             {
-              "start": 29.53892,
+              "start": 23.19042,
               "reveal": 0
             },
             {
-              "start": 33.99412,
+              "start": 27.465,
               "reveal": 1
             }
           ],
           "visualCues": [
             {
-              "start": 7.27577,
-              "end": 17.19514,
+              "start": 5.58669,
+              "end": 15.8382,
               "beat": 0,
               "reveals": [
                 {
-                  "start": 10.66287,
+                  "start": 9.1082,
                   "reveal": 0
                 },
                 {
-                  "start": 13.75427,
+                  "start": 12.14259,
                   "reveal": 1
+                },
+                {
+                  "start": 14.0512,
+                  "reveal": 2
                 }
               ]
             },
             {
-              "start": 17.19514,
-              "end": 28.069,
+              "start": 15.8382,
+              "end": 21.761,
               "beat": 1,
               "reveals": [
                 {
-                  "start": 17.19514,
+                  "start": 17.20916,
                   "reveal": 0
                 },
                 {
-                  "start": 20.03921,
+                  "start": 20.11239,
                   "reveal": 1
-                },
-                {
-                  "start": 22.02846,
-                  "reveal": 2
-                },
-                {
-                  "start": 23.86645,
-                  "reveal": 3
                 }
               ]
             }
           ],
-          "scriptSha256": "a418b4aeb2d7e30afafa4ee8113afae1091324a8155e696d0d1848dde094defe",
-          "sha256": "9e6347146f4d57cc965a09eb790506f99049602d1bf11a09e44a48366f918a46",
+          "scriptSha256": "82847a09c0964c125dabb5ac0f6a8534b5dca6adbe7a3672f15484abedb0cac3",
+          "sha256": "ddfc3e9287842a451f6a7150434aced17fdc6c6d1acaf3fae8642f48954ec2b7",
           "fullDecodePassed": true,
-          "audio": "assets/films/0b3b3c40a075da4bed57/measured.mp3",
-          "video": "assets/films/0b3b3c40a075da4bed57/measured.mp4",
-          "videoSha256": "5bd1dba62bfe7ea3e434c52172955ba63f25f7acd07c3d58fe1141e09de5dbcc",
-          "subtitles": "assets/films/0b3b3c40a075da4bed57/measured.srt"
+          "audio": "assets/films/a7ab64e194631e40f31c/measured.mp3",
+          "video": "assets/films/a7ab64e194631e40f31c/measured.mp4",
+          "videoSha256": "375f044a471f50df80999b0d11ca351c46ffdbb3d0289032ab1538ff063d5414",
+          "subtitles": "assets/films/a7ab64e194631e40f31c/measured.srt"
         }
       },
       "music": {
-        "drift": "assets/studio/score-0b3b3c40a075da4bed57-drift.mp3",
-        "piano": "assets/studio/score-0b3b3c40a075da4bed57-piano.mp3",
-        "signature": "assets/studio/score-0b3b3c40a075da4bed57-signature.mp3",
-        "handoff": "assets/studio/score-0b3b3c40a075da4bed57-handoff.mp3",
-        "bridge": "assets/studio/score-0b3b3c40a075da4bed57-bridge.mp3"
+        "drift": "assets/studio/score-a7ab64e194631e40f31c-drift.mp3",
+        "piano": "assets/studio/score-a7ab64e194631e40f31c-piano.mp3",
+        "signature": "assets/studio/score-a7ab64e194631e40f31c-signature.mp3",
+        "handoff": "assets/studio/score-a7ab64e194631e40f31c-handoff.mp3",
+        "bridge": "assets/studio/score-a7ab64e194631e40f31c-bridge.mp3"
       },
-      "image": "assets/films/0b3b3c40a075da4bed57/measured-poster.png",
-      "video": "assets/films/0b3b3c40a075da4bed57/measured.mp4",
-      "builtAt": "2026-09-30T12:43:58.994183+00:00",
-      "sourceScriptSha256": "a418b4aeb2d7e30afafa4ee8113afae1091324a8155e696d0d1848dde094defe",
+      "image": "assets/films/a7ab64e194631e40f31c/measured-poster.png",
+      "video": "assets/films/a7ab64e194631e40f31c/measured.mp4",
+      "builtAt": "2026-09-30T14:14:24.107862+00:00",
+      "sourceScriptSha256": "82847a09c0964c125dabb5ac0f6a8534b5dca6adbe7a3672f15484abedb0cac3",
       "production": {
         "pipeline": "finished-film-v1",
         "visualDecision": "original produced film",
         "renderer": "film_visuals.py",
         "sourceBound": true,
-        "standaloneMaster": "assets/films/0b3b3c40a075da4bed57/measured.mp4",
-        "compositionHash": "ed6b5c0ae799aabe5492fd3665cffbb0113d7344563631d88cf383d03321c7da"
+        "standaloneMaster": "assets/films/a7ab64e194631e40f31c/measured.mp4",
+        "compositionHash": "f56807c0f9db3d37cd6bab38c17de06a6a8a7b50c3a8a12a4d2cebeb2a84d44c"
       },
       "visual": {
         "scope": "story",
         "storyId": "reviewed-pce-buying-power-20260930-v1",
-        "scriptSha256": "a418b4aeb2d7e30afafa4ee8113afae1091324a8155e696d0d1848dde094defe",
+        "scriptSha256": "82847a09c0964c125dabb5ac0f6a8534b5dca6adbe7a3672f15484abedb0cac3",
         "reviewedAt": "2026-09-30",
-        "image": "assets/films/0b3b3c40a075da4bed57/measured-poster.png",
-        "video": "assets/films/0b3b3c40a075da4bed57/measured.mp4",
+        "image": "assets/films/a7ab64e194631e40f31c/measured-poster.png",
+        "video": "assets/films/a7ab64e194631e40f31c/measured.mp4",
         "imageSha256": "2e9bcc05d65d7a77ddf1162bb035c978c6d16b57905d60ef1084501dc15bff4e",
-        "videoSha256": "5bd1dba62bfe7ea3e434c52172955ba63f25f7acd07c3d58fe1141e09de5dbcc",
-        "alt": "Original 1080p editorial film: a concise buying-power lead, a zero-baseline annual inflation comparison, a narrated income/prices/buying-power mechanism, and a consequential closing question."
+        "videoSha256": "375f044a471f50df80999b0d11ca351c46ffdbb3d0289032ab1538ff063d5414",
+        "alt": "Original 1080p editorial film: a new-report buying-power lead, a narrated income/prices/buying-power mechanism read left to right, a zero-baseline annual inflation comparison with the current figure on the left, and a consequential closing question."
       },
       "editorial": {
         "version": "us-impact-v2",

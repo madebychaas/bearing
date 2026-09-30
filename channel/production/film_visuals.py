@@ -142,9 +142,14 @@ def scene_schedule(packet, track):
             raise ValueError(f'No reviewed film layout for scene kind {kind!r}')
         result.append({**cue, 'kind': kind, 'definitions': beat.get('reveals', []), 'label': beat.get('label', ''),
                        'voiceStart': cue['start']})
-    closing = float(chapters['closing']['start'])
+    closing_cues = track.get('closingCues', [])
+    # Carry the evidence under a spoken bridge such as "The next test". The
+    # closing question begins when its first authored phrase is actually heard.
+    closing = float(closing_cues[0]['start'] if closing_cues else chapters['closing']['start'])
+    if not chapters['closing']['start'] <= closing < chapters['closing']['end']:
+        raise ValueError('The closing picture cue falls outside the closing chapter')
     result.append({'kind': 'close', 'start': closing, 'end': duration, 'voiceStart': closing,
-                   'reveals': track.get('closingCues', []), 'definitions': plan.get('closingReveals', [])})
+                   'reveals': closing_cues, 'definitions': plan.get('closingReveals', [])})
     previous = -1.0
     for scene in result:
         if not 0 <= scene['start'] < scene['end'] <= duration or scene['start'] <= previous:
@@ -155,6 +160,12 @@ def scene_schedule(packet, track):
         previous = scene['start']
     for first, second in zip(result, result[1:]):
         first['end'] = second['start']
+    for scene in result:
+        starts = [reveal['start'] for reveal in scene.get('reveals', [])]
+        if any(b < a for a, b in zip(starts, starts[1:])):
+            raise ValueError('Visual reveals must follow narration order')
+        if any(not scene['start'] <= start < scene['end'] for start in starts):
+            raise ValueError('A reveal falls outside its narrated scene')
     return result
 
 
@@ -220,11 +231,13 @@ class Film:
                 y = baseline-number/c['ceiling']*height
                 _line(draw, [(left, y), (right, y)], _mix(IVORY, INK, .22 if tick == 0 else .09))
                 _text(draw, left-20, y-11, f'{number:g}', 13, MUTED, anchor='ra')
-            for i, (x, value, label, roles) in enumerate([
-                (345, c['previousValue'], c['previousLabel'], ('previous', 'july', 'before', 'goal', 'target')),
-                (790, c['currentValue'], c['currentLabel'], ('current', 'august', 'amount', 'inflation'))]):
+            # Reading order follows the spoken comparison: current first, then
+            # the reference. Color belongs to the meaning, not the column index.
+            for i, (x, value, label, roles, bar_color) in enumerate([
+                (345, c['currentValue'], c['currentLabel'], ('current', 'august', 'amount', 'inflation'), TEAL),
+                (790, c['previousValue'], c['previousLabel'], ('previous', 'july', 'before', 'goal', 'target'), (144, 164, 151))]):
                 p = reveal_progress(time, role_start(scene, roles, i), .85)
-                color = _mix(IVORY, TEAL if i else (144, 164, 151), p)
+                color = _mix(IVORY, bar_color, p)
                 bar_top = baseline-value/c['ceiling']*height*p
                 if p:
                     draw.rounded_rectangle((*_point(x-95, bar_top), *_point(x+95, baseline)),

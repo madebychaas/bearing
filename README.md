@@ -6,7 +6,7 @@ The application lives in [`channel/`](channel/README.md). Run **`channel/Start B
 
 ## Milestone status
 
-The first story-quality milestone was accepted on September 29, 2026. The accepted cybersecurity cut remains intact. On September 30, the user requested a major domestic story produced through the same complete path. **Inflation erased the income gain** uses that morning's BEA release, a 63-word script, measured narration, original animated explanatory graphics and a complete scored 1080p movie for each voice. See [the story review](product/IN_FOCUS_PCE_REVIEW.md) for source evidence, rights, pacing and delivery details, and [the handoff](product/NEXT.md) for verification.
+The first story-quality milestone was accepted on September 29, 2026. The accepted cybersecurity cut remains intact. On September 30, the user requested a major domestic story produced through the same complete path. **Inflation erased the income gain** uses that morning's BEA release, a 58-word script, flowing measured narration, original animated explanatory graphics and a complete scored 1080p movie for each voice. See [the story review](product/IN_FOCUS_PCE_REVIEW.md) for source evidence, rights, pacing and delivery details, and [the handoff](product/NEXT.md) for verification.
 
 Easy News adds an editorial view over the same source intake and event IDs: separate immediate-awareness and deeper-treatment recommendations, source inspection, change history, and reversible producer decisions. Its sample news cycle is explicitly separated from live reporting. Recommendations do not assign, generate or publish stories. See [the V1 guide](product/EASY_NEWS_V1.md) and [current handoff](product/NEXT.md).
 

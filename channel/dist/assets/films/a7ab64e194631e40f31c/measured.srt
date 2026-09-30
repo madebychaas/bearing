@@ -1,0 +1,43 @@
+1
+00:00:00,569 --> 00:00:03,714
+A new report shows inflation swallowed Americans'
+
+2
+00:00:03,794 --> 00:00:05,085
+income gains.
+
+3
+00:00:05,587 --> 00:00:09,001
+The Bureau of Economic Analysis said Wednesday that
+
+4
+00:00:09,108 --> 00:00:11,943
+after-tax income rose in August.
+
+5
+00:00:12,143 --> 00:00:13,540
+Prices rose too,
+
+6
+00:00:13,702 --> 00:00:15,589
+leaving buying power flat.
+
+7
+00:00:15,838 --> 00:00:19,037
+Annual inflation was three point four percent,
+
+8
+00:00:19,225 --> 00:00:21,452
+above the Fed's two percent goal.
+
+9
+00:00:21,954 --> 00:00:23,029
+The next test:
+
+10
+00:00:23,190 --> 00:00:25,786
+can income start outpacing prices?
+
+11
+00:00:25,986 --> 00:00:29,012
+That's what gives households more room to breathe.
