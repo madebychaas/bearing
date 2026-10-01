@@ -1,6 +1,8 @@
 # Student-loan production proof — October 1, 2026
 
-**Status: picture revision delivered to the local playlist. Viewer acceptance remains separate.**
+**Status: delivered; production approach accepted October 1, 2026.**
+
+After viewing `9c4fe29dbfb3a18916ea`, Angelo said: **“This is incredibly close. Great stuff. Lock this in as the approach we want.”** He emphasized keeping it tight, dynamic and moving, with judgment about when movement is useful. This film is now the accepted reference for Bearing's production approach. Move when the idea changes or needs emphasis; hold long enough for its meaning to register; cut when that picture has done its job. Future stories should use that judgment rather than repeat the exact images, layout or timing. This acceptance record does not change the film or its immutable production approval, and does not claim blanket acceptance of both voice performances. Statements below about pending viewer acceptance describe the original delivery checkpoint.
 
 ## Current image-led picture revision
 

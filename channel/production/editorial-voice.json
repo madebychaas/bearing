@@ -1,8 +1,17 @@
 {
   "schema": 1,
-  "version": "bearing-editorial-2026-09-30-v1",
+  "version": "bearing-editorial-2026-10-01-v2",
   "purpose": "Persistent editorial guidance and reference examples for drafting and editing; not model-weight training and not factual evidence.",
-  "basis": "Direct viewer feedback and the accepted September 30 PCE revision. New library rewrites are editorial exercises, not viewer-approved performances.",
+  "basis": "Direct viewer feedback, the accepted September 30 PCE revision, and October 1 acceptance of the student-loan film's production approach. New library rewrites remain editorial exercises, not viewer-approved performances.",
+  "productionReference": {
+    "identity": "9c4fe29dbfb3a18916ea",
+    "storyId": "selected-student-loan-support-20261001-v2",
+    "acceptedAt": "2026-10-01",
+    "status": "viewer-accepted-production-approach",
+    "review": "product/STUDENT_LOAN_PRODUCTION_20261001.md",
+    "scope": "Reference for intentional picture, voice and editorial pacing; not a rigid shot template, factual evidence for another story, or blanket acceptance of every voice performance.",
+    "direction": "Keep it tight, dynamic and moving. Knowing when to move, hold and cut is the key."
+  },
   "budget": {
     "targetWords": [
       50,
@@ -26,6 +35,8 @@
     "For science, art and nature, curiosity and understanding can be the payoff. Do not force a wallet angle, public danger or personal instruction where the evidence does not support it.",
     "End on this story's consequence, a verified deadline, a useful unresolved question or a specific limit of the evidence. Do not default every ending to 'The next test' or 'What to watch next'.",
     "Visuals answer the same question as the current line. Reveal in normal reading order, top to bottom and left to right. Change visual form when the explanatory task changes. Courtesy credits and permission remain mandatory for third-party media.",
+    "Keep the finished story tight and dynamic with editorial judgment. Move to introduce, connect or emphasize an idea; hold so it registers; cut once the picture has done its job. Judge timing against the actual voice track, not a motion quota or fixed shot timer. Remove redundant copy and picture beats before speeding up delivery.",
+    "Use the accepted production approach without repeating its layout. Imagery can establish context, a single title can build with the opening, and diagrams can accumulate to explain relationships. Choose the mix for this story; do not turn every phrase into a text card or every process into three columns.",
     "Treat the examples below as lessons in structure and phrasing only. Never import their facts, dates, numbers, quotes or attribution into a new story; use only the supplied evidence packet."
   ],
   "editPass": [
@@ -33,7 +44,7 @@
     "Check each sentence against the current evidence, including who, when, status and uncertainty.",
     "Read opening, body and closing as one spoken passage. Remove repetitions and template transitions.",
     "Mark awkward names and phrases for pronunciation review. Keep the voice's speaking rate measured.",
-    "Match each visual to a spoken phrase and reading order. Hold pictures for clarity without padding the track.",
+    "Match each visual to a spoken phrase and reading order. Ask why each move, hold and cut happens there. Give it enough time to register and remove beats that repeat or outstay their purpose.",
     "Check word budget and then measured TTS duration. An estimate is not a rendered runtime or listening review."
   ],
   "examples": [

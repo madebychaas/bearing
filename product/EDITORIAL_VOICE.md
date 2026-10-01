@@ -1,6 +1,6 @@
 # Bearing editorial voice
 
-Updated September 30, 2026 from the viewer's explicit direction and the accepted PCE revision. This is a working editorial standard, not a claim that a model has been retrained. The accompanying rewritten scripts are learning examples; only the delivered PCE and cybersecurity cuts have the viewer's prior acceptance.
+Updated October 1, 2026 from the viewer's explicit direction, the accepted PCE revision and acceptance of the student-loan production approach. This is a working editorial standard, not a claim that a model has been retrained. The accompanying rewritten scripts remain learning examples. Preserve the accepted PCE/cybersecurity performances and the separate acceptance of the latest loan film's production approach; approval of an approach does not make every draft or voice performance approved.
 
 Read this before writing or revising a Bearing script. The machine-readable standard in [`editorial-voice.json`](../channel/production/editorial-voice.json) is also supplied to both local-model drafting and editing. The [rewrite book](SCRIPT_REWRITES_20260930.md) shows complete before/after scripts, source checks and editorial decisions.
 
@@ -26,6 +26,8 @@ Protect the first word. Narration has no slow gain ramp. A short appropriate acc
 
 Give the viewer reading time by holding a relevant graphic under continuing narration. Reveal facts where the voice references them. Read top to bottom and left to right: the first comparison normally goes on the left. Change composition when the task changes from a finding to a mechanism, a comparison, a location or a next step. Picture instructions are separate from spoken copy. A fact source does not clear that publisher's photos, footage or logos for reuse.
 
+The latest student-loan film (`9c4fe29dbfb3a18916ea`) is the accepted production reference: a restrained image-led title, imagery that gives the body room, accumulating explanations and a visually connected close. Keep the result tight and dynamic. Move to introduce, connect or emphasize an idea; hold so it can register; leave when the picture has finished its job. Judge this with the actual voice track, not a motion quota or fixed shot timer. A hold is useful while the narration develops that same idea. Remove redundant words or picture beats before increasing delivery speed. Choose the appropriate visual form for each new story rather than repeating this film's shot order or three-column layout.
+
 ## Keep the claims honest
 
 Preserve the distinction between a proposal and a rule, funding and results, an observation and its cause, or a national average and every household. Do not manufacture a forecast or an everyday-life angle to strengthen a weak lead. Scientific uncertainty is part of the story, not a disclaimer to tack onto it.
@@ -38,7 +40,7 @@ Publication, event and observation dates are different. Reading an older story t
 2. **Evidence:** Does each claim preserve the source's scope, status, date and uncertainty?
 3. **Flow:** Does the passage sound like one coherent story? Remove boilerplate and duplicated setup.
 4. **Performance:** Read it aloud; flag pronunciations and awkward joins. Leave natural breaths without dead air.
-5. **Picture:** Match every visual to its line and reading order; preserve reading time through the cut.
+5. **Picture:** Match every visual to its line and reading order. Ask why each move, hold and cut happens there; preserve reading time and remove beats that repeat or outstay their purpose.
 6. **Finish:** Check the word budget, then actual TTS duration, opening level, music and continuous playback.
 
 Examples are not evidence for a different story. The learning bank records what changed and why; it does not turn a fresh assistant-written draft into a viewer-approved benchmark. Future feedback should update this standard and its examples, with the revision recorded.

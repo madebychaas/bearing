@@ -70,6 +70,8 @@ Treat the picture as video, not a document or dashboard. Avoid permanent headers
 
 Give each visual time to communicate. A representative image can establish the opening while one title gradually comes together with the first sentence; leave that title behind when the body begins. Alternate imagery and explanatory graphics according to what the narration needs, rather than turning every phrase into another text card. When explaining a process, let its parts accumulate in a clear reading order and remain visible long enough to understand their relationship. Keep qualifications and required steps connected to that process. For a closing explanation, use visual cause and effect to make the consequences understandable, without implying certainty the reporting does not support.
 
+The October 1 student-loan revision (`9c4fe29dbfb3a18916ea`) is the viewer-accepted reference for this production approach. Keep it tight, dynamic and moving with editorial judgment: move when a new idea, relationship or emphasis needs attention; hold when the viewer needs to read, connect or absorb what is already there. Cut once that picture has done its job. Motion should direct attention, and a hold should still carry the story forward under narration. Do not rush the voice to create energy or animate continuously to imply polish. Preserve the approach, not a fixed shot order: image openings, title builds and three-column diagrams are choices to earn story by story.
+
 ## Product principles
 
 ### Understanding over volume

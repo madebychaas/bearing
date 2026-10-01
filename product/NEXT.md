@@ -1,12 +1,14 @@
 # Bearing — Active Mission
 
-**Status: image-led picture revision delivered — stop here for viewing feedback.**
+**Status: production approach accepted and locked in — milestone closed.**
+
+Angelo's October 1 response to `9c4fe29dbfb3a18916ea`: **“This is incredibly close. Great stuff. Lock this in as the approach we want.”** His qualification is part of the standard: keep it tight, dynamic and moving, with judgment about when movement helps and when an idea needs to hold. This accepts the production approach as the reference for future stories, with room for refinement; it is not a request for another edit or blanket signoff on every voice performance. The vision, editorial playbook and machine-readable guidance now retain that distinction. No media, script or playback behavior changed for this acceptance checkpoint. All 10 editorial-guidance tests passed.
 
 The latest October 1 follow-up is **`9c4fe29dbfb3a18916ea`**. It replaces the same loan story entry with two original generated editorial images, a slower single-title build, an exact-word cut into body imagery, three accumulating process columns, a requirements extension on the same diagram, and a calendar → credit → car/apartment explanation. The exact script, audio, captions and timing are unchanged by hash/comparison. Warm is 36.867 seconds; Measured is 40.300 seconds. The renderer is opt-in; the existing player and other films were not redesigned. Both earlier deliveries remain archived.
 
 Both finished MP4s fully decode and all 13 delivery hashes match; 38 encoded frames were inspected. Actual browser playback used the new film, kept the full picture and captions visible, and advanced into the next item. **17 graphics tests and all 54 JavaScript tests pass.** The full Python run passes 182 of 183: an existing Windows HTTP connection-close race intermittently aborts the oversized-request test before the client receives 413. The isolated seven-test server module passes. This was reproduced separately and is unrelated to the picture revision; no server behavior was changed or flaky test hidden. Keep that limitation visible rather than calling the full suite green.
 
-See the [new production record](STUDENT_LOAN_PRODUCTION_20261001.md), [reviewed packet](../channel/production/reviewed-student-loans-20261001-picture-v3.json), and [original image prompts](../channel/production/student-loan-image-led-v3-prompts.json). The requested local delivery is complete; final viewer acceptance remains separate. Do not start another story, a server-hardening mission or broad feature development without direction.
+See the [production record and acceptance](STUDENT_LOAN_PRODUCTION_20261001.md), [reviewed packet](../channel/production/reviewed-student-loans-20261001-picture-v3.json), and [original image prompts](../channel/production/student-loan-image-led-v3-prompts.json). Preserve this delivered cut as the accepted approach reference. Do not start another story, a server-hardening mission or broad feature development without direction. Earlier milestone notes below retain their status as recorded at delivery.
 
 ## Previous picture revision
 

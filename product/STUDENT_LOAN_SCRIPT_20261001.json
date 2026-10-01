@@ -126,6 +126,13 @@
     "approvedBy": "User instruction: complete the full production",
     "publishedAt": "2026-10-01T17:53:06.343755Z",
     "viewerAccepted": false,
+    "approachAcceptance": {
+      "date": "2026-10-01",
+      "identity": "9c4fe29dbfb3a18916ea",
+      "status": "viewer-accepted-production-approach",
+      "direction": "Lock in this approach. Keep it tight, dynamic and moving, with judgment about when movement helps and when to hold.",
+      "scope": "Production approach accepted as the reference; no media change or blanket signoff on both voice performances."
+    },
     "previousIdentity": "b89773d68a5e1c98cbf9",
     "pictureRevision": "Image-led picture revision requested by the user; exact script, audio, captions and timing preserved"
   }
