@@ -2,6 +2,8 @@
 
 **Status: active.**
 
+October 1 script revision: the user supplied a more conversational opening and requested a closing definition of default with everyday consequences. The [80-word cited revision](STUDENT_LOAN_SCRIPT_20261001.json) preserves that direction and adds a qualified credit/housing/car-loan consequence. It supersedes the September 30 **writing proposal**, not any accepted media. The live selection is currently held for unavailable intake and expired primary reviews; the new draft is retained separately without bypassing that hold. Recheck/reassess sources, transfer the revised copy, and prepare a matching closing before production review. No new narration or movie has been made.
+
 September 30 implementation checkpoint: the selected-story handoff, source-bound review, reversible approval, reassessment guard and unpublished film worker are implemented and browser-checked. **The real student-loan story is prepared but still awaiting the user's script approval; no finished asset has been produced for it.** Continue from [the checkpoint and exact next steps](SELECTION_PROOF_20260930.md), not by rebuilding the connection. The retained [draft and film plan](SELECTION_PROOF_STUDENT_LOANS_20260930.json) require a fresh source check before approval/production. Tests passed: 168 Python and 50 JavaScript. The accepted PCE and NIST films remain intact.
 
 The September 30 editorial-voice and 13-script rewrite milestone is complete and preserved.

@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "status": "revised-draft-awaiting-review",
+  "revisedDate": "2026-10-01",
+  "selectionId": "selection-6fa7e2370b86374d3e57fb74",
+  "eventId": "event-a347e2e1848fea",
+  "supersedesWritingProposal": "SELECTION_PROOF_STUDENT_LOANS_20260930.json",
+  "editorialNote": "Preserve the user's corrected conversational lead and support-center explanation. Supply the missing word 'way', normalize the department names and punctuation, and tighten the requirements sentence to accommodate the requested definition and everyday consequence. The added closing is an assistant proposal, not an approved performance. No claim that leaving default automatically repairs credit or that collections are currently active.",
+  "sourceCheck": {
+    "date": "2026-10-01",
+    "method": "Rechecked the official September 30 Education Department launch through its indexed result (direct open returned 403), and directly read FSA default guidance and CFPB credit-history guidance. No change to the September 30 launch peg or Wednesday attribution.",
+    "limits": "This retained writing check does not renew the runtime selection's one-hour review. The live selection is held for unavailable intake and expired primary reviews. Recheck and reassess through the normal workflow before transferring this draft, preparing matching pictures or approving production. The previous film packet does not match this revision."
+  },
+  "evidence": [
+    {
+      "id": "ed-launch-20260930",
+      "publisher": "U.S. Department of Education",
+      "url": "https://www.ed.gov/about/news/press-release/us-department-of-education-and-us-department-of-treasury-launch-new-defaulted-loans-support-center",
+      "headline": "U.S. Department of Education and U.S. Department of the Treasury Launch New Defaulted Loans Support Center",
+      "publishedDate": "2026-09-30",
+      "excerpt": "September 30, 2026. The U.S. Department of Education (ED) and the U.S. Department of the Treasury (Treasury) announced the launch of the Defaulted Loans Support Center, a new online portal that gives Americans with defaulted federal student loans a simpler way to understand their options, address default, and return to repayment. Compare available paths out of default; Apply online for loan rehabilitation or consolidation; Borrowers can also complete the loan rehabilitation application online, upload documents, review an estimated payment, electronically sign their agreement, and track their progress without leaving StudentAid.gov."
+    },
+    {
+      "id": "fsa-default-20261001",
+      "publisher": "Federal Student Aid",
+      "url": "https://studentaid.gov/articles/default/",
+      "headline": "Student Loan Default and Collections: FAQs",
+      "excerpt": "If you don’t make your scheduled loan payments for at least 270 days, your federal student loan goes into default. Loan rehabilitation is a method of getting your federal student loan(s) out of default. You make a certain number of consecutive, on-time payments to ED or the guaranty agency (FFEL borrowers only) under a rehabilitation agreement. You must also sign a Rehabilitation Agreement Letter. If action isn’t taken within 65 days of your loan(s) being placed in default, DRG (on behalf of ED) will report your loan(s) as in default to the four major credit reporting agencies: Equifax, Experian, Innovis, and TransUnion."
+    },
+    {
+      "id": "cfpb-default-definition",
+      "publisher": "Consumer Financial Protection Bureau",
+      "url": "https://www.consumerfinance.gov/ask-cfpb/what-happens-if-i-default-on-a-federal-student-loan-en-663/",
+      "headline": "What happens if I default on a federal student loan?",
+      "excerpt": "For most federal student loans, you default if you have not made a payment in more than 270 days. If you haven’t made a payment on your federal student loan for at least 270 days (nine months), and you have not entered into an agreement with your lender or servicer to postpone your payments (like deferment or forbearance), you are probably in default. Credit reporting companies are notified, which generally means a lower credit score for you",
+      "reviewNote": "Use the qualified definition and credit effect only. Older discussion of Fresh Start and SAVE on this page is not current evidence and is not used."
+    },
+    {
+      "id": "cfpb-credit-impact",
+      "publisher": "Consumer Financial Protection Bureau",
+      "url": "https://www.consumerfinance.gov/ask-cfpb/why-do-i-need-a-credit-history-en-2154/",
+      "headline": "Why do I need a credit history?",
+      "excerpt": "To make most large purchases, such as homes and cars, people borrow money. Your credit history makes a difference in the cost you pay for the loan. Landlords check your credit to decide whether to rent to you, and whether to ask you for a larger security deposit. When there are negative items on your credit report, like missed payments or high balances, it can be harder or more expensive to do the things you want to do: You could be turned down for a loan or offered a loan with more expensive terms"
+    }
+  ],
+  "draft": {
+    "title": "Default help moves online",
+    "opening": [
+      {
+        "text": "Borrowers with defaulted federal student loans have a new way to get back on track for repayment, and it's all online.",
+        "evidence": [{"id":"ed-launch-20260930","quote":"a new online portal that gives Americans with defaulted federal student loans a simpler way to understand their options, address default, and return to repayment."}]
+      }
+    ],
+    "body": [
+      {
+        "text": "The Treasury and Education departments launched a support center Wednesday that lets borrowers compare rehabilitation and consolidation, upload documents and track progress.",
+        "evidence": [{"id":"ed-launch-20260930","quote":"September 30, 2026. The U.S. Department of Education (ED) and the U.S. Department of the Treasury (Treasury) announced the launch of the Defaulted Loans Support Center"},{"id":"ed-launch-20260930","quote":"Compare available paths out of default; Apply online for loan rehabilitation or consolidation; Borrowers can also complete the loan rehabilitation application online, upload documents, review an estimated payment, electronically sign their agreement, and track their progress without leaving StudentAid.gov."}]
+      }
+    ],
+    "closing": [
+      {
+        "text": "Applying is only the start. Borrowers must meet their chosen path's requirements to leave default.",
+        "evidence": [{"id":"fsa-default-20261001","quote":"Loan rehabilitation is a method of getting your federal student loan(s) out of default. You make a certain number of consecutive, on-time payments to ED or the guaranty agency (FFEL borrowers only) under a rehabilitation agreement. You must also sign a Rehabilitation Agreement Letter."}]
+      },
+      {
+        "text": "Default generally follows about nine months of missed payments and can hurt credit, making a car loan or apartment harder to get.",
+        "evidence": [{"id":"cfpb-default-definition","quote":"If you haven’t made a payment on your federal student loan for at least 270 days (nine months), and you have not entered into an agreement with your lender or servicer to postpone your payments (like deferment or forbearance), you are probably in default."},{"id":"cfpb-default-definition","quote":"Credit reporting companies are notified, which generally means a lower credit score for you"},{"id":"cfpb-credit-impact","quote":"Landlords check your credit to decide whether to rent to you, and whether to ask you for a larger security deposit."},{"id":"cfpb-credit-impact","quote":"When there are negative items on your credit report, like missed payments or high balances, it can be harder or more expensive to do the things you want to do: You could be turned down for a loan or offered a loan with more expensive terms"}]
+      }
+    ],
+    "pronunciations": [],
+    "issues": [],
+    "visuals": [
+      {
+        "kind": "motion",
+        "purpose": "Explain the options and the concrete stakes at their spoken cues; do not imply an application clears default or fixes credit.",
+        "evidenceIds": ["ed-launch-20260930","fsa-default-20261001","cfpb-default-definition","cfpb-credit-impact"],
+        "description": "Keep the concise lead and left-to-right option reveal. Hold the service explanation under its narration. The revised closing needs a fresh composition linking missed required payments to possible credit consequences, then car financing and renting, with the qualifier visible. This is direction for a new picture plan, not approval of the earlier closing or arbitrary equal-time slides."
+      }
+    ]
+  }
+}
