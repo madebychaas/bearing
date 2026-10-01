@@ -3,10 +3,12 @@ import {franchise, mergeEditions, selectPlaylist} from './playlist.js';
 import { createLatest } from './latest.js';
 import { createStudio } from './studio.js';
 import {isFinishedFilm,pictureSource,editionFamily,syncFinishedPicture} from './film-playback.js';
+import {createFilmChrome} from './film-chrome.js';
 const $ = id => document.getElementById(id);
 let cameraController=null;
 let pictureBuffering=false;
 const audio = $('narration'), film = $('film'), music = $('music');
+const filmChrome=createFilmChrome({host:$('player')});
 const topicNames={space:'Space & discovery',nature:'Nature & our planet',culture:'Art & culture',world:'U.S. & policy',technology:'Technology',business:'Money & economy',health:'Health',sport:'Sport',local:'North Texas'};
 const defaults = {topics:Object.keys(topicNames).filter(t=>t!=='local'),pace:1,voice:'warm',music:'drift',musicVolume:.12,captions:true,transitionSounds:true,reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches};
 let preferences = {...defaults}, stories = [], current = null, playing = false, started = false, captions = [], voiceForStory = 'warm', switching = false, resumeAfterDialog = false, failedIds = new Set(), lastRefresh=0, pendingEdition=null, editionVersion='', refreshing=null, rotationCycle=0, series="all", playRevision=0, advancing=false, transitionTimer=null;
@@ -71,6 +73,7 @@ function configureMusic(){
  music.volume=current?.programme?.soundTreatment==='editorial-score'?0:preferences.musicVolume;music.playbackRate=current?.programme?.soundTreatment==='editorial-score'?audio.playbackRate:1;if(playing)music.play().catch(()=>{});
 }
 function updateTransport(){
+ filmChrome.update({story:current,started,playing});
  $('play').textContent=playing?'Ⅱ':'▶';$('play').setAttribute('aria-label',playing?'Pause channel':'Play channel');
  $('full-play').textContent=playing?'Pause':'Play';
  $('player').classList.toggle('playing',started);$('story-intro').hidden=started;$('on-air-title').hidden=!started;$('caption').hidden=!started||!preferences.captions||!captions.length;

@@ -3,7 +3,8 @@ export const isFinishedFilm=story=>story?.programme?.visualTreatment==='finished
 export function pictureSource(story,voice){return isFinishedFilm(story)?story.voices?.[voice]?.video:story?.video||story?.voices?.[voice]?.video;}
 export function editionFamily(story){return isFinishedFilm(story)?'films.json':story?.format==='headline-video'?'latest-edition.json':'programmes.json';}
 export function reducedFilmFrame(track,time){
- const cues=[0,...(track.chapters||[]).map(c=>c.start),...(track.visualCues||[]).flatMap(c=>[c.start,...(c.reveals||[]).map(r=>r.start)]),...(track.openingCues||[]).map(c=>c.start),...(track.closingCues||[]).map(c=>c.start)].filter(Number.isFinite).sort((a,b)=>a-b);
+ const pictureCues=Array.isArray(track.pictureCues)?track.pictureCues:[];
+ const cues=[0,...(track.chapters||[]).map(c=>c.start),...(track.visualCues||[]).flatMap(c=>[c.start,...(c.reveals||[]).map(r=>r.start)]),...(track.openingCues||[]).map(c=>c.start),...(track.closingCues||[]).map(c=>c.start),...pictureCues].filter(cue=>Number.isFinite(cue)&&cue>=0&&cue<track.duration).sort((a,b)=>a-b);
  const unique=[...new Set(cues)],index=Math.max(0,unique.findLastIndex(cue=>cue<=time));
  // Jump once to the settled form of the current reveal, stopping before the
  // next authored cue. No later fact appears before its narration reference.

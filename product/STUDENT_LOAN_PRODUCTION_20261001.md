@@ -1,6 +1,29 @@
 # Student-loan production proof — October 1, 2026
 
-**Status: production complete, published to the local playlist and browser-verified. Viewer acceptance of this new performance remains separate.**
+**Status: picture revision delivered to the local playlist. Viewer acceptance remains separate.**
+
+## Current picture revision
+
+The user's follow-up rejected the initial film's template labels, small diagrams and routine dissolves. **`b89773d68a5e1c98cbf9`** replaces its playlist entry with an opt-in `full-frame-v2` treatment. The earlier delivery remains immutable; the same story ID prevents duplicate playlist items.
+
+- Large centered typography enters through a mask at the spoken opening, then changes from the subject to the online opportunity.
+- The support center leads into two animated routes. The picture follows rehabilitation into its specifically documented upload and tracking tools, rather than implying that every tool belongs to both options.
+- Application requirements get their own brief beat. A large, qualified nine-month composition gives way to credit and original car/apartment illustrations at the actual spoken references.
+- No persistent header, brand, source strip, eyebrow or footer occupies the picture. Original graphics need no third-party courtesy bug; factual citations remain in Behind this story and delivery metadata. This does not relax the courtesy rule for third-party media.
+- Internal edits use cuts and object/type movement, with **no cross dissolves** in this revision. The existing 1.5-second transition between playlist items is retained.
+- The video fills its 16:9 canvas. Transport and chapter navigation recede after 2.4 seconds during uninterrupted viewing and return with interaction, pause or keyboard focus. Optional captions remain visible near the bottom. This behavior applies only to the revised treatment.
+
+The script, all six native performances, final narration MP3/WAV files, mixed WAVs and all five score/SFX MP3s match the initial delivery **byte for byte**. Captions and word timings are unchanged. Warm remains **36.867 seconds**; Measured remains **40.300 seconds**. Sixteen additional word-bound picture cues per voice preserve the new editorial edits during reduced-motion playback.
+
+Sources were reread at **2026-10-01T16:45:20Z**, followed by explicit primary-source reassessment and a new approval bound to the revised packet. The user request is recorded as approval `approval-e906fd6b777d09b73a0c329a`; it does not claim final viewer acceptance. The finished revision was published locally at **16:57:18.966877Z**, with manifest version `a231ec2cf5aabad527d334a901e1c360792773cc4b1e95106cb8fecf1683056b`.
+
+**179 Python and 54 JavaScript tests passed.** Both MP4s fully decode; all 13 delivery hashes match. Thirty-two frames extracted from the actual videos were inspected across every picture beat. In the actual player the video occupied the full inner frame, controls receded, captions remained readable, and narration/picture advanced without media errors. Local evidence remains under ignored `output/selection-proof/`.
+
+Browser continuation verified automatic advancement into **Stablecoin rules enter the debate**, playing beyond eleven seconds without a Next click. Keyboard focus restored hidden transport, Space paused playback, and Home on the seek control cued the revised film at its opening. At the tested desktop viewport, document height equalled viewport height; the picture matched the player's inner width and height. Mobile sizing has CSS support but was not separately browser-tested in this pass.
+
+Current deliveries: [Warm MP4](../channel/dist/assets/films/b89773d68a5e1c98cbf9/warm.mp4) · [Measured MP4](../channel/dist/assets/films/b89773d68a5e1c98cbf9/measured.mp4). The [reviewed picture packet](../channel/production/reviewed-student-loans-20261001-picture-v2.json) retains this direction. The initial production proof below is preserved as dated history.
+
+## Initial production proof
 
 The user instructed **“complete the full production”** after reviewing the [80-word revision](STUDENT_LOAN_SCRIPT_20261001.json). That authorizes production of this script. It does not imply that the user has heard, watched or accepted the resulting performance.
 

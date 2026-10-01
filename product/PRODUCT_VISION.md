@@ -66,6 +66,8 @@ Scripts lead with the new development and its human impact. For a report-driven 
 
 News needs rhythm and flow. Keep clear articulation and natural sentence breathing, without long empty pauses or an opening fade that swallows words. Give graphics reading time through relevant picture holds, not dead air. Reveals follow normal reading order, top to bottom and left to right. Music supports the editorial subject and voice, without sentimental or dramatic decoration.
 
+Treat the picture as video, not a document or dashboard. Avoid permanent headers, eyebrows, source strips and footers over original graphics. Use the frame confidently: scale an explanation up, split it into distinct visual beats or rethink the composition when it feels cramped. An opening made of words needs an authored reveal and visual emphasis, not a preloaded left-aligned title. Use cuts and purposeful movement; cross dissolves should be occasional editorial choices rather than the default between scenes. Keep third-party courtesy credits when required, and make factual sources available behind the story.
+
 ## Product principles
 
 ### Understanding over volume

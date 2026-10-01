@@ -9,6 +9,7 @@ from __future__ import annotations
 import hashlib
 import math
 import os
+import re
 import subprocess
 from functools import lru_cache
 from pathlib import Path
@@ -200,6 +201,155 @@ def role_start(scene, roles, index=0):
     return float(cues[index]['start']) if index < len(cues) else float(scene['voiceStart'])
 
 
+# Opt-in picture direction for the loan revision. The older renderer remains
+# available verbatim so an accepted film is never silently restyled.
+NIGHT = (12, 25, 29)
+PAPER = (246, 243, 234)
+MINT = (117, 213, 183)
+DEEP_TEAL = (28, 100, 85)
+
+
+@lru_cache(maxsize=32)
+def _display_font(size):
+    """A large, solid editorial face, independent of small UI typography."""
+    windows = Path(os.environ.get('WINDIR', 'C:/Windows')) / 'Fonts'
+    for candidate in (windows/'bahnschrift.ttf', windows/'segoeuib.ttf',
+                      Path('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')):
+        if candidate.exists():
+            return ImageFont.truetype(str(candidate), round(size*SCALE))
+    return _font(size, 'bold')
+
+
+def phrase_start(track, phrase, start=0, end=None):
+    """Resolve additional picture edits against the unchanged real word clock."""
+    normalize = lambda value: re.sub(r"[^a-z0-9']", '', str(value).lower())
+    wanted = [normalize(word) for word in phrase.split()]
+    words = track.get('wordTimings', [])
+    end = track['duration'] if end is None else end
+    for index, word in enumerate(words):
+        if start <= float(word['start']) < end and [normalize(w['text']) for w in words[index:index+len(wanted)]] == wanted:
+            return float(word['start'])
+    raise ValueError(f'Full-frame picture direction requires the spoken phrase {phrase!r}')
+
+
+def full_frame_schedule(packet, track, scenes):
+    if [scene['kind'] for scene in scenes] != ['headline', 'service', 'close', 'default-impact']:
+        raise ValueError('Full-frame-v2 currently requires the reviewed loan story scene sequence')
+    impact = packet['visuals'].get('defaultImpact', {})
+    if impact.get('months') != 9 or impact.get('qualifier') != 'Generally, about':
+        raise ValueError('Default-impact graphic needs the reviewed qualified nine-month definition')
+    opening, service, close, impact_scene = scenes
+    cues = {
+        'subject': phrase_start(track, 'Borrowers', 0, opening['end']),
+        'payoff': phrase_start(track, 'a new way', 0, opening['end']),
+        'online': phrase_start(track, 'online', 0, opening['end']),
+        'center': phrase_start(track, 'support center', service['start'], service['end']),
+        **{role: role_start(service, role) for role in ('rehabilitation', 'consolidation', 'documents', 'progress')},
+        **{role: role_start(close, role) for role in ('hinge', 'meaning')},
+        **{role: role_start(impact_scene, role) for role in ('default', 'months', 'credit', 'car', 'home', 'consequence')},
+    }
+    ordered = list(cues.values())
+    if any(b <= a for a, b in zip(ordered, ordered[1:])):
+        raise ValueError('Full-frame editorial picture beats must follow the actual spoken order')
+    return cues
+
+
+def _display(image, text, x, y, size, color, progress=1, width=1160):
+    """Type rises through a fixed mask; it is never a preloaded/fading card."""
+    if progress <= 0:
+        return
+    font = _display_font(size)
+    lines = str(text).split('\n')
+    draw = ImageDraw.Draw(image)
+    if any(draw.textlength(line, font=font) > width*SCALE for line in lines):
+        raise ValueError('Full-frame title exceeds its deliberately authored width')
+    layer = Image.new('RGBA', image.size)
+    layer_draw = ImageDraw.Draw(layer)
+    for index, line in enumerate(lines):
+        center_y = y + (index-(len(lines)-1)/2)*size*1.04
+        offset = (1-progress)*size*1.1
+        layer_draw.text(_point(x, center_y+offset), line, font=font, fill=(*color, 255), anchor='mm')
+        # Preserve real ascenders/descenders while clipping the entrance below.
+        box = (0, round((center_y-size*.64)*SCALE), WIDTH, round((center_y+size*.64)*SCALE))
+        part = layer.crop(box)
+        image.paste(part, (box[0], box[1]), part)
+        layer_draw.rectangle(box, fill=(0, 0, 0, 0))
+
+
+def _path(draw, points, progress, color, width=3):
+    """Draw a route geometrically, without opacity ramps or implied quantities."""
+    if progress <= 0:
+        return
+    lengths = [math.hypot(b[0]-a[0], b[1]-a[1]) for a, b in zip(points, points[1:])]
+    remaining = sum(lengths)*min(progress, 1)
+    shown = [points[0]]
+    for first, second, length in zip(points, points[1:], lengths):
+        if remaining <= 0:
+            break
+        portion = min(1, remaining/max(.001, length))
+        shown.append((first[0]+(second[0]-first[0])*portion, first[1]+(second[1]-first[1])*portion))
+        remaining -= length
+    if len(shown) > 1:
+        _line(draw, shown, color, width)
+
+
+def _document(draw, x, y, size, progress, foreground, background):
+    # A visibly original sheet, not a screenshot or fabricated agency form.
+    if progress <= 0:
+        return
+    w, h = size*.76, size
+    points = [(x-w/2, y+h/2), (x-w/2, y-h/2), (x+w/2-43, y-h/2),
+              (x+w/2, y-h/2+43), (x+w/2, y+h/2), (x-w/2, y+h/2)]
+    _path(draw, points, progress, foreground, 3)
+    if progress > .7:
+        _line(draw, [(x+w/2-43, y-h/2), (x+w/2-43, y-h/2+43), (x+w/2, y-h/2+43)], foreground, 2)
+    for index, width in enumerate((.47, .47, .31)):
+        q = ease((progress-.25-index*.09)/.45)
+        _line(draw, [(x-w*.29, y-36+index*40), (x-w*.29+size*width*q, y-36+index*40)], foreground, 3)
+
+
+def _car(draw, x, y, progress, color):
+    # A substantial original vehicle illustration, without a manufacturer mark.
+    x -= (1-progress)*95
+    scale=1.25
+    pt=lambda dx,dy:(x+dx*scale,y+dy*scale)
+    body=[(-148,44),(-148,2),(-118,-13),(-74,-76),(68,-76),(119,-12),(149,3),(149,44)]
+    if progress>.72:
+        draw.polygon([_point(*pt(dx,dy)) for dx,dy in body],fill=(25,48,50))
+    _path(draw,[pt(dx,dy) for dx,dy in body],progress,color,4)
+    if progress>.35:
+        p=ease((progress-.35)/.65)
+        window=[(-99,-9),(-61,-59),(57,-59),(97,-9),(-99,-9)]
+        if progress>.72:
+            draw.polygon([_point(*pt(dx,dy)) for dx,dy in window],fill=NIGHT)
+        _path(draw,[pt(dx,dy) for dx,dy in window],p,color,2)
+        _line(draw,[pt(-20,-59),pt(-20,-9)],color,2)
+        _path(draw,[pt(-99,44),pt(99,44)],p,color,3)
+        _path(draw,[pt(-17,2),pt(-17,34)],p,_mix(NIGHT,color,.5),1.5)
+        _path(draw,[pt(2,4),pt(19,4)],p,color,2)
+        for wheel in (-111,111):
+            wx,wy=pt(wheel,44)
+            _circle(draw,wx,wy,24*p*scale,NIGHT,color,4)
+            _circle(draw,wx,wy,10*p*scale,_mix(NIGHT,color,.2),color,2)
+
+
+def _apartment(draw, x, y, progress, color):
+    x += (1-progress)*95
+    scale=1.2
+    pt=lambda dx,dy:(x+dx*scale,y+dy*scale)
+    body=[(-107,73),(-107,-119),(107,-119),(107,73)]
+    if progress>.72:
+        draw.polygon([_point(*pt(dx,dy)) for dx,dy in body],fill=(25,48,50))
+    _path(draw,[pt(dx,dy) for dx,dy in body],progress,color,4)
+    _path(draw,[pt(-132,73),pt(132,73)],progress,color,3)
+    for row in range(3):
+        for col in range(3):
+            p=ease((progress-(row*3+col)*.025)/.68)
+            px,py=-65+65*col,-82+47*row
+            _path(draw,[pt(px-10,py+10),pt(px-10,py-10),pt(px+10,py-10),pt(px+10,py+10)],p,color,2)
+    _path(draw,[pt(-19,73),pt(-19,31),pt(19,31),pt(19,73)],progress,color,3)
+
+
 class Film:
     def __init__(self, packet, track):
         self.packet, self.track = packet, track
@@ -208,6 +358,8 @@ class Film:
         self.chart = chart_spec(self.visuals) if any(s['kind']=='comparison' for s in self.scenes) else None
         self.duration = float(track['duration'])
         self.bases = {}
+        self.full_frame = self.visuals.get('treatment') == 'full-frame-v2'
+        self.picture_cues = full_frame_schedule(packet, track, self.scenes) if self.full_frame else None
 
     def base(self, dark):
         if dark not in self.bases:
@@ -430,8 +582,111 @@ class Film:
                     _circle(draw, 84+960*route, 455, 7, IVORY, TEAL, 2)
         return image
 
+    def full_frame_picture(self, time):
+        """Directed, content-first picture edits. No template furniture or blends."""
+        c = self.picture_cues
+        def p(role, duration=.58):
+            return reveal_progress(time, c[role], duration)
+        def canvas(dark=True):
+            image = Image.new('RGB', (WIDTH, HEIGHT), NIGHT if dark else PAPER)
+            return image, ImageDraw.Draw(image)
+
+        if time < c['center']:
+            image, draw = canvas()
+            # The ident is a route being drawn, not an extra title card.
+            intro = ease(time/.45)
+            _path(draw, [(488,480),(640,480),(792,480)], intro, MINT, 3)
+            if time < c['payoff']:
+                _display(image, 'Student loans.', 640, 300, 104, PAPER, p('subject',.65))
+            else:
+                _display(image, 'A way back.', 640, 281, 133, PAPER, p('payoff',.62))
+                _display(image, 'Online.', 640, 423, 49, MINT, p('online',.4))
+            return image
+
+        if time < c['documents']:
+            image, draw = canvas(False)
+            if time < c['rehabilitation']:
+                _display(image, 'Defaulted Loans\nSupport Center', 640, 294, 82, NIGHT, p('center',.65))
+                return image
+            # Two independent routes: neither line is a promised outcome.
+            for role,x in [('rehabilitation',335),('consolidation',945)]:
+                q=p(role,.64)
+                if q:
+                    _path(draw,[(640,144),(640,206),(x,286),(x,327)],q,DEEP_TEAL,3)
+                    if q>.8:
+                        _circle(draw,x,330,8,PAPER,DEEP_TEAL,2)
+                    _display(image,role.capitalize(),x,406,49,NIGHT,q,width=575)
+            return image
+
+        if time < c['hinge']:
+            image,draw=canvas(False)
+            # Follow the rehabilitation route into its specifically documented
+            # tools. This context is substantive picture content, not a badge.
+            _display(image,'Rehabilitation',345,151,49,NIGHT,1,width=570)
+            if time < c['progress']:
+                q=p('documents',.58)
+                _document(draw,345,363,265,q,DEEP_TEAL,PAPER)
+                _display(image,'Upload\ndocuments.',917,318,71,NIGHT,q,width=570)
+                _path(draw,[(346,456),(346,308),(319,335),(346,308),(373,335)],q,MINT,5)
+            else:
+                q=p('progress',.5)
+                _display(image,'Track\nprogress.',917,318,80,NIGHT,q,width=560)
+                # An open-ended tracking path, deliberately no percentage or
+                # checkmark suggesting a successful real-world application.
+                _path(draw,[(140,365),(550,365)],q,DEEP_TEAL,3)
+                for x in (155,345,535):
+                    _circle(draw,x,365,17,PAPER,DEEP_TEAL,3)
+                marker=155+190*q
+                _circle(draw,marker,365,8,DEEP_TEAL)
+            return image
+
+        if time < c['default']:
+            image,draw=canvas()
+            if time < c['meaning']:
+                _display(image,'Applying is\nonly the start.',640,305,97,PAPER,p('hinge',.55))
+            else:
+                _display(image,'Requirements\nstill apply.',640,305,101,PAPER,p('meaning',.5))
+            return image
+
+        if time < c['credit']:
+            image,draw=canvas(False)
+            if time < c['months']:
+                _display(image,'Default.',640,303,152,NIGHT,p('default',.52))
+            else:
+                q=p('months',.5)
+                _display(image,'Generally, about',756,170,34,DEEP_TEAL,q,width=580)
+                _display(image,'9',341,310,288,NIGHT,q,width=370)
+                _display(image,'months',797,302,113,NIGHT,q,width=590)
+                _display(image,'of missed payments',759,403,43,NIGHT,q,width=650)
+                for i in range(9):
+                    tick=reveal_progress(time,c['months']+i*.027,.35)
+                    _path(draw,[(216+i*102,509),(282+i*102,509)],tick,DEEP_TEAL,8)
+            return image
+
+        image,draw=canvas()
+        if time < c['car']:
+            _display(image,'Can hurt\ncredit.',640,300,118,PAPER,p('credit',.47))
+        else:
+            # Credit's impact becomes concrete. The final qualifier is retained
+            # in large type rather than relegated to a footnote or lower third.
+            if time < c['consequence']:
+                _display(image,'Can hurt credit.',640,152,71,PAPER,1)
+            else:
+                _display(image,'Can be harder to get.',640,152,70,PAPER,p('consequence',.4))
+            q=p('car',.5)
+            if q:
+                _car(draw,335,356,q,MINT)
+                _display(image,'Car loan',335,496,45,PAPER,q,width=530)
+            q=p('home',.45)
+            if q:
+                _apartment(draw,945,356,q,MINT)
+                _display(image,'Apartment',945,496,45,PAPER,q,width=530)
+        return image
+
     def frame(self, time):
         time = min(max(float(time), 0), self.duration-1/FPS)
+        if self.full_frame:
+            return self.full_frame_picture(time)
         index = max(i for i, scene in enumerate(self.scenes) if scene['start'] <= time)
         scene = self.scenes[index]
         current = self.scene(scene, time)
@@ -485,8 +740,10 @@ def render(packet, track, output_mp4: Path, poster_png: Path, ffmpeg: str):
         raise
     return {'renderer': 'film_visuals.py', 'width': WIDTH, 'height': HEIGHT, 'fps': FPS,
             'duration': movie.duration, 'frames': frames, 'audio': False,
-            'transitionSeconds': TRANSITION_SECONDS, 'cameraMotion': 'none',
-            'captionSafeArea': 'Bottom 35 percent reserved for native captions, chapters and transport',
+            'transitionSeconds': 0 if movie.full_frame else TRANSITION_SECONDS, 'cameraMotion': 'none',
+            'transitionTreatment': 'Spoken-cue cuts and geometric object reveals; no cross dissolves' if movie.full_frame else 'Scene cross dissolves',
+            'pictureCues': movie.picture_cues,
+            'captionSafeArea': 'Bottom 18 percent reserved for optional native captions and transport' if movie.full_frame else 'Bottom 35 percent reserved for native captions, chapters and transport',
             'chart': movie.chart, 'scenes': movie.scenes, 'contactSheet': str(contact),
             'sampleFrames': sample_frames, 'videoSha256': hashlib.sha256(output_mp4.read_bytes()).hexdigest(),
             'posterSha256': hashlib.sha256(poster_png.read_bytes()).hexdigest(),

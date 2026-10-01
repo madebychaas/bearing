@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "edition": "2026-10-01",
-  "version": "c09d896247ece694509ce75ed5ac20a705ace3e097c885452281faa0ae3c3d13",
-  "builtAt": "2026-10-01T16:37:01.666650+00:00",
+  "version": "a231ec2cf5aabad527d334a901e1c360792773cc4b1e95106cb8fecf1683056b",
+  "builtAt": "2026-10-01T16:57:18.955045+00:00",
   "stories": [
     {
       "id": "reviewed-pce-buying-power-20260930-v1",
@@ -1150,14 +1150,14 @@
       "expiresAt": "2026-10-03T00:00:00Z",
       "reviewStatus": "verified",
       "reviewedAt": "2026-10-01",
-      "reviewMethod": "October 1 primary-source accuracy and rights recheck, followed by the user instruction to complete the full production of the revised 80-word script. Approval recorded separately in the selection history.",
+      "reviewMethod": "Exact previously produced 80-word script retained; primary sources reread October 1 at16:45:20UTC. User requested a complete picture-treatment revision, with original performance preserved. Authorization recorded in the selection history.",
       "editorialNote": "September 30 launch remains the specific current development. Generally/about qualify the nine-month default threshold; can qualifies possible credit and housing/borrowing consequences. Applying does not resolve default, and leaving default does not automatically repair credit. Older 9.3 million figure and current collection-policy claims are excluded.",
       "visualDisclosure": "Original Bearing explanatory graphics, locally synthesized AI narration and original synthesized music. No third-party photographs, footage, logos or screenshots.",
       "facts": [],
       "displayTitle": "Default help moves online",
       "status": "ready",
       "format": "studio-programme",
-      "programmeVersion": "fb4a08f7a47183e184da",
+      "programmeVersion": "b89773d68a5e1c98cbf9",
       "programme": {
         "why": "Borrowers can handle default-resolution applications and supporting paperwork online.",
         "summary": "Applying starts a process; default can also affect everyday access to credit and housing.",
@@ -1252,7 +1252,8 @@
           "validThrough": "2026-10-02",
           "label": "Current development",
           "liveEligible": true
-        }
+        },
+        "pictureTreatment": "full-frame-v2"
       },
       "voices": {
         "warm": {
@@ -1880,10 +1881,28 @@
           "scriptSha256": "174d7df4e8d0e26bc7b4ead44eff799c6938adf9714340e608e2c2f7558e17d7",
           "sha256": "10eeabb9e04338b8e3e48653cae4e20b857e196aef64495177ab981b595d3dab",
           "fullDecodePassed": true,
-          "audio": "assets/films/fb4a08f7a47183e184da/warm.mp3",
-          "video": "assets/films/fb4a08f7a47183e184da/warm.mp4",
-          "videoSha256": "90a1e940042ca0e4c5563d67e9ab7505b51463ebbf9d37a39e2966b2b5714bd7",
-          "subtitles": "assets/films/fb4a08f7a47183e184da/warm.srt"
+          "pictureCues": [
+            0.48796,
+            3.74065,
+            7.12774,
+            11.30213,
+            14.66235,
+            15.97955,
+            17.44743,
+            18.84529,
+            20.47713,
+            24.70793,
+            26.74986,
+            28.30901,
+            30.78212,
+            32.43787,
+            33.59379,
+            34.10454
+          ],
+          "audio": "assets/films/b89773d68a5e1c98cbf9/warm.mp3",
+          "video": "assets/films/b89773d68a5e1c98cbf9/warm.mp4",
+          "videoSha256": "8193a099657479dd9bcee62999d7069ac2928e0e7cd61c9f9427d938b8abb179",
+          "subtitles": "assets/films/b89773d68a5e1c98cbf9/warm.srt"
         },
         "measured": {
           "duration": 40.3,
@@ -2501,30 +2520,48 @@
           "scriptSha256": "174d7df4e8d0e26bc7b4ead44eff799c6938adf9714340e608e2c2f7558e17d7",
           "sha256": "75b6642982f14624867b88efcf8f4b7c14f4ca9ec4f87b1cfb46a1bbf86907bc",
           "fullDecodePassed": true,
-          "audio": "assets/films/fb4a08f7a47183e184da/measured.mp3",
-          "video": "assets/films/fb4a08f7a47183e184da/measured.mp4",
-          "videoSha256": "599f3f6d24337feeb823f8cfd441c2c499dee006151331b378113d5ee88fe5e9",
-          "subtitles": "assets/films/fb4a08f7a47183e184da/measured.srt"
+          "pictureCues": [
+            0.61842,
+            4.24745,
+            8.06466,
+            12.68537,
+            16.36816,
+            17.65848,
+            19.2556,
+            20.76098,
+            22.60785,
+            27.37415,
+            29.65195,
+            31.26485,
+            33.71109,
+            35.53905,
+            37.0713,
+            37.60894
+          ],
+          "audio": "assets/films/b89773d68a5e1c98cbf9/measured.mp3",
+          "video": "assets/films/b89773d68a5e1c98cbf9/measured.mp4",
+          "videoSha256": "c485eabb574146bdae80de87a585aca7415e4a9dbcb37062efbb89d6573b25a9",
+          "subtitles": "assets/films/b89773d68a5e1c98cbf9/measured.srt"
         }
       },
       "music": {
-        "drift": "assets/studio/score-fb4a08f7a47183e184da-drift.mp3",
-        "piano": "assets/studio/score-fb4a08f7a47183e184da-piano.mp3",
-        "signature": "assets/studio/score-fb4a08f7a47183e184da-signature.mp3",
-        "handoff": "assets/studio/score-fb4a08f7a47183e184da-handoff.mp3",
-        "bridge": "assets/studio/score-fb4a08f7a47183e184da-bridge.mp3"
+        "drift": "assets/studio/score-b89773d68a5e1c98cbf9-drift.mp3",
+        "piano": "assets/studio/score-b89773d68a5e1c98cbf9-piano.mp3",
+        "signature": "assets/studio/score-b89773d68a5e1c98cbf9-signature.mp3",
+        "handoff": "assets/studio/score-b89773d68a5e1c98cbf9-handoff.mp3",
+        "bridge": "assets/studio/score-b89773d68a5e1c98cbf9-bridge.mp3"
       },
-      "image": "assets/films/fb4a08f7a47183e184da/measured-poster.png",
-      "video": "assets/films/fb4a08f7a47183e184da/measured.mp4",
-      "builtAt": "2026-10-01T16:32:05.373063+00:00",
+      "image": "assets/films/b89773d68a5e1c98cbf9/measured-poster.png",
+      "video": "assets/films/b89773d68a5e1c98cbf9/measured.mp4",
+      "builtAt": "2026-10-01T16:55:34.887914+00:00",
       "sourceScriptSha256": "174d7df4e8d0e26bc7b4ead44eff799c6938adf9714340e608e2c2f7558e17d7",
       "production": {
         "pipeline": "finished-film-v1",
         "visualDecision": "original produced film",
         "renderer": "film_visuals.py",
         "sourceBound": true,
-        "standaloneMaster": "assets/films/fb4a08f7a47183e184da/measured.mp4",
-        "compositionHash": "f495a07940c88af6aa0f4df715215012032077ca82bdcf633793c85176e59a08",
+        "standaloneMaster": "assets/films/b89773d68a5e1c98cbf9/measured.mp4",
+        "compositionHash": "74cb19f8d98e2341cf39116a6d6ca4f9b7e4c376639f94798da80474f58def5c",
         "selection": {
           "selectionId": "selection-6fa7e2370b86374d3e57fb74",
           "eventId": "event-a347e2e1848fea",
@@ -2536,19 +2573,19 @@
             "format": "A produced explanation of mechanisms, consequences and unresolved questions.",
             "freshnessHours": 72
           },
-          "sourceRevision": "9a71050bdf7899000641154eaa0758e335cd6e2c76ca80912a80ec8a622c6d0e",
+          "sourceRevision": "434b7a01d66f384889a09e850105df2ebbb4fd7f4c4d0e45700248b4d87b7a55",
           "scriptRevision": "174d7df4e8d0e26bc7b4ead44eff799c6938adf9714340e608e2c2f7558e17d7",
           "voiceRevision": "94c3b8de8f05bbc3a80768fbad620573649a3dd7052d352eb073fa5cb8b1d615",
           "approval": {
-            "at": "2026-10-01T16:31:25.998586Z",
-            "actor": "Angelo - approval in chat, recorded by Codex",
-            "note": "User instruction October1: complete the full production. Applies to the exact80wordrevision just presented, with original story-specific graphics and existing measured narration. Authorizes producing the complete segment and delivering it into the local playlist after technical picture/sound/playback checks; not a claim of prior listening acceptance.",
-            "revision": 14,
+            "at": "2026-10-01T16:54:52.800316Z",
+            "actor": "Angelo - visual revision request in chat, recorded by Codex",
+            "note": "User requested removal of headers, labels, footers and eyebrows; full use of video real estate; an intentionally revealed opening; limited dissolves and better middle/closing graphics. Approves production and local replacement of this picture-only revision with the exact existing script/audio. Does not claim final viewer acceptance.",
+            "revision": 26,
             "scriptHash": "174d7df4e8d0e26bc7b4ead44eff799c6938adf9714340e608e2c2f7558e17d7",
-            "sourceRevision": "9a71050bdf7899000641154eaa0758e335cd6e2c76ca80912a80ec8a622c6d0e",
+            "sourceRevision": "434b7a01d66f384889a09e850105df2ebbb4fd7f4c4d0e45700248b4d87b7a55",
             "voiceRevision": "94c3b8de8f05bbc3a80768fbad620573649a3dd7052d352eb073fa5cb8b1d615",
-            "packetHash": "58971fe2b15b74acaa19eded88bf3ae6bd356a1e698648107d85189c5e36e537",
-            "id": "approval-186cd0a58f887b2c11e015c1"
+            "packetHash": "a0703f6994e644a6af97e3b0e7263be4c8fa09fc8d4d2b1672be9ab58bcea55a",
+            "id": "approval-e906fd6b777d09b73a0c329a"
           },
           "whyNow": "The September30 support-center launch gives borrowers a new online route toward repayment. On October1 explain its options and why resolving default matters for credit, financing and renting.",
           "selectedAt": "2026-09-30T22:12:58.549558Z",
@@ -2675,11 +2712,11 @@
             ],
             "discoveryStatus": {
               "state": "outside-current-intake",
-              "checkedAt": "2026-10-01T16:30:27.221667Z",
+              "checkedAt": "2026-10-01T16:49:13.857401Z",
               "note": "The original opportunity and source remain historical discovery context. Only the explicitly reviewed primary evidence supports the current script; no availability is asserted for archived reporting."
             },
             "sourceBasis": "reviewed-primary",
-            "reassessmentReason": "Network-restricted intake caused the initial hold. Normal collection now succeeds, but this report aged out of the healthy CNBC rolling feed. Use freshly checked ED/Treasury, FSA and CFPB as factual authorities, retaining CNBC and the original choice as discovery history. Rechecked launch, requirements, definition and credit effects on October1; adopt the authorized80wordscript with the September30 launch peg."
+            "reassessmentReason": "User requested a picture-only revision. Rechecked all primary authorities and retain the exact80wordcopy, voice performances and timing. Historical CNBC discovery remains archived after feed rotation; this is not a new development or a changed script."
           },
           "evidence": [
             {
@@ -2689,8 +2726,8 @@
               "headline": "U.S. Department of the Treasury and U.S. Department of Education Launch New Defaulted Loans Support Center",
               "excerpt": "September 30, 2026. The U.S. Department of the Treasury (Treasury) and the U.S. Department of Education (ED) announced the launch of the Defaulted Loans Support Center, a new online portal that gives Americans with defaulted federal student loans a simpler way to understand their options, address default, and return to repayment. Now, defaulted borrowers have a centralized portal to: Understand the consequences of default; Compare available paths out of default; Apply online for loan rehabilitation or consolidation; Make a payment on a defaulted loan; and Review repayment plans and loan-discharge options. Borrowers can also complete the loan rehabilitation application online, upload documents, review an estimated payment, electronically sign their agreement, and track progress without leaving StudentAid.gov.",
               "publishedTime": null,
-              "checkedAt": "2026-10-01T16:19:10Z",
-              "reviewNote": "Reread October1 at16:19:10UTC; the retained excerpt remains supported. Treasury indexed official release and FSA direct guidance; old mail/fax instructions are not used.",
+              "checkedAt": "2026-10-01T16:45:20Z",
+              "reviewNote": "Reread October1 at16:45:20UTC for the requested picture-only revision. Treasury/FSA/CFPB directly; full official indexed ED release after direct403. Existing relevant excerpts remain supported; exclude obsolete mail/fax and FreshStart/SAVE passages.",
               "origin": "reviewed-primary",
               "available": true,
               "contentHash": "dde931e846e90d771824b4b16d9750affdfb7d521d42dac0bbe38c04ff3fe6ac"
@@ -2702,8 +2739,8 @@
               "headline": "Student Loan Default and Collections: FAQs",
               "excerpt": "Loan rehabilitation is a method of getting your federal student loan(s) out of default. You make a certain number of consecutive, on-time payments to ED or the guaranty agency (FFEL borrowers only) under a rehabilitation agreement. You must also sign a Rehabilitation Agreement Letter.",
               "publishedTime": null,
-              "checkedAt": "2026-10-01T16:19:10Z",
-              "reviewNote": "Reread October1 at16:19:10UTC; the retained excerpt remains supported. Treasury indexed official release and FSA direct guidance; old mail/fax instructions are not used.",
+              "checkedAt": "2026-10-01T16:45:20Z",
+              "reviewNote": "Reread October1 at16:45:20UTC for the requested picture-only revision. Treasury/FSA/CFPB directly; full official indexed ED release after direct403. Existing relevant excerpts remain supported; exclude obsolete mail/fax and FreshStart/SAVE passages.",
               "origin": "reviewed-primary",
               "available": true,
               "contentHash": "e4828ba9fed592f2a119d93c938d55e2726ec0574cd01a2ffce67d28ef04f40b"
@@ -2715,8 +2752,8 @@
               "headline": "U.S. Department of Education and U.S. Department of the Treasury Launch New Defaulted Loans Support Center",
               "excerpt": "September 30, 2026. The U.S. Department of Education (ED) and the U.S. Department of the Treasury (Treasury) announced the launch of the Defaulted Loans Support Center, a new online portal that gives Americans with defaulted federal student loans a simpler way to understand their options, address default, and return to repayment. Compare available paths out of default; Apply online for loan rehabilitation or consolidation; Borrowers can also complete the loan rehabilitation application online, upload documents, review an estimated payment, electronically sign their agreement, and track their progress without leaving StudentAid.gov.",
               "publishedTime": null,
-              "checkedAt": "2026-10-01T16:19:10Z",
-              "reviewNote": "Rechecked October1 at16:19:10UTC against the official page. ED full indexed release used after direct403; FSA and CFPB read directly. Excerpts combine separated relevant passages; they are not a single uninterrupted quotation.",
+              "checkedAt": "2026-10-01T16:45:20Z",
+              "reviewNote": "Reread October1 at16:45:20UTC for the requested picture-only revision. Treasury/FSA/CFPB directly; full official indexed ED release after direct403. Existing relevant excerpts remain supported; exclude obsolete mail/fax and FreshStart/SAVE passages.",
               "origin": "reviewed-primary",
               "available": true,
               "contentHash": "d97b0a4099e22c2074caa91a2a89ac7e26aa48804b9fda0a1f6e21f6471ddff6"
@@ -2728,8 +2765,8 @@
               "headline": "Student Loan Default and Collections: FAQs",
               "excerpt": "If you don’t make your scheduled loan payments for at least 270 days, your federal student loan goes into default. Loan rehabilitation is a method of getting your federal student loan(s) out of default. You make a certain number of consecutive, on-time payments to ED or the guaranty agency (FFEL borrowers only) under a rehabilitation agreement. You must also sign a Rehabilitation Agreement Letter. If action isn’t taken within 65 days of your loan(s) being placed in default, DRG (on behalf of ED) will report your loan(s) as in default to the four major credit reporting agencies: Equifax, Experian, Innovis, and TransUnion.",
               "publishedTime": null,
-              "checkedAt": "2026-10-01T16:19:10Z",
-              "reviewNote": "Rechecked October1 at16:19:10UTC against the official page. ED full indexed release used after direct403; FSA and CFPB read directly. Excerpts combine separated relevant passages; they are not a single uninterrupted quotation.",
+              "checkedAt": "2026-10-01T16:45:20Z",
+              "reviewNote": "Reread October1 at16:45:20UTC for the requested picture-only revision. Treasury/FSA/CFPB directly; full official indexed ED release after direct403. Existing relevant excerpts remain supported; exclude obsolete mail/fax and FreshStart/SAVE passages.",
               "origin": "reviewed-primary",
               "available": true,
               "contentHash": "8a0b676d802d59d0215d2b51e33ae90a5adea4e85775be85078201ca0fbcc096"
@@ -2741,8 +2778,8 @@
               "headline": "What happens if I default on a federal student loan?",
               "excerpt": "For most federal student loans, you default if you have not made a payment in more than 270 days. If you haven’t made a payment on your federal student loan for at least 270 days (nine months), and you have not entered into an agreement with your lender or servicer to postpone your payments (like deferment or forbearance), you are probably in default. Credit reporting companies are notified, which generally means a lower credit score for you",
               "publishedTime": null,
-              "checkedAt": "2026-10-01T16:19:10Z",
-              "reviewNote": "Use the qualified definition and credit effect only. Older discussion of Fresh Start and SAVE on this page is not current evidence and is not used. Rechecked October1 at16:19:10UTC against the official page. ED full indexed release used after direct403; FSA and CFPB read directly. Excerpts combine separated relevant passages; they are not a single uninterrupted quotation.",
+              "checkedAt": "2026-10-01T16:45:20Z",
+              "reviewNote": "Reread October1 at16:45:20UTC for the requested picture-only revision. Treasury/FSA/CFPB directly; full official indexed ED release after direct403. Existing relevant excerpts remain supported; exclude obsolete mail/fax and FreshStart/SAVE passages.",
               "origin": "reviewed-primary",
               "available": true,
               "contentHash": "efe89320f0df3d104a82c1f20546ad0e2c29628151e736bf962c32cb1dd90b7f"
@@ -2754,8 +2791,8 @@
               "headline": "Why do I need a credit history?",
               "excerpt": "To make most large purchases, such as homes and cars, people borrow money. Your credit history makes a difference in the cost you pay for the loan. Landlords check your credit to decide whether to rent to you, and whether to ask you for a larger security deposit. When there are negative items on your credit report, like missed payments or high balances, it can be harder or more expensive to do the things you want to do: You could be turned down for a loan or offered a loan with more expensive terms",
               "publishedTime": null,
-              "checkedAt": "2026-10-01T16:19:10Z",
-              "reviewNote": "Rechecked October1 at16:19:10UTC against the official page. ED full indexed release used after direct403; FSA and CFPB read directly. Excerpts combine separated relevant passages; they are not a single uninterrupted quotation.",
+              "checkedAt": "2026-10-01T16:45:20Z",
+              "reviewNote": "Reread October1 at16:45:20UTC for the requested picture-only revision. Treasury/FSA/CFPB directly; full official indexed ED release after direct403. Existing relevant excerpts remain supported; exclude obsolete mail/fax and FreshStart/SAVE passages.",
               "origin": "reviewed-primary",
               "available": true,
               "contentHash": "58a41b501f576ca641ee021a3a2d8eaaef5827123c9a5a71cb80f57d9ef0b02f"
@@ -2797,7 +2834,7 @@
                   "source_requires_review"
                 ]
               },
-              "reassessedAt": "2026-10-01T16:30:27.220956Z"
+              "reassessedAt": "2026-10-01T16:49:13.856811Z"
             }
           ]
         }
@@ -2807,11 +2844,11 @@
         "storyId": "selected-student-loan-support-20261001-v2",
         "scriptSha256": "174d7df4e8d0e26bc7b4ead44eff799c6938adf9714340e608e2c2f7558e17d7",
         "reviewedAt": "2026-10-01",
-        "image": "assets/films/fb4a08f7a47183e184da/measured-poster.png",
-        "video": "assets/films/fb4a08f7a47183e184da/measured.mp4",
-        "imageSha256": "2aac0f1036fed1cb03e0ac54acceafaa3b70aaf3151c267d4c066fa1211ea735",
-        "videoSha256": "599f3f6d24337feeb823f8cfd441c2c499dee006151331b378113d5ee88fe5e9",
-        "alt": "Original1080p film: online default help, two narrated options, a requirements bridge and a qualified nine-month default timeline leading to credit, car-financing and rental consequences. Every factual reveal follows its narration cue."
+        "image": "assets/films/b89773d68a5e1c98cbf9/measured-poster.png",
+        "video": "assets/films/b89773d68a5e1c98cbf9/measured.mp4",
+        "imageSha256": "9fe159c58c6c489a279571447e1292e502f3a4aea27679ded84828f3842871ac",
+        "videoSha256": "c485eabb574146bdae80de87a585aca7415e4a9dbcb37062efbb89d6573b25a9",
+        "alt": "Original full-frame animated typography and explanatory graphics: a staged centered opening, two repayment routes transforming into rehabilitation tools, application requirements, then missed-payment timing and possible credit, car-loan and rental consequences. No permanent source strip, brand, eyebrow, footer, camera shake or cross-dissolve. Every factual reveal follows the retained narration."
       },
       "editorial": {
         "version": "us-impact-v2",

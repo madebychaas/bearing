@@ -1,9 +1,10 @@
 import sys
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'production'))
-from film_visuals import Film, IVORY, SCALE, TEAL, chart_spec, reveal_progress, scene_schedule
+from film_visuals import Film, HEIGHT, WIDTH, IVORY, NIGHT, PAPER, SCALE, TEAL, chart_spec, phrase_start, reveal_progress, scene_schedule
 
 
 class FilmVisualTests(unittest.TestCase):
@@ -29,6 +30,83 @@ class FilmVisualTests(unittest.TestCase):
                  'closingCues': [{'start': start, 'reveal': i} for i, start in enumerate(
                      [23, 27, 30, 32, 35, 38, 40, 41.5])]}
         return packet, track
+
+    def full_frame_loan(self):
+        packet, track = self.loan_impact()
+        packet['visuals']['treatment'] = 'full-frame-v2'
+        track['wordTimings'] = [
+            {'text': text, 'start': start, 'end': start+.2}
+            for text, start in [('Borrowers',.4), ('have',2), ('a',2.3), ('new',2.6),
+                                ('way',2.9), ('online.',7.5), ('support',12), ('center',12.5)]]
+        return packet, track
+
+    def test_full_frame_edits_use_real_word_clock_and_fail_closed_if_it_is_missing(self):
+        packet, track = self.full_frame_loan()
+        movie = Film(packet, track)
+        self.assertEqual(movie.picture_cues['payoff'], 2.3)
+        self.assertEqual(movie.picture_cues['online'], 7.5)
+        self.assertEqual(movie.picture_cues['center'], 12)
+        self.assertEqual(movie.picture_cues['documents'], 19)
+        self.assertEqual(movie.picture_cues['consequence'], 41.5)
+        track['wordTimings'][5]['start'] = 8.4
+        self.assertEqual(Film(packet, track).picture_cues['online'], 8.4)
+        track['wordTimings'].pop(5)
+        with self.assertRaisesRegex(ValueError, 'spoken phrase'):
+            Film(packet, track)
+        self.assertEqual(phrase_start({'duration':10,'wordTimings':[
+            {'text':'Online.','start':2}]}, 'online'), 2)
+
+    def test_full_frame_has_no_template_furniture_or_cross_dissolves(self):
+        packet, track = self.full_frame_loan()
+        # These legacy fields must never leak onto the opted-in video canvas.
+        packet['visuals']['eyebrow'] = 'FORBIDDEN EYEBROW'
+        packet['visuals']['credit'] = 'FORBIDDEN SOURCE FOOTER'
+        movie = Film(packet, track)
+        with patch('film_visuals.Image.blend', side_effect=AssertionError('No full-frame cross dissolve')):
+            for time in (.8, 2.8, 8, 12.5, 15.5, 17.5, 19.5, 21.5,
+                         23.5, 27.5, 30.5, 32.5, 35.5, 38.5, 40.5, 42.5):
+                frame = movie.frame(time)
+                self.assertEqual(frame.size, (1920,1080))
+                # Real estate remains available for optional native CC/controls.
+                bottom=frame.crop((0, round(HEIGHT*.82), WIDTH, HEIGHT))
+                self.assertEqual(len(set(bottom.getdata())),1)
+                self.assertIn(bottom.getpixel((0,0)), (NIGHT,PAPER))
+        with patch('film_visuals._text') as small_text:
+            for time in (2,16,20,25,34,43):
+                movie.frame(time)
+            small_text.assert_not_called()
+
+    def test_full_frame_uses_distinct_service_pictures_and_preserves_rehabilitation_scope(self):
+        packet, track = self.full_frame_loan()
+        movie = Film(packet,track)
+        def visible_copy(time):
+            with patch('film_visuals._display') as display:
+                movie.frame(time)
+                return [call.args[1] for call in display.call_args_list
+                        if len(call.args)<8 or call.args[7]>0]
+        self.assertEqual(visible_copy(13), ['Defaulted Loans\nSupport Center'])
+        self.assertEqual(visible_copy(16), ['Rehabilitation'])
+        self.assertEqual(visible_copy(18), ['Rehabilitation','Consolidation'])
+        self.assertEqual(visible_copy(20), ['Rehabilitation','Upload\ndocuments.'])
+        self.assertEqual(visible_copy(22), ['Rehabilitation','Track\nprogress.'])
+
+    def test_full_frame_consequences_wait_for_reference_and_remain_qualified(self):
+        packet, track = self.full_frame_loan()
+        movie = Film(packet,track)
+        def visible_copy(time):
+            with patch('film_visuals._display') as display:
+                movie.frame(time)
+                return [call.args[1] for call in display.call_args_list
+                        if len(call.args)<8 or call.args[7]>0]
+        self.assertEqual(visible_copy(31), ['Default.'])
+        self.assertEqual(visible_copy(34), ['Generally, about','9','months','of missed payments'])
+        self.assertEqual(visible_copy(36), ['Can hurt\ncredit.'])
+        self.assertEqual(visible_copy(39), ['Can hurt credit.','Car loan'])
+        self.assertEqual(visible_copy(40.8), ['Can hurt credit.','Car loan','Apartment'])
+        self.assertEqual(visible_copy(43), ['Can be harder to get.','Car loan','Apartment'])
+        # No fictional score or completed application appears anywhere.
+        self.assertGreater(len(set(movie.frame(38.3).getdata())),1)
+        self.assertNotEqual(movie.frame(38.1).tobytes(),movie.frame(38.4).tobytes())
 
     def test_loan_closing_changes_composition_at_spoken_definition(self):
         packet, track = self.loan_impact()

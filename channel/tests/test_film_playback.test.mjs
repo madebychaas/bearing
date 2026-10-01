@@ -34,6 +34,16 @@ test('reduced motion steps through current facts and cannot reveal the following
  assert.equal(reducedFilmFrame(track,9.1),10.6);assert.equal(reducedFilmFrame(track,11.9),10.6);
  const picture=film();syncFinishedPicture({story,track,film:picture,narration:{currentTime:9.1,playbackRate:1,paused:false},playing:true,reducedMotion:true});assert.equal(picture.paused,true);assert.equal(picture.currentTime,10.6);
 });
+
+test('reduced motion follows renderer word-bound picture cuts without exposing the next scene early',()=>{
+ const authored={...track,pictureCues:[3.25,3.8,5.6,null,'7',NaN,-2,99]};
+ // The existing 2.5s headline reveal cannot jump through the next authored cut.
+ assert.equal(reducedFilmFrame(authored,3.249),3.249);
+ // At the exact cue, step into the new scene, stopping before its next change.
+ assert.equal(reducedFilmFrame(authored,3.25),3.799);
+ assert.equal(reducedFilmFrame(authored,3.8),5.4);
+ assert.equal(reducedFilmFrame({...track,pictureCues:{}},3),reducedFilmFrame(track,3));
+});
 test('film synchronization leaves accepted browser compositions untouched',()=>{
  const picture=film();assert.equal(syncFinishedPicture({story:{programme:{visualTreatment:'directed'}},track,film:picture,narration:{currentTime:12},playing:true}),false);assert.equal(picture.currentTime,0);assert.equal(picture.loop,true);assert.equal(picture.muted,false);
 });

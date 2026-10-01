@@ -1,6 +1,10 @@
 # Bearing — Active Mission
 
-**Status: complete — stop here.**
+**Status: requested picture revision complete — stop here.**
+
+October 1 follow-up delivered: **`b89773d68a5e1c98cbf9`** replaces the loan segment's picture with staged centered typography, larger animated explanations and a rebuilt closing. No persistent eyebrows, source strips, branding or footers occupy the original graphics; internal edits use cuts and object movement, with no cross dissolves. The exact script, narration, score and audio mix are unchanged by hash. The full 16:9 picture uses the video canvas; transport and chapter controls recede while playing and return on interaction or pause. Prior deliveries and other accepted films remain intact.
+
+Revision validation: **179 Python and 54 JavaScript tests passed**. Both complete videos decode; 32 encoded cue frames were inspected. Actual desktop playback verified the full inner frame, hidden idle overlays, visible captions, keyboard restoration, pause/seek and automatic advancement into the next item. The page remained scroll-less at the tested desktop viewport. See the [current revision and preserved initial proof](STUDENT_LOAN_PRODUCTION_20261001.md). No broader mission is authorized; stop for the user's review.
 
 October 1 delivery: **Default help moves online** completes the selected-story path with the user's approved 80-word script, two finished 1080p films, original music/effects, voice-timed graphics, captions and a local playlist entry. Warm runs **36.867 seconds**; Measured runs **40.300 seconds**, without speeding up narration. Actual browser playback reached the next item automatically. See the [finished production and proof](STUDENT_LOAN_PRODUCTION_20261001.md).
 

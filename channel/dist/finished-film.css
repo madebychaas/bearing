@@ -13,3 +13,28 @@
  .studio-player[data-visual-treatment="finished-film"]:not(:fullscreen) .studio-chapter{min-height:32px;padding:6px;font-size:10px}
  .studio-player[data-visual-treatment="finished-film"]:not(:fullscreen) .story-intro{left:50%;right:auto;top:calc((100% - 155px)/2);bottom:auto;transform:translate(-50%,-50%)}
 }
+
+/* Opt-in pictures use the complete video canvas; controls are a temporary
+   overlay, never a reserved strip that shrinks the authored composition. */
+.studio-player.player[data-picture-treatment="full-frame-v2"]:not(:fullscreen){aspect-ratio:16/9}
+.studio-player[data-picture-treatment="full-frame-v2"] #film{inset:0;width:100%;height:100%;object-fit:contain;object-position:center}
+.studio-player[data-picture-treatment="full-frame-v2"] .story-intro{left:50%;right:auto;top:50%;bottom:auto;transform:translate(-50%,-50%)}
+.studio-player[data-picture-treatment="full-frame-v2"] .caption{top:auto;bottom:124px;max-width:88%;padding:4px 10px;background:#080d12dc;backdrop-filter:blur(12px);font-size:clamp(13px,1.05vw,17px);line-height:1.35;transition:bottom .2s ease}
+.studio-player[data-picture-treatment="full-frame-v2"] :is(.transport,.studio-chapters,.fullscreen-controls){transition:opacity .2s ease}
+.studio-player[data-picture-treatment="full-frame-v2"][data-controls-visible="false"] :is(.transport,.studio-chapters,.fullscreen-controls){opacity:0;pointer-events:none}
+.studio-player[data-picture-treatment="full-frame-v2"][data-controls-visible="false"] .caption{bottom:5%}
+.studio-player[data-picture-treatment="full-frame-v2"] .studio-chapters{left:3%;right:3%;bottom:76px}
+.studio-player[data-picture-treatment="full-frame-v2"]:fullscreen .caption{font-size:clamp(18px,1.6vw,29px)}
+@media(min-width:960px) and (min-height:650px){
+ .screen-column:has(>.player[data-picture-treatment="full-frame-v2"]){max-width:calc((100dvh - 338px)*1.777778)}
+}
+@media(max-width:650px){
+ .studio-player.player[data-picture-treatment="full-frame-v2"]:not(:fullscreen) #film{height:100%;object-position:center}
+ .studio-player.player[data-picture-treatment="full-frame-v2"]:not(:fullscreen) .story-intro{top:50%;bottom:auto}
+ .studio-player.player[data-picture-treatment="full-frame-v2"]:not(:fullscreen) .caption{top:auto;bottom:107px;max-width:94%;padding:3px 8px;font-size:13px;background:#080d12dc;backdrop-filter:blur(12px)}
+ .studio-player.player[data-picture-treatment="full-frame-v2"][data-controls-visible="false"]:not(:fullscreen) .caption{bottom:5%}
+ .studio-player[data-picture-treatment="full-frame-v2"]:not(:fullscreen) .studio-chapters{bottom:64px}
+}
+@media(prefers-reduced-motion:reduce){
+ .studio-player[data-picture-treatment="full-frame-v2"] :is(.caption,.transport,.studio-chapters,.fullscreen-controls){transition:none}
+}
