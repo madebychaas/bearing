@@ -121,12 +121,12 @@
   },
   "finishedDelivery": {
     "review": "STUDENT_LOAN_PRODUCTION_20261001.md",
-    "identity": "b89773d68a5e1c98cbf9",
+    "identity": "9c4fe29dbfb3a18916ea",
     "scriptSha256": "174d7df4e8d0e26bc7b4ead44eff799c6938adf9714340e608e2c2f7558e17d7",
     "approvedBy": "User instruction: complete the full production",
-    "publishedAt": "2026-10-01T16:57:18.966877Z",
+    "publishedAt": "2026-10-01T17:53:06.343755Z",
     "viewerAccepted": false,
-    "previousIdentity": "fb4a08f7a47183e184da",
-    "pictureRevision": "Full-frame picture revision requested by the user; exact script and audio preserved"
+    "previousIdentity": "b89773d68a5e1c98cbf9",
+    "pictureRevision": "Image-led picture revision requested by the user; exact script, audio, captions and timing preserved"
   }
 }

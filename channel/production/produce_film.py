@@ -337,7 +337,7 @@ def produce(packet,publish_result=True,completion_guard=None):
         image=(output/'measured-poster.png').relative_to(DIST).as_posix();video=tracks['measured']['video']
         programme={key:copy.deepcopy(value) for key,value in plan.items() if key in ('why','summary','lookAhead','beats','openingReveals','closingReveals','chapterLabels','maxDuration')}
         programme.update(visualTreatment='finished-film',soundTreatment='editorial-score',editorialTiming=editorial_timing)
-        if packet['visuals'].get('treatment')=='full-frame-v2':programme['pictureTreatment']='full-frame-v2'
+        if packet['visuals'].get('treatment') in ('full-frame-v2','image-led-v3'):programme['pictureTreatment']='full-frame-v2'
         result={**story,'title':plan['title'],'displayTitle':plan['title'],'script':full_script,'status':'ready','format':'studio-programme','programmeVersion':identity,'programme':programme,'voices':tracks,'music':music,'image':image,'video':video,'builtAt':pipeline.stamp(),'sourceScriptSha256':plan['sourceScriptSha256'],'production':{'pipeline':'finished-film-v1','visualDecision':'original produced film','renderer':'film_visuals.py','sourceBound':True,'standaloneMaster':video,'compositionHash':sha(json.dumps(render_evidence,sort_keys=True))}}
         if packet.get('selection'):result['production']['selection']=copy.deepcopy(packet['selection'])
         result['visual']={'scope':'story','storyId':story['id'],'scriptSha256':sha(full_script),'reviewedAt':story['reviewedAt'],'image':image,'video':video,'imageSha256':broadcast.file_hash(DIST/image),'videoSha256':broadcast.file_hash(DIST/video),'alt':packet['visuals']['description']}

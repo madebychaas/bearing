@@ -1,6 +1,14 @@
 # Bearing — Active Mission
 
-**Status: requested picture revision complete — stop here.**
+**Status: image-led picture revision delivered — stop here for viewing feedback.**
+
+The latest October 1 follow-up is **`9c4fe29dbfb3a18916ea`**. It replaces the same loan story entry with two original generated editorial images, a slower single-title build, an exact-word cut into body imagery, three accumulating process columns, a requirements extension on the same diagram, and a calendar → credit → car/apartment explanation. The exact script, audio, captions and timing are unchanged by hash/comparison. Warm is 36.867 seconds; Measured is 40.300 seconds. The renderer is opt-in; the existing player and other films were not redesigned. Both earlier deliveries remain archived.
+
+Both finished MP4s fully decode and all 13 delivery hashes match; 38 encoded frames were inspected. Actual browser playback used the new film, kept the full picture and captions visible, and advanced into the next item. **17 graphics tests and all 54 JavaScript tests pass.** The full Python run passes 182 of 183: an existing Windows HTTP connection-close race intermittently aborts the oversized-request test before the client receives 413. The isolated seven-test server module passes. This was reproduced separately and is unrelated to the picture revision; no server behavior was changed or flaky test hidden. Keep that limitation visible rather than calling the full suite green.
+
+See the [new production record](STUDENT_LOAN_PRODUCTION_20261001.md), [reviewed packet](../channel/production/reviewed-student-loans-20261001-picture-v3.json), and [original image prompts](../channel/production/student-loan-image-led-v3-prompts.json). The requested local delivery is complete; final viewer acceptance remains separate. Do not start another story, a server-hardening mission or broad feature development without direction.
+
+## Previous picture revision
 
 October 1 follow-up delivered: **`b89773d68a5e1c98cbf9`** replaces the loan segment's picture with staged centered typography, larger animated explanations and a rebuilt closing. No persistent eyebrows, source strips, branding or footers occupy the original graphics; internal edits use cuts and object movement, with no cross dissolves. The exact script, narration, score and audio mix are unchanged by hash. The full 16:9 picture uses the video canvas; transport and chapter controls recede while playing and return on interaction or pause. Prior deliveries and other accepted films remain intact.
 

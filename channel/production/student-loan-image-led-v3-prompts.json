@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "tool": "Built-in image_gen.imagegen",
+  "createdAt": "2026-10-01",
+  "purpose": "Representative editorial illustrations, not documentary evidence or the actual government portal.",
+  "images": [
+    {
+      "role": "opening",
+      "prompt": "Create one original editorial photograph-style illustration for a premium, restrained American news video about federal student-loan borrowers getting an online route to handle default-resolution paperwork. Wide landscape 16:9 composition. Quiet ordinary American home interior: an open unbranded dark laptop, a modest neat stack of plain paper forms, a simple pen on a warm pale oak dining table near a window. Authentic, approachable, dignified, not a luxury office. No people, no hands. Soft directional early morning daylight, nuanced warm-neutral and deep slate palette, cinematic but natural, beautifully crafted realistic materials. Camera is still, eye-level three-quarter perspective, laptop and papers clustered in the right half and lower right; the central-left half has softly shaded dark background and generous clean negative space for large cream title typography that will be added in video later. Laptop screen is dark, abstract reflected light only; absolutely no fabricated government website, no text, no numbers, no logos, no seals, no watermarks. No graduation cap, no money stacks, no distressed borrower cliches. The image should feel like calm thoughtful editorial cover art, with one simple strong composition, elegant depth and clean edges. Do not add any title or lettering.",
+      "path": "assets/films/source-loan-image-led-v3/opening.png"
+    },
+    {
+      "role": "body",
+      "prompt": "Create one original editorial photograph-style illustration, wide landscape 16:9, for a premium calm news film about moving student-loan default-resolution paperwork online. A close, intentional overhead three-quarter detail of an unbranded dark laptop keyboard and trackpad on a warm pale oak kitchen table, with a few carefully arranged off-white paper forms and a dark pen beside it. Show laptop keyboard diagonally in the left half, papers and pen in the middle/right, soft window light from the upper right. Compose the objects boldly and fill the frame rather than making them tiny; a quiet, human-scale moment of getting organized. Realistic beautiful materials, restrained slate and warm-neutral palette, cinematic editorial photography with gentle depth of field, crisp structural detail, no artificial grain, no shaky or blurry treatment. No people, no hands, no faces. Paper contents should be faint generic unreadable ruled lines and boxes, not legible words; avoid invented text. Laptop screen mostly outside the crop, no website visible, no government seals, no branding or logos, no lettering, no headline, no watermarks. No graduation cap or money cliches. This is a representative editorial image, not a documentary depiction of a particular borrower or an actual government website.",
+      "path": "assets/films/source-loan-image-led-v3/body.png"
+    }
+  ]
+}

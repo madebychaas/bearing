@@ -68,6 +68,8 @@ News needs rhythm and flow. Keep clear articulation and natural sentence breathi
 
 Treat the picture as video, not a document or dashboard. Avoid permanent headers, eyebrows, source strips and footers over original graphics. Use the frame confidently: scale an explanation up, split it into distinct visual beats or rethink the composition when it feels cramped. An opening made of words needs an authored reveal and visual emphasis, not a preloaded left-aligned title. Use cuts and purposeful movement; cross dissolves should be occasional editorial choices rather than the default between scenes. Keep third-party courtesy credits when required, and make factual sources available behind the story.
 
+Give each visual time to communicate. A representative image can establish the opening while one title gradually comes together with the first sentence; leave that title behind when the body begins. Alternate imagery and explanatory graphics according to what the narration needs, rather than turning every phrase into another text card. When explaining a process, let its parts accumulate in a clear reading order and remain visible long enough to understand their relationship. Keep qualifications and required steps connected to that process. For a closing explanation, use visual cause and effect to make the consequences understandable, without implying certainty the reporting does not support.
+
 ## Product principles
 
 ### Understanding over volume

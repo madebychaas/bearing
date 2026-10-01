@@ -2,7 +2,31 @@
 
 **Status: picture revision delivered to the local playlist. Viewer acceptance remains separate.**
 
-## Current picture revision
+## Current image-led picture revision
+
+**`9c4fe29dbfb3a18916ea`** replaces the same story entry following feedback that the previous opening and text graphics were too fast and too dominant. The opt-in `image-led-v3` picture keeps the existing full-frame player behavior and preserves both older deliveries.
+
+- The first frame is a restrained original generated image of a laptop and paperwork. **“A way back.”** builds with “new way”; **“Online.”** completes that single title near the end of the sentence. A locked 1.2% push supplies movement without shake.
+- At the actual first body word, the title leaves and the picture cuts to a second generated close-up: **8.318 seconds in Warm / 9.513 in Measured**. This image holds until “compare,” at **14.178 / 15.831 seconds**.
+- Three horizontal areas accumulate the two choices, a document upload illustration and an open progress path. Earlier objects remain visible. The upload/progress connector originates from rehabilitation, matching the official evidence. Requirements extend this same diagram instead of starting a separate closing card.
+- The final sentence builds a visual cause-and-effect chain: individual missed-payment month pages, a credit report, then a car and apartment. “Generally, about,” “can hurt” and “can be harder to get” retain the factual qualifications. No invented score, guaranteed denial or automatic credit repair is depicted.
+- Most object reveals take approximately 0.95–1 second, with the first title taking 1.15 seconds. There are no internal cross dissolves. The original 1.5-second playlist handoff is preserved. The bottom 18% stays available for optional captions; no persistent headers, eyebrows or footers were added.
+
+The two images are **representative illustrations made with the built-in image-generation tool**, animated as stills rather than claimed as generated or documentary footage. They do not show an actual borrower or government website. [Prompts and saved source paths](../channel/production/student-loan-image-led-v3-prompts.json) and SHA-256-bound asset reviews are retained in the [reviewed packet](../channel/production/reviewed-student-loans-20261001-picture-v3.json). Original source PNGs are included alongside the films. No third-party visual assets are used; the existing courtesy requirement remains in force for third-party media.
+
+**Unchanged performance:** the exact 80 words, all six native performances, final narration MP3/WAV files, mixed WAVs and all five score/SFX MP3s match the initial delivery byte for byte. Captions, words, chapter timing and original visual cue timing also match. Warm remains **36.867 seconds**; Measured remains **40.300 seconds**. Eighteen picture cue points per voice include the new exact-word image cuts.
+
+Primary sources were reread at **2026-10-01T17:44:24Z**: Treasury/FSA/CFPB directly and the complete official indexed Education release after direct retrieval returned 403. The same limitations and excluded stale passages described below apply. Approval **`approval-45617f3e9f51856d02e2c5c9`** records the user's request and binds the unchanged script, renewed evidence and revised picture packet. Local publication completed at **2026-10-01T17:53:06.343755Z**, manifest **`6006db9423e9906b6cf018e95df04817494c7bbda9ffb972d7208b397aab33c6`**. This is authorization to produce the requested revision, not final viewer acceptance.
+
+Validation:
+
+- Both complete MP4s decode, all 13 delivery hashes match, and the reviewed source images pass asset/path/hash checks. Thirty-eight frames extracted from the actual encodes were inspected; graphic geometry was also checked at 705 pixels wide.
+- Actual in-app browser playback loaded the new Warm MP4/narration and score with ready-state 4 and no media error. Picture and narration differed by about 0.03 seconds in the sampled body. Captions remained clear, idle controls receded, and document height equalled the 1179-pixel viewport. The natural ending advanced into **Stablecoin rules enter the debate**, whose visible player reached 00:08 without a Next action. Physical loopback listening is not claimed.
+- **17 graphics tests and all 54 JavaScript tests passed.** The full Python suite ran 183 tests with **182 passing and one existing intermittent HTTP transport error** in `test_handoff_conflicts_and_larger_bounded_review_payload`. Its isolated seven-test module passed. A separate temporary-server diagnostic reproduced a Windows connection abort when the existing handler sends 413 and closes before consuming the oversized body (11/12 received 413; all 12 attempted it). This is not a graphic failure or a clean full-suite result. No unrelated server change or test suppression was introduced.
+
+Current films: [Warm MP4](../channel/dist/assets/films/9c4fe29dbfb3a18916ea/warm.mp4) · [Measured MP4](../channel/dist/assets/films/9c4fe29dbfb3a18916ea/measured.mp4). Ignored local QA evidence is under `output/selection-proof/`, including `loan-image-led-v3-delivery-qa.json`, both encoded contact sheets, `image-led-v3-playback.png` and the Python test log. No further mission was started.
+
+## Previous full-frame picture revision
 
 The user's follow-up rejected the initial film's template labels, small diagrams and routine dissolves. **`b89773d68a5e1c98cbf9`** replaces its playlist entry with an opt-in `full-frame-v2` treatment. The earlier delivery remains immutable; the same story ID prevents duplicate playlist items.
 

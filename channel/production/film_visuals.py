@@ -254,6 +254,45 @@ def full_frame_schedule(packet, track, scenes):
     return cues
 
 
+def image_led_schedule(packet, track, scenes):
+    """Editorial image changes occur on words, independent of chapter furniture."""
+    cues = full_frame_schedule(packet, track, scenes)
+    chapters = {chapter['kind']: chapter for chapter in track['chapters']}
+    cues['body'] = phrase_start(track, 'The Treasury', chapters['story']['start'], chapters['story']['end'])
+    cues['compare'] = phrase_start(track, 'compare', cues['body'], cues['rehabilitation'])
+    if not cues['online'] < cues['body'] < cues['compare'] < cues['rehabilitation']:
+        raise ValueError('Image-led picture edits must follow the real opening, attribution and comparison')
+    return cues
+
+
+def reviewed_image_scenes(visuals, root=None):
+    """Resolve reviewed local assets only; verify their bytes before rendering."""
+    root = Path(root or Path(__file__).resolve().parents[1]/'dist').resolve()
+    result = {}
+    scenes = visuals.get('imageScenes', {})
+    for role in ('opening', 'body'):
+        asset = scenes.get(role, {})
+        path_value, expected = asset.get('path'), asset.get('sha256')
+        if not isinstance(path_value, str) or not isinstance(expected, str) or not re.fullmatch('[0-9a-f]{64}', expected):
+            raise ValueError(f'Image-led {role} requires a reviewed local path and SHA-256')
+        path = (root/path_value).resolve()
+        if Path(path_value).is_absolute() or not path.is_relative_to(root) or not path.is_file():
+            raise ValueError('Reviewed story image must be a file inside channel/dist')
+        if hashlib.sha256(path.read_bytes()).hexdigest() != expected:
+            raise ValueError(f'Reviewed {role} image bytes changed after approval')
+        approved = any(entry.get('path') == path_value and entry.get('sha256') == expected
+                       and entry.get('kind') in ('original', 'generated')
+                       and entry.get('usageApproved') is True
+                       for entry in visuals.get('assets', []) if isinstance(entry, dict))
+        if not approved:
+            raise ValueError(f'Image-led {role} is not linked to an approved original or generated asset')
+        with Image.open(path) as source:
+            if source.width < 1280 or source.height < 720:
+                raise ValueError('Reviewed story image is too small for a finished HD segment')
+            result[role] = source.convert('RGB')
+    return result
+
+
 def _display(image, text, x, y, size, color, progress=1, width=1160):
     """Type rises through a fixed mask; it is never a preloaded/fading card."""
     if progress <= 0:
@@ -308,10 +347,10 @@ def _document(draw, x, y, size, progress, foreground, background):
         _line(draw, [(x-w*.29, y-36+index*40), (x-w*.29+size*width*q, y-36+index*40)], foreground, 3)
 
 
-def _car(draw, x, y, progress, color):
+def _car(draw, x, y, progress, color, scale=1.25, move=True):
     # A substantial original vehicle illustration, without a manufacturer mark.
-    x -= (1-progress)*95
-    scale=1.25
+    if move:
+        x -= (1-progress)*95
     pt=lambda dx,dy:(x+dx*scale,y+dy*scale)
     body=[(-148,44),(-148,2),(-118,-13),(-74,-76),(68,-76),(119,-12),(149,3),(149,44)]
     if progress>.72:
@@ -333,9 +372,9 @@ def _car(draw, x, y, progress, color):
             _circle(draw,wx,wy,10*p*scale,_mix(NIGHT,color,.2),color,2)
 
 
-def _apartment(draw, x, y, progress, color):
-    x += (1-progress)*95
-    scale=1.2
+def _apartment(draw, x, y, progress, color, scale=1.2, move=True):
+    if move:
+        x += (1-progress)*95
     pt=lambda dx,dy:(x+dx*scale,y+dy*scale)
     body=[(-107,73),(-107,-119),(107,-119),(107,73)]
     if progress>.72:
@@ -358,8 +397,132 @@ class Film:
         self.chart = chart_spec(self.visuals) if any(s['kind']=='comparison' for s in self.scenes) else None
         self.duration = float(track['duration'])
         self.bases = {}
-        self.full_frame = self.visuals.get('treatment') == 'full-frame-v2'
-        self.picture_cues = full_frame_schedule(packet, track, self.scenes) if self.full_frame else None
+        self.image_led = self.visuals.get('treatment') == 'image-led-v3'
+        self.full_frame = self.image_led or self.visuals.get('treatment') == 'full-frame-v2'
+        self.picture_cues = (image_led_schedule(packet, track, self.scenes) if self.image_led else
+                             full_frame_schedule(packet, track, self.scenes) if self.full_frame else None)
+        self.image_scenes = reviewed_image_scenes(self.visuals) if self.image_led else {}
+
+    def image_picture(self, role, time, start, end):
+        """A locked, barely perceptible push; no random drift or faux handheld."""
+        source = self.image_scenes[role]
+        progress = ease((time-start)/max(.01, end-start))
+        zoom = 1 + .012*progress
+        ratio = min(source.width/WIDTH, source.height/HEIGHT)/zoom
+        w, h = WIDTH*ratio, HEIGHT*ratio
+        box = ((source.width-w)/2, (source.height-h)/2,
+               (source.width+w)/2, (source.height+h)/2)
+        return source.resize((WIDTH, HEIGHT), Image.Resampling.BICUBIC, box=box)
+
+    def image_led_picture(self, time):
+        """One image-led title, one held process, one accumulating explanation."""
+        c = self.picture_cues
+        p = lambda role, seconds=.95: reveal_progress(time, c[role], seconds)
+        if time < c['body']:
+            image = self.image_picture('opening', time, 0, c['body'])
+            # The photograph remains the opening. A single title is assembled
+            # over the first sentence rather than replaced by successive cards.
+            _display(image, 'A way back.', 640, 295, 104, PAPER, p('payoff', 1.15), width=1120)
+            online_seconds = max(.3, min(.8, c['body']-c['online']-.12))
+            _display(image, 'Online.', 640, 409, 55, PAPER, p('online', online_seconds), width=780)
+            return image
+        if time < c['compare']:
+            return self.image_picture('body', time, c['body'], c['compare'])
+
+        if time < c['default']:
+            image = Image.new('RGB', (WIDTH, HEIGHT), PAPER)
+            draw = ImageDraw.Draw(image)
+            # All three functions inhabit the same horizontal composition and
+            # remain available while the narration explains the requirements.
+            # The two alternatives are distinct routes, not a promised result.
+            for role, y in (('rehabilitation', 255), ('consolidation', 367)):
+                q = p(role)
+                if q:
+                    _path(draw, [(87,311),(124,311),(151,y),(337,y)], q, DEEP_TEAL, 3)
+                    _circle(draw, 151, y, 5*q, PAPER, DEEP_TEAL, 3)
+                    _display(image, role.capitalize(), 247, y-36, 30, NIGHT, q, width=305)
+            # At "compare", the branch starts to draw before the named routes.
+            _path(draw, [(65,311),(87,311)], p('compare'), DEEP_TEAL, 3)
+
+            documents = p('documents')
+            if documents:
+                _document(draw, 638, 283, 195, documents, DEEP_TEAL, PAPER)
+                _path(draw, [(638,337),(638,247),(617,268),(638,247),(659,268)],
+                      documents, DEEP_TEAL, 4)
+                _display(image, 'Upload documents', 638, 418, 32, NIGHT, documents, width=365)
+                # This branch originates only from rehabilitation: the launch
+                # evidence specifically documents these tools for that route.
+                _path(draw, [(337,255),(391,255),(391,462),(1047,462)], documents, DEEP_TEAL, 3)
+                _path(draw, [(638,462),(638,446)], documents, DEEP_TEAL, 3)
+
+            progress = p('progress')
+            if progress:
+                _path(draw, [(920,283),(1158,283)], progress, DEEP_TEAL, 3)
+                for index, x in enumerate((925,1040,1155)):
+                    q = reveal_progress(time, c['progress']+index*.14, .75)
+                    _circle(draw, x, 283, 15*q, PAPER, DEEP_TEAL, 3)
+                # An open route, with no fabricated percentage or success tick.
+                _circle(draw, 925, 283, 5*progress, DEEP_TEAL)
+                _display(image, 'Track progress', 1040, 418, 32, NIGHT, progress, width=360)
+                _path(draw, [(1040,462),(1040,446)], progress, DEEP_TEAL, 3)
+
+            hinge = p('hinge')
+            if hinge:
+                # Requirements extend the same process rather than initiating
+                # a disconnected closing title. The destination remains open.
+                _path(draw, [(1047,462),(1178,462),(1178,538),(1040,538)], hinge, DEEP_TEAL, 3)
+                _circle(draw, 1032, 538, 9*hinge, PAPER, DEEP_TEAL, 3)
+                _display(image, 'More than applying', 800, 536, 30, NIGHT, hinge, width=410)
+            meaning = p('meaning', 1.0)
+            if meaning:
+                # Keep the established milestone; only its explanatory label
+                # changes when the narration supplies the requirement.
+                draw.rectangle((*_point(530,505), *_point(1010,570)), fill=PAPER)
+                _display(image, 'Meet the requirements', 800, 536, 30, NIGHT, meaning, width=440)
+            return image
+
+        image = Image.new('RGB', (WIDTH, HEIGHT), NIGHT)
+        draw = ImageDraw.Draw(image)
+        default = p('default', 1.0)
+        # A month page resolves into nine individual month pages. Nine cells in
+        # one conventional calendar would misleadingly resemble nine days.
+        months = p('months', 1.0)
+        def month_page(x, y, w, h, progress, missed):
+            _path(draw, [(x,y+h),(x,y),(x+w,y),(x+w,y+h),(x,y+h)], progress, PAPER, 3)
+            _path(draw, [(x,y+h*.25),(x+w,y+h*.25)], progress, MINT, 2.5)
+            for dx in (.25,.75):
+                _path(draw, [(x+w*dx,y-h*.07),(x+w*dx,y+h*.1)], progress, MINT, 3.5)
+            if missed:
+                _path(draw, [(x+w*.33,y+h*.62),(x+w*.67,y+h*.62)], missed, MINT, 3)
+        month_page(92,174,302+(84-302)*months,236+(64-236)*months,default,months)
+        _display(image, 'Missed payments', 243, 118, 29, PAPER, default, width=350)
+        if months:
+            for index in range(1,9):
+                q = reveal_progress(time, c['months']+.23+(index-1)*.055, .7)
+                x, y = 92+(index%3)*109, 174+(index//3)*86
+                month_page(x,y,84,64,q,q)
+            _display(image, 'Generally, about', 243, 454, 25, PAPER, months, width=355)
+            _display(image, '9 months', 243, 496, 40, PAPER, months, width=355)
+
+        credit = p('credit', 1.0)
+        if credit:
+            _path(draw, [(418,302),(488,302),(479,295),(488,302),(479,309)], credit, MINT, 3)
+            _document(draw, 653, 286, 237, credit, MINT, NIGHT)
+            _display(image, 'Can hurt credit', 653, 454, 31, PAPER, credit, width=370)
+
+        car = p('car', .95)
+        if car:
+            _path(draw, [(773,302),(825,302),(852,235),(904,235)], car, MINT, 3)
+            _car(draw, 1060, 225, car, MINT, scale=.79, move=False)
+            _display(image, 'Car loan', 1060, 302, 28, PAPER, car, width=300)
+        home = p('home', .95)
+        if home:
+            _path(draw, [(825,302),(852,399),(934,399)], home, MINT, 3)
+            _apartment(draw, 1060, 411, home, MINT, scale=.62, move=False)
+            _display(image, 'Apartment', 1060, 492, 28, PAPER, home, width=300)
+        _display(image, 'Can be harder to get', 1050, 551, 27, PAPER,
+                 p('consequence', .85), width=400)
+        return image
 
     def base(self, dark):
         if dark not in self.bases:
@@ -685,6 +848,8 @@ class Film:
 
     def frame(self, time):
         time = min(max(float(time), 0), self.duration-1/FPS)
+        if self.image_led:
+            return self.image_led_picture(time)
         if self.full_frame:
             return self.full_frame_picture(time)
         index = max(i for i, scene in enumerate(self.scenes) if scene['start'] <= time)
@@ -696,10 +861,19 @@ class Film:
         return current
 
     def contact_sheet(self, path):
-        sheet = Image.new('RGB', (1280, 400*math.ceil(len(self.scenes)/2)), IVORY)
+        scenes = self.scenes
+        if self.image_led:
+            c = self.picture_cues
+            scenes = [{'kind': label, 'start': start, 'end': end} for label, start, end in (
+                ('image-led opening', 0, c['body']), ('launch context', c['body'], c['compare']),
+                ('three held tools', c['progress'], c['hinge']),
+                ('requirements continue the process', c['meaning'], c['default']),
+                ('default explained', c['months'], c['credit']),
+                ('everyday consequences', c['consequence'], self.duration))]
+        sheet = Image.new('RGB', (1280, 400*math.ceil(len(scenes)/2)), IVORY)
         draw = ImageDraw.Draw(sheet)
         samples = []
-        for index, scene in enumerate(self.scenes):
+        for index, scene in enumerate(scenes):
             time = min(scene['end']-.15, max(scene['start']+TRANSITION_SECONDS, scene['end']-.65))
             x, y = (index % 2)*640, (index//2)*400
             sheet.paste(self.frame(time).resize((640, 360), Image.Resampling.LANCZOS), (x, y))
@@ -740,11 +914,13 @@ def render(packet, track, output_mp4: Path, poster_png: Path, ffmpeg: str):
         raise
     return {'renderer': 'film_visuals.py', 'width': WIDTH, 'height': HEIGHT, 'fps': FPS,
             'duration': movie.duration, 'frames': frames, 'audio': False,
-            'transitionSeconds': 0 if movie.full_frame else TRANSITION_SECONDS, 'cameraMotion': 'none',
+            'transitionSeconds': 0 if movie.full_frame else TRANSITION_SECONDS,
+            'cameraMotion': 'Locked 1.2 percent push on original generated illustrations only' if movie.image_led else 'none',
             'transitionTreatment': 'Spoken-cue cuts and geometric object reveals; no cross dissolves' if movie.full_frame else 'Scene cross dissolves',
             'pictureCues': movie.picture_cues,
             'captionSafeArea': 'Bottom 18 percent reserved for optional native captions and transport' if movie.full_frame else 'Bottom 35 percent reserved for native captions, chapters and transport',
             'chart': movie.chart, 'scenes': movie.scenes, 'contactSheet': str(contact),
             'sampleFrames': sample_frames, 'videoSha256': hashlib.sha256(output_mp4.read_bytes()).hexdigest(),
             'posterSha256': hashlib.sha256(poster_png.read_bytes()).hexdigest(),
+            'imageScenes': movie.visuals.get('imageScenes', {}) if movie.image_led else {},
             'thirdPartyImages': [], 'attribution': packet.get('visuals',{}).get('credit','Data: U.S. Bureau of Economic Analysis')+'; original Bearing graphics'}

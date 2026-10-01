@@ -1,10 +1,13 @@
+import hashlib
 import sys
+import tempfile
 import unittest
 from unittest.mock import patch
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'production'))
-from film_visuals import Film, HEIGHT, WIDTH, IVORY, NIGHT, PAPER, SCALE, TEAL, chart_spec, phrase_start, reveal_progress, scene_schedule
+from PIL import Image
+from film_visuals import Film, HEIGHT, WIDTH, IVORY, NIGHT, PAPER, SCALE, TEAL, chart_spec, phrase_start, reveal_progress, reviewed_image_scenes, scene_schedule
 
 
 class FilmVisualTests(unittest.TestCase):
@@ -39,6 +42,114 @@ class FilmVisualTests(unittest.TestCase):
             for text, start in [('Borrowers',.4), ('have',2), ('a',2.3), ('new',2.6),
                                 ('way',2.9), ('online.',7.5), ('support',12), ('center',12.5)]]
         return packet, track
+
+    def image_led_loan(self):
+        packet, track = self.full_frame_loan()
+        packet['visuals']['treatment'] = 'image-led-v3'
+        track['wordTimings'].extend([
+            {'text':'The','start':10,'end':10.2},
+            {'text':'Treasury','start':10.25,'end':10.8},
+            {'text':'compare','start':14.4,'end':14.8}])
+        track['wordTimings'].sort(key=lambda word: word['start'])
+        return packet, track
+
+    def image_led_movie(self):
+        packet, track = self.image_led_loan()
+        with patch('film_visuals.reviewed_image_scenes', return_value={
+                'opening': Image.new('RGB',(1920,1080),(21,41,61)),
+                'body': Image.new('RGB',(1920,1080),(52,72,92))}):
+            return Film(packet, track)
+
+    def test_image_led_assets_are_local_large_and_hash_bound(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            path = root/'approved.png'
+            Image.new('RGB',(1280,720),NIGHT).save(path)
+            approved = {'path':'approved.png','sha256':hashlib.sha256(path.read_bytes()).hexdigest()}
+            visuals = {'imageScenes':{role:dict(approved) for role in ('opening','body')},
+                       'assets':[{**approved,'kind':'original','usageApproved':True}]}
+            self.assertEqual(reviewed_image_scenes(visuals, root)['body'].size, (1280,720))
+            visuals['assets'][0]['usageApproved'] = False
+            with self.assertRaisesRegex(ValueError, 'linked to an approved'):
+                reviewed_image_scenes(visuals, root)
+            visuals['assets'][0]['usageApproved'] = True
+            visuals['assets'][0]['sha256'] = '0'*64
+            with self.assertRaisesRegex(ValueError, 'linked to an approved'):
+                reviewed_image_scenes(visuals, root)
+            visuals['assets'][0]['sha256'] = approved['sha256']
+            visuals['imageScenes']['body']['sha256'] = '0'*64
+            with self.assertRaisesRegex(ValueError, 'bytes changed'):
+                reviewed_image_scenes(visuals, root)
+            visuals['imageScenes']['body'] = {**approved,'path':'../outside.png'}
+            with self.assertRaisesRegex(ValueError, 'inside channel/dist'):
+                reviewed_image_scenes(visuals, root)
+            with self.assertRaisesRegex(ValueError, 'path and SHA-256'):
+                reviewed_image_scenes({}, root)
+            Image.new('RGB',(640,360),NIGHT).save(path)
+            approved['sha256'] = hashlib.sha256(path.read_bytes()).hexdigest()
+            visuals = {'imageScenes':{role:dict(approved) for role in ('opening','body')},
+                       'assets':[{**approved,'kind':'original','usageApproved':True}]}
+            with self.assertRaisesRegex(ValueError, 'too small'):
+                reviewed_image_scenes(visuals, root)
+
+    def test_image_led_title_builds_once_and_cuts_at_first_body_word(self):
+        movie = self.image_led_movie()
+        self.assertEqual(movie.picture_cues['body'], 10)
+        self.assertEqual(movie.picture_cues['compare'], 14.4)
+        # No preloaded title: the story starts on the image, then builds one
+        # cohesive title. The attribution sentence immediately gets new picture.
+        self.assertEqual(len(set(movie.frame(1).getdata())), 1)
+        with patch('film_visuals._display') as display:
+            movie.frame(8.5)
+            self.assertEqual([call.args[1] for call in display.call_args_list], ['A way back.','Online.'])
+        with patch('film_visuals._display') as display:
+            self.assertEqual(movie.frame(10).getpixel((0,0)), (52,72,92))
+            movie.frame(13.9)
+            display.assert_not_called()
+        packet, track = self.image_led_loan()
+        track['wordTimings'] = [word for word in track['wordTimings'] if word['text'] != 'Treasury']
+        with self.assertRaisesRegex(ValueError, 'spoken phrase'):
+            Film(packet, track)
+
+    def test_image_led_process_accumulates_and_holds_through_requirements(self):
+        movie = self.image_led_movie()
+        crop = lambda image, box: image.crop(tuple(round(v*SCALE) for v in box)).tobytes()
+        fields = [(45,175,366,440),(450,175,810,440),(855,175,1220,440)]
+        for time, count in ((16.5,1),(20.5,2),(22.9,3)):
+            frame = movie.frame(time)
+            for index, box in enumerate(fields):
+                colors = set(frame.crop(tuple(round(v*SCALE) for v in box)).getdata())
+                self.assertEqual(len(colors)>1, index<count)
+        before = movie.frame(22.9)
+        after = movie.frame(29.5)
+        for box in fields:
+            self.assertEqual(crop(before,box),crop(after,box))
+        with patch('film_visuals._display') as display:
+            movie.frame(28.5)
+            labels = [call.args[1] for call in display.call_args_list]
+        for required in ('Rehabilitation','Consolidation','Upload documents','Track progress','Meet the requirements'):
+            self.assertIn(required, labels)
+        self.assertNotIn('Requirements\nstill apply.', labels)
+
+    def test_image_led_default_accumulates_context_without_cards_or_dissolves(self):
+        movie = self.image_led_movie()
+        fields = [(80,95,405,530),(492,150,772,482),(900,145,1215,330),(930,325,1195,520)]
+        with patch('film_visuals.Image.blend', side_effect=AssertionError('No internal dissolve')):
+            for time,count in ((34,1),(37,2),(39.5,3),(43,4)):
+                frame = movie.frame(time)
+                for index,box in enumerate(fields):
+                    colors=set(frame.crop(tuple(round(v*SCALE) for v in box)).getdata())
+                    self.assertEqual(len(colors)>1,index<count)
+                bottom=frame.crop((0,round(HEIGHT*.82),WIDTH,HEIGHT))
+                self.assertEqual(set(bottom.getdata()), {NIGHT})
+        calendar = tuple(round(v*SCALE) for v in fields[0])
+        self.assertEqual(movie.frame(34).crop(calendar).tobytes(),movie.frame(43).crop(calendar).tobytes())
+        with patch('film_visuals._display') as display:
+            movie.frame(43)
+            labels = [call.args[1] for call in display.call_args_list]
+        for required in ('Generally, about','9 months','Can hurt credit','Car loan','Apartment','Can be harder to get'):
+            self.assertIn(required, labels)
+        self.assertNotIn('Default.',labels)
 
     def test_full_frame_edits_use_real_word_clock_and_fail_closed_if_it_is_missing(self):
         packet, track = self.full_frame_loan()
