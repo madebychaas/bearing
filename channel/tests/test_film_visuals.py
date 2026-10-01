@@ -7,6 +7,72 @@ from film_visuals import Film, IVORY, SCALE, TEAL, chart_spec, reveal_progress, 
 
 
 class FilmVisualTests(unittest.TestCase):
+    def loan_impact(self):
+        roles = ['hinge', 'meaning', 'default', 'months', 'credit', 'car', 'home', 'consequence']
+        packet = {'plan': {'title': 'Default help', 'summary': 'Requirements still apply',
+                          'beats': [{'kind': 'service', 'reveals': [{'role': 'rehabilitation'},
+                                    {'role': 'consolidation'}, {'role': 'documents'}, {'role': 'progress'}]}],
+                          'closingReveals': [{'role': role} for role in roles]},
+                  'visuals': {'service': {'title': 'Defaulted Loans Support Center',
+                              'options': [{'label': 'Rehabilitation', 'role': 'rehabilitation'},
+                                          {'label': 'Consolidation', 'role': 'consolidation'}],
+                              'tools': [{'label': 'Upload documents', 'role': 'documents'},
+                                        {'label': 'Track progress', 'role': 'progress'}]},
+                              'closing': {'kind': 'default-impact', 'title': 'Applying is\nonly the start.',
+                                          'text': 'Requirements still apply.'},
+                              'defaultImpact': {'months': 9, 'qualifier': 'Generally, about'}}}
+        track = {'duration': 44, 'chapters': [{'kind': 'opening', 'start': .3, 'end': 10},
+                 {'kind': 'story', 'start': 10, 'end': 23}, {'kind': 'closing', 'start': 23, 'end': 43}],
+                 'visualCues': [{'start': 10, 'end': 23, 'beat': 0, 'reveals': [
+                     {'start': 15, 'reveal': 0}, {'start': 17, 'reveal': 1},
+                     {'start': 19, 'reveal': 2}, {'start': 21, 'reveal': 3}]}],
+                 'closingCues': [{'start': start, 'reveal': i} for i, start in enumerate(
+                     [23, 27, 30, 32, 35, 38, 40, 41.5])]}
+        return packet, track
+
+    def test_loan_closing_changes_composition_at_spoken_definition(self):
+        packet, track = self.loan_impact()
+        movie = Film(packet, track)
+        self.assertEqual([s['kind'] for s in movie.scenes], ['headline', 'service', 'close', 'default-impact'])
+        self.assertEqual(movie.scenes[-2]['end'], 30)
+        self.assertEqual(movie.scenes[-1]['start'], 30)
+        self.assertEqual(movie.scenes[-1]['end'], 44)
+        self.assertEqual([c['reveal'] for c in movie.scenes[-1]['reveals']], [2, 3, 4, 5, 6, 7])
+
+    def test_loan_timeline_and_consequences_wait_for_voice_and_hold(self):
+        packet, track = self.loan_impact()
+        movie = Film(packet, track)
+        region = lambda image, box: set(image.crop(tuple(round(v*SCALE) for v in box)).getdata())
+        months, credit, car, home, qualifier = ((80, 244, 345, 445), (469, 244, 769, 444),
+                                               (826, 250, 1187, 317), (826, 338, 1187, 405),
+                                               (826, 425, 1187, 458))
+        self.assertEqual(region(movie.frame(31.7), months), {IVORY})
+        month_frame = movie.frame(34)
+        self.assertGreater(len(region(month_frame, months)), 1)
+        self.assertEqual(region(month_frame, credit), {IVORY})
+        credit_frame = movie.frame(37)
+        self.assertGreater(len(region(credit_frame, credit)), 1)
+        self.assertEqual(region(credit_frame, car), {IVORY})
+        car_frame = movie.frame(39)
+        self.assertGreater(len(region(car_frame, car)), 1)
+        self.assertEqual(region(car_frame, home), {IVORY})
+        self.assertEqual(region(movie.frame(41.3), qualifier), {IVORY})
+        completed = movie.frame(43)
+        for box in (months, credit, car, home, qualifier):
+            self.assertGreater(len(region(completed, box)), 1)
+        self.assertEqual(region(month_frame, months), region(completed, months))
+        self.assertEqual(region(completed, (0, 480, 1280, 720)), {IVORY})
+
+    def test_loan_impact_rejects_missing_cues_and_unqualified_definition(self):
+        packet, track = self.loan_impact()
+        track['closingCues'].pop(3)
+        with self.assertRaisesRegex(ValueError, 'eight authored'):
+            Film(packet, track)
+        packet, track = self.loan_impact()
+        packet['visuals']['defaultImpact']['qualifier'] = 'Always after'
+        with self.assertRaisesRegex(ValueError, 'qualified nine-month'):
+            Film(packet, track).frame(43)
+
     def test_service_choices_reveal_left_to_right_and_hold_during_tool_explanation(self):
         packet={'plan':{'title':'Default help','summary':'Requirements still apply','beats':[{'kind':'service','reveals':[{'role':'rehabilitation'},{'role':'consolidation'},{'role':'documents'},{'role':'progress'}]}]},
                 'visuals':{'service':{'title':'Defaulted Loans Support Center','options':[{'label':'Rehabilitation','role':'rehabilitation'},{'label':'Consolidation','role':'consolidation'}],

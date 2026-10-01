@@ -121,6 +121,11 @@ class SelectionStore:
             return f"Primary evidence {evidence['id']} needs an explicit source recheck within the last hour, followed by editorial reassessment."
         return None
 
+    def _discovery_observation(self,evidence,reports,state,event_id):
+        report=reports.get(evidence['id']) or state.get('events',{}).get(event_id,{}).get('reports',{}).get(evidence['id'])
+        if not report or report.get('revisionMismatch'):return copy.deepcopy(evidence)
+        return {**evidence,'headline':report['title'],'excerpt':report.get('excerpt',''),'url':report['url'],'publishedTime':report.get('publishedAt')}
+
     def _refresh(self,record):
         reasons=[]
         try:
@@ -137,6 +142,15 @@ class SelectionStore:
                 if not current.get('available'):reasons.append('A bound reporting source is unavailable.');continue
                 revised={**evidence,'headline':current['title'],'excerpt':current.get('excerpt',''),'url':current['url'],'publishedTime':current.get('publishedAt')}
                 if bound_content([evidence])!=bound_content([revised]):reasons.append('Bound source wording, facts or publication context changed; compare the retained evidence before continuing.')
+            # A rotated discovery item is not silently made current evidence.
+            # If it returns with changed reporting, require another explicit review.
+            for archived in record.get('discoveryEvidence',[]):
+                original=archived['source'];current=reports.get(original['id'])
+                if not current or not lookup.get(original['id']):continue
+                if current.get('revisionMismatch'):
+                    reasons.append('Returning discovery reporting is between revisions; reassess once its corrected evidence is coherent.');continue
+                revised=self._discovery_observation(original,reports,{},record['eventId'])
+                if bound_content([archived['lastObserved']])!=bound_content([revised]):reasons.append('The original discovery report returned with changed reporting; review the correction against the primary-source treatment.')
         except (OSError,RuntimeError,ValueError):reasons.append('Current reporting could not be verified; the prior selection is retained.')
         if record['voiceRevision']!=digest(scriptdesk.editorial_voice()):reasons.append('The maintained editorial voice standard changed; review the script again.')
         if reasons and not (record.get('reassessment') or {}).get('required'):
@@ -188,8 +202,25 @@ class SelectionStore:
                 reason=text(payload.get('reason'),'Reassessment reason',2000,12)
                 snapshot,lookup,reports=self._snapshot(mode)
                 event=next((e for e in snapshot['events'] if e['id']==event_id),None)
-                if not event:raise Conflict('The selected opportunity is no longer present; select a current opportunity instead.')
-                evidence=self._sources(event,lookup,reports,snapshot)+[e for e in record['evidence'] if e['origin']=='reviewed-primary']
+                basis=payload.get('sourceBasis',record.get('sourceBasis','selected-intake'))
+                if basis not in ('selected-intake','reviewed-primary'):raise ValueError('Choose selected-intake or reviewed-primary as the reassessed source basis')
+                primaries=[e for e in record['evidence'] if e['origin']=='reviewed-primary']
+                if basis=='reviewed-primary':
+                    actor=text(payload.get('actor'),'Reassessing editor',120,1)
+                    if not primaries:raise Conflict('A primary-source reassessment requires explicitly reviewed primary evidence')
+                    evidence=primaries
+                    archives=copy.deepcopy(record.get('discoveryEvidence',[]));known={entry['source']['id'] for entry in archives}
+                    for source in record['evidence']:
+                        if source['origin']=='intake' and source['id'] not in known:
+                            archives.append({'source':copy.deepcopy(source),'archivedAt':self._now(),'actor':actor,'reason':reason});known.add(source['id'])
+                    state=self.desk._state(mode)
+                    for archived in archives:
+                        archived['lastObserved']=self._discovery_observation(archived['source'],reports,state,event_id)
+                        archived['reassessedAt']=self._now()
+                    record['discoveryEvidence']=archives
+                else:
+                    if not event:raise Conflict('The selected opportunity is no longer present; explicitly reassess reviewed primary evidence or select a current opportunity instead.')
+                    evidence=self._sources(event,lookup,reports,snapshot)+primaries
                 # Reassessment cannot renew a primary-source check merely by
                 # moving its clock. A reviewed replacement must arrive explicitly.
                 for primary in evidence:
@@ -197,8 +228,13 @@ class SelectionStore:
                         issue=self._primary_issue(primary)
                         if issue:raise Conflict(issue)
                 record['evidence']=evidence;record['sourceRevision']=digest(evidence);record['voiceRevision']=digest(scriptdesk.editorial_voice())
+                record['sourceBasis']=basis
                 if payload.get('whyNow') is not None:record['whyNow']=text(payload['whyNow'],'Why now',2000,12)
-                record['context']=self._context(event,snapshot,record['productId'],record['whyNow'],record['note'])
+                if event:record['context']=self._context(event,snapshot,record['productId'],record['whyNow'],record['note'])
+                else:record['context']=copy.deepcopy(record['context']);record['context']['whyNow']=record['whyNow']
+                if basis=='reviewed-primary':
+                    record['context']['discoveryStatus']={'state':'outside-current-intake' if not event else 'discovery-only','checkedAt':self._now(),'note':'The original opportunity and source remain historical discovery context. Only the explicitly reviewed primary evidence supports the current script; no availability is asserted for archived reporting.'}
+                    record['context']['sourceBasis']=basis
                 record['context']['reassessmentReason']=reason
                 record['reassessment']={'required':False,'reason':reason,'at':self._now()};record['prepared']=None;record['draftReview']=None
                 self._clear_approval(record);record['state']='draft' if record['draft'] else 'selected'
@@ -263,7 +299,7 @@ class SelectionStore:
             return {'selection':self._save(record,action,text(payload.get('note',''),'Editorial note'),actor)}
 
     def _lineage(self,record):
-        return {'selectionId':record['id'],'eventId':record['eventId'],'mode':record['mode'],'product':record['product'],'sourceRevision':record['sourceRevision'],'scriptRevision':record['scriptHash'],'voiceRevision':record['voiceRevision'],'approval':record['approval'],'whyNow':record['whyNow'],'selectedAt':record['selectedAt'],'context':record['context'],'evidence':record['evidence']}
+        return {'selectionId':record['id'],'eventId':record['eventId'],'mode':record['mode'],'product':record['product'],'sourceRevision':record['sourceRevision'],'scriptRevision':record['scriptHash'],'voiceRevision':record['voiceRevision'],'approval':record['approval'],'whyNow':record['whyNow'],'selectedAt':record['selectedAt'],'context':record['context'],'evidence':record['evidence'],'sourceBasis':record.get('sourceBasis','selected-intake'),'discoveryEvidence':record.get('discoveryEvidence',[])}
 
     def _guard(self,event_id,mode,approval_id):
         with self.lock:

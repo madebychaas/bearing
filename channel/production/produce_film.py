@@ -132,6 +132,7 @@ def readable_captions(captions,word_timings):
     """Short exact-text phrases, anchored to actual words, never sentence estimates."""
     output=[]
     for caption in captions:
+        sentence_start=len(output)
         words=[word for word in word_timings if caption['start']<=word['start']<caption['end']]
         if ' '.join(word['text'] for word in words)!=' '.join(caption['text'].split()):raise ValueError('Caption words do not match the reviewed sentence')
         group=[]
@@ -142,6 +143,15 @@ def readable_captions(captions,word_timings):
             group.append(word)
             if len(group)>=3 and re.search(r'[,;:]$',word['text']):emit();group=[]
         if group:emit()
+        # A one-word closing flash breaks the thought. Keep a short final phrase
+        # together, preserving actual word clocks and the existing size limits.
+        if len(output)-sentence_start>1 and len(output[-1]['text'].split())<3:
+            pair_count=len(output[-2]['text'].split())+len(output[-1]['text'].split())
+            pair=words[-pair_count:]
+            if pair_count<=8 and len(' '.join(w['text'] for w in pair))<=52:
+                output[-2:] = [{'text':' '.join(w['text'] for w in pair),'start':pair[0]['start'],'end':pair[-1]['end']}]
+            elif pair_count>3 and len(' '.join(w['text'] for w in pair[-3:]))<=52:
+                output[-2:] = [{'text':' '.join(w['text'] for w in part),'start':part[0]['start'],'end':part[-1]['end']} for part in (pair[:-3],pair[-3:])]
     if ' '.join(item['text'] for item in output)!=' '.join(item['text'] for item in captions):raise ValueError('Caption chunking changed the approved copy')
     return output
 

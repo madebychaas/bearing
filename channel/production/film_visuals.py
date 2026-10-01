@@ -148,8 +148,28 @@ def scene_schedule(packet, track):
     closing = float(closing_cues[0]['start'] if closing_cues else chapters['closing']['start'])
     if not chapters['closing']['start'] <= closing < chapters['closing']['end']:
         raise ValueError('The closing picture cue falls outside the closing chapter')
-    result.append({'kind': 'close', 'start': closing, 'end': duration, 'voiceStart': closing,
-                   'reveals': closing_cues, 'definitions': plan.get('closingReveals', [])})
+    definitions = plan.get('closingReveals', [])
+    if packet.get('visuals', {}).get('closing', {}).get('kind') == 'default-impact':
+        # This story changes editorial tasks inside its closing: first explain
+        # that an application is not an outcome, then explain default itself.
+        # Use the spoken definition as the cut; do not divide by estimated time.
+        required = ('hinge', 'meaning', 'default', 'months', 'credit', 'car', 'home', 'consequence')
+        by_role = {definitions[c['reveal']].get('role'): c for c in closing_cues
+                   if 0 <= c['reveal'] < len(definitions)}
+        if any(role not in by_role for role in required):
+            raise ValueError('Default-impact closing requires all eight authored narration cues')
+        if any(by_role[b]['start'] <= by_role[a]['start'] for a, b in zip(required, required[1:])):
+            raise ValueError('Default-impact cues must follow the reviewed explanation order')
+        impact = float(by_role['default']['start'])
+        result.append({'kind': 'close', 'start': closing, 'end': impact, 'voiceStart': closing,
+                       'reveals': [c for c in closing_cues if c['start'] < impact],
+                       'definitions': definitions})
+        result.append({'kind': 'default-impact', 'start': impact, 'end': duration, 'voiceStart': impact,
+                       'reveals': [c for c in closing_cues if c['start'] >= impact],
+                       'definitions': definitions})
+    else:
+        result.append({'kind': 'close', 'start': closing, 'end': duration, 'voiceStart': closing,
+                       'reveals': closing_cues, 'definitions': definitions})
     previous = -1.0
     for scene in result:
         if not 0 <= scene['start'] < scene['end'] <= duration or scene['start'] <= previous:
@@ -318,6 +338,78 @@ class Film:
                 else:
                     _line(draw,[(x-5,434),(x-5,430),(x,430),(x,426),(x+5,426)],color,1.5)
                 _text(draw,x+25,412,tool['label'],23,_mix(IVORY,INK,p))
+        elif kind == 'default-impact':
+            impact = self.visuals.get('defaultImpact', {})
+            # These labels are reviewed, literal editorial copy. The timeline
+            # illustrates the qualified nine-month definition; it is not a
+            # fabricated credit score, individual eligibility result or forecast.
+            if impact.get('months') != 9 or impact.get('qualifier') != 'Generally, about':
+                raise ValueError('Default-impact graphic needs the reviewed qualified nine-month definition')
+            p = reveal_progress(time, role_start(scene, 'default'), .9)
+            _text(draw, 82, 116, impact.get('eyebrow', 'WHAT DEFAULT CAN MEAN'), 13, MUTED)
+            _paragraph(draw, 78, 153, impact.get('title', 'The impact goes beyond the loan.'), 43,
+                       1090, _mix(IVORY, INK, p), 'light', 1)
+
+            # A quiet calendar rhythm at left resolves under the spoken period.
+            # No consequences appear before their own narration cues.
+            months = reveal_progress(time, role_start(scene, 'months'), .7)
+            _text(draw, 84, 245, impact['qualifier'], 18, _mix(IVORY, MUTED, months))
+            _text(draw, 78, 263, '9', 101, _mix(IVORY, INK, months), 'light')
+            _text(draw, 152, 319, 'months', 30, _mix(IVORY, INK, months), 'light')
+            _text(draw, 84, 390, 'of missed payments', 21, _mix(IVORY, INK, months))
+            for index in range(9):
+                tick = reveal_progress(time, role_start(scene, 'months') + index*.045, .55)
+                x = 84 + index*29
+                draw.rounded_rectangle((*_point(x,432), *_point(x+18,440)), radius=round(4*SCALE),
+                                       fill=_mix(IVORY, TEAL, tick*.65))
+
+            credit = reveal_progress(time, role_start(scene, 'credit'), .7)
+            _line(draw, [(365, 334), (365+67*credit, 334)], _mix(IVORY, TEAL, credit*.7), 2)
+            _circle(draw, 439, 334, 5, IVORY, _mix(IVORY, TEAL, credit), 1.5)
+            # Credit is represented by an original report outline, without any
+            # lender mark, invented score or pseudo-documentary screenshot.
+            card = _mix(IVORY, TEAL, credit*.055)
+            draw.rounded_rectangle((*_point(469,244), *_point(769,444)), radius=round(18*SCALE),
+                                   fill=card, outline=_mix(IVORY, TEAL, credit*.35), width=round(SCALE))
+            icon = _mix(IVORY, TEAL, credit)
+            draw.rounded_rectangle((*_point(493,267), *_point(514,295)), radius=round(3*SCALE),
+                                   outline=icon, width=round(1.4*SCALE))
+            for row in range(3):
+                _line(draw, [(499,275+6*row), (508,275+6*row)], icon, 1.3)
+            _paragraph(draw, 493, 316, impact.get('creditLabel', 'Can hurt\ncredit'), 39, 260,
+                       _mix(IVORY, INK, credit), 'light', 2)
+
+            # Concrete everyday consequences extend in reading order. They
+            # remain possibilities: the only outcome line carries "can".
+            for index, role in enumerate(('car', 'home')):
+                q = reveal_progress(time, role_start(scene, role), .55)
+                y = 250 + index*88
+                color = _mix(IVORY, TEAL, q)
+                _line(draw, [(789, y+29), (812, y+29)], _mix(IVORY, TEAL, q*.7), 1.5)
+                draw.rounded_rectangle((*_point(826,y), *_point(1187,y+67)), radius=round(13*SCALE),
+                                       fill=_mix(IVORY, TEAL, q*.04),
+                                       outline=_mix(IVORY, TEAL, q*.25), width=round(SCALE))
+                x = 849
+                if role == 'car':
+                    _line(draw, [(x,y+39),(x,y+29),(x+6,y+25),(x+12,y+14),
+                                 (x+29,y+14),(x+36,y+26),(x+41,y+29),(x+41,y+39)], color, 1.7)
+                    _line(draw, [(x+5,y+26),(x+35,y+26)], color, 1.6)
+                    _line(draw, [(x+13,y+39),(x+29,y+39)], color, 1.6)
+                    _circle(draw,x+8,y+39,5,IVORY,color,1.7)
+                    _circle(draw,x+34,y+39,5,IVORY,color,1.7)
+                    label = 'Car loan'
+                else:
+                    _line(draw, [(x+6,y+44),(x+6,y+13),(x+36,y+13),(x+36,y+44)], color, 1.7)
+                    _line(draw, [(x+2,y+44),(x+40,y+44)], color, 1.7)
+                    for dx in (13,26):
+                        for dy in (20,28):
+                            _line(draw, [(x+dx,y+dy),(x+dx+4,y+dy)], color, 1.8)
+                    _line(draw, [(x+18,y+44),(x+18,y+35),(x+25,y+35),(x+25,y+44)],color,1.6)
+                    label = 'Apartment'
+                _text(draw,910,y+15,label,28,_mix(IVORY,INK,q),'light')
+            consequence = reveal_progress(time, role_start(scene, 'consequence'), .5)
+            _text(draw, 838, 430, impact.get('consequenceLabel', 'Can be harder to get'), 21,
+                  _mix(IVORY, TEAL, consequence))
         elif kind == 'close':
             close = self.visuals.get('closing', {})
             start = role_start(scene, ('hinge', 'payoff', 'closing', 'target'))

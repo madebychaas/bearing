@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "revised-draft-awaiting-review",
+  "status": "produced-after-source-reassessment",
   "revisedDate": "2026-10-01",
   "selectionId": "selection-6fa7e2370b86374d3e57fb74",
   "eventId": "event-a347e2e1848fea",
@@ -9,7 +9,7 @@
   "sourceCheck": {
     "date": "2026-10-01",
     "method": "Rechecked the official September 30 Education Department launch through its indexed result (direct open returned 403), and directly read FSA default guidance and CFPB credit-history guidance. No change to the September 30 launch peg or Wednesday attribution.",
-    "limits": "This retained writing check does not renew the runtime selection's one-hour review. The live selection is held for unavailable intake and expired primary reviews. Recheck and reassess through the normal workflow before transferring this draft, preparing matching pictures or approving production. The previous film packet does not match this revision."
+    "limits": "This retained writing check does not renew runtime source authority. Production used a separate fresh primary-source reread at 2026-10-01T16:19:10Z, explicit reassessment and hash-bound user approval, recorded in the finished production review. The earlier 54-word packet remains historical and was not silently changed."
   },
   "evidence": [
     {
@@ -48,23 +48,59 @@
     "opening": [
       {
         "text": "Borrowers with defaulted federal student loans have a new way to get back on track for repayment, and it's all online.",
-        "evidence": [{"id":"ed-launch-20260930","quote":"a new online portal that gives Americans with defaulted federal student loans a simpler way to understand their options, address default, and return to repayment."}]
+        "evidence": [
+          {
+            "id": "ed-launch-20260930",
+            "quote": "a new online portal that gives Americans with defaulted federal student loans a simpler way to understand their options, address default, and return to repayment."
+          }
+        ]
       }
     ],
     "body": [
       {
         "text": "The Treasury and Education departments launched a support center Wednesday that lets borrowers compare rehabilitation and consolidation, upload documents and track progress.",
-        "evidence": [{"id":"ed-launch-20260930","quote":"September 30, 2026. The U.S. Department of Education (ED) and the U.S. Department of the Treasury (Treasury) announced the launch of the Defaulted Loans Support Center"},{"id":"ed-launch-20260930","quote":"Compare available paths out of default; Apply online for loan rehabilitation or consolidation; Borrowers can also complete the loan rehabilitation application online, upload documents, review an estimated payment, electronically sign their agreement, and track their progress without leaving StudentAid.gov."}]
+        "evidence": [
+          {
+            "id": "ed-launch-20260930",
+            "quote": "September 30, 2026. The U.S. Department of Education (ED) and the U.S. Department of the Treasury (Treasury) announced the launch of the Defaulted Loans Support Center"
+          },
+          {
+            "id": "ed-launch-20260930",
+            "quote": "Compare available paths out of default; Apply online for loan rehabilitation or consolidation; Borrowers can also complete the loan rehabilitation application online, upload documents, review an estimated payment, electronically sign their agreement, and track their progress without leaving StudentAid.gov."
+          }
+        ]
       }
     ],
     "closing": [
       {
         "text": "Applying is only the start. Borrowers must meet their chosen path's requirements to leave default.",
-        "evidence": [{"id":"fsa-default-20261001","quote":"Loan rehabilitation is a method of getting your federal student loan(s) out of default. You make a certain number of consecutive, on-time payments to ED or the guaranty agency (FFEL borrowers only) under a rehabilitation agreement. You must also sign a Rehabilitation Agreement Letter."}]
+        "evidence": [
+          {
+            "id": "fsa-default-20261001",
+            "quote": "Loan rehabilitation is a method of getting your federal student loan(s) out of default. You make a certain number of consecutive, on-time payments to ED or the guaranty agency (FFEL borrowers only) under a rehabilitation agreement. You must also sign a Rehabilitation Agreement Letter."
+          }
+        ]
       },
       {
         "text": "Default generally follows about nine months of missed payments and can hurt credit, making a car loan or apartment harder to get.",
-        "evidence": [{"id":"cfpb-default-definition","quote":"If you haven’t made a payment on your federal student loan for at least 270 days (nine months), and you have not entered into an agreement with your lender or servicer to postpone your payments (like deferment or forbearance), you are probably in default."},{"id":"cfpb-default-definition","quote":"Credit reporting companies are notified, which generally means a lower credit score for you"},{"id":"cfpb-credit-impact","quote":"Landlords check your credit to decide whether to rent to you, and whether to ask you for a larger security deposit."},{"id":"cfpb-credit-impact","quote":"When there are negative items on your credit report, like missed payments or high balances, it can be harder or more expensive to do the things you want to do: You could be turned down for a loan or offered a loan with more expensive terms"}]
+        "evidence": [
+          {
+            "id": "cfpb-default-definition",
+            "quote": "If you haven’t made a payment on your federal student loan for at least 270 days (nine months), and you have not entered into an agreement with your lender or servicer to postpone your payments (like deferment or forbearance), you are probably in default."
+          },
+          {
+            "id": "cfpb-default-definition",
+            "quote": "Credit reporting companies are notified, which generally means a lower credit score for you"
+          },
+          {
+            "id": "cfpb-credit-impact",
+            "quote": "Landlords check your credit to decide whether to rent to you, and whether to ask you for a larger security deposit."
+          },
+          {
+            "id": "cfpb-credit-impact",
+            "quote": "When there are negative items on your credit report, like missed payments or high balances, it can be harder or more expensive to do the things you want to do: You could be turned down for a loan or offered a loan with more expensive terms"
+          }
+        ]
       }
     ],
     "pronunciations": [],
@@ -73,9 +109,22 @@
       {
         "kind": "motion",
         "purpose": "Explain the options and the concrete stakes at their spoken cues; do not imply an application clears default or fixes credit.",
-        "evidenceIds": ["ed-launch-20260930","fsa-default-20261001","cfpb-default-definition","cfpb-credit-impact"],
+        "evidenceIds": [
+          "ed-launch-20260930",
+          "fsa-default-20261001",
+          "cfpb-default-definition",
+          "cfpb-credit-impact"
+        ],
         "description": "Keep the concise lead and left-to-right option reveal. Hold the service explanation under its narration. The revised closing needs a fresh composition linking missed required payments to possible credit consequences, then car financing and renting, with the qualifier visible. This is direction for a new picture plan, not approval of the earlier closing or arbitrary equal-time slides."
       }
     ]
+  },
+  "finishedDelivery": {
+    "review": "STUDENT_LOAN_PRODUCTION_20261001.md",
+    "identity": "fb4a08f7a47183e184da",
+    "scriptSha256": "174d7df4e8d0e26bc7b4ead44eff799c6938adf9714340e608e2c2f7558e17d7",
+    "approvedBy": "User instruction: complete the full production",
+    "publishedAt": "2026-10-01T16:37:01.678829Z",
+    "viewerAccepted": false
   }
 }

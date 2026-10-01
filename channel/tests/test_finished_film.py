@@ -78,6 +78,14 @@ class FinishedFilmTests(unittest.TestCase):
   self.assertTrue(all(len(c['text'])<=52 and len(c['text'].split())<=8 for c in captions))
   self.assertTrue(all(c['start'] in [w['start'] for w in words] and c['end'] in [w['end'] for w in words] for c in captions))
   with self.assertRaisesRegex(ValueError,'do not match'):film.readable_captions([{'text':text,'start':0,'end':4}],words[:-1])
+ def test_short_final_caption_keeps_the_consequence_phrase_together(self):
+  text='Making a car loan or apartment harder to get.'
+  words=[{'text':word,'start':i*.3,'end':i*.3+.24} for i,word in enumerate(text.split())]
+  captions=film.readable_captions([{'text':text,'start':0,'end':3}],words)
+  self.assertEqual([c['text'] for c in captions],['Making a car loan or apartment','harder to get.'])
+  self.assertEqual(captions[-1]['start'],words[-3]['start'])
+  self.assertEqual(captions[-1]['end'],words[-1]['end'])
+  self.assertEqual(' '.join(c['text'] for c in captions),text)
  def test_final_delivery_is_atomic_and_recoverable_after_a_failed_replace(self):
   with tempfile.TemporaryDirectory() as directory:
    source=Path(directory)/'staged.mp4';source.write_bytes(b'complete verified movie');target=Path(directory)/'published.mp4';digest=film.broadcast.file_hash(source)

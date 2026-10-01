@@ -1,14 +1,16 @@
 # Bearing — Active Mission
 
-**Status: active.**
+**Status: complete — stop here.**
 
-October 1 script revision: the user supplied a more conversational opening and requested a closing definition of default with everyday consequences. The [80-word cited revision](STUDENT_LOAN_SCRIPT_20261001.json) preserves that direction and adds a qualified credit/housing/car-loan consequence. It supersedes the September 30 **writing proposal**, not any accepted media. The live selection is currently held for unavailable intake and expired primary reviews; the new draft is retained separately without bypassing that hold. Recheck/reassess sources, transfer the revised copy, and prepare a matching closing before production review. No new narration or movie has been made.
+October 1 delivery: **Default help moves online** completes the selected-story path with the user's approved 80-word script, two finished 1080p films, original music/effects, voice-timed graphics, captions and a local playlist entry. Warm runs **36.867 seconds**; Measured runs **40.300 seconds**, without speeding up narration. Actual browser playback reached the next item automatically. See the [finished production and proof](STUDENT_LOAN_PRODUCTION_20261001.md).
 
-September 30 implementation checkpoint: the selected-story handoff, source-bound review, reversible approval, reassessment guard and unpublished film worker are implemented and browser-checked. **The real student-loan story is prepared but still awaiting the user's script approval; no finished asset has been produced for it.** Continue from [the checkpoint and exact next steps](SELECTION_PROOF_20260930.md), not by rebuilding the connection. The retained [draft and film plan](SELECTION_PROOF_STUDENT_LOANS_20260930.json) require a fresh source check before approval/production. Tests passed: 168 Python and 50 JavaScript. The accepted PCE and NIST films remain intact.
+The [September 30 checkpoint](SELECTION_PROOF_20260930.md) and its preparation packet remain historical records. The October 1 source hold was resolved by an explicit editorial reassessment: CNBC's discovery report had rotated out of a healthy feed, so fresh Education/Treasury, Federal Student Aid and CFPB evidence became the factual authority. The original opportunity, product choice and discovery report remain traceable. Returning corrections and expired primary checks still require reassessment; no timestamps or approvals were silently renewed.
+
+Validation: **175 Python tests and 50 JavaScript tests passed**; both MP4s fully decode, all delivery hashes match, the exact copy survives narration/captions, and actual encoded frames were inspected. The first word has no added fade; graphics retain their dwell time. The accepted PCE/NIST media and existing player design remain intact. Production is complete; this newly delivered performance is not yet described as viewer-accepted. Do not start another mission without direction.
 
 The September 30 editorial-voice and 13-script rewrite milestone is complete and preserved.
 
-The active mission is the selection-to-production proof described in [SELECTION_TO_PRODUCTION.md](SELECTION_TO_PRODUCTION.md).
+The completed mission is the selection-to-production proof described in [SELECTION_TO_PRODUCTION.md](SELECTION_TO_PRODUCTION.md). Its scope is retained below for context.
 
 ## Mission
 

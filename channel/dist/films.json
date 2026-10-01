@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "edition": "2026-09-30",
-  "version": "2f7e5f4b5be47bcf7fab7d03c7c44fdecf3e0438249c53dc1aedbe96ae4359dc",
-  "builtAt": "2026-09-30T14:14:24.119319+00:00",
+  "edition": "2026-10-01",
+  "version": "c09d896247ece694509ce75ed5ac20a705ace3e097c885452281faa0ae3c3d13",
+  "builtAt": "2026-10-01T16:37:01.666650+00:00",
   "stories": [
     {
       "id": "reviewed-pce-buying-power-20260930-v1",
@@ -1129,6 +1129,1706 @@
         "score": 70,
         "suppressed": false,
         "reason": "Household costs, consumer protection or economic impact",
+        "foreignLocal": false
+      }
+    },
+    {
+      "id": "selected-student-loan-support-20261001-v2",
+      "topic": "business",
+      "topicLabel": "Money & economy",
+      "title": "Default help moves online",
+      "dek": "A new federal portal brings default-resolution applications and paperwork online.",
+      "script": "Borrowers with defaulted federal student loans have a new way to get back on track for repayment, and it's all online. The Treasury and Education departments launched a support center Wednesday that lets borrowers compare rehabilitation and consolidation, upload documents and track progress. Applying is only the start. Borrowers must meet their chosen path's requirements to leave default. Default generally follows about nine months of missed payments and can hurt credit, making a car loan or apartment harder to get.",
+      "source": {
+        "name": "U.S. Department of Education",
+        "title": "U.S. Department of Education and U.S. Department of the Treasury Launch New Defaulted Loans Support Center",
+        "url": "https://www.ed.gov/about/news/press-release/us-department-of-education-and-us-department-of-treasury-launch-new-defaulted-loans-support-center"
+      },
+      "publisherGroup": "U.S. Department of Education",
+      "publishedAt": "2026-09-30",
+      "dateLabel": "30 Sep 2026",
+      "expiresAt": "2026-10-03T00:00:00Z",
+      "reviewStatus": "verified",
+      "reviewedAt": "2026-10-01",
+      "reviewMethod": "October 1 primary-source accuracy and rights recheck, followed by the user instruction to complete the full production of the revised 80-word script. Approval recorded separately in the selection history.",
+      "editorialNote": "September 30 launch remains the specific current development. Generally/about qualify the nine-month default threshold; can qualifies possible credit and housing/borrowing consequences. Applying does not resolve default, and leaving default does not automatically repair credit. Older 9.3 million figure and current collection-policy claims are excluded.",
+      "visualDisclosure": "Original Bearing explanatory graphics, locally synthesized AI narration and original synthesized music. No third-party photographs, footage, logos or screenshots.",
+      "facts": [],
+      "displayTitle": "Default help moves online",
+      "status": "ready",
+      "format": "studio-programme",
+      "programmeVersion": "fb4a08f7a47183e184da",
+      "programme": {
+        "why": "Borrowers can handle default-resolution applications and supporting paperwork online.",
+        "summary": "Applying starts a process; default can also affect everyday access to credit and housing.",
+        "lookAhead": "Borrowers still need to complete their chosen route. Credit damage can make financing and renting harder.",
+        "maxDuration": 45,
+        "chapterLabels": {
+          "opening": "The Shift",
+          "story": "The Options",
+          "closing": "The Stakes"
+        },
+        "openingReveals": [
+          {
+            "cue": "Borrowers",
+            "role": "lead"
+          },
+          {
+            "cue": "defaulted federal student loans",
+            "role": "impact"
+          }
+        ],
+        "beats": [
+          {
+            "kind": "service",
+            "label": "THE ONLINE PROCESS",
+            "text": "Two options, with paperwork and progress online.",
+            "cue": "The Treasury and Education departments",
+            "reveals": [
+              {
+                "cue": "rehabilitation",
+                "role": "rehabilitation"
+              },
+              {
+                "cue": "consolidation",
+                "role": "consolidation"
+              },
+              {
+                "cue": "upload documents",
+                "role": "documents"
+              },
+              {
+                "cue": "track progress",
+                "role": "progress"
+              }
+            ]
+          }
+        ],
+        "closingReveals": [
+          {
+            "cue": "Applying is only the start",
+            "role": "hinge"
+          },
+          {
+            "cue": "requirements",
+            "role": "meaning"
+          },
+          {
+            "cue": "Default generally follows",
+            "role": "default"
+          },
+          {
+            "cue": "about nine months",
+            "role": "months"
+          },
+          {
+            "cue": "can hurt credit",
+            "role": "credit"
+          },
+          {
+            "cue": "a car loan",
+            "role": "car"
+          },
+          {
+            "cue": "apartment",
+            "role": "home"
+          },
+          {
+            "cue": "harder to get",
+            "role": "consequence"
+          }
+        ],
+        "visualTreatment": "finished-film",
+        "soundTreatment": "editorial-score",
+        "editorialTiming": {
+          "mode": "current",
+          "developmentDate": "2026-09-30",
+          "sourcePublishedDate": "2026-09-30",
+          "checkedAt": "2026-10-01",
+          "reason": "Treasury and Education launched the Defaulted Loans Support Center September 30. Explain the newly announced online process, while distinguishing applying from completing default resolution.",
+          "evidenceUrl": "https://www.ed.gov/about/news/press-release/us-department-of-education-and-us-department-of-treasury-launch-new-defaulted-loans-support-center",
+          "basis": "new-development",
+          "triggerDate": "2026-09-30",
+          "validThrough": "2026-10-02",
+          "label": "Current development",
+          "liveEligible": true
+        }
+      },
+      "voices": {
+        "warm": {
+          "duration": 36.867,
+          "captions": [
+            {
+              "text": "Borrowers with defaulted federal student loans have",
+              "start": 0.48796,
+              "end": 3.71376
+            },
+            {
+              "text": "a new way to get back on track",
+              "start": 3.74065,
+              "end": 5.35355
+            },
+            {
+              "text": "for repayment, and it's all online.",
+              "start": 5.40731,
+              "end": 7.74638
+            },
+            {
+              "text": "The Treasury and Education departments launched a",
+              "start": 8.31826,
+              "end": 11.24836
+            },
+            {
+              "text": "support center Wednesday that lets borrowers compare",
+              "start": 11.30213,
+              "end": 14.60858
+            },
+            {
+              "text": "rehabilitation and consolidation,",
+              "start": 14.66235,
+              "end": 17.32364
+            },
+            {
+              "text": "upload documents and track progress.",
+              "start": 17.44743,
+              "end": 19.85567
+            },
+            {
+              "text": "Applying is only the start.",
+              "start": 20.47713,
+              "end": 22.14235
+            },
+            {
+              "text": "Borrowers must meet their chosen path's requirements",
+              "start": 22.34234,
+              "end": 25.40686
+            },
+            {
+              "text": "to leave default.",
+              "start": 25.4875,
+              "end": 26.54987
+            },
+            {
+              "text": "Default generally follows about nine months of",
+              "start": 26.74986,
+              "end": 29.41116
+            },
+            {
+              "text": "missed payments and can hurt credit,",
+              "start": 29.46492,
+              "end": 31.9918
+            },
+            {
+              "text": "making a car loan or apartment",
+              "start": 32.11529,
+              "end": 34.05078
+            },
+            {
+              "text": "harder to get.",
+              "start": 34.10454,
+              "end": 34.96081
+            }
+          ],
+          "wordTimings": [
+            {
+              "text": "Borrowers",
+              "start": 0.48796,
+              "end": 1.13312
+            },
+            {
+              "text": "with",
+              "start": 1.18688,
+              "end": 1.32129
+            },
+            {
+              "text": "defaulted",
+              "start": 1.37505,
+              "end": 2.0471
+            },
+            {
+              "text": "federal",
+              "start": 2.12774,
+              "end": 2.42344
+            },
+            {
+              "text": "student",
+              "start": 2.4772,
+              "end": 2.7729
+            },
+            {
+              "text": "loans",
+              "start": 2.82667,
+              "end": 3.49871
+            },
+            {
+              "text": "have",
+              "start": 3.57935,
+              "end": 3.71376
+            },
+            {
+              "text": "a",
+              "start": 3.74065,
+              "end": 3.79441
+            },
+            {
+              "text": "new",
+              "start": 3.87505,
+              "end": 4.00946
+            },
+            {
+              "text": "way",
+              "start": 4.06323,
+              "end": 4.2514
+            },
+            {
+              "text": "to",
+              "start": 4.30516,
+              "end": 4.35892
+            },
+            {
+              "text": "get",
+              "start": 4.41269,
+              "end": 4.5471
+            },
+            {
+              "text": "back",
+              "start": 4.60086,
+              "end": 4.81591
+            },
+            {
+              "text": "on",
+              "start": 4.8428,
+              "end": 4.9772
+            },
+            {
+              "text": "track",
+              "start": 5.03097,
+              "end": 5.35355
+            },
+            {
+              "text": "for",
+              "start": 5.40731,
+              "end": 5.51484
+            },
+            {
+              "text": "repayment,",
+              "start": 5.54172,
+              "end": 6.48258
+            },
+            {
+              "text": "and",
+              "start": 6.61699,
+              "end": 6.69763
+            },
+            {
+              "text": "it's",
+              "start": 6.72452,
+              "end": 6.83204
+            },
+            {
+              "text": "all",
+              "start": 6.88581,
+              "end": 7.07398
+            },
+            {
+              "text": "online.",
+              "start": 7.12774,
+              "end": 7.74638
+            },
+            {
+              "text": "The",
+              "start": 8.31826,
+              "end": 8.37202
+            },
+            {
+              "text": "Treasury",
+              "start": 8.45267,
+              "end": 8.96342
+            },
+            {
+              "text": "and",
+              "start": 9.04406,
+              "end": 9.12471
+            },
+            {
+              "text": "Education",
+              "start": 9.17847,
+              "end": 9.82364
+            },
+            {
+              "text": "departments",
+              "start": 9.85052,
+              "end": 10.73761
+            },
+            {
+              "text": "launched",
+              "start": 10.87202,
+              "end": 11.19459
+            },
+            {
+              "text": "a",
+              "start": 11.22148,
+              "end": 11.24836
+            },
+            {
+              "text": "support",
+              "start": 11.30213,
+              "end": 11.70536
+            },
+            {
+              "text": "center",
+              "start": 11.75912,
+              "end": 12.02794
+            },
+            {
+              "text": "Wednesday",
+              "start": 12.08169,
+              "end": 12.94191
+            },
+            {
+              "text": "that",
+              "start": 13.04944,
+              "end": 13.18385
+            },
+            {
+              "text": "lets",
+              "start": 13.23761,
+              "end": 13.47955
+            },
+            {
+              "text": "borrowers",
+              "start": 13.53331,
+              "end": 14.12471
+            },
+            {
+              "text": "compare",
+              "start": 14.17847,
+              "end": 14.60858
+            },
+            {
+              "text": "rehabilitation",
+              "start": 14.66235,
+              "end": 15.7645
+            },
+            {
+              "text": "and",
+              "start": 15.84514,
+              "end": 15.92579
+            },
+            {
+              "text": "consolidation,",
+              "start": 15.97955,
+              "end": 17.32364
+            },
+            {
+              "text": "upload",
+              "start": 17.44743,
+              "end": 17.82378
+            },
+            {
+              "text": "documents",
+              "start": 17.87752,
+              "end": 18.60335
+            },
+            {
+              "text": "and",
+              "start": 18.71086,
+              "end": 18.79151
+            },
+            {
+              "text": "track",
+              "start": 18.84529,
+              "end": 19.11409
+            },
+            {
+              "text": "progress.",
+              "start": 19.16786,
+              "end": 19.85567
+            },
+            {
+              "text": "Applying",
+              "start": 20.47713,
+              "end": 21.01476
+            },
+            {
+              "text": "is",
+              "start": 21.06852,
+              "end": 21.14917
+            },
+            {
+              "text": "only",
+              "start": 21.20293,
+              "end": 21.41799
+            },
+            {
+              "text": "the",
+              "start": 21.44487,
+              "end": 21.49863
+            },
+            {
+              "text": "start.",
+              "start": 21.5524,
+              "end": 22.14235
+            },
+            {
+              "text": "Borrowers",
+              "start": 22.34234,
+              "end": 23.12191
+            },
+            {
+              "text": "must",
+              "start": 23.22944,
+              "end": 23.44449
+            },
+            {
+              "text": "meet",
+              "start": 23.49825,
+              "end": 23.63266
+            },
+            {
+              "text": "their",
+              "start": 23.65954,
+              "end": 23.79395
+            },
+            {
+              "text": "chosen",
+              "start": 23.84772,
+              "end": 24.27782
+            },
+            {
+              "text": "path's",
+              "start": 24.33159,
+              "end": 24.65417
+            },
+            {
+              "text": "requirements",
+              "start": 24.70793,
+              "end": 25.40686
+            },
+            {
+              "text": "to",
+              "start": 25.4875,
+              "end": 25.56815
+            },
+            {
+              "text": "leave",
+              "start": 25.62191,
+              "end": 25.86385
+            },
+            {
+              "text": "default.",
+              "start": 25.91761,
+              "end": 26.54987
+            },
+            {
+              "text": "Default",
+              "start": 26.74986,
+              "end": 27.23373
+            },
+            {
+              "text": "generally",
+              "start": 27.31438,
+              "end": 27.74449
+            },
+            {
+              "text": "follows",
+              "start": 27.82514,
+              "end": 28.25524
+            },
+            {
+              "text": "about",
+              "start": 28.30901,
+              "end": 28.60471
+            },
+            {
+              "text": "nine",
+              "start": 28.71222,
+              "end": 29.0348
+            },
+            {
+              "text": "months",
+              "start": 29.08857,
+              "end": 29.30362
+            },
+            {
+              "text": "of",
+              "start": 29.3305,
+              "end": 29.41116
+            },
+            {
+              "text": "missed",
+              "start": 29.46492,
+              "end": 29.65309
+            },
+            {
+              "text": "payments",
+              "start": 29.70686,
+              "end": 30.54019
+            },
+            {
+              "text": "and",
+              "start": 30.64771,
+              "end": 30.72835
+            },
+            {
+              "text": "can",
+              "start": 30.78212,
+              "end": 30.88964
+            },
+            {
+              "text": "hurt",
+              "start": 30.97029,
+              "end": 31.21223
+            },
+            {
+              "text": "credit,",
+              "start": 31.26599,
+              "end": 31.9918
+            },
+            {
+              "text": "making",
+              "start": 32.11529,
+              "end": 32.38411
+            },
+            {
+              "text": "a",
+              "start": 32.43787,
+              "end": 32.49164
+            },
+            {
+              "text": "car",
+              "start": 32.57228,
+              "end": 32.86798
+            },
+            {
+              "text": "loan",
+              "start": 32.92174,
+              "end": 33.29809
+            },
+            {
+              "text": "or",
+              "start": 33.37873,
+              "end": 33.54002
+            },
+            {
+              "text": "apartment",
+              "start": 33.59379,
+              "end": 34.05078
+            },
+            {
+              "text": "harder",
+              "start": 34.10454,
+              "end": 34.37336
+            },
+            {
+              "text": "to",
+              "start": 34.42712,
+              "end": 34.50777
+            },
+            {
+              "text": "get.",
+              "start": 34.56153,
+              "end": 34.96081
+            }
+          ],
+          "chapters": [
+            {
+              "kind": "ident",
+              "label": "Bearing",
+              "start": 0,
+              "end": 0.28
+            },
+            {
+              "kind": "opening",
+              "label": "The Shift",
+              "start": 0.28,
+              "end": 8.141
+            },
+            {
+              "kind": "story",
+              "label": "The Options",
+              "start": 8.141,
+              "end": 20.25
+            },
+            {
+              "kind": "closing",
+              "label": "The Stakes",
+              "start": 20.25,
+              "end": 35.355
+            },
+            {
+              "kind": "outro",
+              "label": "Up next",
+              "start": 35.355,
+              "end": 36.867
+            }
+          ],
+          "provider": "kokoro-local-cpu",
+          "voiceName": "Heart",
+          "performanceRate": 0.93,
+          "silenceEdits": [
+            {
+              "after": "consolidation,",
+              "before": "upload",
+              "removedSeconds": 0.06438,
+              "gapBefore": 0.18817,
+              "gapAfter": 0.12379,
+              "quietPeak": 0.0012512,
+              "phase": "story"
+            },
+            {
+              "after": "start.",
+              "before": "Borrowers",
+              "removedSeconds": 0.09854,
+              "gapBefore": 0.29853,
+              "gapAfter": 0.19999,
+              "quietPeak": 0.0009155,
+              "phase": "closing"
+            },
+            {
+              "after": "default.",
+              "before": "Default",
+              "removedSeconds": 0.09458,
+              "gapBefore": 0.29458,
+              "gapAfter": 0.2,
+              "quietPeak": 0.000885,
+              "phase": "closing"
+            },
+            {
+              "after": "credit,",
+              "before": "making",
+              "removedSeconds": 0.03779,
+              "gapBefore": 0.16129,
+              "gapAfter": 0.1235,
+              "quietPeak": 0.0012817,
+              "phase": "closing"
+            }
+          ],
+          "narrationFlow": {
+            "minimumSentenceGap": 0.2,
+            "minimumPhraseGap": 0.12
+          },
+          "openingCues": [
+            {
+              "start": 0.48796,
+              "reveal": 0
+            },
+            {
+              "start": 1.37505,
+              "reveal": 1
+            }
+          ],
+          "closingCues": [
+            {
+              "start": 20.47713,
+              "reveal": 0
+            },
+            {
+              "start": 24.70793,
+              "reveal": 1
+            },
+            {
+              "start": 26.74986,
+              "reveal": 2
+            },
+            {
+              "start": 28.30901,
+              "reveal": 3
+            },
+            {
+              "start": 30.78212,
+              "reveal": 4
+            },
+            {
+              "start": 32.43787,
+              "reveal": 5
+            },
+            {
+              "start": 33.59379,
+              "reveal": 6
+            },
+            {
+              "start": 34.10454,
+              "reveal": 7
+            }
+          ],
+          "visualCues": [
+            {
+              "start": 8.31826,
+              "end": 20.25,
+              "beat": 0,
+              "reveals": [
+                {
+                  "start": 14.66235,
+                  "reveal": 0
+                },
+                {
+                  "start": 15.97955,
+                  "reveal": 1
+                },
+                {
+                  "start": 17.44743,
+                  "reveal": 2
+                },
+                {
+                  "start": 18.84529,
+                  "reveal": 3
+                }
+              ]
+            }
+          ],
+          "scriptSha256": "174d7df4e8d0e26bc7b4ead44eff799c6938adf9714340e608e2c2f7558e17d7",
+          "sha256": "10eeabb9e04338b8e3e48653cae4e20b857e196aef64495177ab981b595d3dab",
+          "fullDecodePassed": true,
+          "audio": "assets/films/fb4a08f7a47183e184da/warm.mp3",
+          "video": "assets/films/fb4a08f7a47183e184da/warm.mp4",
+          "videoSha256": "90a1e940042ca0e4c5563d67e9ab7505b51463ebbf9d37a39e2966b2b5714bd7",
+          "subtitles": "assets/films/fb4a08f7a47183e184da/warm.srt"
+        },
+        "measured": {
+          "duration": 40.3,
+          "captions": [
+            {
+              "text": "Borrowers with defaulted federal student loans have",
+              "start": 0.61842,
+              "end": 4.22057
+            },
+            {
+              "text": "a new way to get back on track",
+              "start": 4.24745,
+              "end": 6.07541
+            },
+            {
+              "text": "for repayment, and it's all online.",
+              "start": 6.12917,
+              "end": 9.03097
+            },
+            {
+              "text": "The Treasury and Education departments launched a",
+              "start": 9.51332,
+              "end": 12.60472
+            },
+            {
+              "text": "support center Wednesday that lets borrowers compare",
+              "start": 12.68537,
+              "end": 16.3144
+            },
+            {
+              "text": "rehabilitation and consolidation,",
+              "start": 16.36816,
+              "end": 19.1101
+            },
+            {
+              "text": "upload documents and track progress.",
+              "start": 19.2556,
+              "end": 21.92442
+            },
+            {
+              "text": "Applying is only the start.",
+              "start": 22.60785,
+              "end": 24.64728
+            },
+            {
+              "text": "Borrowers must meet their chosen path's requirements",
+              "start": 24.84727,
+              "end": 28.09996
+            },
+            {
+              "text": "to leave default.",
+              "start": 28.15372,
+              "end": 29.45193
+            },
+            {
+              "text": "Default generally follows about nine months of",
+              "start": 29.65195,
+              "end": 32.50141
+            },
+            {
+              "text": "missed payments and can hurt credit,",
+              "start": 32.58206,
+              "end": 35.02829
+            },
+            {
+              "text": "making a car loan or apartment",
+              "start": 35.18958,
+              "end": 37.55518
+            },
+            {
+              "text": "harder to get.",
+              "start": 37.60894,
+              "end": 38.47739
+            }
+          ],
+          "wordTimings": [
+            {
+              "text": "Borrowers",
+              "start": 0.61842,
+              "end": 1.26358
+            },
+            {
+              "text": "with",
+              "start": 1.31734,
+              "end": 1.47863
+            },
+            {
+              "text": "defaulted",
+              "start": 1.55928,
+              "end": 2.2582
+            },
+            {
+              "text": "federal",
+              "start": 2.36573,
+              "end": 2.71519
+            },
+            {
+              "text": "student",
+              "start": 2.76896,
+              "end": 3.1453
+            },
+            {
+              "text": "loans",
+              "start": 3.19906,
+              "end": 4.00552
+            },
+            {
+              "text": "have",
+              "start": 4.08616,
+              "end": 4.22057
+            },
+            {
+              "text": "a",
+              "start": 4.24745,
+              "end": 4.30122
+            },
+            {
+              "text": "new",
+              "start": 4.38186,
+              "end": 4.54315
+            },
+            {
+              "text": "way",
+              "start": 4.59691,
+              "end": 4.81197
+            },
+            {
+              "text": "to",
+              "start": 4.86573,
+              "end": 4.91949
+            },
+            {
+              "text": "get",
+              "start": 4.97326,
+              "end": 5.13455
+            },
+            {
+              "text": "back",
+              "start": 5.18831,
+              "end": 5.45713
+            },
+            {
+              "text": "on",
+              "start": 5.48401,
+              "end": 5.6453
+            },
+            {
+              "text": "track",
+              "start": 5.72595,
+              "end": 6.07541
+            },
+            {
+              "text": "for",
+              "start": 6.12917,
+              "end": 6.2367
+            },
+            {
+              "text": "repayment,",
+              "start": 6.29046,
+              "end": 7.23132
+            },
+            {
+              "text": "and",
+              "start": 7.39261,
+              "end": 7.47326
+            },
+            {
+              "text": "it's",
+              "start": 7.50014,
+              "end": 7.63455
+            },
+            {
+              "text": "all",
+              "start": 7.71519,
+              "end": 7.98401
+            },
+            {
+              "text": "online.",
+              "start": 8.06466,
+              "end": 9.03097
+            },
+            {
+              "text": "The",
+              "start": 9.51332,
+              "end": 9.59397
+            },
+            {
+              "text": "Treasury",
+              "start": 9.67461,
+              "end": 10.26601
+            },
+            {
+              "text": "and",
+              "start": 10.34666,
+              "end": 10.4273
+            },
+            {
+              "text": "Education",
+              "start": 10.48107,
+              "end": 11.20687
+            },
+            {
+              "text": "departments",
+              "start": 11.26064,
+              "end": 11.98644
+            },
+            {
+              "text": "launched",
+              "start": 12.09397,
+              "end": 12.49719
+            },
+            {
+              "text": "a",
+              "start": 12.55096,
+              "end": 12.60472
+            },
+            {
+              "text": "support",
+              "start": 12.68537,
+              "end": 13.11547
+            },
+            {
+              "text": "center",
+              "start": 13.16924,
+              "end": 13.41117
+            },
+            {
+              "text": "Wednesday",
+              "start": 13.49182,
+              "end": 14.48644
+            },
+            {
+              "text": "that",
+              "start": 14.59397,
+              "end": 14.72838
+            },
+            {
+              "text": "lets",
+              "start": 14.78214,
+              "end": 15.02408
+            },
+            {
+              "text": "borrowers",
+              "start": 15.10472,
+              "end": 15.77676
+            },
+            {
+              "text": "compare",
+              "start": 15.83053,
+              "end": 16.3144
+            },
+            {
+              "text": "rehabilitation",
+              "start": 16.36816,
+              "end": 17.47031
+            },
+            {
+              "text": "and",
+              "start": 17.52408,
+              "end": 17.60472
+            },
+            {
+              "text": "consolidation,",
+              "start": 17.65848,
+              "end": 19.1101
+            },
+            {
+              "text": "upload",
+              "start": 19.2556,
+              "end": 19.71259
+            },
+            {
+              "text": "documents",
+              "start": 19.79323,
+              "end": 20.51904
+            },
+            {
+              "text": "and",
+              "start": 20.59969,
+              "end": 20.68033
+            },
+            {
+              "text": "track",
+              "start": 20.76098,
+              "end": 21.08356
+            },
+            {
+              "text": "progress.",
+              "start": 21.1642,
+              "end": 21.92442
+            },
+            {
+              "text": "Applying",
+              "start": 22.60785,
+              "end": 23.19925
+            },
+            {
+              "text": "is",
+              "start": 23.25301,
+              "end": 23.36054
+            },
+            {
+              "text": "only",
+              "start": 23.4143,
+              "end": 23.68312
+            },
+            {
+              "text": "the",
+              "start": 23.71,
+              "end": 23.79065
+            },
+            {
+              "text": "start.",
+              "start": 23.87129,
+              "end": 24.64728
+            },
+            {
+              "text": "Borrowers",
+              "start": 24.84727,
+              "end": 25.49243
+            },
+            {
+              "text": "must",
+              "start": 25.57308,
+              "end": 25.81501
+            },
+            {
+              "text": "meet",
+              "start": 25.86877,
+              "end": 26.05695
+            },
+            {
+              "text": "their",
+              "start": 26.11071,
+              "end": 26.272
+            },
+            {
+              "text": "chosen",
+              "start": 26.35265,
+              "end": 26.83652
+            },
+            {
+              "text": "path's",
+              "start": 26.91716,
+              "end": 27.32039
+            },
+            {
+              "text": "requirements",
+              "start": 27.37415,
+              "end": 28.09996
+            },
+            {
+              "text": "to",
+              "start": 28.15372,
+              "end": 28.23437
+            },
+            {
+              "text": "leave",
+              "start": 28.28813,
+              "end": 28.53006
+            },
+            {
+              "text": "default.",
+              "start": 28.58383,
+              "end": 29.45193
+            },
+            {
+              "text": "Default",
+              "start": 29.65195,
+              "end": 30.10894
+            },
+            {
+              "text": "generally",
+              "start": 30.18958,
+              "end": 30.61969
+            },
+            {
+              "text": "follows",
+              "start": 30.72722,
+              "end": 31.21109
+            },
+            {
+              "text": "about",
+              "start": 31.26485,
+              "end": 31.61431
+            },
+            {
+              "text": "nine",
+              "start": 31.72184,
+              "end": 32.0713
+            },
+            {
+              "text": "months",
+              "start": 32.12507,
+              "end": 32.39388
+            },
+            {
+              "text": "of",
+              "start": 32.42077,
+              "end": 32.50141
+            },
+            {
+              "text": "missed",
+              "start": 32.58206,
+              "end": 32.82399
+            },
+            {
+              "text": "payments",
+              "start": 32.87776,
+              "end": 33.52292
+            },
+            {
+              "text": "and",
+              "start": 33.57668,
+              "end": 33.65733
+            },
+            {
+              "text": "can",
+              "start": 33.71109,
+              "end": 33.87238
+            },
+            {
+              "text": "hurt",
+              "start": 33.95302,
+              "end": 34.19496
+            },
+            {
+              "text": "credit,",
+              "start": 34.27561,
+              "end": 35.02829
+            },
+            {
+              "text": "making",
+              "start": 35.18958,
+              "end": 35.48528
+            },
+            {
+              "text": "a",
+              "start": 35.53905,
+              "end": 35.59281
+            },
+            {
+              "text": "car",
+              "start": 35.67345,
+              "end": 36.02292
+            },
+            {
+              "text": "loan",
+              "start": 36.10356,
+              "end": 36.6412
+            },
+            {
+              "text": "or",
+              "start": 36.72184,
+              "end": 36.99066
+            },
+            {
+              "text": "apartment",
+              "start": 37.0713,
+              "end": 37.55518
+            },
+            {
+              "text": "harder",
+              "start": 37.60894,
+              "end": 37.90464
+            },
+            {
+              "text": "to",
+              "start": 37.9584,
+              "end": 38.03905
+            },
+            {
+              "text": "get.",
+              "start": 38.11969,
+              "end": 38.47739
+            }
+          ],
+          "chapters": [
+            {
+              "kind": "ident",
+              "label": "Bearing",
+              "start": 0,
+              "end": 0.28
+            },
+            {
+              "kind": "opening",
+              "label": "The Shift",
+              "start": 0.28,
+              "end": 9.339
+            },
+            {
+              "kind": "story",
+              "label": "The Options",
+              "start": 9.339,
+              "end": 22.319
+            },
+            {
+              "kind": "closing",
+              "label": "The Stakes",
+              "start": 22.319,
+              "end": 38.785
+            },
+            {
+              "kind": "outro",
+              "label": "Up next",
+              "start": 38.785,
+              "end": 40.3
+            }
+          ],
+          "provider": "kokoro-local-cpu",
+          "voiceName": "Michael",
+          "performanceRate": 0.93,
+          "silenceEdits": [
+            {
+              "after": "consolidation,",
+              "before": "upload",
+              "removedSeconds": 0.04267,
+              "gapBefore": 0.18817,
+              "gapAfter": 0.1455,
+              "quietPeak": 0.0015564,
+              "phase": "story"
+            },
+            {
+              "after": "start.",
+              "before": "Borrowers",
+              "removedSeconds": 0.20754,
+              "gapBefore": 0.40753,
+              "gapAfter": 0.19999,
+              "quietPeak": 0.0009766,
+              "phase": "closing"
+            },
+            {
+              "after": "default.",
+              "before": "Default",
+              "removedSeconds": 0.11575,
+              "gapBefore": 0.31577,
+              "gapAfter": 0.20002,
+              "quietPeak": 0.000885,
+              "phase": "closing"
+            }
+          ],
+          "narrationFlow": {
+            "minimumSentenceGap": 0.2,
+            "minimumPhraseGap": 0.12
+          },
+          "openingCues": [
+            {
+              "start": 0.61842,
+              "reveal": 0
+            },
+            {
+              "start": 1.55928,
+              "reveal": 1
+            }
+          ],
+          "closingCues": [
+            {
+              "start": 22.60785,
+              "reveal": 0
+            },
+            {
+              "start": 27.37415,
+              "reveal": 1
+            },
+            {
+              "start": 29.65195,
+              "reveal": 2
+            },
+            {
+              "start": 31.26485,
+              "reveal": 3
+            },
+            {
+              "start": 33.71109,
+              "reveal": 4
+            },
+            {
+              "start": 35.53905,
+              "reveal": 5
+            },
+            {
+              "start": 37.0713,
+              "reveal": 6
+            },
+            {
+              "start": 37.60894,
+              "reveal": 7
+            }
+          ],
+          "visualCues": [
+            {
+              "start": 9.51332,
+              "end": 22.319,
+              "beat": 0,
+              "reveals": [
+                {
+                  "start": 16.36816,
+                  "reveal": 0
+                },
+                {
+                  "start": 17.65848,
+                  "reveal": 1
+                },
+                {
+                  "start": 19.2556,
+                  "reveal": 2
+                },
+                {
+                  "start": 20.76098,
+                  "reveal": 3
+                }
+              ]
+            }
+          ],
+          "scriptSha256": "174d7df4e8d0e26bc7b4ead44eff799c6938adf9714340e608e2c2f7558e17d7",
+          "sha256": "75b6642982f14624867b88efcf8f4b7c14f4ca9ec4f87b1cfb46a1bbf86907bc",
+          "fullDecodePassed": true,
+          "audio": "assets/films/fb4a08f7a47183e184da/measured.mp3",
+          "video": "assets/films/fb4a08f7a47183e184da/measured.mp4",
+          "videoSha256": "599f3f6d24337feeb823f8cfd441c2c499dee006151331b378113d5ee88fe5e9",
+          "subtitles": "assets/films/fb4a08f7a47183e184da/measured.srt"
+        }
+      },
+      "music": {
+        "drift": "assets/studio/score-fb4a08f7a47183e184da-drift.mp3",
+        "piano": "assets/studio/score-fb4a08f7a47183e184da-piano.mp3",
+        "signature": "assets/studio/score-fb4a08f7a47183e184da-signature.mp3",
+        "handoff": "assets/studio/score-fb4a08f7a47183e184da-handoff.mp3",
+        "bridge": "assets/studio/score-fb4a08f7a47183e184da-bridge.mp3"
+      },
+      "image": "assets/films/fb4a08f7a47183e184da/measured-poster.png",
+      "video": "assets/films/fb4a08f7a47183e184da/measured.mp4",
+      "builtAt": "2026-10-01T16:32:05.373063+00:00",
+      "sourceScriptSha256": "174d7df4e8d0e26bc7b4ead44eff799c6938adf9714340e608e2c2f7558e17d7",
+      "production": {
+        "pipeline": "finished-film-v1",
+        "visualDecision": "original produced film",
+        "renderer": "film_visuals.py",
+        "sourceBound": true,
+        "standaloneMaster": "assets/films/fb4a08f7a47183e184da/measured.mp4",
+        "compositionHash": "f495a07940c88af6aa0f4df715215012032077ca82bdcf633793c85176e59a08",
+        "selection": {
+          "selectionId": "selection-6fa7e2370b86374d3e57fb74",
+          "eventId": "event-a347e2e1848fea",
+          "mode": "live",
+          "product": {
+            "id": "focus",
+            "name": "In Focus",
+            "purpose": "What does the viewer need help understanding?",
+            "format": "A produced explanation of mechanisms, consequences and unresolved questions.",
+            "freshnessHours": 72
+          },
+          "sourceRevision": "9a71050bdf7899000641154eaa0758e335cd6e2c76ca80912a80ec8a622c6d0e",
+          "scriptRevision": "174d7df4e8d0e26bc7b4ead44eff799c6938adf9714340e608e2c2f7558e17d7",
+          "voiceRevision": "94c3b8de8f05bbc3a80768fbad620573649a3dd7052d352eb073fa5cb8b1d615",
+          "approval": {
+            "at": "2026-10-01T16:31:25.998586Z",
+            "actor": "Angelo - approval in chat, recorded by Codex",
+            "note": "User instruction October1: complete the full production. Applies to the exact80wordrevision just presented, with original story-specific graphics and existing measured narration. Authorizes producing the complete segment and delivering it into the local playlist after technical picture/sound/playback checks; not a claim of prior listening acceptance.",
+            "revision": 14,
+            "scriptHash": "174d7df4e8d0e26bc7b4ead44eff799c6938adf9714340e608e2c2f7558e17d7",
+            "sourceRevision": "9a71050bdf7899000641154eaa0758e335cd6e2c76ca80912a80ec8a622c6d0e",
+            "voiceRevision": "94c3b8de8f05bbc3a80768fbad620573649a3dd7052d352eb073fa5cb8b1d615",
+            "packetHash": "58971fe2b15b74acaa19eded88bf3ae6bd356a1e698648107d85189c5e36e537",
+            "id": "approval-186cd0a58f887b2c11e015c1"
+          },
+          "whyNow": "The September30 support-center launch gives borrowers a new online route toward repayment. On October1 explain its options and why resolving default matters for credit, financing and renting.",
+          "selectedAt": "2026-09-30T22:12:58.549558Z",
+          "context": {
+            "product": {
+              "id": "focus",
+              "name": "In Focus",
+              "purpose": "What does the viewer need help understanding?",
+              "format": "A produced explanation of mechanisms, consequences and unresolved questions.",
+              "freshnessHours": 72
+            },
+            "whyNow": "The September30 support-center launch gives borrowers a new online route toward repayment. On October1 explain its options and why resolving default matters for credit, financing and renting.",
+            "producerNote": "Codex — selection proposed for user review. Script and production plan remain pending user approval.",
+            "opportunity": {
+              "title": "Treasury launches student loan support center as new data show 9.3 million borrowers in default",
+              "topic": "business",
+              "summary": "The Trump administration announced on Wednesday that it was launching a \"Default Loans Support Center\" for student loan borrowers who've fallen behind.",
+              "whyNow": {
+                "text": "CNBC published this report at 2026-09-30T15:56:15+00:00.",
+                "at": "2026-09-30T15:56:15+00:00",
+                "status": "fresh",
+                "ageMinutes": 376.7
+              },
+              "strategy": {
+                "reason": "Household costs and consumer utility (borrowers, student loan)",
+                "matches": [
+                  {
+                    "id": "household",
+                    "label": "Household costs and consumer utility",
+                    "terms": [
+                      "borrowers",
+                      "student loan"
+                    ],
+                    "evidenceIds": [
+                      "auto-bf2e58c53bb630"
+                    ]
+                  }
+                ]
+              },
+              "fits": {
+                "brief": {
+                  "score": 53,
+                  "rank": 4,
+                  "label": "Consider",
+                  "reasons": [
+                    {
+                      "text": "Household costs and consumer utility: borrowers, student loan.",
+                      "terms": [
+                        "borrowers",
+                        "student loan"
+                      ],
+                      "evidenceIds": [
+                        "auto-bf2e58c53bb630"
+                      ],
+                      "contribution": 24
+                    },
+                    {
+                      "text": "Dated reporting is within this product's 24-hour review window.",
+                      "terms": [],
+                      "evidenceIds": [
+                        "auto-bf2e58c53bb630"
+                      ]
+                    }
+                  ],
+                  "gaps": [
+                    "One reporting origin in this cluster; seek independent reporting or primary evidence."
+                  ]
+                },
+                "focus": {
+                  "score": 50,
+                  "rank": 11,
+                  "label": "Consider",
+                  "reasons": [
+                    {
+                      "text": "Household costs and consumer utility: borrowers, student loan.",
+                      "terms": [
+                        "borrowers",
+                        "student loan"
+                      ],
+                      "evidenceIds": [
+                        "auto-bf2e58c53bb630"
+                      ],
+                      "contribution": 18
+                    },
+                    {
+                      "text": "Dated reporting is within this product's 72-hour review window.",
+                      "terms": [],
+                      "evidenceIds": [
+                        "auto-bf2e58c53bb630"
+                      ]
+                    }
+                  ],
+                  "gaps": [
+                    "One reporting origin in this cluster; seek independent reporting or primary evidence.",
+                    "Before production: establish the explanatory question, visuals, source rights and what remains unresolved."
+                  ]
+                }
+              },
+              "gaps": [
+                "One reporting origin in this cluster; seek independent reporting or primary evidence."
+              ],
+              "localSignal": null,
+              "change": {
+                "material": false,
+                "at": "2026-09-30T16:42:01.718839Z",
+                "evidenceIds": [],
+                "details": [],
+                "kind": "new",
+                "text": "New to this desk. Discovery time is not evidence of a new development."
+              },
+              "decision": {
+                "action": "none",
+                "note": "",
+                "at": null,
+                "history": []
+              }
+            },
+            "observedAt": "2026-09-30T22:12:01.271192+00:00",
+            "limitations": [
+              "Recommendations are explainable heuristics, not verified facts or assignments.",
+              "Publication timestamps establish recency, not independent verification of a new event.",
+              "Material-change flags compare retained excerpts; missing or subtle changes may not be detected.",
+              "Local convergence requires explicit original-reporting provenance from distinct owners and markets; it is not a national-trend finding."
+            ],
+            "discoveryStatus": {
+              "state": "outside-current-intake",
+              "checkedAt": "2026-10-01T16:30:27.221667Z",
+              "note": "The original opportunity and source remain historical discovery context. Only the explicitly reviewed primary evidence supports the current script; no availability is asserted for archived reporting."
+            },
+            "sourceBasis": "reviewed-primary",
+            "reassessmentReason": "Network-restricted intake caused the initial hold. Normal collection now succeeds, but this report aged out of the healthy CNBC rolling feed. Use freshly checked ED/Treasury, FSA and CFPB as factual authorities, retaining CNBC and the original choice as discovery history. Rechecked launch, requirements, definition and credit effects on October1; adopt the authorized80wordscript with the September30 launch peg."
+          },
+          "evidence": [
+            {
+              "id": "treasury-launch",
+              "publisher": "U.S. Department of the Treasury",
+              "url": "https://home.treasury.gov/news/press-releases/sb0639/",
+              "headline": "U.S. Department of the Treasury and U.S. Department of Education Launch New Defaulted Loans Support Center",
+              "excerpt": "September 30, 2026. The U.S. Department of the Treasury (Treasury) and the U.S. Department of Education (ED) announced the launch of the Defaulted Loans Support Center, a new online portal that gives Americans with defaulted federal student loans a simpler way to understand their options, address default, and return to repayment. Now, defaulted borrowers have a centralized portal to: Understand the consequences of default; Compare available paths out of default; Apply online for loan rehabilitation or consolidation; Make a payment on a defaulted loan; and Review repayment plans and loan-discharge options. Borrowers can also complete the loan rehabilitation application online, upload documents, review an estimated payment, electronically sign their agreement, and track progress without leaving StudentAid.gov.",
+              "publishedTime": null,
+              "checkedAt": "2026-10-01T16:19:10Z",
+              "reviewNote": "Reread October1 at16:19:10UTC; the retained excerpt remains supported. Treasury indexed official release and FSA direct guidance; old mail/fax instructions are not used.",
+              "origin": "reviewed-primary",
+              "available": true,
+              "contentHash": "dde931e846e90d771824b4b16d9750affdfb7d521d42dac0bbe38c04ff3fe6ac"
+            },
+            {
+              "id": "fsa-requirements",
+              "publisher": "Federal Student Aid",
+              "url": "https://studentaid.gov/articles/default/",
+              "headline": "Student Loan Default and Collections: FAQs",
+              "excerpt": "Loan rehabilitation is a method of getting your federal student loan(s) out of default. You make a certain number of consecutive, on-time payments to ED or the guaranty agency (FFEL borrowers only) under a rehabilitation agreement. You must also sign a Rehabilitation Agreement Letter.",
+              "publishedTime": null,
+              "checkedAt": "2026-10-01T16:19:10Z",
+              "reviewNote": "Reread October1 at16:19:10UTC; the retained excerpt remains supported. Treasury indexed official release and FSA direct guidance; old mail/fax instructions are not used.",
+              "origin": "reviewed-primary",
+              "available": true,
+              "contentHash": "e4828ba9fed592f2a119d93c938d55e2726ec0574cd01a2ffce67d28ef04f40b"
+            },
+            {
+              "id": "ed-launch-20260930",
+              "publisher": "U.S. Department of Education",
+              "url": "https://www.ed.gov/about/news/press-release/us-department-of-education-and-us-department-of-treasury-launch-new-defaulted-loans-support-center",
+              "headline": "U.S. Department of Education and U.S. Department of the Treasury Launch New Defaulted Loans Support Center",
+              "excerpt": "September 30, 2026. The U.S. Department of Education (ED) and the U.S. Department of the Treasury (Treasury) announced the launch of the Defaulted Loans Support Center, a new online portal that gives Americans with defaulted federal student loans a simpler way to understand their options, address default, and return to repayment. Compare available paths out of default; Apply online for loan rehabilitation or consolidation; Borrowers can also complete the loan rehabilitation application online, upload documents, review an estimated payment, electronically sign their agreement, and track their progress without leaving StudentAid.gov.",
+              "publishedTime": null,
+              "checkedAt": "2026-10-01T16:19:10Z",
+              "reviewNote": "Rechecked October1 at16:19:10UTC against the official page. ED full indexed release used after direct403; FSA and CFPB read directly. Excerpts combine separated relevant passages; they are not a single uninterrupted quotation.",
+              "origin": "reviewed-primary",
+              "available": true,
+              "contentHash": "d97b0a4099e22c2074caa91a2a89ac7e26aa48804b9fda0a1f6e21f6471ddff6"
+            },
+            {
+              "id": "fsa-default-20261001",
+              "publisher": "Federal Student Aid",
+              "url": "https://studentaid.gov/articles/default/",
+              "headline": "Student Loan Default and Collections: FAQs",
+              "excerpt": "If you don’t make your scheduled loan payments for at least 270 days, your federal student loan goes into default. Loan rehabilitation is a method of getting your federal student loan(s) out of default. You make a certain number of consecutive, on-time payments to ED or the guaranty agency (FFEL borrowers only) under a rehabilitation agreement. You must also sign a Rehabilitation Agreement Letter. If action isn’t taken within 65 days of your loan(s) being placed in default, DRG (on behalf of ED) will report your loan(s) as in default to the four major credit reporting agencies: Equifax, Experian, Innovis, and TransUnion.",
+              "publishedTime": null,
+              "checkedAt": "2026-10-01T16:19:10Z",
+              "reviewNote": "Rechecked October1 at16:19:10UTC against the official page. ED full indexed release used after direct403; FSA and CFPB read directly. Excerpts combine separated relevant passages; they are not a single uninterrupted quotation.",
+              "origin": "reviewed-primary",
+              "available": true,
+              "contentHash": "8a0b676d802d59d0215d2b51e33ae90a5adea4e85775be85078201ca0fbcc096"
+            },
+            {
+              "id": "cfpb-default-definition",
+              "publisher": "Consumer Financial Protection Bureau",
+              "url": "https://www.consumerfinance.gov/ask-cfpb/what-happens-if-i-default-on-a-federal-student-loan-en-663/",
+              "headline": "What happens if I default on a federal student loan?",
+              "excerpt": "For most federal student loans, you default if you have not made a payment in more than 270 days. If you haven’t made a payment on your federal student loan for at least 270 days (nine months), and you have not entered into an agreement with your lender or servicer to postpone your payments (like deferment or forbearance), you are probably in default. Credit reporting companies are notified, which generally means a lower credit score for you",
+              "publishedTime": null,
+              "checkedAt": "2026-10-01T16:19:10Z",
+              "reviewNote": "Use the qualified definition and credit effect only. Older discussion of Fresh Start and SAVE on this page is not current evidence and is not used. Rechecked October1 at16:19:10UTC against the official page. ED full indexed release used after direct403; FSA and CFPB read directly. Excerpts combine separated relevant passages; they are not a single uninterrupted quotation.",
+              "origin": "reviewed-primary",
+              "available": true,
+              "contentHash": "efe89320f0df3d104a82c1f20546ad0e2c29628151e736bf962c32cb1dd90b7f"
+            },
+            {
+              "id": "cfpb-credit-impact",
+              "publisher": "Consumer Financial Protection Bureau",
+              "url": "https://www.consumerfinance.gov/ask-cfpb/why-do-i-need-a-credit-history-en-2154/",
+              "headline": "Why do I need a credit history?",
+              "excerpt": "To make most large purchases, such as homes and cars, people borrow money. Your credit history makes a difference in the cost you pay for the loan. Landlords check your credit to decide whether to rent to you, and whether to ask you for a larger security deposit. When there are negative items on your credit report, like missed payments or high balances, it can be harder or more expensive to do the things you want to do: You could be turned down for a loan or offered a loan with more expensive terms",
+              "publishedTime": null,
+              "checkedAt": "2026-10-01T16:19:10Z",
+              "reviewNote": "Rechecked October1 at16:19:10UTC against the official page. ED full indexed release used after direct403; FSA and CFPB read directly. Excerpts combine separated relevant passages; they are not a single uninterrupted quotation.",
+              "origin": "reviewed-primary",
+              "available": true,
+              "contentHash": "58a41b501f576ca641ee021a3a2d8eaaef5827123c9a5a71cb80f57d9ef0b02f"
+            }
+          ],
+          "sourceBasis": "reviewed-primary",
+          "discoveryEvidence": [
+            {
+              "source": {
+                "id": "auto-bf2e58c53bb630",
+                "publisher": "CNBC",
+                "url": "https://www.cnbc.com/2026/09/30/student-loan-default-support-center.html",
+                "publishedTime": "2026-09-30T15:56:15+00:00",
+                "headline": "Treasury launches student loan support center as new data show 9.3 million borrowers in default",
+                "excerpt": "The Trump administration announced on Wednesday that it was launching a \"Default Loans Support Center\" for student loan borrowers who've fallen behind.",
+                "contentHash": "c29bad2f71264f436196618ef17a7ff359cd42ff19f45d01c6aa5ed695075ed2",
+                "origin": "intake",
+                "available": true,
+                "holdReasons": [
+                  "editorial_review_required",
+                  "source_requires_review"
+                ]
+              },
+              "archivedAt": "2026-10-01T16:30:27.197484Z",
+              "actor": "Codex - authorized editorial production",
+              "reason": "Network-restricted intake caused the initial hold. Normal collection now succeeds, but this report aged out of the healthy CNBC rolling feed. Use freshly checked ED/Treasury, FSA and CFPB as factual authorities, retaining CNBC and the original choice as discovery history. Rechecked launch, requirements, definition and credit effects on October1; adopt the authorized80wordscript with the September30 launch peg.",
+              "lastObserved": {
+                "id": "auto-bf2e58c53bb630",
+                "publisher": "CNBC",
+                "url": "https://www.cnbc.com/2026/09/30/student-loan-default-support-center.html",
+                "publishedTime": "2026-09-30T22:15:29+00:00",
+                "headline": "Treasury launches student loan support center as new data show 9.3 million borrowers in default",
+                "excerpt": "The Trump administration announced on Wednesday that it was launching a \"Default Loans Support Center\" for student loan borrowers who've fallen behind.",
+                "contentHash": "c29bad2f71264f436196618ef17a7ff359cd42ff19f45d01c6aa5ed695075ed2",
+                "origin": "intake",
+                "available": true,
+                "holdReasons": [
+                  "editorial_review_required",
+                  "source_requires_review"
+                ]
+              },
+              "reassessedAt": "2026-10-01T16:30:27.220956Z"
+            }
+          ]
+        }
+      },
+      "visual": {
+        "scope": "story",
+        "storyId": "selected-student-loan-support-20261001-v2",
+        "scriptSha256": "174d7df4e8d0e26bc7b4ead44eff799c6938adf9714340e608e2c2f7558e17d7",
+        "reviewedAt": "2026-10-01",
+        "image": "assets/films/fb4a08f7a47183e184da/measured-poster.png",
+        "video": "assets/films/fb4a08f7a47183e184da/measured.mp4",
+        "imageSha256": "2aac0f1036fed1cb03e0ac54acceafaa3b70aaf3151c267d4c066fa1211ea735",
+        "videoSha256": "599f3f6d24337feeb823f8cfd441c2c499dee006151331b378113d5ee88fe5e9",
+        "alt": "Original1080p film: online default help, two narrated options, a requirements bridge and a qualified nine-month default timeline leading to credit, car-financing and rental consequences. Every factual reveal follows its narration cue."
+      },
+      "editorial": {
+        "version": "us-impact-v2",
+        "dimensions": {
+          "domesticSource": 35,
+          "publisherPriority": 0,
+          "consumerImpact": 0,
+          "concretePolicy": 0,
+          "roundupPenalty": 0
+        },
+        "roundup": false,
+        "domestic": true,
+        "publisher": "U.S. Department of Education",
+        "focus": "general",
+        "score": 35,
+        "suppressed": false,
+        "reason": "Supporting coverage",
         "foreignLocal": false
       }
     }

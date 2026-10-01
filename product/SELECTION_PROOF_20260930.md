@@ -1,6 +1,8 @@
 # Selection-to-production checkpoint — September 30, 2026
 
-**Status: implemented and browser-checked; the real story is prepared, awaiting the user's script approval. The finished-asset mission remains active.**
+**Historical checkpoint, September 30. The preparation status below was superseded by the [completed October 1 production](STUDENT_LOAN_PRODUCTION_20261001.md).**
+
+At this checkpoint the implementation was browser-checked, but the real story still awaited approval and a finished asset. Retain the following as dated evidence, not current instructions.
 
 The September 30 pull advanced `master` from `08ec13a` to `9c07f50` and introduced the [selection-to-production mission](SELECTION_TO_PRODUCTION.md). This checkpoint connects the native Easy News producer desk to Bearing's existing film machinery. The archival `easynews-reference` project was not inspected or used.
 

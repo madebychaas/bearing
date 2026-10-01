@@ -1,0 +1,285 @@
+{
+  "schema": 1,
+  "story": {
+    "id": "selected-student-loan-support-20261001-v2",
+    "topic": "business",
+    "topicLabel": "Money & economy",
+    "title": "Default help moves online",
+    "dek": "A new federal portal brings default-resolution applications and paperwork online.",
+    "script": "Borrowers with defaulted federal student loans have a new way to get back on track for repayment, and it's all online. The Treasury and Education departments launched a support center Wednesday that lets borrowers compare rehabilitation and consolidation, upload documents and track progress. Applying is only the start. Borrowers must meet their chosen path's requirements to leave default. Default generally follows about nine months of missed payments and can hurt credit, making a car loan or apartment harder to get.",
+    "source": {
+      "name": "U.S. Department of Education",
+      "title": "U.S. Department of Education and U.S. Department of the Treasury Launch New Defaulted Loans Support Center",
+      "url": "https://www.ed.gov/about/news/press-release/us-department-of-education-and-us-department-of-treasury-launch-new-defaulted-loans-support-center"
+    },
+    "publisherGroup": "U.S. Department of Education",
+    "publishedAt": "2026-09-30",
+    "dateLabel": "30 Sep 2026",
+    "expiresAt": "2026-10-03T00:00:00Z",
+    "reviewStatus": "verified",
+    "reviewedAt": "2026-10-01",
+    "reviewMethod": "October 1 primary-source accuracy and rights recheck, followed by the user instruction to complete the full production of the revised 80-word script. Approval recorded separately in the selection history.",
+    "editorialNote": "September 30 launch remains the specific current development. Generally/about qualify the nine-month default threshold; can qualifies possible credit and housing/borrowing consequences. Applying does not resolve default, and leaving default does not automatically repair credit. Older 9.3 million figure and current collection-policy claims are excluded.",
+    "visualDisclosure": "Original Bearing explanatory graphics, locally synthesized AI narration and original synthesized music. No third-party photographs, footage, logos or screenshots.",
+    "facts": []
+  },
+  "editorialSource": {
+    "domestic": true,
+    "publisherGroup": "U.S. Department of Education"
+  },
+  "plan": {
+    "sourceScriptSha256": "174d7df4e8d0e26bc7b4ead44eff799c6938adf9714340e608e2c2f7558e17d7",
+    "title": "Default help moves online",
+    "why": "Borrowers can handle default-resolution applications and supporting paperwork online.",
+    "openingNarration": "Borrowers with defaulted federal student loans have a new way to get back on track for repayment, and it's all online.",
+    "body": "The Treasury and Education departments launched a support center Wednesday that lets borrowers compare rehabilitation and consolidation, upload documents and track progress.",
+    "closingNarration": "Applying is only the start. Borrowers must meet their chosen path's requirements to leave default. Default generally follows about nine months of missed payments and can hurt credit, making a car loan or apartment harder to get.",
+    "summary": "Applying starts a process; default can also affect everyday access to credit and housing.",
+    "lookAhead": "Borrowers still need to complete their chosen route. Credit damage can make financing and renting harder.",
+    "visualTreatment": "finished-film",
+    "soundTreatment": "editorial-score",
+    "narrationRate": 0.93,
+    "maxDuration": 45,
+    "timing": {
+      "ident": 0.28,
+      "lead": 0.08,
+      "tail": 0.16,
+      "outro": 1.5
+    },
+    "chapterLabels": {
+      "opening": "The Shift",
+      "story": "The Options",
+      "closing": "The Stakes"
+    },
+    "editorialTiming": {
+      "mode": "current",
+      "developmentDate": "2026-09-30",
+      "sourcePublishedDate": "2026-09-30",
+      "checkedAt": "2026-10-01",
+      "basis": "new-development",
+      "triggerDate": "2026-09-30",
+      "validThrough": "2026-10-02",
+      "reason": "Treasury and Education launched the Defaulted Loans Support Center September 30. Explain the newly announced online process, while distinguishing applying from completing default resolution.",
+      "evidenceUrl": "https://www.ed.gov/about/news/press-release/us-department-of-education-and-us-department-of-treasury-launch-new-defaulted-loans-support-center"
+    },
+    "openingReveals": [
+      {
+        "cue": "Borrowers",
+        "role": "lead"
+      },
+      {
+        "cue": "defaulted federal student loans",
+        "role": "impact"
+      }
+    ],
+    "beats": [
+      {
+        "kind": "service",
+        "label": "THE ONLINE PROCESS",
+        "text": "Two options, with paperwork and progress online.",
+        "cue": "The Treasury and Education departments",
+        "reveals": [
+          {
+            "cue": "rehabilitation",
+            "role": "rehabilitation"
+          },
+          {
+            "cue": "consolidation",
+            "role": "consolidation"
+          },
+          {
+            "cue": "upload documents",
+            "role": "documents"
+          },
+          {
+            "cue": "track progress",
+            "role": "progress"
+          }
+        ]
+      }
+    ],
+    "closingReveals": [
+      {
+        "cue": "Applying is only the start",
+        "role": "hinge"
+      },
+      {
+        "cue": "requirements",
+        "role": "meaning"
+      },
+      {
+        "cue": "Default generally follows",
+        "role": "default"
+      },
+      {
+        "cue": "about nine months",
+        "role": "months"
+      },
+      {
+        "cue": "can hurt credit",
+        "role": "credit"
+      },
+      {
+        "cue": "a car loan",
+        "role": "car"
+      },
+      {
+        "cue": "apartment",
+        "role": "home"
+      },
+      {
+        "cue": "harder to get",
+        "role": "consequence"
+      }
+    ],
+    "review": {
+      "date": "2026-10-01",
+      "accuracy": "Rechecked October 1 at16:19:10UTC: official ED/Treasury launch, FSA requirements, CFPB default definition and credit consequences. Department launch date verifies Wednesday. Source excerpts kept with each spoken claim; archived policy programmes are excluded.",
+      "voice": "Exact revised 80-word script authorized by Angelo in chat: complete the full production. Whole-sentence Kokoro at0.93, protected first word and quiet-only gap trimming. Audio preflight:36.505secondsWarm/39.935secondsMeasured with framing, before final frame rounding. No faster speech to satisfy duration.",
+      "visuals": "Original impact lead, service choices with separate rehabilitation-tool band, requirements bridge, then a distinct cue-aligned default/credit/consequence graphic. Months, credit, car and housing reveal at spoken references in reading order. Qualifiers retained, no invented credit score or guaranteed rejection. Smooth1.5second scene blends, no shake.",
+      "rights": {
+        "graphics": "Original Bearing code and composition; no third-party visual assets or logos.",
+        "music": "Original Bearing composition and synthesis; no external samples.",
+        "facts": "Independently written prose from official federal announcements. CNBC discovery link is retained for lineage; no CNBC article prose or imagery is republished."
+      },
+      "authorization": "Angelo requested complete the full production after receiving this exact80wordrevision. Codex records the approval; this does not claim the viewer has listened to or accepted the new finished performance."
+    },
+    "narrationPauses": [],
+    "narrationFlow": {
+      "minimumSentenceGap": 0.2,
+      "minimumPhraseGap": 0.12
+    }
+  },
+  "visuals": {
+    "assets": [],
+    "description": "Original1080p film: online default help, two narrated options, a requirements bridge and a qualified nine-month default timeline leading to credit, car-financing and rental consequences. Every factual reveal follows its narration cue.",
+    "eyebrow": "IN FOCUS / STUDENT LOANS",
+    "headline": "Default help\nmoves online.",
+    "subline": "Federal student loans",
+    "service": {
+      "eyebrow": "THE ONLINE PROCESS",
+      "title": "Defaulted Loans Support Center",
+      "options": [
+        {
+          "label": "Rehabilitation",
+          "role": "rehabilitation"
+        },
+        {
+          "label": "Consolidation",
+          "role": "consolidation"
+        }
+      ],
+      "tools": [
+        {
+          "label": "Upload documents",
+          "role": "documents"
+        },
+        {
+          "label": "Track progress",
+          "role": "progress"
+        }
+      ],
+      "toolsLabel": "REHABILITATION TOOLS"
+    },
+    "closing": {
+      "eyebrow": "WHAT COMES NEXT",
+      "title": "Applying is\nonly the start.",
+      "text": "Requirements still apply.",
+      "destination": "StudentAid.gov/default-support",
+      "kind": "default-impact"
+    },
+    "credit": "SOURCE / EDUCATION DEPT. · FEDERAL STUDENT AID · CFPB",
+    "defaultImpact": {
+      "months": 9,
+      "qualifier": "Generally, about",
+      "eyebrow": "WHAT DEFAULT CAN MEAN",
+      "title": "The impact goes beyond the loan.",
+      "creditLabel": "Can hurt\ncredit",
+      "consequenceLabel": "Can be harder to get"
+    }
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "treasury-launch",
+        "publisher": "U.S. Department of the Treasury",
+        "url": "https://home.treasury.gov/news/press-releases/sb0639/",
+        "headline": "U.S. Department of the Treasury and U.S. Department of Education Launch New Defaulted Loans Support Center",
+        "excerpt": "September 30, 2026. The U.S. Department of the Treasury (Treasury) and the U.S. Department of Education (ED) announced the launch of the Defaulted Loans Support Center, a new online portal that gives Americans with defaulted federal student loans a simpler way to understand their options, address default, and return to repayment. Now, defaulted borrowers have a centralized portal to: Understand the consequences of default; Compare available paths out of default; Apply online for loan rehabilitation or consolidation; Make a payment on a defaulted loan; and Review repayment plans and loan-discharge options. Borrowers can also complete the loan rehabilitation application online, upload documents, review an estimated payment, electronically sign their agreement, and track progress without leaving StudentAid.gov.",
+        "publishedTime": null,
+        "checkedAt": "2026-10-01T16:19:10Z",
+        "reviewNote": "Reread October1 at16:19:10UTC; the retained excerpt remains supported. Treasury indexed official release and FSA direct guidance; old mail/fax instructions are not used.",
+        "origin": "reviewed-primary",
+        "available": true,
+        "contentHash": "dde931e846e90d771824b4b16d9750affdfb7d521d42dac0bbe38c04ff3fe6ac"
+      },
+      {
+        "id": "fsa-requirements",
+        "publisher": "Federal Student Aid",
+        "url": "https://studentaid.gov/articles/default/",
+        "headline": "Student Loan Default and Collections: FAQs",
+        "excerpt": "Loan rehabilitation is a method of getting your federal student loan(s) out of default. You make a certain number of consecutive, on-time payments to ED or the guaranty agency (FFEL borrowers only) under a rehabilitation agreement. You must also sign a Rehabilitation Agreement Letter.",
+        "publishedTime": null,
+        "checkedAt": "2026-10-01T16:19:10Z",
+        "reviewNote": "Reread October1 at16:19:10UTC; the retained excerpt remains supported. Treasury indexed official release and FSA direct guidance; old mail/fax instructions are not used.",
+        "origin": "reviewed-primary",
+        "available": true,
+        "contentHash": "e4828ba9fed592f2a119d93c938d55e2726ec0574cd01a2ffce67d28ef04f40b"
+      },
+      {
+        "id": "ed-launch-20260930",
+        "publisher": "U.S. Department of Education",
+        "url": "https://www.ed.gov/about/news/press-release/us-department-of-education-and-us-department-of-treasury-launch-new-defaulted-loans-support-center",
+        "headline": "U.S. Department of Education and U.S. Department of the Treasury Launch New Defaulted Loans Support Center",
+        "excerpt": "September 30, 2026. The U.S. Department of Education (ED) and the U.S. Department of the Treasury (Treasury) announced the launch of the Defaulted Loans Support Center, a new online portal that gives Americans with defaulted federal student loans a simpler way to understand their options, address default, and return to repayment. Compare available paths out of default; Apply online for loan rehabilitation or consolidation; Borrowers can also complete the loan rehabilitation application online, upload documents, review an estimated payment, electronically sign their agreement, and track their progress without leaving StudentAid.gov.",
+        "publishedTime": null,
+        "checkedAt": "2026-10-01T16:19:10Z",
+        "reviewNote": "Rechecked October1 at16:19:10UTC against the official page. ED full indexed release used after direct403; FSA and CFPB read directly. Excerpts combine separated relevant passages; they are not a single uninterrupted quotation.",
+        "origin": "reviewed-primary",
+        "available": true,
+        "contentHash": "d97b0a4099e22c2074caa91a2a89ac7e26aa48804b9fda0a1f6e21f6471ddff6"
+      },
+      {
+        "id": "fsa-default-20261001",
+        "publisher": "Federal Student Aid",
+        "url": "https://studentaid.gov/articles/default/",
+        "headline": "Student Loan Default and Collections: FAQs",
+        "excerpt": "If you don’t make your scheduled loan payments for at least 270 days, your federal student loan goes into default. Loan rehabilitation is a method of getting your federal student loan(s) out of default. You make a certain number of consecutive, on-time payments to ED or the guaranty agency (FFEL borrowers only) under a rehabilitation agreement. You must also sign a Rehabilitation Agreement Letter. If action isn’t taken within 65 days of your loan(s) being placed in default, DRG (on behalf of ED) will report your loan(s) as in default to the four major credit reporting agencies: Equifax, Experian, Innovis, and TransUnion.",
+        "publishedTime": null,
+        "checkedAt": "2026-10-01T16:19:10Z",
+        "reviewNote": "Rechecked October1 at16:19:10UTC against the official page. ED full indexed release used after direct403; FSA and CFPB read directly. Excerpts combine separated relevant passages; they are not a single uninterrupted quotation.",
+        "origin": "reviewed-primary",
+        "available": true,
+        "contentHash": "8a0b676d802d59d0215d2b51e33ae90a5adea4e85775be85078201ca0fbcc096"
+      },
+      {
+        "id": "cfpb-default-definition",
+        "publisher": "Consumer Financial Protection Bureau",
+        "url": "https://www.consumerfinance.gov/ask-cfpb/what-happens-if-i-default-on-a-federal-student-loan-en-663/",
+        "headline": "What happens if I default on a federal student loan?",
+        "excerpt": "For most federal student loans, you default if you have not made a payment in more than 270 days. If you haven’t made a payment on your federal student loan for at least 270 days (nine months), and you have not entered into an agreement with your lender or servicer to postpone your payments (like deferment or forbearance), you are probably in default. Credit reporting companies are notified, which generally means a lower credit score for you",
+        "publishedTime": null,
+        "checkedAt": "2026-10-01T16:19:10Z",
+        "reviewNote": "Use the qualified definition and credit effect only. Older discussion of Fresh Start and SAVE on this page is not current evidence and is not used. Rechecked October1 at16:19:10UTC against the official page. ED full indexed release used after direct403; FSA and CFPB read directly. Excerpts combine separated relevant passages; they are not a single uninterrupted quotation.",
+        "origin": "reviewed-primary",
+        "available": true,
+        "contentHash": "efe89320f0df3d104a82c1f20546ad0e2c29628151e736bf962c32cb1dd90b7f"
+      },
+      {
+        "id": "cfpb-credit-impact",
+        "publisher": "Consumer Financial Protection Bureau",
+        "url": "https://www.consumerfinance.gov/ask-cfpb/why-do-i-need-a-credit-history-en-2154/",
+        "headline": "Why do I need a credit history?",
+        "excerpt": "To make most large purchases, such as homes and cars, people borrow money. Your credit history makes a difference in the cost you pay for the loan. Landlords check your credit to decide whether to rent to you, and whether to ask you for a larger security deposit. When there are negative items on your credit report, like missed payments or high balances, it can be harder or more expensive to do the things you want to do: You could be turned down for a loan or offered a loan with more expensive terms",
+        "publishedTime": null,
+        "checkedAt": "2026-10-01T16:19:10Z",
+        "reviewNote": "Rechecked October1 at16:19:10UTC against the official page. ED full indexed release used after direct403; FSA and CFPB read directly. Excerpts combine separated relevant passages; they are not a single uninterrupted quotation.",
+        "origin": "reviewed-primary",
+        "available": true,
+        "contentHash": "58a41b501f576ca641ee021a3a2d8eaaef5827123c9a5a71cb80f57d9ef0b02f"
+      }
+    ],
+    "checkedAt": "2026-10-01T16:19:10Z",
+    "reviewMethod": "Primary recheck and exact source excerpts; contextual feed retained for discovery lineage. No new private account or eligibility test."
+  }
+}

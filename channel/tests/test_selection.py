@@ -181,6 +181,59 @@ class SelectionTests(unittest.TestCase):
   self.assertEqual(current['state'],'needs-reassessment');self.assertIsNone(current['approval'])
   self.assertIsNone(current['production']['result']);self.assertIn('last hour',current['reassessment']['reason'])
 
+ def rotate_selected_report(self,record):
+  step=copy.deepcopy(self.step);ids={e['id'] for e in record['evidence'] if e['origin']=='intake'}
+  step['reporting']['items']=[r for r in step['reporting']['items'] if r['id'] not in ids]
+  key='candidates' if 'candidates' in step['candidates'] else 'items'
+  step['candidates'][key]=[r for r in step['candidates'][key] if r['id'] not in ids]
+  self.write_step(step)
+
+ def test_rotated_discovery_can_be_explicitly_reassessed_onto_reviewed_primary_sources(self):
+  selected=self.act(self.select(),'evidence',sources=[self.primary()]);original=copy.deepcopy(selected['evidence'][0])
+  record=self.act(self.prepared(selected),'review',decision='approve',actor='Editor',note='The prior script and treatment were reviewed.')
+  archived={p:p.read_bytes() for p in (self.store._path(self.event,'live')/'revisions').glob('*.json')}
+  self.rotate_selected_report(record);held=self.store.get(self.event)['selection']
+  with self.assertRaisesRegex(selection.Conflict,'no longer present'):self.act(held,'reassess',reason='The original report has rotated out of the feed.')
+  with self.assertRaisesRegex(ValueError,'Reassessing editor'):self.act(held,'reassess',sourceBasis='reviewed-primary',reason='Use the freshly reviewed primary authorities after feed rotation.')
+  revised=self.act(held,'reassess',sourceBasis='reviewed-primary',actor='Named editor',reason='The discovery story rotated out of the feed; the freshly checked agency bulletin now supports the current treatment.')
+  self.assertEqual(revised['id'],record['id']);self.assertEqual(revised['eventId'],record['eventId'])
+  self.assertEqual(revised['sourceBasis'],'reviewed-primary');self.assertFalse(revised['reassessment']['required'])
+  self.assertTrue(all(e['origin']=='reviewed-primary' for e in revised['evidence']))
+  self.assertEqual(revised['discoveryEvidence'][0]['source'],original)
+  self.assertEqual(revised['context']['opportunity'],record['context']['opportunity'])
+  self.assertEqual(revised['context']['discoveryStatus']['state'],'outside-current-intake')
+  for field in ('approval','prepared','draftReview'):self.assertIsNone(revised[field])
+  for path,before in archived.items():self.assertEqual(path.read_bytes(),before)
+  self.assertNotIn(original['id'],{e['id'] for e in self.store._pack(revised)['evidence']})
+  with self.assertRaisesRegex(ValueError,'Evidence reference'):self.act(revised,'save',draft=record['draft'])
+  checked=self.prepared(revised)
+  approved=self.act(checked,'review',decision='approve',actor='Named editor',note='Reviewed only the primary-bound replacement and matched production plan.')
+  self.store._guard(self.event,'live',approved['approval']['id'])
+  self.assertEqual(self.store._lineage(approved)['discoveryEvidence'][0]['source'],original)
+
+ def test_primary_basis_requires_actual_current_review_even_after_feed_rotation(self):
+  record=self.select();self.rotate_selected_report(record);held=self.store.get(self.event)['selection']
+  with self.assertRaisesRegex(selection.Conflict,'requires explicitly reviewed'):self.act(held,'reassess',sourceBasis='reviewed-primary',actor='Editor',reason='The original report has left the rolling feed.')
+  record=self.act(held,'evidence',sources=[self.primary()]);self.now+=timedelta(hours=1,seconds=1)
+  held=self.store.get(self.event)['selection']
+  with self.assertRaisesRegex(selection.Conflict,'last hour'):self.act(held,'reassess',sourceBasis='reviewed-primary',actor='Editor',reason='The original report has left the rolling feed.')
+
+ def test_returning_discovery_correction_requires_reassessment_of_primary_treatment(self):
+  record=self.act(self.select(),'evidence',sources=[self.primary()]);self.rotate_selected_report(record)
+  held=self.store.get(self.event)['selection']
+  revised=self.act(held,'reassess',sourceBasis='reviewed-primary',actor='Editor',reason='Fresh primary evidence replaces the report that rotated out of the feed.')
+  approved=self.act(self.prepared(revised),'review',decision='approve',actor='Editor',note='Reviewed primary-supported replacement.')
+  self.write_step(self.step)
+  self.assertFalse(self.store.get(self.event)['selection']['reassessment']['required'])
+  self.write_step(self.fixture['steps'][1])
+  changed=self.store.get(self.event)['selection']
+  self.assertTrue(changed['reassessment']['required']);self.assertIn('discovery report returned',changed['reassessment']['reason'])
+  self.assertIsNone(changed['approval'])
+  with self.assertRaises(selection.Conflict):self.store._guard(self.event,'live',approved['approval']['id'])
+  reviewed=self.act(changed,'reassess',actor='Editor',reason='I compared the expanded recall report with the primary source; the treatment requires an updated edit.')
+  self.assertFalse(self.store.get(self.event)['selection']['reassessment']['required'])
+  self.assertIsNone(reviewed['prepared']);self.assertIsNone(reviewed['draftReview'])
+
  def test_preparation_requires_exact_script_and_explicit_treatment_review(self):
   record=self.prepared(self.select());packet=copy.deepcopy(record['prepared']['packet'])
   packet['plan']['body']+=' Additional unsupported narration.'
