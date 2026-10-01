@@ -4,6 +4,8 @@ import { createLatest } from './latest.js';
 import { createStudio } from './studio.js';
 import {isFinishedFilm,pictureSource,editionFamily,syncFinishedPicture} from './film-playback.js';
 import {createFilmChrome} from './film-chrome.js';
+import {createNewscast} from './newscast.js';
+import {personalQueue,nextPersonalStory,playerNewscastPreferences} from './newscast-state.js';
 const $ = id => document.getElementById(id);
 let cameraController=null;
 let pictureBuffering=false;
@@ -12,6 +14,7 @@ const filmChrome=createFilmChrome({host:$('player')});
 const topicNames={space:'Space & discovery',nature:'Nature & our planet',culture:'Art & culture',world:'U.S. & policy',technology:'Technology',business:'Money & economy',health:'Health',sport:'Sport',local:'North Texas'};
 const defaults = {topics:Object.keys(topicNames).filter(t=>t!=='local'),pace:1,voice:'warm',music:'drift',musicVolume:.12,captions:true,transitionSounds:true,reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches};
 let preferences = {...defaults}, stories = [], current = null, playing = false, started = false, captions = [], voiceForStory = 'warm', switching = false, resumeAfterDialog = false, failedIds = new Set(), lastRefresh=0, pendingEdition=null, editionVersion='', refreshing=null, rotationCycle=0, series="all", playRevision=0, advancing=false, transitionTimer=null;
+let activeNewscast=null,savedChannel=null,resumeAfterNewscast=false;
 try { const saved=JSON.parse(localStorage.getItem('current.preferences.v1')); if(saved && typeof saved==='object') preferences={...defaults,...saved}; } catch {}
 preferences.topics=Array.isArray(preferences.topics)?preferences.topics.filter(t=>topicNames[t]):[...defaults.topics];
 if(!preferences.topics.length) preferences.topics=[...defaults.topics];
@@ -20,13 +23,13 @@ if(!['warm','measured'].includes(preferences.voice)) preferences.voice='warm';
 if(!['off','drift','piano'].includes(preferences.music)) preferences.music='off';
 preferences.musicVolume=Math.max(0,Math.min(.35,Number(preferences.musicVolume)||0));
 const formatTime=seconds=>`${Math.floor((seconds||0)/60).toString().padStart(2,'0')}:${Math.floor((seconds||0)%60).toString().padStart(2,'0')}`;
-const eligible=(cycle=rotationCycle)=>selectPlaylist(stories,{topics:preferences.topics,series,cycle,failed:failedIds});
+const eligible=(cycle=rotationCycle)=>activeNewscast?personalQueue(activeNewscast.stories,failedIds):selectPlaylist(stories,{topics:preferences.topics,series,cycle,failed:failedIds});
 const displayTitle=story=>story.displayTitle||story.title;
-const studio=createStudio({host:$('player'),media:audio,music,getPreferences:()=>preferences,getState:()=>({playing,started,muted:audio.muted}),getNextTitle:()=>{const list=eligible();return displayTitle(list[(list.findIndex(s=>s.id===current?.id)+1)%list.length]||{});}});
+const studio=createStudio({host:$('player'),media:audio,music,getPreferences:()=>preferences,getState:()=>({playing,started,muted:audio.muted}),getNextTitle:()=>{if(activeNewscast)return displayTitle(nextPersonalStory(activeNewscast.stories,current?.id,failedIds)||{});const list=eligible();return displayTitle(list[(list.findIndex(s=>s.id===current?.id)+1)%list.length]||{});}});
 const upcomingMedia=document.createElement('audio');upcomingMedia.preload='metadata';
 const upcomingPicture=document.createElement('video');upcomingPicture.preload='auto';upcomingPicture.muted=true;
 function prepareNext(){
- const list=eligible(),index=list.findIndex(s=>s.id===current?.id),candidate=list[(index+1)%list.length],track=candidate?.voices[preferences.voice],url=track?.audio||track?.video;
+ const list=eligible(),index=list.findIndex(s=>s.id===current?.id),candidate=activeNewscast?nextPersonalStory(activeNewscast.stories,current?.id,failedIds):list[(index+1)%list.length],track=candidate?.voices[preferences.voice],url=track?.audio||track?.video;
  if(url&&candidate.id!==current?.id&&upcomingMedia.getAttribute('src')!==url){upcomingMedia.src=url;upcomingMedia.load();}
  const picture=isFinishedFilm(candidate)&&candidate.id!==current?.id?pictureSource(candidate,preferences.voice):null;
  if(picture&&upcomingPicture.getAttribute('src')!==picture){upcomingPicture.src=picture;upcomingPicture.load();}
@@ -35,12 +38,13 @@ function prepareNext(){
 const transitionSound=new Audio('assets/studio/sweep-v2.wav');
 function cancelTransition(){clearTimeout(transitionTimer);transitionTimer=null;$('channel-transition').classList.remove('active');transitionSound.pause();}
 function node(tag,cls,text){const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;}
-function storePreferences(){try{localStorage.setItem('current.preferences.v1',JSON.stringify(preferences));}catch{}latest.preferencesChanged();}
+function storePreferences(){if(!activeNewscast)try{localStorage.setItem('current.preferences.v1',JSON.stringify(preferences));}catch{}latest.preferencesChanged();}
 function message(text){$('player-message').textContent=text;$('player-message').hidden=!text;}
 function editionMetadata(edition){const date=new Date(`${edition.edition}T12:00:00Z`);if(!Number.isFinite(date.getTime()))return;$('edition-date').textContent=`EDITION / ${date.toLocaleDateString('en-US',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}).toUpperCase()}`;$('freshness').textContent=`Edition ${date.toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'})} · AI-produced presentation`;}
 function emptySelection(){pause();current=null;started=false;studio.setStory(null);$('brief-design').hidden=true;film.removeAttribute('src');film.removeAttribute('poster');film.load();$('story-title').textContent='A little space for what interests you.';$('story-dek').textContent='No videos match this programme and your interests yet. The latest reporting is still beside you.';$('story-byline').textContent='YOUR CHANNEL';$('topic-label').textContent='YOUR INTERESTS';$('selection-reason').textContent='Your preferences are saved. No unrelated stories will play.';$('start').disabled=true;$('play').disabled=true;$('sources').disabled=true;$('caption').hidden=true;$('story-insight').hidden=true;message('');renderRotation();updateTransport();}
 function renderRotation(){
  const rotation=$('rotation');rotation.replaceChildren();const list=eligible();
+ $('playlist-label').textContent=activeNewscast?'My newscast':'Your playlist';$('playlist-series').closest('label').hidden=!!activeNewscast;$('return-channel').hidden=!activeNewscast;$('continuous-label').hidden=!!activeNewscast;
  if(!list.length)rotation.append(node('p','empty-rotation','No videos match this selection. Choose another programme or tune your interests.'));
  $('queue-count').textContent=`${list.length} videos`;
  for(const [index,story] of list.entries()){
@@ -53,7 +57,7 @@ function renderRotation(){
   card.onclick=()=>switchStory(story);rotation.append(card);
  }
  prepareNext();
- $('rotation-meta').textContent=`${list.length} stories selected for you`;
+ $('rotation-meta').textContent=activeNewscast?`${list.length} stories · Your newscast`:`${list.length} stories selected for you`;
  if(current)$('start-duration').textContent=`${formatTime(current.voices[preferences.voice].duration/preferences.pace)} · ${franchise(current).name.toUpperCase()}`;
 }
 function syncFilm(force=false){return syncFinishedPicture({story:current,track:current?.voices[voiceForStory],film,narration:audio,started,playing,reducedMotion:preferences.reducedMotion,buffering:pictureBuffering,force});}
@@ -106,9 +110,9 @@ function switchStory(story){
 }
 async function next(){
  if(advancing)return;advancing=true;
- try{void refreshEdition();applyPending();let list=eligible();if(!list.length){emptySelection();return;}const index=list.findIndex(s=>s.id===current?.id);if(index===list.length-1){rotationCycle++;list=eligible();switchStory(list[0]);}else switchStory(list[index+1]);}finally{advancing=false;}
+ try{if(activeNewscast){const nextStory=nextPersonalStory(activeNewscast.stories,current?.id,failedIds);if(nextStory)switchStory(nextStory);else{pause();newscast.completed({...activeNewscast,playbackIssue:failedIds.size?'One of your selected stories could not play. You can replay your newscast or return to the channel.':''});}return;}void refreshEdition();applyPending();let list=eligible();if(!list.length){emptySelection();return;}const index=list.findIndex(s=>s.id===current?.id);if(index===list.length-1){rotationCycle++;list=eligible();switchStory(list[0]);}else switchStory(list[index+1]);}finally{advancing=false;}
 }
-function applyPending(){if(!pendingEdition)return;stories=pendingEdition.stories;editionVersion=pendingEdition.version;editionMetadata(pendingEdition);pendingEdition=null;failedIds.clear();$('update-status').textContent='New arrivals are in your playlist.';renderRotation();}
+function applyPending(){if(activeNewscast||!pendingEdition)return;stories=pendingEdition.stories;editionVersion=pendingEdition.version;editionMetadata(pendingEdition);pendingEdition=null;failedIds.clear();$('update-status').textContent='New arrivals are in your playlist.';renderRotation();}
 async function fetchEditions(){
  const feeds=['films.json','programmes.json','latest-edition.json'];
  const results=await Promise.allSettled(feeds.map(async url=>{const response=await fetch(url,{cache:'no-cache',signal:AbortSignal.timeout(8000)});if(!response.ok)throw new Error('Edition unavailable');const data=await response.json();if(!Array.isArray(data.stories))throw new Error('Invalid edition');return data;}));
@@ -119,7 +123,18 @@ async function fetchEditions(){
 }
 async function refreshEdition(){
  if(refreshing)return refreshing;if(Date.now()-lastRefresh<30000)return;lastRefresh=Date.now();
- refreshing=(async()=>{try{const data=await fetchEditions();if(data.version===editionVersion)return;pendingEdition=data;$('update-status').textContent='New arrivals will join after this story.';if(!current){applyPending();if(eligible().length)loadStory(eligible()[0]);}}catch{$('update-status').textContent='Updates are temporarily unavailable. Your loaded playlist is still here.';}finally{refreshing=null;}})();return refreshing;
+ refreshing=(async()=>{try{const data=await fetchEditions();if(data.version===editionVersion)return;pendingEdition=data;if(!activeNewscast)$('update-status').textContent='New arrivals will join after this story.';if(!current&&!activeNewscast){applyPending();if(eligible().length)loadStory(eligible()[0]);}}catch{if(!activeNewscast)$('update-status').textContent='Updates are temporarily unavailable. Your loaded playlist is still here.';}finally{refreshing=null;}})();return refreshing;
+}
+function launchNewscast(result){
+ if(!activeNewscast)savedChannel={preferences:structuredClone(preferences),series,currentId:current?.id,position:audio.currentTime,wasPlaying:resumeAfterNewscast,failedIds:new Set(failedIds)};
+ resumeAfterNewscast=false;pause();activeNewscast=structuredClone(result);preferences=playerNewscastPreferences(preferences,result.preferences);failedIds=new Set();rotationCycle=0;
+ $('update-status').textContent='Your choices, in order. New arrivals stay in the channel.';loadStory(activeNewscast.stories[0],true);
+}
+function returnToChannel(){
+ if(!activeNewscast)return;pause();const previous=savedChannel;activeNewscast=null;savedChannel=null;resumeAfterNewscast=false;newscast.clearCompletion();
+ if(previous){preferences=previous.preferences;series=previous.series;failedIds=previous.failedIds;}$('playlist-series').value=series;applyPending();renderPreferences();updateMotion();latest.preferencesChanged();
+ const list=eligible(),story=list.find(item=>item.id===previous?.currentId)||list[0];if(story){loadStory(story,false);if(story.id===previous?.currentId&&previous.position>0){audio.addEventListener('loadedmetadata',()=>{if(current?.id===story.id&&!activeNewscast){audio.currentTime=Math.min(previous.position,Math.max(0,audio.duration-.1));progress();}},{once:true});}if(previous?.wasPlaying)void play();}else emptySelection();
+ $('update-status').textContent='One story at a time. New arrivals join between videos.';
 }
 function progress(){
  if(!current)return;const duration=Number.isFinite(audio.duration)?audio.duration:current.voices[voiceForStory].duration;const time=audio.currentTime;const ratio=duration?time/duration:0;
@@ -145,6 +160,7 @@ function sourceView(){
  panel.append(node('p','source-description',current.editorialNote||'This short update reads the publisher headline with attribution. Follow the source for the complete reporting.'),node('p','source-label','HOW THIS SEGMENT WAS MADE'),node('p','source-description',current.visualDisclosure||'AI-produced presentation based on linked reporting; not live footage.'),node('p','source-label','NARRATION'),node('p','source-script',current.script));openDialog($('source-dialog'));
 }
 $('start').onclick=play;$('play').onclick=()=>playing?pause():play();$('next').onclick=next;
+$('return-channel').onclick=returnToChannel;
 $('full-play').onclick=()=>playing?pause():play();$('full-next').onclick=next;$('full-exit').onclick=()=>document.exitFullscreen().catch(()=>{});
 $('seek').oninput=()=>{if(Number.isFinite(audio.duration)){audio.currentTime=audio.duration*Number($('seek').value)/100;progress();}};
 $('captions').onclick=()=>{preferences.captions=!preferences.captions;storePreferences();updateTransport();progress();};
@@ -170,6 +186,7 @@ async function boot(){
  catch{message('This edition isn’t available yet. Please reload in a moment.');$('start').disabled=true;$('play').disabled=true;}
 }
 const latest=createLatest({topics:topicNames,getTopics:()=>preferences.topics});
+const newscast=createNewscast({trigger:$('make-newscast'),onOpen(){resumeAfterNewscast=playing;pause();},onClose(){if(resumeAfterNewscast){resumeAfterNewscast=false;void play();}},onLaunch:launchNewscast,onReturn:returnToChannel});
 createCameras({onOpen:pause}).then(controller=>{cameraController=controller;});
 boot();
 setInterval(()=>{if(!document.hidden)refreshEdition();},30000);

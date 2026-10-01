@@ -7,16 +7,16 @@
   <meta name="description" content="Bearing is one watch-first news playlist, with individual produced stories and a live-updating news feed. Your news, at your pace.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%230b1016'/%3E%3Cpath d='M29 11a13 13 0 1 0 0 18M30 16H18m12 8H18' fill='none' stroke='%23c7f1d4' stroke-width='3'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="studio.css"><link rel="stylesheet" href="watch.css"><link rel="stylesheet" href="desktop.css"><link rel="stylesheet" href="directed.css"><link rel="stylesheet" href="finished-film.css">
+  <link rel="stylesheet" href="studio.css"><link rel="stylesheet" href="watch.css"><link rel="stylesheet" href="desktop.css"><link rel="stylesheet" href="directed.css"><link rel="stylesheet" href="finished-film.css"><link rel="stylesheet" href="newscast.css">
 </head>
 <body>
   <a class="skip-link" href="#channel">Skip to channel</a>
-  <header class="masthead"><a href="./" class="brand" aria-label="Bearing home"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M29 11a13 13 0 1 0 0 18M30 16H18m12 8H18"/></svg>Bearing</a><span class="masthead-note">A little perspective.</span><button class="tune-button" id="tune"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 17h16M9 4v6M15 14v6"/></svg><span id="tune-label">Tune your channel</span></button></header>
+  <header class="masthead"><a href="./" class="brand" aria-label="Bearing home"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M29 11a13 13 0 1 0 0 18M30 16H18m12 8H18"/></svg>Bearing</a><span class="masthead-note">A little perspective.</span><div class="masthead-actions"><button class="newscast-entry" id="make-newscast" aria-haspopup="dialog">Make my newscast</button><button class="tune-button" id="tune" aria-label="Tune your channel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 17h16M9 4v6M15 14v6"/></svg><span id="tune-label">Tune your channel</span></button></div></header>
   <main id="channel">
     <div class="watch-heading"><div><span class="broadcast-mark" aria-hidden="true"></span><h1>Watch your world.</h1><span id="rotation-meta">Your personal playlist</span></div><span class="edition-meta" id="edition-date">CURRENT EDITION</span></div>
     <div class="watch-grid">
       <div class="screen-column">
-        <div class="programme-heading"><span id="programme-name">In Focus</span><span id="programme-note">A story worth understanding</span><span class="continuous-label">CONTINUOUS PLAY</span></div>
+        <div class="programme-heading"><span id="programme-name">In Focus</span><span id="programme-note">A story worth understanding</span><span class="continuous-label" id="continuous-label">CONTINUOUS PLAY</span><button class="newscast-return" id="return-channel" hidden>Back to channel ↗</button></div>
     <section class="player" id="player" aria-label="News playlist">
       <video id="film" poster="assets/space.png" playsinline preload="metadata" muted aria-label="AI-illustrated story"></video>
       <div class="stage-shade"></div><div class="brief-design" id="brief-design" hidden><div class="brief-mast"><span>The Brief<span class="brief-current">by Bearing</span></span><span id="brief-topic"></span></div><div class="brief-content"><p id="brief-source"></p><h2 id="brief-title"></h2></div><span class="brief-disclosure">PUBLISHER HEADLINE / AI NARRATION</span></div><div class="channel-transition" id="channel-transition" aria-hidden="true"><span>Bearing</span><strong id="transition-series">In Focus</strong></div>
@@ -33,7 +33,7 @@
     <div class="story-context"><span id="selection-reason">Selected for your interest in space & discovery</span><button class="text-button source-button" id="sources">Behind this story <span aria-hidden="true">↗</span></button></div>
 
         <section class="rotation-section" aria-labelledby="playlist-title">
-          <div class="section-heading"><h2 id="playlist-title">Your playlist <span id="queue-count"></span></h2><div class="playlist-tools"><div class="queue-pages"><button id="queue-prev" aria-label="Previous playlist stories">←</button><button id="queue-next" aria-label="More playlist stories">→</button></div><label class="series-filter">Programme <select id="playlist-series"><option value="all">Your mix</option><option value="brief">The Brief</option><option value="focus">In Focus</option><option value="field">Field Notes</option></select></label></div></div>
+          <div class="section-heading"><h2 id="playlist-title"><span id="playlist-label">Your playlist</span> <span id="queue-count"></span></h2><div class="playlist-tools"><div class="queue-pages"><button id="queue-prev" aria-label="Previous playlist stories">←</button><button id="queue-next" aria-label="More playlist stories">→</button></div><label class="series-filter">Programme <select id="playlist-series"><option value="all">Your mix</option><option value="brief">The Brief</option><option value="focus">In Focus</option><option value="field">Field Notes</option></select></label></div></div>
           <p class="playlist-note" id="update-status" role="status">One story at a time. New arrivals join between videos.</p>
           <div id="rotation" class="rotation" tabindex="0" aria-label="Story playlist; scroll to explore"></div>
         </section>

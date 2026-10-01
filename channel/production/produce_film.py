@@ -267,7 +267,7 @@ def finish_delivery(packet,story,run,publish_result,completion_guard):
     return story
 
 
-def produce(packet,publish_result=True,completion_guard=None):
+def produce(packet,publish_result=True,completion_guard=None,on_stage=None):
     if completion_guard:completion_guard()
     editorial_timing=validate_packet(packet);story=copy.deepcopy(packet['story']);plan=copy.deepcopy(packet['plan']);settings=read(WORK/'runtime.json')
     os.environ['CURRENT_FFMPEG']=settings['ffmpeg']
@@ -281,7 +281,7 @@ def produce(packet,publish_result=True,completion_guard=None):
     if cache_valid(cached):
         run=broadcast.Run(folder,story,identity);run.data=read(run.path)
         return finish_delivery(packet,cached['story'],run,publish_result,completion_guard)
-    run=broadcast.Run(folder,story,identity)
+    run=broadcast.Run(folder,story,identity,on_stage=on_stage)
     pipeline.write_json(folder/'reviewed-packet.json',packet)
     try:
         scripts=broadcast.write_and_edit(run,story,plan);tracks={};narrations={};rate=plan.get('narrationRate',.93);full_script=' '.join(scripts.values())

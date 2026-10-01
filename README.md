@@ -6,6 +6,8 @@ The application lives in [`channel/`](channel/README.md). Run **`channel/Start B
 
 ## Milestone status
 
+The active mission is **Make my newscast**: choose two or three current stories, set voice, delivery and sound, and receive an individually produced playlist. The new viewer workflow saves real production jobs, reports actual stages, recovers after refresh, and offers explicit playback only after complete film validation. Personal playlists keep their selected order and end with replay or return to the channel. **Creative automation is not connected yet**: arbitrary fresh stories still need reviewed scripts and bespoke visual plans. Unprepared selections are saved with a clear attention state, rather than presented as finished news. See [the current handoff](product/NEXT.md).
+
 The [selection-to-production proof](product/SELECTION_TO_PRODUCTION.md) is complete: a producer-selected student-loan story carries its evidence, editorial context and exact approval through two finished films and into the local playlist. **Default help moves online** runs 36.9 seconds in Warm and 40.3 seconds in Measured, with original animated graphics, music, effects and captions. Changed reporting blocks stale completion; explicit reassessment preserves discovery history when a report rotates out of intake. See the [finished production review](product/STUDENT_LOAN_PRODUCTION_20261001.md).
 
 The first October 1 picture revision gave this segment the full video canvas: staged centered typography, larger voice-timed explanations and purposeful cuts, with no persistent template labels. Playback controls recede during viewing. That delivery and its exact script and audio remain archived.

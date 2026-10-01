@@ -12,6 +12,8 @@ status={'state':'starting','lastRun':None,'detail':'Current edition is available
 status_lock=threading.Lock()
 producer_store=None
 producer_store_lock=threading.Lock()
+newscast_store=None
+newscast_store_lock=threading.Lock()
 
 def get_producer():
     # One server owns producer decisions and observations. The collector stays
@@ -30,6 +32,14 @@ def get_handoff():
             from selection import SelectionStore
             desk.selection_store=SelectionStore(desk)
         return desk.selection_store
+
+def get_newscasts():
+    global newscast_store
+    with newscast_store_lock:
+        if newscast_store is None:
+            from newscasts import NewscastStore
+            newscast_store=NewscastStore(get_producer(),handoff=get_handoff())
+        return newscast_store
 
 def observe_reporting():
     while not stop.is_set():
@@ -64,7 +74,8 @@ class Handler(SimpleHTTPRequestHandler):
 
     def do_POST(self):
         path=urlsplit(self.path).path
-        if path not in ('/api/producer/decision','/api/producer/demo','/api/producer/handoff'):
+        newscast_action=re.fullmatch(r'/api/newscasts/([^/]+)/(cancel|retry)',path)
+        if path not in ('/api/producer/decision','/api/producer/demo','/api/producer/handoff','/api/newscasts') and not newscast_action:
             self.json_response({'error':'Unknown endpoint.'},404);return
         if not self.local_request():return
         if self.headers.get('Content-Type','').split(';')[0].strip().lower()!='application/json':
@@ -78,7 +89,15 @@ class Handler(SimpleHTTPRequestHandler):
             payload=json.loads(self.rfile.read(length))
             if not isinstance(payload,dict):raise ValueError('Expected a JSON object.')
             action=payload.get('action')
-            if path.endswith('/handoff'):
+            if path=='/api/newscasts' or newscast_action:
+                from newscasts import Conflict,NeedsAttention
+                try:
+                    if path=='/api/newscasts':result=get_newscasts().create(payload)
+                    elif newscast_action[2]=='cancel':result=get_newscasts().cancel(newscast_action[1])
+                    else:result=get_newscasts().retry(newscast_action[1])
+                except (Conflict,NeedsAttention) as exc:
+                    self.json_response({'error':str(exc)},409);return
+            elif path.endswith('/handoff'):
                 from selection import Conflict
                 try:result=get_handoff().mutate(payload)
                 except Conflict as exc:
@@ -128,6 +147,16 @@ class Handler(SimpleHTTPRequestHandler):
             if not chunk:break
             outputfile.write(chunk);remaining-=len(chunk)
     def do_GET(self):
+        path=urlsplit(self.path).path
+        if path=='/api/newscast/catalog' or re.fullmatch(r'/api/newscasts/[^/]+',path):
+            if not self.local_request():return
+            try:
+                result=get_newscasts().catalog() if path=='/api/newscast/catalog' else get_newscasts().get(path.rsplit('/',1)[-1])
+                self.json_response(result)
+            except (ValueError,UnicodeError) as exc:self.json_response({'error':str(exc)},400)
+            except KeyError:self.json_response({'error':'This newscast was not found.'},404)
+            except (OSError,RuntimeError):self.json_response({'error':'Newscast status is temporarily unavailable. Your saved choices were preserved.'},503)
+            return
         if urlsplit(self.path).path=='/api/producer/handoff':
             if not self.local_request():return
             query=parse_qs(urlsplit(self.path).query)
@@ -191,6 +220,9 @@ def main():
     if args.open_browser:threading.Timer(.5,lambda:webbrowser.open(f'http://127.0.0.1:{args.port}')).start()
     try:server.serve_forever()
     except KeyboardInterrupt:pass
-    finally:stop.set();server.server_close()
+    finally:
+        stop.set()
+        if newscast_store is not None:newscast_store.close()
+        server.server_close()
 
 if __name__=='__main__':main()

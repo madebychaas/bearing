@@ -1,6 +1,26 @@
 # Bearing — Active Mission
 
-**Status: production approach accepted and locked in — milestone closed.**
+**Status: active mission — Make my newscast.**
+
+The user now requests a viewer workflow: browse the newest reporting from trusted sources, choose two or three stories, adjust a few meaningful preferences, and make a personal newscast. Production should happen behind a polished living progress screen. A completed result should offer one grounded sentence about its contents and an explicit Play action. This new request supersedes the earlier stop instruction for the scope described here.
+
+Build this on the existing watch page and production machinery. Preserve the accepted player and story quality. Keep selected stories in their chosen order, keep the personal queue separate from ordinary channel refreshes, and finish the chosen run with replay/return options. Voice, natural/unhurried delivery and score/voice-only preferences belong to the request until playback begins. Progress reflects actual stages; a generated script or an elapsed timer is never a playable result.
+
+The audited gap is creative automation: native narration, scoring, assembly and playback work, but current full-film packets and bespoke visual plans are editorially authored. The accepted loan renderer is specific to that story; it cannot be stamped onto arbitrary headlines. There is no configured server-callable image provider or automatic production director. The user has been asked whether to use cloud generation, local-only generation, or assisted production first; that choice is still pending. Build the selection/job/playback path and its reviewed-production adapter while this decision is open. Do not claim arbitrary fresh stories are fully automatic or substitute headline readouts for produced films. Missing creative production must produce a clear saved/needs-attention state, not an endless spinner or a fake finished newscast.
+
+### Implemented checkpoint — October 1
+
+The home page now has a restrained **Make my newscast** dialog: latest reporting, two or three ordered selections, voice, delivery and sound. An animated creation view follows actual stages, preserves the chosen story titles and shows completed-story counts. It stops moving on a held/failed job. Ready results have a source-grounded sentence and an explicit Play button; personal playback uses the existing player and separate selected queue, then offers replay or return. Returning restores channel preferences and position; background arrivals cannot replace personal selections.
+
+`newscasts.py` persists jobs atomically under ignored run state with idempotent requests, retry/cancel, restart recovery and shared production serialization. `newscast_production.py` can render exact approved native handoffs privately; it preflights the whole selection before expensive work. It binds every selected report to reviewed evidence, repeats approval checks during work and after full media verification, and never creates an approval or modifies the public film manifest. An older approval for the same event cannot stand in for newly joined reporting.
+
+Verification: **210 Python tests and 64 JavaScript tests passed**, including new source/revision, retry, interruption, real-media validation, approval-revocation, private-queue and preference tests. The prior intermittent Windows 413 test passed in this run; its historical failure remains documented below. In the actual browser at 1130 × 1179, the desktop page remained scroll-less, two current stories were selected with Measured / Unhurried / Voice only, the real request reached `needs_attention` with zero finished films, and page refresh restored the same selections/job. Retry retained the same job and rechecked its authority. An identical repeated API request returned the existing job. The local server was restarted with normal source refresh enabled.
+
+**Not proved yet:** fully automatic creative production for arbitrary latest selections, or a freshly generated personal cast playing end-to-end in the browser. No current-story cast was fabricated to demonstrate readiness. The ready/queue paths have automated coverage, but their fresh-film viewer proof follows the creative connection. No new story media was generated or accepted in this checkpoint. The user's backend choice remains pending; next work is connecting that chosen provider through sourced drafting/editing, bespoke direction/media and explicit quality review, then producing one real two-story cast through this exact viewer flow. Do not close this mission as complete yet.
+
+## Accepted production approach
+
+**Previous milestone: production approach accepted and locked in.**
 
 Angelo's October 1 response to `9c4fe29dbfb3a18916ea`: **“This is incredibly close. Great stuff. Lock this in as the approach we want.”** His qualification is part of the standard: keep it tight, dynamic and moving, with judgment about when movement helps and when an idea needs to hold. This accepts the production approach as the reference for future stories, with room for refinement; it is not a request for another edit or blanket signoff on every voice performance. The vision, editorial playbook and machine-readable guidance now retain that distinction. No media, script or playback behavior changed for this acceptance checkpoint. All 10 editorial-guidance tests passed.
 
@@ -8,7 +28,7 @@ The latest October 1 follow-up is **`9c4fe29dbfb3a18916ea`**. It replaces the sa
 
 Both finished MP4s fully decode and all 13 delivery hashes match; 38 encoded frames were inspected. Actual browser playback used the new film, kept the full picture and captions visible, and advanced into the next item. **17 graphics tests and all 54 JavaScript tests pass.** The full Python run passes 182 of 183: an existing Windows HTTP connection-close race intermittently aborts the oversized-request test before the client receives 413. The isolated seven-test server module passes. This was reproduced separately and is unrelated to the picture revision; no server behavior was changed or flaky test hidden. Keep that limitation visible rather than calling the full suite green.
 
-See the [production record and acceptance](STUDENT_LOAN_PRODUCTION_20261001.md), [reviewed packet](../channel/production/reviewed-student-loans-20261001-picture-v3.json), and [original image prompts](../channel/production/student-loan-image-led-v3-prompts.json). Preserve this delivered cut as the accepted approach reference. Do not start another story, a server-hardening mission or broad feature development without direction. Earlier milestone notes below retain their status as recorded at delivery.
+See the [production record and acceptance](STUDENT_LOAN_PRODUCTION_20261001.md), [reviewed packet](../channel/production/reviewed-student-loans-20261001-picture-v3.json), and [original image prompts](../channel/production/student-loan-image-led-v3-prompts.json). Preserve this delivered cut as the accepted approach reference. Earlier milestone notes below retain their status as recorded at delivery; the new personal-newscast mission above is now authorized.
 
 ## Previous picture revision
 

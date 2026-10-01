@@ -2,7 +2,19 @@
 
 One watch-first news page: a large player, a playlist of individual stories, and a latest-news desk alongside it (below it on mobile). Every video has its own source, duration, thumbnail, and selection control. One initial Play starts continuous playback. Stories remain independently playable; they are not stitched into a multi-story compilation.
 
-## Current milestone: editorial voice and script rewrites
+## Current mission: Make my newscast
+
+Use **Make my newscast** beside the channel controls to choose two or three stories from the current trusted domestic-source intake. Your selection order becomes the running order. Choose Warm or Measured narration, Natural or Unhurried delivery, and an editorial score or voice only. These choices apply to the personal playlist when you press Play; returning to the channel restores its prior settings.
+
+The creation view follows real production stages and finished-story counts. Jobs survive page refresh and retain their selections if production stops. Completed films remain individual playlist items with the existing 1.5-second handoffs; the selected run ends with replay and return options. Channel arrivals cannot replace a story in that personal run.
+
+**Current limitation:** automatic writing, visual direction and original imagery are not yet connected to a server-callable creative provider. Existing reviewed native handoffs can render; unprepared selections stop with their choices saved and a clear attention message. This is not yet an unattended, arbitrary-news-to-film service. The accepted story renderer must not be reused as a generic template for unrelated headlines.
+
+`GET /api/newscast/catalog` exposes current source-bound choices. `POST /api/newscasts` accepts two or three `{id, revision}` objects, preferences and a UUID `requestId`. `GET /api/newscasts/{id}` restores status; `POST /api/newscasts/{id}/cancel` and `/retry` handle interruption. Requests are idempotent; changed source revisions require new selections. State stays in ignored `production/runs/newscasts/`. The server owns one worker and shares the existing production lock. Jobs interrupted by restart become explicitly interrupted, retaining completed artifacts for retry.
+
+`production/newscast_production.py` uses the same editorial SelectionStore as the producer desk. It requires exact approved evidence/script/voice/packet lineage, produces privately with `publish_result=False`, and carries that lineage into each selected film. Delivery verifies all requested stories, both voice tracks, captions, media hashes, full decoding, expiry and current approval before offering playback. It does not write `films.json` or manufacture editorial approval. See [the active handoff](../product/NEXT.md).
+
+## Editorial voice and script rewrites
 
 The September 30 writing pass completed **13 source-checked drafts**, taking the existing scripts from about **106 to 60 words on average**, with a **52–68 word** range. The [rewrite book](../product/SCRIPT_REWRITES_20260930.md) retains the before/after copy, evidence, timing caveats, visual cues and specific editing lessons. The [editorial playbook](../product/EDITORIAL_VOICE.md) and [editable voice profile](production/editorial-voice.json) supply persistent guidance and selected examples to both drafting and editing in `production/scriptdesk.py`.
 

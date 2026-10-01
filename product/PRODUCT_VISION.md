@@ -45,6 +45,8 @@ The exact lane system can evolve. The important thing is the interaction:
 
 Personalization should be explicit and understandable. Avoid hidden engagement optimization that gradually changes the product around a user without their awareness.
 
+A personal newscast can begin with a small, deliberate choice: select two or three current stories from trusted sources, set voice, delivery and sound, then make the newscast. Creation should feel considered and alive while reflecting real work. Once all selected stories are complete, offer one grounded sentence that conveys the value of the contents and invite the viewer to press Play. Preserve the selection through production and playback; fresh channel arrivals should not silently change it. The viewer should be able to keep browsing while it is being made, resume after a refresh, and understand when a production needs attention.
+
 ## Produced, not generated
 
 **Produced, not generated.**

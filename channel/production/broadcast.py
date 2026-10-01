@@ -58,12 +58,14 @@ def editorial_timing(story,plan,scripts,today=None):
     raise ValueError('New or changed broadcast copy needs a reviewed why-now record')
 
 class Run:
-    def __init__(self,folder,story,identity):
+    def __init__(self,folder,story,identity,on_stage=None):
         self.folder=folder;self.path=folder/'production.json'
+        self.on_stage=on_stage
         self.data={'schema':1,'id':story['id'],'version':identity,'state':'working','source':story['source'],'stages':[]}
     def finish(self,stage,**evidence):
         if stage!=STAGES[len(self.data['stages'])]:raise ValueError('Production stage out of order')
         self.data['stages'].append({'stage':stage,'completedAt':pipeline.stamp(),**evidence});pipeline.write_json(self.path,self.data)
+        if self.on_stage:self.on_stage(stage)
     def hold(self,reason):
         self.data.update(state='held',heldAt=STAGES[min(len(self.data['stages']),8)],reason=str(reason));pipeline.write_json(self.path,self.data)
 

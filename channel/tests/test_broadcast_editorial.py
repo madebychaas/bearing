@@ -30,6 +30,15 @@ class BroadcastTests(unittest.TestCase):
   self.run=broadcast.Run(Path(self.temp.name),self.story,'test')
  def test_order_required(self):
   with self.assertRaisesRegex(ValueError,'out of order'):self.run.finish('publish')
+ def test_progress_callback_follows_persisted_stage_and_can_stop_work(self):
+  observed=[]
+  def progress(stage):
+   saved=json.loads(self.run.path.read_text())
+   observed.append((stage,saved['stages'][-1]['stage']))
+   raise RuntimeError('Cancelled')
+  self.run.on_stage=progress
+  with self.assertRaisesRegex(RuntimeError,'Cancelled'):self.run.finish('source')
+  self.assertEqual(observed,[('source','source')])
  def test_source_revision_held_before_speech(self):
   with self.assertRaisesRegex(ValueError,'revision'):broadcast.write_and_edit(self.run,{**self.story,'script':self.story['script']+' changed'},self.plan)
   self.run.hold('Changed evidence')
