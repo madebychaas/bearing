@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "createdAt": "2026-10-02",
+  "generator": "built-in image_gen",
+  "purpose": "Original conceptual illustrations for the Top stories hero. Original-resolution assets retained for possible later video direction; not finished or approved video assets.",
+  "review": "Inspected generated output: clean composition, no charts or numerical claims, no real event depicted. Display only with an AI illustration label and current matching editorial record.",
+  "items": [
+    {
+      "id": "jobs",
+      "url": "/assets/top-stories/jobs-20261002-v1.png",
+      "prompt": "Create an original premium editorial illustration for Bearing, a calm national-news product, about a new U.S. jobs report showing sharply slower hiring. Wide landscape 16:9 composition intended both as a small news thumbnail and a future video opening. A single sculptural brushed-aluminum office chair and simple work desk sit within a beautifully lit abstract architectural office space; an open doorway and soft architectural shadows imply the possibility of work without depicting actual people or a real employer. Tactile concrete, satin metal, subtle paper texture, deep petrol and warm neutral tones, one calm morning light source, photographic craft and editorial restraint. The chair/desk are central and read clearly when small. Sophisticated illustrated still life, unmistakably conceptual, not a documentary photograph. No charts, numbers, arrows, logos, flags, signs, screens, words, or text. No dystopia, crisis imagery, particles, lens flares, dramatic smoke, or glossy plastic. Rich material detail, generous uncluttered space, exceptional clean geometry.",
+      "kind": "illustration",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "2a628a3624c6981661bf58ac89bef5bfc6eb8edeee0e502cfb7164e54181b671"
+    },
+    {
+      "id": "fuel",
+      "url": "/assets/top-stories/fuel-20261002-v1.png",
+      "prompt": "Create an original premium editorial illustration for Bearing, a calm national-news product, about countries coordinating the release of oil reserves, including diesel, to respond to fuel supply pressure. Wide landscape 16:9, useful as a news thumbnail and future video opening. A precise elevated oblique view of three large matte silver cylindrical fuel storage tanks, their calm geometric forms connected by one carefully rendered pipe, set within an abstract architectural landscape. This is a refined conceptual scale model, not a photograph of any real facility or claimed current event. Show an elegant small foreground valve as the clear focal point without arrows or flowing liquid effects. Brushed metal, tactile mineral ground, deep petrol shadows, muted warm copper accents, natural soft daylight; nuanced photographic material craft, strong clear shapes when small. Editorial sophistication, quiet energy and generous negative space. No logos, words, numbers, charts, flags, maps, flames, smoke, people, trucks, pollution, dramatic lighting, fake technical labels or glossy plastic.",
+      "kind": "illustration",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "2c4568b4f0b504e724514eab34c3050c80ea2cdc72b1fb483b10abc29442ae7c"
+    },
+    {
+      "id": "mortgage",
+      "url": "/assets/top-stories/mortgage-20261002-v1.png",
+      "prompt": "Create an original premium editorial illustration for Bearing, a calm national-news product, about the average U.S. 30-year mortgage rate rising, making home borrowing more expensive. Wide landscape 16:9, suitable as a small news thumbnail and future video opening. A beautifully crafted simple off-white architectural model of a modest American house sits on a pale limestone surface with one real-scale satin brass house key beside it in the foreground. A soft long diagonal shadow leads into the house; out-of-focus architectural forms beyond, no actual address or identifiable property. Sophisticated editorial still life, symbolic and unmistakably an illustration, not documentary evidence. Tactile ceramic, fine brushed brass, natural stone, warm ivory light balanced against a deep green-blue architectural backdrop. Quiet, considered, elevated. Clean recognizable silhouette when small. No text, rates, numbers, coins, currency, arrows, graphs, charts, logos, paper contracts, people, flags, cheesy money symbols, dramatic effects or plastic look.",
+      "kind": "illustration",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "bbf9b5421611bac8c123ea06cff4d21fc21c2d77eae44ea748188ead171fe709"
+    }
+  ]
+}

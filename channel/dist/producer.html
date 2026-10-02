@@ -7,7 +7,7 @@
   <meta name="description" content="A focused editorial workspace for understanding what matters now and where it fits.">
   <link rel="stylesheet" href="producer.css">
 </head>
-<body>
+<body class="has-top-stories">
   <a class="skip-link" href="#candidates">Skip to story candidates</a>
   <header class="masthead">
     <a class="brand" href="producer.html" aria-label="Bearing national desk"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>Bearing</a>
@@ -18,6 +18,11 @@
     <section class="desk-heading" aria-labelledby="desk-title">
       <div><p class="eyebrow" id="strategy-name">NATIONAL ASSIGNMENT DESK</p><h1 id="desk-title">National desk<span class="heading-dot" aria-hidden="true">.</span></h1><p class="desk-description">What’s new. Why today. What we need to know next.</p></div>
       <div class="desk-controls"><label for="input-mode">Reporting</label><select id="input-mode"><option value="live">Live reporting</option><option value="demo">Representative cycle</option></select><button id="refresh" class="refresh-button" aria-label="Refresh story candidates" title="Refresh story candidates">↻</button></div>
+    </section>
+    <section id="top-stories" class="top-stories" aria-labelledby="top-stories-title">
+      <div class="top-stories-heading"><h2 id="top-stories-title">Top stories</h2><p id="top-stories-status" role="status">Finding the developments that matter now.</p></div>
+      <ol id="top-stories-list" class="top-stories-list" aria-label="Top national stories, in editorial order"></ol>
+      <p id="top-stories-empty" class="top-stories-empty">Checking the current national picture…</p>
     </section>
     <div class="health-strip"><span class="connection-dot" id="connection-dot" aria-hidden="true"></span><span id="health-message">Connecting to the reporting stream…</span><span id="refresh-time"></span></div>
     <details id="desk-coverage" class="desk-coverage" hidden><summary><span>Coverage &amp; source health</span><span id="coverage-summary"></span></summary><div class="coverage-content"><p id="coverage-context"></p><div id="coverage-beats" class="coverage-beats"></div><div id="coverage-health" class="coverage-health"></div><ul id="coverage-limitations" class="coverage-limitations"></ul></div></details>
@@ -33,7 +38,7 @@
       </section>
       <aside class="detail-panel" aria-label="Selected story">
         <div class="detail-scroll" id="detail-scroll"><div class="detail-empty" id="detail-empty"><span class="empty-mark" aria-hidden="true">↗</span><h2>The story behind the signal.</h2><p>Select a candidate to inspect the change, the reporting and its potential fit.</p></div><article id="story-detail" hidden></article></div>
-        <section class="decision-panel" id="decision-panel" aria-label="Editorial decision" hidden><div class="decision-heading"><span>Your editorial decision</span><span id="decision-current">Not yet reviewed</span></div><label for="decision-note" class="sr-only">Optional editorial note</label><textarea id="decision-note" rows="1" maxlength="500" placeholder="Add an editorial note (optional)"></textarea><div class="decision-actions"><button data-action="shortlist" class="decision-button primary">Shortlist <span aria-hidden="true">↗</span></button><button data-action="watch" class="decision-button">Watch</button><button data-action="dismiss" class="decision-button">Dismiss</button><button data-action="reset" class="quiet-button reset-decision" title="Return this story to unreviewed candidates">Reset</button></div><div class="handoff-entry"><button id="handoff-open" class="quiet-button">Prepare a Bearing story <span aria-hidden="true">→</span></button><span>Choose a treatment. Review before production.</span></div><p id="decision-feedback" role="status" aria-live="polite">Decisions are saved here. Nothing is assigned or published.</p></section>
+        <section class="decision-panel" id="decision-panel" aria-label="Editorial decision" hidden><details id="decision-drawer" class="decision-drawer"><summary class="decision-heading"><span>Editorial decision</span><span id="decision-current">Not yet reviewed</span></summary><div class="decision-drawer-content"><label for="decision-note" class="sr-only">Optional editorial note</label><textarea id="decision-note" rows="1" maxlength="500" placeholder="Add an editorial note (optional)"></textarea><div class="decision-actions"><button data-action="shortlist" class="decision-button primary">Shortlist <span aria-hidden="true">↗</span></button><button data-action="watch" class="decision-button">Watch</button><button data-action="dismiss" class="decision-button">Dismiss</button><button data-action="reset" class="quiet-button reset-decision" title="Return this story to unreviewed candidates">Reset</button></div><div class="handoff-entry"><button id="handoff-open" class="quiet-button">Prepare a Bearing story <span aria-hidden="true">→</span></button><span>Choose a treatment. Review before production.</span></div><p id="decision-feedback" role="status" aria-live="polite">Decisions are saved here. Nothing is assigned or published.</p></div></details></section>
       </aside>
     </div>
   </main>

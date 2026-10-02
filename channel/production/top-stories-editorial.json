@@ -1,0 +1,110 @@
+{
+  "schema": 1,
+  "purpose": "Source-bound authored Top stories copy and illustrative media. This is display curation, not script or production approval. Expired or changed evidence falls back to current source-bound ranking.",
+  "curationDate": "2026-10-02",
+  "editorialReview": "Codex source check against BLS, the G7 statement and Freddie Mac. U.S. work, fuel supply and home borrowing lead this available national coverage.",
+  "items": [
+    {
+      "eventId": "event-18f293e4e74a2b",
+      "sourceId": "auto-a08ef4ef665fc4",
+      "evidenceHash": "45fa1e7e9e2514d580b2ece7f1909d77374e6b3ef99abec2431e47b651c008d5",
+      "headline": "U.S. hiring slows to 29,000 new jobs",
+      "summary": "Friday’s jobs report puts unemployment at 4.2%.",
+      "reviewedAt": "2026-10-02T15:42:56.798761Z",
+      "expiresAt": "2026-10-02T19:42:56.798761Z",
+      "editorialPriority": 1,
+      "whyNow": "Today’s national employment report shows a sharp slowdown from August and revises earlier hiring lower.",
+      "verifiedPeg": {
+        "kind": "confirmed-development",
+        "at": "2026-10-02T12:30:00Z",
+        "reason": "Today’s national employment report shows a sharp slowdown from August and revises earlier hiring lower.",
+        "clockKind": "published"
+      },
+      "supportingEvidence": [
+        {
+          "url": "https://www.bls.gov/news.release/empsit.nr0.htm",
+          "publisher": "Bureau of Labor Statistics",
+          "title": "The Employment Situation — September 2026",
+          "checkedAt": "2026-10-02T15:42:56.798761Z",
+          "excerpt": "Both nonfarm payroll employment (+29,000) and the unemployment rate (4.2 percent) changed little in September, the U.S. Bureau of Labor Statistics reported today."
+        }
+      ],
+      "art": {
+        "url": "/assets/top-stories/jobs-20261002-v1.png",
+        "alt": "AI illustration of an unoccupied office desk and chair beside an open doorway.",
+        "kind": "illustration"
+      }
+    },
+    {
+      "eventId": "event-0cd1c0fce7f819",
+      "sourceId": "auto-b1d4b1b40acd1a",
+      "evidenceHash": "a02001fb553b9438161dd2f5cb8701acc86e947d042278b65773a2e9dc6a09e4",
+      "headline": "G7 agrees to tap oil reserves to ease fuel pressure",
+      "summary": "Friday’s deal schedules 100 million barrels over four months.",
+      "reviewedAt": "2026-10-02T15:57:47.158916Z",
+      "expiresAt": "2026-10-02T19:57:47.158916Z",
+      "editorialPriority": 2,
+      "whyNow": "The G7 confirmed an implementation agreement today, moving beyond earlier talks. The release includes early diesel supply; lower retail prices are not assured.",
+      "verifiedPeg": {
+        "kind": "confirmed-development",
+        "at": "2026-10-02T15:42:56.798761Z",
+        "reason": "The G7 confirmed an implementation agreement today, moving beyond earlier talks. The release includes early diesel supply; lower retail prices are not assured.",
+        "clockKind": "observed"
+      },
+      "supportingEvidence": [
+        {
+          "url": "https://www.elysee.fr/emmanuel-macron/2026/10/02/g7-leaders-statement-on-global-energy-security-and-market-stability",
+          "publisher": "G7 statement / French presidency",
+          "title": "G7 Leaders’ Statement on global energy security and market stability",
+          "checkedAt": "2026-10-02T15:57:47.158916Z",
+          "excerpt": "a coordinated release through the IEA of 100 million barrels (MB) to begin immediately over 4 months"
+        }
+      ],
+      "art": {
+        "url": "/assets/top-stories/fuel-20261002-v1.png",
+        "alt": "AI illustration of fuel storage tanks and a pipeline valve; not a real facility.",
+        "kind": "illustration"
+      },
+      "reviewHistory": [
+        {
+          "reviewedAt": "2026-10-02T15:42:56.798761Z",
+          "expiresAt": "2026-10-02T19:42:56.798761Z",
+          "evidenceHash": "7c0bbe029707df4a7b14cedba87760cdb9173d69148284db4766295fed6ba48f",
+          "note": "CNBC retained its headline/excerpt but advanced its feed clock to 15:49:08 UTC. The card fell back as designed. Reread the October 2 primary G7 statement before rebinding; the implementation agreement and 100-million-barrel/four-month terms remain supported. This is not a new event time."
+        }
+      ]
+    },
+    {
+      "eventId": "event-5ee64314431335",
+      "sourceId": "auto-457e8ead49a9db",
+      "evidenceHash": "e97ae75e79faf46ab9e665954530d4c9d2da4069af15b4cb53418a9c813e0c8d",
+      "headline": "U.S. mortgage rates climb to 7.28%",
+      "summary": "Thursday's 30-year average is up from 7.03% a week earlier.",
+      "reviewedAt": "2026-10-02T15:42:56.798761Z",
+      "expiresAt": "2026-10-02T19:42:56.798761Z",
+      "editorialPriority": 3,
+      "whyNow": "Thursday’s latest national weekly mortgage benchmark remains relevant for homebuyers today. This is continuing household impact, not a new Friday release.",
+      "verifiedPeg": {
+        "kind": "continuing-impact",
+        "at": "2026-10-01T19:37:17+00:00",
+        "reason": "Thursday’s latest national weekly mortgage benchmark remains relevant for homebuyers today. This is continuing household impact, not a new Friday release.",
+        "clockKind": "report-published"
+      },
+      "supportingEvidence": [
+        {
+          "url": "https://www.freddiemac.com/pmms",
+          "publisher": "Freddie Mac",
+          "title": "Primary Mortgage Market Survey — October 1, 2026",
+          "checkedAt": "2026-10-02T15:42:56.798761Z",
+          "excerpt": "The 30-year fixed-rate mortgage averaged 7.28% as of October 1, 2026, up from last week when it averaged 7.03%."
+        }
+      ],
+      "art": {
+        "url": "/assets/top-stories/mortgage-20261002-v1.png",
+        "alt": "AI illustration of a model house and brass key on a stone surface.",
+        "kind": "illustration"
+      },
+      "carryForward": true
+    }
+  ]
+}

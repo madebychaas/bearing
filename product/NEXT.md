@@ -10,6 +10,18 @@ Source gathering checks due feeds every 30 seconds independently of media render
 
 See [the national desk record](NATIONAL_ASSIGNMENT_DESK.md) for source coverage, operational details and limits. Faster detection than major newsrooms is an ambition, not a measured result. The local collector runs only while this server and machine are running. Direct BLS/DOL access is currently blocked; AP/CNN access and direct court/congress feeds remain gaps. Build on actual observed misses and fresh-arrival measurements rather than adding volume for its own sake.
 
+### Top stories — October 2 follow-up
+
+The user requested a horizontal orientation hero above the national desk: the three biggest current national stories, ordered, with impact-forward headlines, a short supporting sentence and optional original imagery. Implemented in the native producer workspace; the watch player and parked personal-newscast flow stay unchanged.
+
+`top_stories.py` selects distinct, consequential national developments from the current source-bound desk. National hazards and broad economic/policy consequences outrank routine agency announcements, isolated enforcement cases and mere recency. Repeated jobs/fuel coverage uses one slot per thread. Held, contradictory, local, future-dated and stale evidence cannot fill the hero. Fewer than three qualified stories leaves an honest incomplete state.
+
+The initial reviewed selection is jobs, the G7 fuel-reserve agreement and the latest national mortgage benchmark. The first two have a Friday development; the mortgage story explicitly carries Thursday's continuing household impact. Supporting BLS, G7 and Freddie Mac references are retained separately from the discovery reports. Generated originals are labeled AI illustrations and retained with prompts/hashes in `top-stories-art-20261002.json`; they are possible future production inputs, not approved video assets.
+
+Authored copy, source-supported carries and illustrations bind to exact evidence and expire within four hours. Changed sources or expiry removes that treatment; the hero continues ranking current source copy rather than silently relabeling old bespoke art. There is no unattended image-generation or headline-writing service implied here. This is an editorial selection from connected coverage, not proof of an objective nationwide top three. Details and browser proof are recorded in [the desk record](NATIONAL_ASSIGNMENT_DESK.md).
+
+Verification: **281 Python tests and 77 JavaScript tests pass.** Actual Chrome checks at 1478 × 910 and 1242 × 698 CSS pixels found no outer desktop scrolling; the mobile cards stack without horizontal overflow. All three original images loaded, all three cards selected the exact story across filters, primary context opened correctly, and refresh preserved selection, keyboard focus, expanded evidence, the editorial drawer and an unsaved note. The existing handoff opened without making a production request. Local screenshots and logs are under ignored `output/top-stories/`. No fresh-film or automatic imagery-generation claim is part of this checkpoint.
+
 ### Verified checkpoint — October 2
 
 Added 13 discovery endpoints for **28 enabled feeds**. At 13:11 UTC, all 28 were available; the desk held 14 possible current leads, 79 watch items and 419 held/out-of-scope events. These are a dated observation, not completeness or uptime claims. BEA's feed initially returned 406 because the request omitted its `text/xml` format; normal content negotiation now succeeds without changing identity or circumventing access restrictions. BLS and DOL remain unconnected access gaps, separate from the enabled-feed count.

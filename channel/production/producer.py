@@ -341,6 +341,9 @@ class ProducerStore:
                 calendar=release_calendar.snapshot(self.root,now)
                 result['assignment']['watchpoints']=calendar['events']
                 result['assignment']['calendarHealth']=calendar['health']
+                import top_stories
+                authored=_read(self.work/'top-stories-editorial.json',{'items':[]})
+                result['topStories']=top_stories.select(result,authored if isinstance(authored,dict) else {},now)
             return result
     def decide(self,event_id,action,note='',mode='live'):
         if action not in ACTIONS:raise ValueError('Unknown editorial action')
