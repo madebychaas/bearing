@@ -21,3 +21,5 @@ Thumbs.db
 /channel/dist/assets/studio/
 # Finished film attempts stay local; force-add only the reviewed delivery.
 /channel/dist/assets/films/
+# Background Top stories originals and inspection records are runtime assets.
+channel/dist/assets/top-stories/live-*

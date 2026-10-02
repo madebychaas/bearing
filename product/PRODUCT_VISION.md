@@ -53,6 +53,8 @@ The sourcing layer should function as a national assignment desk: continuously g
 
 A usable lead explains why the story belongs today and carries the source that supports that possible peg. Publication time, event time, a revised report and first discovery are different things. Keep them distinguishable. Speed must be measured honestly; additional feeds do not establish completeness or an advantage over another newsroom. Discovery never substitutes for factual verification, rights review or the production standard.
 
+The national desk should present one coherent order: three illustrated top stories, followed by the remaining current stories in descending national consequence and relevance to Bearing's strategy. Reassess that order every 15 minutes. Prepare a new top-story tile in the background and show it only when its copy and image are ready. Keep the previous edition useful during preparation, but remove corrected, held or stale evidence immediately. Refreshing the page is not a new editorial assessment, and a half-built tile is not a finished story.
+
 ## Produced, not generated
 
 **Produced, not generated.**

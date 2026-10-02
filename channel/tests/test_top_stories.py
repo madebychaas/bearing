@@ -203,6 +203,91 @@ class TopStoriesTests(unittest.TestCase):
         result = top_stories.select(snapshot, now=self.now)
         self.assertEqual(snapshot, original); self.assertIn('does not confer production approval', result['disclosure'])
 
+    def strategy_event(self, identity, title, excerpt, rule, **changes):
+        event = self.event(identity, title, excerpt, **changes)
+        event.update(eligible=True, strategy={'matches': [{'id': rule, 'label': rule, 'terms': ['test'], 'evidenceIds': ['report-'+identity]}]})
+        return event
+
+    def test_full_rank_continues_after_the_exact_top_three_prefix(self):
+        events = [self.event(), self.event('oil', 'Oil prices fall as fuel reserves grow', 'U.S. oil supplies grew as emergency reserves were released.'),
+                  self.event('health', 'CDC issues new national vaccination guidance', 'The CDC revised public health guidance for adult patients.'),
+                  self.strategy_event('consumer', 'FTC sues retailer over hidden fees', 'A federal complaint alleges consumers paid undisclosed fees when buying products online.', 'household'),
+                  self.event('oversight', 'Federal housing official cuts watchdog office', 'The inspector general’s office oversees the federal housing regulator.')]
+        snapshot = self.snapshot(events); before = copy.deepcopy(snapshot)
+        ordered = top_stories.rank(snapshot, now=self.now)
+        hero = top_stories.select(snapshot, now=self.now)
+        self.assertEqual(len(ordered['items']), 5); self.assertEqual(ordered['total'], 5)
+        self.assertEqual(hero['items'], ordered['items'][:3])
+        self.assertEqual([item['rank'] for item in ordered['items']], [1, 2, 3, 4, 5])
+        self.assertEqual(snapshot, before)
+
+    def test_practical_impact_fallback_requires_strategy_bound_to_exact_report(self):
+        event = self.strategy_event('consumer', 'FTC sues retailer over hidden fees', 'A federal complaint alleges consumers paid undisclosed fees when buying products online.', 'household')
+        self.assertEqual(top_stories.rank(self.snapshot([event]), now=self.now)['items'][0]['family'], 'consumer-development')
+        event['strategy']['matches'][0]['evidenceIds'] = ['other-report']
+        self.assertEqual(top_stories.rank(self.snapshot([event]), now=self.now)['items'], [])
+        event['strategy']['matches'] = []; event['fits'] = {'brief': {'score': 99999}}
+        self.assertEqual(top_stories.rank(self.snapshot([event]), now=self.now)['items'], [])
+
+    def test_lower_tier_strategy_order_is_not_recency_or_keyword_volume(self):
+        consumer = self.strategy_event('consumer', 'FTC sues retailer over hidden fees', 'A federal complaint alleges consumers paid undisclosed fees when buying products online.', 'household')
+        work = self.strategy_event('work', 'National employer announces wage increase', 'Workers at the U.S. company will receive higher wages under a new agreement.', 'work', publishedAt='2026-10-02T13:00:00Z')
+        policy = self.strategy_event('policy', 'Federal agency restores public transit funding', 'Transportation services regain approved federal support for public transit infrastructure. '*20, 'policy', publishedAt='2026-10-02T13:59:00Z')
+        result = top_stories.rank(self.snapshot([policy, work, consumer]), now=self.now)
+        self.assertEqual([item['eventId'] for item in result['items']], ['consumer', 'work', 'policy'])
+
+    def test_health_and_national_infrastructure_actions_are_not_limited_to_economic_topics(self):
+        events = [self.event('cdc', 'CDC issues updated vaccine guidance', 'National public health guidance changes recommendations for adult patients.'),
+                  self.event('fda', 'FDA recalls contaminated medicine nationwide', 'Patients and consumers are advised to check the recalled medicine.'),
+                  self.event('faa', 'FAA orders aircraft fleet inspections', 'The FAA issued a directive requiring airlines nationwide to inspect the aircraft fleet.')]
+        # Assignment desk's source-bound peg already establishes a current action.
+        result = top_stories.rank(self.snapshot(events), now=self.now)
+        self.assertEqual({item['eventId'] for item in result['items']}, {'cdc', 'fda', 'faa'})
+        self.assertTrue(all(item['impactTier'] == 4 for item in result['items']))
+
+    def test_major_rights_decision_is_comparable_to_jobs_and_can_be_editorially_first(self):
+        rights = self.event('rights', 'Supreme Court blocks nationwide voting rights restriction', 'The court ruling changes the voting rights rule in effect across the United States.')
+        item = self.authored(rights, headline='Supreme Court blocks national voting restriction', editorialPriority=1)
+        result = top_stories.rank(self.snapshot([self.event(), rights]), {'items': [item]}, self.now)
+        self.assertEqual(result['items'][0]['eventId'], 'rights'); self.assertEqual(result['items'][0]['impactTier'], 5)
+
+    def test_actual_security_escalation_and_shutdown_are_major_consequences_not_routine_policy(self):
+        security = self.event('security', 'U.S. begins military strikes', 'The United States launched military strikes against designated targets.')
+        shutdown = self.event('shutdown', 'Federal government shutdown begins', 'Public services closed as federal funding expired.')
+        result = top_stories.rank(self.snapshot([security, shutdown]), now=self.now)
+        self.assertEqual(len(result['items']), 2); self.assertTrue(all(item['impactTier'] == 5 for item in result['items']))
+        planned = self.event('planned', 'U.S. to send troops as president weighs new strikes', 'An official described plans that have not been confirmed.')
+        self.assertEqual(top_stories.rank(self.snapshot([planned]), now=self.now)['items'], [])
+
+    def test_present_tense_major_outcomes_receive_the_same_consequence_tier(self):
+        rights = self.event('rights', 'Supreme Court strikes down nationwide voting restriction', 'The court decision changes the rule governing voters across the United States.')
+        security = self.event('security', 'U.S. launches military strikes', 'The United States has begun military strikes against designated targets.')
+        result = top_stories.rank(self.snapshot([rights, security]), now=self.now)
+        self.assertEqual({item['eventId'] for item in result['items']}, {'rights', 'security'})
+        self.assertTrue(all(item['impactTier'] == 5 for item in result['items']))
+
+    def test_current_world_agreement_and_energy_commitment_are_not_treated_as_delivered_results(self):
+        world = self.event('world', 'Parties agree to a ceasefire on a critical global shipping route', 'The ceasefire agreement concerns international shipping; implementation remains ahead.')
+        world['assignment']['scope'] = 'world-impact'
+        energy = self.event('g7', 'G7 nations agree to release oil reserves', 'The agreement calls for a future release of crude oil and diesel stocks.')
+        result = top_stories.rank(self.snapshot([world, energy]), now=self.now)
+        self.assertEqual({item['family'] for item in result['items']}, {'world-consequences', 'energy-supply'})
+        for item in result['items']:
+            self.assertEqual(item['copyKind'], 'source'); self.assertIn('agree', item['headline'])
+
+    def test_full_order_filters_held_local_and_political_noise_after_hero_too(self):
+        valid = self.strategy_event('consumer', 'FTC sues retailer over hidden fees', 'A federal complaint alleges consumers paid undisclosed fees when buying products online.', 'household')
+        held = copy.deepcopy(valid); held['id'] = 'held'; held['assignment']['lane'] = 'held'
+        local = copy.deepcopy(valid); local['id'] = 'local'; local['assignment']['scope'] = 'local'
+        politics = self.strategy_event('politics', 'President slams rival over federal fees', 'A political dispute concerns fees and households.', 'household')
+        self.assertEqual([item['eventId'] for item in top_stories.rank(self.snapshot([held, politics, local, valid]), now=self.now)['items']], ['consumer'])
+
+    def test_full_order_retains_duplicate_aliases_without_repeating_the_story(self):
+        one = self.event(); two = self.event('jobs-two', 'U.S. job market slowed as payrolls rose 29,000', 'The jobs report showed the unemployment rate rising.')
+        result = top_stories.rank(self.snapshot([one, two]), now=self.now)
+        self.assertEqual(len(result['items']), 1)
+        self.assertEqual(set(result['items'][0]['relatedEventIds']), {'jobs', 'jobs-two'})
+
 
 if __name__ == '__main__':
     unittest.main()

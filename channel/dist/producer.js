@@ -19,6 +19,26 @@ export function topStoryItems(snapshot){
   seen.add(item.eventId);return true;
  }).slice(0,3);
 }
+export function heroIdentity(item){return JSON.stringify([item?.eventId,item?.evidenceHash||'',topStoryArtURL(item?.art?.url)]);}
+export function retainedHeroItems(snapshot,previous=[]){
+ const authorized=new Set(topStoryItems(snapshot).filter(item=>item.evidenceHash&&topStoryArtURL(item.art?.url)).map(heroIdentity));
+ return previous.filter(item=>authorized.has(heroIdentity(item)));
+}
+export function currentStoryItems(snapshot,displayedHero=[]){
+ if(snapshot?.mode!=='live')return [];
+ const reserved=new Set([...(Array.isArray(snapshot.topStories?.reservedEventIds)?snapshot.topStories.reservedEventIds:[]),...displayedHero.map(item=>item.eventId)]),seen=new Set();
+ return (Array.isArray(snapshot.rankedStories?.items)?snapshot.rankedStories.items:[]).filter(item=>{
+  if(!item||reserved.has(item.eventId)||seen.has(item.eventId)||!topStoryEvent(snapshot,item.eventId)||typeof item.headline!=='string'||!item.headline.trim())return false;
+  seen.add(item.eventId);return true;
+ });
+}
+export async function prepareHeroItems(snapshot,loadArt){
+ const prepared=await Promise.all(topStoryItems(snapshot).map(async item=>{
+  const url=topStoryArtURL(item.art?.url);if(!url||!item.evidenceHash)return null;
+  try{const image=await loadArt(url,item);return image?{item,image}:null;}catch{return null;}
+ }));
+ return prepared.filter(Boolean);
+}
 
 export function candidateFilters(snapshot){
  return snapshot?.assignment?[['today','Today’s leads'],['developing','Developing'],['watch','Watch'],['all','All national'],['shortlist','Shortlist'],['alternatives','Held / out of scope'],['dismissed','Dismissed']]:[['all','Top candidates'],['updates','Meaningful updates'],['watch','Watch'],['local','Local signals'],['shortlist','Shortlist'],['alternatives','Alternatives / held'],['dismissed','Dismissed']];
@@ -111,15 +131,15 @@ if(typeof document!=='undefined')boot();
 
 function boot(){
  const $=id=>document.getElementById(id),node=(tag,cls,text)=>{const item=document.createElement(tag);if(cls)item.className=cls;if(text!==undefined)item.textContent=text;return item;};
- let snapshot=null,mode='live',product='brief',filter='today',page=0,selectedId=null,requestNumber=0,controller=null,busy=false,detailKey='',lastViewRefresh=null;
- const drafts=new Map(),cards=new Map(),topCards=new Map();
+ let snapshot=null,mode='live',product='brief',filter='today',page=0,selectedId=null,requestNumber=0,controller=null,busy=false,detailKey='',lastViewRefresh=null,heroVersion=0,heroLoading=false,heroLoadFailed=false,displayedHero=[];
+ const drafts=new Map(),cards=new Map(),currentCards=new Map(),topCards=new Map(),heroImages=new Map();
  const text=(id,value)=>{$(id).textContent=value||'';};
  const date=value=>{if(!value)return 'Time unverified';const parsed=new Date(value);return Number.isFinite(parsed.getTime())?parsed.toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit',timeZone:'America/Chicago',timeZoneName:'short'}):'Time unverified';};
  const selected=()=>snapshot?.events?.find(event=>event.id===selectedId);
  const draftKey=()=>`${mode}:${selectedId}`;
  const list=(value)=>Array.isArray(value)?value:[];
  function focusKey(){const element=document.activeElement;return element?.id?{id:element.id}:element?.dataset.topEventId?{topEventId:element.dataset.topEventId}:element?.dataset.eventId?{eventId:element.dataset.eventId}:element?.dataset.action?{action:element.dataset.action}:element?.dataset.focusKey?{detail:element.dataset.focusKey}:null;}
- function restoreFocus(key){if(!key||document.activeElement!==document.body)return;const target=key.id?$(key.id):key.topEventId?topCards.get(key.topEventId)?.querySelector('button'):key.eventId?cards.get(key.eventId):key.action?document.querySelector(`[data-action="${key.action}"]`):[...document.querySelectorAll('[data-focus-key]')].find(element=>element.dataset.focusKey===key.detail);target?.focus({preventScroll:true});}
+ function restoreFocus(key){if(!key||document.activeElement!==document.body)return;const target=key.id?$(key.id):key.topEventId?topCards.get(key.topEventId)?.querySelector('button'):key.eventId?(mode==='live'?currentCards:cards).get(key.eventId):key.action?document.querySelector(`[data-action="${key.action}"]`):[...document.querySelectorAll('[data-focus-key]')].find(element=>element.dataset.focusKey===key.detail);target?.focus({preventScroll:true});}
  function setBusy(value){busy=value;$('refresh').disabled=value;$('input-mode').disabled=value;$('cycle-reset').disabled=value;$('cycle-advance').disabled=value||snapshot?.demo?.canAdvance===false;document.querySelectorAll('[data-action]').forEach(button=>button.disabled=value||!selected());}
  async function request(path,body){
   const ticket=++requestNumber,requestFocus=focusKey();controller?.abort();const requestController=new AbortController();controller=requestController;setBusy(true);$('request-error').hidden=true;
@@ -129,39 +149,63 @@ function boot(){
    if(!response.ok){let message='The reporting workspace could not refresh.';try{const error=await response.json();if(typeof error.error==='string')message=error.error;}catch{}throw new Error(message);}
    const data=await response.json();if(ticket!==requestNumber)return null;
    if(!Array.isArray(data.events)||!data.rankings||data.mode!==mode)throw new Error('The workspace received an incomplete reporting snapshot.');
-   snapshot=data;lastViewRefresh=new Date();render();return data;
+   snapshot=data;lastViewRefresh=new Date();stageHero();render();return data;
   }catch(error){if(ticket!==requestNumber)return null;text('request-error',error.name==='AbortError'?'The reporting check took too long. Your last view is retained; try Refresh.':error.message||'The reporting workspace is unavailable.');$('request-error').hidden=false;$('connection-dot').dataset.status='error';$('top-stories').dataset.status='stale';text('top-stories-status',`Refresh unavailable${snapshot?.topStories?.asOf?` · Last checked ${date(snapshot.topStories.asOf)}`:''} · Current order unconfirmed.`);if(!snapshot){text('top-stories-empty','Top stories are unavailable until reporting reconnects.');text('health-message','Reporting unavailable. No candidates have been loaded.');$('candidates').replaceChildren(node('p','empty-state','We could not reach the reporting stream. Refresh to try again.'));}return null;
   }finally{if(ticket===requestNumber){setBusy(false);restoreFocus(requestFocus);}}
  }
  function refresh(){if(!busy)void request(`/api/producer?mode=${mode}`);}
+ function stageHero(){
+  const version=++heroVersion;heroLoadFailed=false;
+  if(mode!=='live'){displayedHero=[];heroLoading=false;return;}
+  // The server, not browser history, decides whether an old tile is still valid.
+  displayedHero=retainedHeroItems(snapshot,displayedHero);
+  const desired=topStoryItems(snapshot);heroLoading=desired.some(item=>!heroImages.has(heroIdentity(item)));
+  void prepareHeroItems(snapshot,async(url,item)=>{
+   const identity=heroIdentity(item),cached=heroImages.get(identity);if(cached)return cached;
+   const image=new Image();image.alt=item.art?.alt||'';image.decoding='async';image.src=url;
+   let timeout;try{await Promise.race([image.decode(),new Promise((_,reject)=>{timeout=setTimeout(()=>reject(new Error('Image preparation timed out')),12000);})]);}finally{clearTimeout(timeout);}
+   if(!image.complete||!image.naturalWidth)throw new Error('Image unavailable');
+   heroImages.set(identity,image);return image;
+  }).then(prepared=>{
+   if(version!==heroVersion||mode!=='live')return;
+   const focus=focusKey(),scroll=$('candidates').scrollTop,preparedIds=new Set(prepared.map(({item})=>heroIdentity(item)));
+   const retained=retainedHeroItems(snapshot,displayedHero).filter(item=>!preparedIds.has(heroIdentity(item)));
+   displayedHero=desired.flatMap(item=>{const ready=prepared.find(entry=>heroIdentity(entry.item)===heroIdentity(item));return ready?[ready.item]:retained.filter(old=>heroIdentity(old)===heroIdentity(item));});
+   heroLoading=false;heroLoadFailed=prepared.length<desired.length;
+   renderTopStories();renderList();renderDetail();$('candidates').scrollTop=scroll;restoreFocus(focus);
+   const liveIds=new Set(displayedHero.map(heroIdentity));for(const id of heroImages.keys())if(!liveIds.has(id))heroImages.delete(id);
+  });
+ }
  function render(){
   if(!selectedId&&mode==='live')selectedId=topStoryItems(snapshot)[0]?.eventId||null;
   const focus=focusKey(),scroll=$('candidates').scrollTop;renderHealth();renderTopStories();renderCoverage();renderDefinitions();renderList();renderDetail();$('candidates').scrollTop=scroll;restoreFocus(focus);
  }
  function renderTopStories(){
   const panel=$('top-stories');panel.hidden=mode==='demo';document.body.classList.toggle('has-top-stories',mode!=='demo');if(mode==='demo')return;
-  const top=snapshot.topStories,items=topStoryItems(snapshot),stale=top?.status==='stale'||top?.stale===true;
+  const top=snapshot.topStories,items=displayedHero,stale=top?.status==='stale'||top?.stale===true||!$('request-error').hidden,preparing=heroLoading||Number(top?.preparingCount)>0||top?.preparationState==='preparing';
   panel.dataset.status=stale?'stale':items.length?'current':'empty';
-  const stamp=top?.asOf?`As of ${date(top.asOf)}`:'';
-  text('top-stories-status',stale?`Reporting needs a refresh${stamp?` · ${stamp}`:''} · Current order unconfirmed`:items.length?`${stamp}${stamp?' · ':''}What to know now`:top?'No current top stories qualified yet.':'Top-story selection is unavailable.');
+  const stamp=top?.preparedAt?`Prepared ${date(top.preparedAt)}`:top?.asOf?`As of ${date(top.asOf)}`:'',next=top?.nextRefreshAt?new Date(top.nextRefreshAt):null,nextLabel=next&&Number.isFinite(next.getTime())?`Next review ${next.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',timeZone:'America/Chicago'})}`:'Reviewed every 15 minutes';
+  const preparation=heroLoadFailed||top?.preparationState==='needs_attention'?'An update needs attention':preparing?'Preparing an update':nextLabel;
+  text('top-stories-status',stale?`Reporting needs a refresh${stamp?` · ${stamp}`:''} · Current order unconfirmed`:items.length?`${stamp}${stamp?' · ':''}${preparation}`:preparing?'Preparing the next top stories':top?.preparationState==='needs_attention'||heroLoadFailed?'Top stories are waiting for finished artwork':top?'No current top stories qualified yet.':'Top-story selection is unavailable.');
   const container=$('top-stories-list'),wanted=new Set(items.map(item=>item.eventId));
   for(const child of [...container.children])if(!wanted.has(child.dataset.topEventId))child.remove();
+  for(const id of topCards.keys())if(!wanted.has(id))topCards.delete(id);
   for(const [index,item] of items.entries()){
    let row=topCards.get(item.eventId);if(!row){row=node('li','top-story');row.dataset.topEventId=item.eventId;const button=node('button','top-story-button');button.type='button';button.dataset.topEventId=item.eventId;button.addEventListener('click',()=>{if(!topStoryEvent(snapshot,item.eventId))return;choose(item.eventId);$('story-detail').querySelector('.detail-title')?.focus({preventScroll:true});});row.append(button);topCards.set(item.eventId,row);}
    const button=row.querySelector('button'),key=JSON.stringify([index,item]);
    if(row.dataset.renderKey!==key){
-    const copy=node('span','top-story-copy'),meta=node('span','top-story-meta'),rank=node('span','top-story-rank',String(index+1).padStart(2,'0'));
+    const copy=node('span','top-story-copy'),meta=node('span','top-story-meta'),rank=node('span','top-story-rank',String(item.rank||index+1).padStart(2,'0'));
     meta.append(rank,node('span','top-story-publisher',item.publisher||'National reporting'),node('span','top-story-arrow','→'));meta.lastChild.setAttribute('aria-hidden','true');
     copy.append(node('span','top-story-headline',item.headline));if(item.summary)copy.append(node('span','top-story-summary',item.summary));
     const content=node('span','top-story-content');content.append(copy);const artURL=topStoryArtURL(item.art?.url);row.classList.toggle('has-art',!!artURL);
-    if(artURL){const art=node('span','top-story-art'),image=node('img','');image.src=artURL;image.alt=item.art.alt||'';image.decoding='async';image.addEventListener('error',()=>{art.remove();row.classList.remove('has-art');},{once:true});art.append(image);if(item.art.label)art.append(node('span','top-story-art-label',item.art.label));content.append(art);}
-    button.replaceChildren(meta,content);button.setAttribute('aria-label',`${index+1}. ${item.headline}. Inspect reporting`);row.dataset.renderKey=key;
+    if(artURL){const art=node('span','top-story-art'),image=heroImages.get(heroIdentity(item));if(!image)continue;image.alt=item.art.alt||'';art.append(image);if(item.art.label)art.append(node('span','top-story-art-label',item.art.label));content.append(art);}
+    button.replaceChildren(meta,content);button.setAttribute('aria-label',`${item.rank||index+1}. ${item.headline}. Inspect reporting`);row.dataset.renderKey=key;
    }
    button.setAttribute('aria-current',String(item.eventId===selectedId));
    const position=container.children[index];if(position!==row)container.insertBefore(row,position||null);
   }
-  $('top-stories-empty').hidden=items.length===3;
-  text('top-stories-empty',items.length?`${items.length} ${items.length===1?'story meets':'stories meet'} the current standard. Remaining places stay open until a distinct national development qualifies.`:top?.message||(top?'We’re checking for distinct national developments with a clear reason to matter today.':'The reporting desk remains available below. Refresh to check the top-story selection again.'));
+  $('top-stories-empty').hidden=items.length>0;
+  text('top-stories-empty',preparing?'Your current national reporting is available below while the next top stories are prepared.':top?.message||(top?'No finished top-story tiles are available. Current national reporting remains below.':'The reporting desk remains available below. Refresh to check the top-story selection again.'));
  }
  function renderHealth(){
   text('strategy-name',snapshot.assignment?'U.S. NATIONAL · CONSEQUENTIAL WORLD':snapshot.strategy?.name||'YOUR EDITORIAL VIEW');
@@ -176,7 +220,7 @@ function boot(){
  function renderCoverage(){
   const desk=snapshot.assignment,panel=$('desk-coverage');panel.hidden=!desk;if(!desk)return;
   const counts=desk.counts||{},health=desk.health||{},coverageScroll=panel.querySelector('.coverage-content').scrollTop,calendarOpen=panel.querySelector('.release-calendar')?.open||false;
-  text('coverage-summary',`${counts.today||0} today · ${counts.developing||0} developing · ${counts.watch||0} watching`);
+  text('coverage-summary',snapshot.rankedStories?`${list(snapshot.rankedStories.items).length} current stories · ${health.healthySources??'—'} / ${health.sourceCount??'—'} sources available`:`${counts.today||0} today · ${counts.developing||0} developing · ${counts.watch||0} watching`);
   text('coverage-context',`${desk.date||'Current cycle'} · ${desk.scope||'U.S. national + consequential world'} · ${desk.timezone||'America/Chicago'}. Coverage describes the collected reporting, not the entire news agenda.`);
   const beats=$('coverage-beats');beats.replaceChildren();
   for(const beat of list(desk.coverage)){
@@ -202,6 +246,8 @@ function boot(){
  }
  function cardBadge(event){if(snapshot.assignment&&event.assignment){const lane=event.assignment.lane;return {text:assignmentLanes[lane]||'Needs review',kind:lane==='today'||lane==='developing'?'update':'watch'};}const freshness=freshnessLabel(event);if(freshness)return {text:freshness,kind:'watch'};if(event.signals?.update)return {text:'Meaningful update',kind:'update'};if(event.localSignal)return {text:'Local signal',kind:'local'};if(event.decision?.action==='watch'||event.signals?.watch)return {text:'Watch',kind:'watch'};return {text:'Candidate',kind:'candidate'};}
  function renderList(){
+  const live=mode==='live';$('product-tabs').hidden=live;$('candidate-filter-label').hidden=live;$('page-controls').hidden=live;$('candidates').classList.toggle('current-stories-list',live);$('candidates').setAttribute('role',live?'list':'tabpanel');text('candidate-title',live?'Current stories':'Story opportunities');
+  if(live){renderCurrentStories();return;}
   const filters=candidateFilters(snapshot),filterKey=JSON.stringify(filters);if($('candidate-filter').dataset.options!==filterKey){$('candidate-filter').replaceChildren(...filters.map(([value,label])=>{const option=node('option','',label);option.value=value;return option;}));$('candidate-filter').dataset.options=filterKey;}if(!filters.some(([value])=>value===filter))filter=filters[0][0];$('candidate-filter').value=filter;
   const batch=candidatePage(snapshot,product,filter,page);page=batch.page;
   document.querySelectorAll('[data-product]').forEach(button=>{button.setAttribute('aria-selected',String(button.dataset.product===product));button.tabIndex=button.dataset.product===product?0:-1;});
@@ -226,12 +272,33 @@ function boot(){
   }
   text('candidate-count',batch.total?`${batch.start}–${batch.end} of ${batch.total} opportunities`:'No opportunities in this view');$('previous-page').disabled=page===0;$('next-page').disabled=page>=batch.pages-1;
  }
+ function renderCurrentStories(){
+  const items=currentStoryItems(snapshot,displayedHero),container=$('candidates');container.setAttribute('aria-labelledby','candidate-title');
+  text('ranking-note','Continuing the national picture, in order of consequence.');
+  if(!selectedId||!selected()){selectedId=displayedHero[0]?.eventId||items[0]?.eventId||null;detailKey='';}
+  const wanted=new Set(items.map(item=>item.eventId));for(const child of [...container.children])if(!wanted.has(child.dataset.eventId))child.remove();
+  for(const id of currentCards.keys())if(!wanted.has(id))currentCards.delete(id);
+  for(const [index,item] of items.entries()){
+   const event=topStoryEvent(snapshot,item.eventId);let button=currentCards.get(item.eventId),row=button?.parentElement;
+   if(!button){row=node('div','current-story-row');row.dataset.eventId=item.eventId;row.setAttribute('role','listitem');button=node('button','current-story-button');button.type='button';button.dataset.eventId=item.eventId;button.addEventListener('click',()=>choose(item.eventId));row.append(button);currentCards.set(item.eventId,button);}
+   const key=JSON.stringify([item,event.decision]);if(button.dataset.renderKey!==key){
+    const rank=node('span','current-story-rank',Number.isFinite(item.rank)?String(item.rank).padStart(2,'0'):'—'),copy=node('span','current-story-copy'),meta=node('span','current-story-meta');rank.setAttribute('aria-hidden','true');
+    meta.append(node('span','',item.publisher||'National reporting'));const source=event.evidence?.find(source=>source.id===item.sourceId),clock=sourceClockLabel(source);meta.append(node('span','',`${clock} ${relativeTime(item.publishedAt,snapshot.asOf||snapshot.generatedAt)}`));
+    copy.append(meta,node('span','current-story-headline',item.headline));if(item.summary)copy.append(node('span','current-story-summary',item.summary));
+    if(event.decision?.action&&event.decision.action!=='none')copy.append(node('span','current-story-decision',actionNames[event.decision.action]||''));
+    button.replaceChildren(rank,copy);button.setAttribute('aria-label',`${Number.isFinite(item.rank)?`${item.rank}. `:''}${item.headline}. Inspect reporting`);button.dataset.renderKey=key;
+   }
+   button.setAttribute('aria-current',String(item.eventId===selectedId));const position=container.children[index];if(position!==row)container.insertBefore(row,position||null);
+  }
+  if(!items.length)container.replaceChildren(node('p','empty-state',snapshot.rankedStories?'No additional current national stories qualify in this edition. The desk continues gathering.':'The current story order is being prepared. Source coverage and existing reporting remain available.'));
+  text('candidate-count',`${items.length} ${items.length===1?'story':'stories'} beyond the top stories · In editorial order`);
+ }
  function choose(id){drafts.set(draftKey(),$('decision-note').value);selectedId=id;detailKey='';$('detail-scroll').scrollTop=0;text('decision-feedback','Decisions are saved here. Nothing is assigned or published.');renderList();renderDetail();}
  function section(title){const block=node('section','detail-section');block.append(node('h3','',title));return block;}
  function renderDetail(){
   for(const row of topCards.values())row.querySelector('button').setAttribute('aria-current',String(row.dataset.topEventId===selectedId));
   const event=selected();$('detail-empty').hidden=!!event;$('story-detail').hidden=!event;$('decision-panel').hidden=!event;if(!event)return;
-  const topContext=topStoryItems(snapshot).find(item=>item.eventId===event.id)||null,localBasis=event.localSignal?localSignalSources(snapshot,event.localSignal):null,key=JSON.stringify([event,product,localBasis,topContext]);if(detailKey===key)return;detailKey=key;
+  const topContext=displayedHero.find(item=>item.eventId===event.id)||null,localBasis=event.localSignal?localSignalSources(snapshot,event.localSignal):null,key=JSON.stringify([event,product,localBasis,topContext]);if(detailKey===key)return;detailKey=key;
   const scroll=$('detail-scroll').scrollTop,historyOpen=$('story-detail').querySelector('.history')?.open||false,openedExcerpts=new Set([...$('story-detail').querySelectorAll('details[data-evidence]')].filter(item=>item.open).map(item=>item.dataset.evidence)),article=$('story-detail');article.replaceChildren();
   const meta=node('div','detail-meta'),badge=cardBadge(event),badgeNode=node('span','card-badge',badge.text),heading=node('h2','detail-title',event.title),clock=snapshot.assignment?assignmentReportClock(event):{label:'',at:event.whyNow?.at};heading.tabIndex=-1;heading.dataset.focusKey='detail-heading';badgeNode.dataset.kind=badge.kind;meta.append(badgeNode,node('span','',event.assignment?.beatLabel||event.topic||'Reporting'),node('span','detail-date',`${clock.label?`${clock.label} `:''}${date(clock.at)}`));article.append(meta,heading);
   if(topContext&&(topContext.whyNow||list(topContext.supportingEvidence).length)){
@@ -292,7 +359,7 @@ function boot(){
   if(list(snapshot.limitations).length){const block=node('section','definition');block.append(node('h3','','Reporting boundaries'));const ul=node('ul','');for(const limit of snapshot.limitations)ul.append(node('li','',limit));block.append(ul);panel.append(block);}
  }
  $('refresh').addEventListener('click',refresh);
- $('input-mode').addEventListener('change',()=>{drafts.set(draftKey(),$('decision-note').value);mode=$('input-mode').value;filter=mode==='live'?'today':'all';snapshot=null;selectedId=null;page=0;detailKey='';$('top-stories').hidden=mode==='demo';document.body.classList.toggle('has-top-stories',mode!=='demo');$('top-stories-list').replaceChildren();$('top-stories-empty').hidden=false;text('top-stories-status','Checking the current national picture…');text('top-stories-empty','Top stories will appear when current reporting is available.');text('health-message',mode==='demo'?'Loading an isolated representative cycle…':'Connecting to live reporting…');$('cycle-banner').hidden=mode!=='demo';$('desk-coverage').hidden=true;$('story-detail').hidden=true;$('decision-panel').hidden=true;$('detail-empty').hidden=false;$('candidates').replaceChildren(node('p','empty-state','Loading this reporting view…'));void request(`/api/producer?mode=${mode}`);});
+ $('input-mode').addEventListener('change',()=>{drafts.set(draftKey(),$('decision-note').value);mode=$('input-mode').value;filter=mode==='live'?'today':'all';snapshot=null;selectedId=null;page=0;detailKey='';heroVersion++;displayedHero=[];heroLoading=false;$('top-stories').hidden=mode==='demo';document.body.classList.toggle('has-top-stories',mode!=='demo');$('top-stories-list').replaceChildren();$('top-stories-empty').hidden=false;text('top-stories-status','Checking the current national picture…');text('top-stories-empty','Top stories will appear when current reporting is available.');text('health-message',mode==='demo'?'Loading an isolated representative cycle…':'Connecting to live reporting…');$('cycle-banner').hidden=mode!=='demo';$('desk-coverage').hidden=true;$('story-detail').hidden=true;$('decision-panel').hidden=true;$('detail-empty').hidden=false;$('candidates').replaceChildren(node('p','empty-state','Loading this reporting view…'));void request(`/api/producer?mode=${mode}`);});
  $('candidate-filter').addEventListener('change',()=>{drafts.set(draftKey(),$('decision-note').value);filter=$('candidate-filter').value;selectedId=null;detailKey='';page=0;if(snapshot){renderList();renderDetail();$('candidates').scrollTop=0;$('detail-scroll').scrollTop=0;}});
  for(const button of document.querySelectorAll('[data-product]')){button.addEventListener('click',()=>{product=button.dataset.product;page=0;if(snapshot){renderList();renderDetail();$('candidates').scrollTop=0;}});button.addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const id=event.key==='Home'?'brief':event.key==='End'?'focus':product==='brief'?'focus':'brief';$(`product-${id}`).click();$(`product-${id}`).focus();});}
  $('previous-page').addEventListener('click',()=>{page--;renderList();$('candidates').scrollTop=0;});$('next-page').addEventListener('click',()=>{page++;renderList();$('candidates').scrollTop=0;});

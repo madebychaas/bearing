@@ -75,21 +75,34 @@ class Handler(SimpleHTTPRequestHandler):
     def do_POST(self):
         path=urlsplit(self.path).path
         newscast_action=re.fullmatch(r'/api/newscasts/([^/]+)/(cancel|retry)',path)
-        if path not in ('/api/producer/decision','/api/producer/demo','/api/producer/handoff','/api/newscasts') and not newscast_action:
+        if path not in ('/api/producer/decision','/api/producer/demo','/api/producer/handoff','/api/newscasts','/api/top-stories/prepare') and not newscast_action:
             self.json_response({'error':'Unknown endpoint.'},404);return
         if not self.local_request():return
         if self.headers.get('Content-Type','').split(';')[0].strip().lower()!='application/json':
             self.json_response({'error':'Send an application/json request.'},415);return
         try:length=int(self.headers.get('Content-Length','0'))
         except ValueError:length=0
-        maximum=131072 if path.endswith('/handoff') else 8192
+        maximum=131072 if path.endswith(('/handoff','/prepare')) else 8192
         if not 1<=length<=maximum:
             self.json_response({'error':f'Request body must be between 1 and {maximum} bytes.'},413);return
         try:
             payload=json.loads(self.rfile.read(length))
             if not isinstance(payload,dict):raise ValueError('Expected a JSON object.')
             action=payload.get('action')
-            if path=='/api/newscasts' or newscast_action:
+            if path=='/api/top-stories/prepare':
+                from top_story_editions import Conflict
+                desk=get_producer()
+                with desk.lock:
+                    snapshot=desk.snapshot()
+                    try:
+                        if action=='claim':result=desk.edition_store.claim(payload.get('jobId'))
+                        elif action in ('complete','hold'):
+                            from producer import _read
+                            result=desk.edition_store.finish(payload,snapshot,_read(desk.work/'top-stories-editorial.json',{}))
+                            desk.snapshot()
+                        else:raise ValueError('Choose claim, complete or hold for tile preparation.')
+                    except Conflict as exc:self.json_response({'error':str(exc)},409);return
+            elif path=='/api/newscasts' or newscast_action:
                 from newscasts import Conflict,NeedsAttention
                 try:
                     if path=='/api/newscasts':result=get_newscasts().create(payload)
@@ -148,6 +161,16 @@ class Handler(SimpleHTTPRequestHandler):
             outputfile.write(chunk);remaining-=len(chunk)
     def do_GET(self):
         path=urlsplit(self.path).path
+        if path=='/api/top-stories/jobs':
+            if not self.local_request():return
+            try:
+                desk=get_producer()
+                with desk.lock:
+                    snapshot=desk.snapshot()
+                    result=desk.edition_store.jobs(snapshot)
+                self.json_response(result)
+            except (OSError,ValueError,RuntimeError):self.json_response({'error':'Tile preparation state is temporarily unavailable.'},503)
+            return
         if path=='/api/newscast/catalog' or re.fullmatch(r'/api/newscasts/[^/]+',path):
             if not self.local_request():return
             try:
