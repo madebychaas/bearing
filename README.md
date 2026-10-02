@@ -2,11 +2,13 @@
 
 A calm, watch-first news experience: individual produced stories, a continuous playlist, and a latest-news feed. The editorial focus is practical U.S. consumer, economic and consequential policy news.
 
-The application lives in [`channel/`](channel/README.md). Run **`channel/Start Bearing.cmd`** on the configured Windows machine. Open **http://127.0.0.1:8796/** to watch Bearing or **http://127.0.0.1:8796/producer.html** for the **Easy News** producer workspace. See the application README for Python, Piper models, FFmpeg and runtime setup on another machine.
+The application lives in [`channel/`](channel/README.md). Run **`channel/Start Bearing.cmd`** on the configured Windows machine. Open **http://127.0.0.1:8796/** to watch Bearing or **http://127.0.0.1:8796/producer.html** for the **Bearing national assignment desk**. See the application README for Python, Piper models, FFmpeg and runtime setup on another machine.
 
 ## Milestone status
 
-The active mission is **Make my newscast**: choose two or three current stories, set voice, delivery and sound, and receive an individually produced playlist. The new viewer workflow saves real production jobs, reports actual stages, recovers after refresh, and offers explicit playback only after complete film validation. Personal playlists keep their selected order and end with replay or return to the channel. **Creative automation is not connected yet**: arbitrary fresh stories still need reviewed scripts and bespoke visual plans. Unprepared selections are saved with a clear attention state, rather than presented as finished news. See [the current handoff](product/NEXT.md).
+The active mission is **national news discovery**. The native assignment desk gathers publisher reporting, agency releases, severe-alert signals and public-inspection filings. Due feeds are checked every 30 seconds independently of video production. Today’s leads, developing reporting, watch items, source-linked questions, coverage gaps and an official BEA calendar help establish a real news peg. The collector respects each publisher’s polling limits; freshness and scope are candidates for editorial review, not verified facts. See [the desk record](product/NATIONAL_ASSIGNMENT_DESK.md) and [current handoff](product/NEXT.md).
+
+**Make my newscast is parked at the user’s request.** Its saved selection/job/playback workflow remains intact. Automatic creative direction for arbitrary fresh stories is still unconnected; no new finished film is implied by this sourcing checkpoint.
 
 The [selection-to-production proof](product/SELECTION_TO_PRODUCTION.md) is complete: a producer-selected student-loan story carries its evidence, editorial context and exact approval through two finished films and into the local playlist. **Default help moves online** runs 36.9 seconds in Warm and 40.3 seconds in Measured, with original animated graphics, music, effects and captions. Changed reporting blocks stale completion; explicit reassessment preserves discovery history when a report rotates out of intake. See the [finished production review](product/STUDENT_LOAN_PRODUCTION_20261001.md).
 
@@ -22,7 +24,7 @@ The previous production milestone remains available:
 
 The first story-quality milestone was accepted on September 29, 2026. The accepted cybersecurity cut remains intact. On September 30, the user requested a major domestic story produced through the same complete path. **Inflation erased the income gain** uses that morning's BEA release, a 58-word script, flowing measured narration, original animated explanatory graphics and a complete scored 1080p movie for each voice. See [the story review](product/IN_FOCUS_PCE_REVIEW.md) for source evidence, rights, pacing and delivery details, and [the handoff](product/NEXT.md) for verification.
 
-Easy News adds an editorial view over the same source intake and event IDs: separate immediate-awareness and deeper-treatment recommendations, source inspection, change history, and reversible producer decisions. Its sample news cycle is explicitly separated from live reporting. Recommendations do not assign, generate or publish stories. See [the V1 guide](product/EASY_NEWS_V1.md) and [current handoff](product/NEXT.md).
+The native producer desk adds an editorial view over the same source intake and event IDs: separate immediate-awareness and deeper-treatment recommendations, source inspection, change history, and reversible producer decisions. Its sample news cycle is explicitly separated from live reporting. Recommendations do not assign, generate or publish stories. See [the V1 guide](product/EASY_NEWS_V1.md) and [current handoff](product/NEXT.md).
 
 ## Repository
 
@@ -40,7 +42,7 @@ Local model environments, machine-specific `runtime.json`, production run archiv
 
 The product is **Bearing**, formerly **current.** The rename changes display copy and metadata, not playback logic or layout. `CURRENT_*` environment variables, the `current.preferences.v1` storage key, internal CSS selectors and existing local folder names remain compatible to preserve configuration and viewer preferences. Historical generation prompts and media provenance retain their original wording.
 
-The old `easynews-reference` repository is archival reference only. Do not inspect or use it unless the user explicitly requests a comparison against EasyNews. It is not a runtime, import or repository dependency. The new **Easy News** producer workspace is implemented natively here, following [the current product direction](product/EASY_NEWS_DIRECTION.md); its name does not authorize using the archive.
+The old `easynews-reference` repository is archival reference only. Do not inspect or use it unless the user explicitly requests a comparison against EasyNews. It is not a runtime, import or repository dependency. The native producer workspace, historically called **Easy News**, is implemented here, following [the current product direction](product/EASY_NEWS_DIRECTION.md); its name does not authorize using the archive.
 
 ## Verification
 

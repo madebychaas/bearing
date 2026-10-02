@@ -3,29 +3,30 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#0d1518">
-  <title>Easy News — National Producer</title>
+  <title>Bearing — National desk</title>
   <meta name="description" content="A focused editorial workspace for understanding what matters now and where it fits.">
   <link rel="stylesheet" href="producer.css">
 </head>
 <body>
   <a class="skip-link" href="#candidates">Skip to story candidates</a>
   <header class="masthead">
-    <a class="brand" href="producer.html" aria-label="Easy News home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>Easy News</a>
+    <a class="brand" href="producer.html" aria-label="Bearing national desk"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>Bearing</a>
     <span class="workspace-label">EDITORIAL WORKSPACE</span>
     <nav class="header-links" aria-label="Workspace"><button id="strategy-open" class="quiet-button">Strategy &amp; products <span aria-hidden="true">↗</span></button><a href="./" class="viewer-link">Watch Bearing <span aria-hidden="true">↗</span></a></nav>
   </header>
   <main>
     <section class="desk-heading" aria-labelledby="desk-title">
-      <div><p class="eyebrow" id="strategy-name">YOUR EDITORIAL VIEW</p><h1 id="desk-title">National Producer<span class="heading-dot" aria-hidden="true">.</span></h1><p class="desk-description">What matters now. What deserves a closer look.</p></div>
+      <div><p class="eyebrow" id="strategy-name">NATIONAL ASSIGNMENT DESK</p><h1 id="desk-title">National desk<span class="heading-dot" aria-hidden="true">.</span></h1><p class="desk-description">What’s new. Why today. What we need to know next.</p></div>
       <div class="desk-controls"><label for="input-mode">Reporting</label><select id="input-mode"><option value="live">Live reporting</option><option value="demo">Representative cycle</option></select><button id="refresh" class="refresh-button" aria-label="Refresh story candidates" title="Refresh story candidates">↻</button></div>
     </section>
     <div class="health-strip"><span class="connection-dot" id="connection-dot" aria-hidden="true"></span><span id="health-message">Connecting to the reporting stream…</span><span id="refresh-time"></span></div>
+    <details id="desk-coverage" class="desk-coverage" hidden><summary><span>Coverage &amp; source health</span><span id="coverage-summary"></span></summary><div class="coverage-content"><p id="coverage-context"></p><div id="coverage-beats" class="coverage-beats"></div><div id="coverage-health" class="coverage-health"></div><ul id="coverage-limitations" class="coverage-limitations"></ul></div></details>
     <section class="cycle-banner" id="cycle-banner" aria-label="Representative cycle" hidden><div><strong>Representative cycle</strong><span id="cycle-description">Synthetic examples for testing editorial decisions. Not current news.</span></div><div class="cycle-actions"><button id="cycle-reset" class="quiet-button">Reset cycle</button><button id="cycle-advance" class="small-primary">Next development <span aria-hidden="true">→</span></button></div></section>
     <p id="request-error" class="request-error" role="alert" hidden></p>
     <div class="workspace" id="workspace">
       <section class="candidate-panel" aria-labelledby="candidate-title">
         <div class="product-tabs" role="tablist" aria-label="Rank candidates for a product"><button id="product-brief" role="tab" aria-controls="candidates" aria-selected="true" data-product="brief"><span>The Brief</span><small>Need to know</small></button><button id="product-focus" role="tab" aria-controls="candidates" aria-selected="false" tabindex="-1" data-product="focus"><span>In Focus</span><small>Worth understanding</small></button></div>
-        <div class="list-toolbar"><h2 id="candidate-title">Story opportunities</h2><label><span class="sr-only">Filter story opportunities</span><select id="candidate-filter"><option value="all">Top candidates</option><option value="updates">Meaningful updates</option><option value="watch">Watch</option><option value="local">Local signals</option><option value="shortlist">Shortlist</option><option value="alternatives">Alternatives / held</option><option value="dismissed">Dismissed</option></select></label></div>
+        <div class="list-toolbar"><h2 id="candidate-title">Story opportunities</h2><label><span class="sr-only">Filter story opportunities</span><select id="candidate-filter"><option value="today">Today’s leads</option><option value="developing">Developing</option><option value="watch">Watch</option><option value="all">All national</option><option value="shortlist">Shortlist</option><option value="alternatives">Held / out of scope</option><option value="dismissed">Dismissed</option></select></label></div>
         <p class="ranking-note" id="ranking-note">Ranked for immediate audience awareness. A candidate is not an assignment.</p>
         <div id="candidates" class="candidate-list" role="tabpanel" aria-labelledby="product-brief" tabindex="0"><p class="empty-state">Gathering the reporting behind your next decision…</p></div>
         <div class="list-footer"><span id="candidate-count">Checking candidates</span><div class="page-controls"><button id="previous-page" aria-label="Previous candidates" disabled>←</button><button id="next-page" aria-label="Next candidates" disabled>→</button></div></div>

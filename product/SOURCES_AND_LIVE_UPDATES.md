@@ -1,6 +1,6 @@
 # Bearing: broader sources and live updates
 
-Assessed and implemented locally on September 28, 2026.
+Historical assessment and implementation: September 28, 2026. For the current October 2 source roster, independent intake, national desk and coverage gaps, see [National assignment desk](NATIONAL_ASSIGNMENT_DESK.md). Counts and schedules below describe that earlier checkpoint.
 
 ## Decision
 

@@ -80,7 +80,8 @@ def _evidence(report,candidate,health):
             'owner':meta('owner') or item.get('publisherGroup') or source.get('name'),'syndication':meta('syndication'),
             'syndicatedFrom':meta('syndicatedFrom'),'originalId':meta('originalId'),'topic':item.get('topic','general'),
             'suppressed':bool(item.get('editorial',{}).get('suppressed')),'foreignLocal':bool(item.get('editorial',{}).get('foreignLocal')),
-            'domestic':item.get('editorial',{}).get('domestic',item.get('domestic')),'revisionMismatch':mismatch,'holdReasons':item.get('holdReasons',[])}
+            'domestic':item.get('editorial',{}).get('domestic',item.get('domestic')),'revisionMismatch':mismatch,'holdReasons':item.get('holdReasons',[]),
+            **{key:item.get(key) for key in ('firstSeenAt','firstRevisionSeenAt','discoveryKind','publicationLagSeconds','sourceTimeKind','sourceUpdatedAt','alert','discoveryOnly','filing')}}
 
 def _owners(reports):
     return {str((r.get('syndication') or {}).get('provider') or r.get('syndicatedFrom') or r['owner']) for r in reports}
@@ -312,7 +313,14 @@ class ProducerStore:
             return state
         except (OSError,ValueError) as exc:raise RuntimeError('Producer decision state could not be read; existing file was preserved') from exc
     def _inputs(self,mode,state):
-        if mode=='live':return (_input(self.root/'dist/reporting.json',{'items':[]}),_input(self.work/'candidates/latest.json',{'items':[]}),_input(self.root/'dist/source-status.json',{'healthy':0,'total':0,'sources':[]}),_time(self.clock()) or datetime.now(UTC),None)
+        if mode=='live':
+            coherent=self.runs/'intake-snapshot.json'
+            if coherent.exists():
+                bundle=_input(coherent,{})
+                if bundle.get('schema')!=1 or not all(isinstance(bundle.get(key),dict) for key in ('reporting','candidates','sourceHealth')):
+                    raise RuntimeError('The coherent intake snapshot is incomplete; retained editorial state is preserved')
+                return (bundle['reporting'],bundle['candidates'],bundle['sourceHealth'],_time(self.clock()) or datetime.now(UTC),None)
+            return (_input(self.root/'dist/reporting.json',{'items':[]}),_input(self.work/'candidates/latest.json',{'items':[]}),_input(self.root/'dist/source-status.json',{'healthy':0,'total':0,'sources':[]}),_time(self.clock()) or datetime.now(UTC),None)
         fixture=_input(self.work/'producer-demo.json',{})
         if not fixture.get('steps'):raise ValueError('Representative fixture is unavailable')
         index=min(max(0,int(state.get('demoStep',0))),len(fixture['steps'])-1);step=fixture['steps'][index]
@@ -326,6 +334,13 @@ class ProducerStore:
             self._save(mode,updated)
             result=build_snapshot(reporting,candidates,health,updated,self.config,now)
             result.update(mode=mode,demo=demo,label='Representative news cycle · synthetic examples' if mode=='demo' else result['label'])
+            if mode=='live':
+                import assignment
+                result=assignment.enrich(result,_input(self.work/'sources.json',{'sources':[]}),now)
+                import release_calendar
+                calendar=release_calendar.snapshot(self.root,now)
+                result['assignment']['watchpoints']=calendar['events']
+                result['assignment']['calendarHealth']=calendar['health']
             return result
     def decide(self,event_id,action,note='',mode='live'):
         if action not in ACTIONS:raise ValueError('Unknown editorial action')

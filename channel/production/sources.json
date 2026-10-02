@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-09-29",
-  "scope": "Local source discovery. Publication and AI narration permissions are distinct.",
+  "checkedAt": "2026-10-02",
+  "scope": "National assignment-desk discovery plus existing Bearing sources. Feed availability is separate from factual verification and publication or narration rights.",
   "sources": [
     {
       "enabled": true,
@@ -19,7 +19,12 @@
       "rightsNote": "Agency-authored feed text only; exclude third-party material.",
       "region": "US / international",
       "publisherGroup": "NASA",
-      "domestic": true
+      "domestic": true,
+      "deskRole": "primary",
+      "deskBeats": [
+        "technology"
+      ],
+      "deskScope": "specialized"
     },
     {
       "enabled": true,
@@ -39,7 +44,12 @@
       "rightsNote": "Agency-authored feed text only.",
       "region": "US / international",
       "publisherGroup": "NOAA",
-      "domestic": true
+      "domestic": true,
+      "deskRole": "primary",
+      "deskBeats": [
+        "safety"
+      ],
+      "deskScope": "specialized"
     },
     {
       "enabled": true,
@@ -57,7 +67,12 @@
       "rightsNote": "Discovery; check complete source and reuse conditions before narration.",
       "region": "US / international",
       "publisherGroup": "NSF",
-      "domestic": true
+      "domestic": true,
+      "deskRole": "primary",
+      "deskBeats": [
+        "technology"
+      ],
+      "deskScope": "specialized"
     },
     {
       "enabled": true,
@@ -75,7 +90,12 @@
       "rightsNote": "Attributed NIST employee-authored news; exclude outside copyrights and Standard Reference Data.",
       "region": "US / international",
       "publisherGroup": "NIST",
-      "domestic": true
+      "domestic": true,
+      "deskRole": "primary",
+      "deskBeats": [
+        "technology"
+      ],
+      "deskScope": "specialized"
     },
     {
       "enabled": true,
@@ -93,7 +113,12 @@
       "rightsNote": "Agency-authored text only; third-party materials excluded.",
       "region": "US / international",
       "publisherGroup": "USGS",
-      "domestic": true
+      "domestic": true,
+      "deskRole": "primary",
+      "deskBeats": [
+        "safety"
+      ],
+      "deskScope": "specialized"
     },
     {
       "enabled": true,
@@ -111,7 +136,13 @@
       "rightsNote": "Economic and regulatory announcements need contextual editorial review.",
       "region": "US / international",
       "publisherGroup": "Federal Reserve",
-      "domestic": true
+      "domestic": true,
+      "deskRole": "primary",
+      "deskBeats": [
+        "economy",
+        "policy"
+      ],
+      "deskScope": "national"
     },
     {
       "enabled": true,
@@ -132,7 +163,13 @@
       "rightsNote": "Local source discovery; narrated derivatives and business syndication not cleared.",
       "region": "International",
       "publisherGroup": "BBC",
-      "domestic": false
+      "domestic": false,
+      "deskRole": "publisher",
+      "deskBeats": [
+        "policy",
+        "world"
+      ],
+      "deskScope": "mixed"
     },
     {
       "enabled": false,
@@ -154,7 +191,13 @@
       "region": "US / international",
       "publisherGroup": "BBC",
       "domestic": false,
-      "disabledReason": "Retained in registry; U.S.-first editorial scope."
+      "disabledReason": "Retained in registry; U.S.-first editorial scope.",
+      "deskRole": "publisher",
+      "deskBeats": [
+        "policy",
+        "world"
+      ],
+      "deskScope": "mixed"
     },
     {
       "enabled": true,
@@ -175,7 +218,13 @@
       "rightsNote": "Local source discovery; narrated derivatives and business syndication not cleared.",
       "region": "US / international",
       "publisherGroup": "BBC",
-      "domestic": false
+      "domestic": false,
+      "deskRole": "publisher",
+      "deskBeats": [
+        "economy",
+        "consumer"
+      ],
+      "deskScope": "mixed"
     },
     {
       "enabled": false,
@@ -197,7 +246,13 @@
       "region": "US / international",
       "publisherGroup": "BBC",
       "domestic": false,
-      "disabledReason": "Retained in registry; U.S.-first editorial scope."
+      "disabledReason": "Retained in registry; U.S.-first editorial scope.",
+      "deskRole": "publisher",
+      "deskBeats": [
+        "policy",
+        "world"
+      ],
+      "deskScope": "mixed"
     },
     {
       "enabled": false,
@@ -219,7 +274,13 @@
       "region": "US / international",
       "publisherGroup": "BBC",
       "domestic": false,
-      "disabledReason": "Retained in registry; U.S.-first editorial scope."
+      "disabledReason": "Retained in registry; U.S.-first editorial scope.",
+      "deskRole": "publisher",
+      "deskBeats": [
+        "policy",
+        "world"
+      ],
+      "deskScope": "mixed"
     },
     {
       "enabled": false,
@@ -241,7 +302,13 @@
       "region": "US / international",
       "publisherGroup": "BBC",
       "domestic": false,
-      "disabledReason": "Retained in registry; U.S.-first editorial scope."
+      "disabledReason": "Retained in registry; U.S.-first editorial scope.",
+      "deskRole": "publisher",
+      "deskBeats": [
+        "policy",
+        "world"
+      ],
+      "deskScope": "mixed"
     },
     {
       "enabled": true,
@@ -261,7 +328,13 @@
       "rightsNote": "Discovery only; narration/republication permission not established.",
       "region": "United States",
       "publisherGroup": "NPR",
-      "domestic": true
+      "domestic": true,
+      "deskRole": "publisher",
+      "deskBeats": [
+        "policy",
+        "world"
+      ],
+      "deskScope": "mixed"
     },
     {
       "enabled": true,
@@ -279,7 +352,13 @@
       "rightsNote": "Discovery only; narration/republication permission not established.",
       "region": "United States",
       "publisherGroup": "PBS NewsHour",
-      "domestic": true
+      "domestic": true,
+      "deskRole": "publisher",
+      "deskBeats": [
+        "policy",
+        "world"
+      ],
+      "deskScope": "mixed"
     },
     {
       "enabled": false,
@@ -298,7 +377,13 @@
       "region": "International",
       "publisherGroup": "The Guardian",
       "domestic": false,
-      "disabledReason": "Retained in registry; U.S.-first editorial scope."
+      "disabledReason": "Retained in registry; U.S.-first editorial scope.",
+      "deskRole": "publisher",
+      "deskBeats": [
+        "policy",
+        "world"
+      ],
+      "deskScope": "mixed"
     },
     {
       "enabled": false,
@@ -317,7 +402,13 @@
       "region": "US / international",
       "publisherGroup": "The Guardian",
       "domestic": false,
-      "disabledReason": "Retained in registry; U.S.-first editorial scope."
+      "disabledReason": "Retained in registry; U.S.-first editorial scope.",
+      "deskRole": "publisher",
+      "deskBeats": [
+        "policy",
+        "world"
+      ],
+      "deskScope": "mixed"
     },
     {
       "enabled": false,
@@ -338,7 +429,13 @@
       "region": "International",
       "publisherGroup": "DW",
       "domestic": false,
-      "disabledReason": "Retained in registry; U.S.-first editorial scope."
+      "disabledReason": "Retained in registry; U.S.-first editorial scope.",
+      "deskRole": "publisher",
+      "deskBeats": [
+        "policy",
+        "world"
+      ],
+      "deskScope": "mixed"
     },
     {
       "enabled": false,
@@ -357,7 +454,13 @@
       "region": "International",
       "publisherGroup": "France 24",
       "domestic": false,
-      "disabledReason": "Retained in registry; U.S.-first editorial scope."
+      "disabledReason": "Retained in registry; U.S.-first editorial scope.",
+      "deskRole": "publisher",
+      "deskBeats": [
+        "policy",
+        "world"
+      ],
+      "deskScope": "mixed"
     },
     {
       "enabled": false,
@@ -376,10 +479,16 @@
       "region": "International",
       "publisherGroup": "Al Jazeera",
       "domestic": false,
-      "disabledReason": "Retained in registry; U.S.-first editorial scope."
+      "disabledReason": "Retained in registry; U.S.-first editorial scope.",
+      "deskRole": "publisher",
+      "deskBeats": [
+        "policy",
+        "world"
+      ],
+      "deskScope": "mixed"
     },
     {
-      "enabled": true,
+      "enabled": false,
       "pollMinutes": 5,
       "maxAgeDays": 7,
       "id": "kera",
@@ -394,7 +503,15 @@
       "rightsNote": "Optional North Texas reporting; not inferred from device location. Narration rights not established.",
       "region": "North Texas",
       "publisherGroup": "KERA",
-      "domestic": true
+      "domestic": true,
+      "deskRole": "publisher",
+      "deskBeats": [
+        "policy",
+        "world"
+      ],
+      "deskScope": "local",
+      "local": true,
+      "disabledReason": "Local collection is paused for the national assignment-desk mission."
     },
     {
       "id": "axios",
@@ -414,7 +531,13 @@
       "region": "United States",
       "domestic": true,
       "publisherGroup": "Axios",
-      "rightsNote": "Source discovery and attributed local headline readout; commercial article, image and narration syndication rights not granted by RSS availability. Full scripts require source-bound editorial review."
+      "rightsNote": "Source discovery and attributed local headline readout; commercial article, image and narration syndication rights not granted by RSS availability. Full scripts require source-bound editorial review.",
+      "deskRole": "publisher",
+      "deskBeats": [
+        "policy",
+        "world"
+      ],
+      "deskScope": "mixed"
     },
     {
       "id": "cnbc",
@@ -433,7 +556,13 @@
       "region": "United States",
       "domestic": true,
       "publisherGroup": "CNBC",
-      "rightsNote": "Source discovery and attributed local headline readout; commercial article, image and narration syndication rights not granted by RSS availability. Full scripts require source-bound editorial review."
+      "rightsNote": "Source discovery and attributed local headline readout; commercial article, image and narration syndication rights not granted by RSS availability. Full scripts require source-bound editorial review.",
+      "deskRole": "publisher",
+      "deskBeats": [
+        "economy",
+        "consumer"
+      ],
+      "deskScope": "mixed"
     },
     {
       "id": "npr-business",
@@ -453,7 +582,13 @@
       "region": "United States",
       "domestic": true,
       "publisherGroup": "NPR",
-      "rightsNote": "Source discovery and attributed local headline readout; commercial article, image and narration syndication rights not granted by RSS availability. Full scripts require source-bound editorial review."
+      "rightsNote": "Source discovery and attributed local headline readout; commercial article, image and narration syndication rights not granted by RSS availability. Full scripts require source-bound editorial review.",
+      "deskRole": "publisher",
+      "deskBeats": [
+        "economy",
+        "consumer"
+      ],
+      "deskScope": "mixed"
     },
     {
       "id": "pbs-economy",
@@ -471,7 +606,13 @@
       "region": "United States",
       "domestic": true,
       "publisherGroup": "PBS NewsHour",
-      "rightsNote": "Source discovery and attributed local headline readout; commercial article, image and narration syndication rights not granted by RSS availability. Full scripts require source-bound editorial review."
+      "rightsNote": "Source discovery and attributed local headline readout; commercial article, image and narration syndication rights not granted by RSS availability. Full scripts require source-bound editorial review.",
+      "deskRole": "publisher",
+      "deskBeats": [
+        "economy",
+        "consumer"
+      ],
+      "deskScope": "mixed"
     },
     {
       "id": "ftc-consumer",
@@ -489,7 +630,341 @@
       "region": "United States",
       "domestic": true,
       "publisherGroup": "FTC",
-      "rightsNote": "Source discovery and attributed local headline readout; commercial article, image and narration syndication rights not granted by RSS availability. Full scripts require source-bound editorial review."
+      "rightsNote": "Source discovery and attributed local headline readout; commercial article, image and narration syndication rights not granted by RSS availability. Full scripts require source-bound editorial review.",
+      "deskRole": "primary",
+      "deskBeats": [
+        "consumer"
+      ],
+      "deskScope": "national"
+    },
+    {
+      "enabled": true,
+      "id": "cbs-national",
+      "name": "CBS News",
+      "publisherGroup": "CBS News",
+      "topic": "world",
+      "url": "https://www.cbsnews.com/latest/rss/us",
+      "hosts": [
+        "www.cbsnews.com",
+        "cbsnews.com"
+      ],
+      "maxAgeDays": 7,
+      "pollMinutes": 5,
+      "mode": "review",
+      "domestic": true,
+      "deskRole": "publisher",
+      "deskBeats": [
+        "policy",
+        "safety"
+      ],
+      "policyUrl": "https://www.cbsnews.com/rss/",
+      "rightsNote": "Local assignment-desk discovery only. Feed access is not a licence to publish, narrate, or reuse publisher imagery; retain attribution and original link.",
+      "discoveryOnly": true,
+      "deskScope": "mixed"
+    },
+    {
+      "enabled": true,
+      "id": "cbs-moneywatch",
+      "name": "CBS News",
+      "publisherGroup": "CBS News",
+      "topic": "business",
+      "url": "https://www.cbsnews.com/latest/rss/moneywatch",
+      "hosts": [
+        "www.cbsnews.com",
+        "cbsnews.com"
+      ],
+      "maxAgeDays": 7,
+      "pollMinutes": 5,
+      "mode": "review",
+      "domestic": true,
+      "deskRole": "publisher",
+      "deskBeats": [
+        "economy",
+        "consumer"
+      ],
+      "policyUrl": "https://www.cbsnews.com/rss/",
+      "rightsNote": "Local assignment-desk discovery only. Feed access is not a licence to publish, narrate, or reuse publisher imagery; retain attribution and original link.",
+      "discoveryOnly": true,
+      "deskScope": "mixed"
+    },
+    {
+      "enabled": true,
+      "id": "nyt-national",
+      "name": "The New York Times",
+      "publisherGroup": "The New York Times",
+      "topic": "world",
+      "url": "https://rss.nytimes.com/services/xml/rss/nyt/US.xml",
+      "hosts": [
+        "rss.nytimes.com",
+        "www.nytimes.com",
+        "nytimes.com"
+      ],
+      "maxAgeDays": 7,
+      "pollMinutes": 5,
+      "mode": "review",
+      "domestic": true,
+      "deskRole": "publisher",
+      "deskBeats": [
+        "policy",
+        "courts"
+      ],
+      "policyUrl": "https://www.nytimes.com/content/help/rights/permissions/permissions.html",
+      "rightsNote": "Local assignment-desk discovery only. Feed access is not a licence to publish, narrate, or reuse publisher imagery; retain attribution and original link.",
+      "discoveryOnly": true,
+      "deskScope": "mixed"
+    },
+    {
+      "enabled": true,
+      "id": "bea-releases",
+      "name": "BEA",
+      "publisherGroup": "BEA",
+      "topic": "business",
+      "url": "https://apps.bea.gov/rss/rss.xml",
+      "hosts": [
+        "apps.bea.gov",
+        "www.bea.gov",
+        "bea.gov"
+      ],
+      "maxAgeDays": 7,
+      "pollMinutes": 17,
+      "mode": "review",
+      "domestic": true,
+      "deskRole": "primary",
+      "deskBeats": [
+        "economy",
+        "consumer"
+      ],
+      "policyUrl": "https://www.bea.gov/resources/for-developers",
+      "rightsNote": "Primary agency discovery; independently check context and claims before narration. Government hosting does not establish rights to third-party text or imagery.",
+      "discoveryOnly": true,
+      "deskScope": "national"
+    },
+    {
+      "enabled": true,
+      "id": "sec-releases",
+      "name": "SEC",
+      "publisherGroup": "SEC",
+      "topic": "business",
+      "url": "https://www.sec.gov/news/pressreleases.rss",
+      "hosts": [
+        "www.sec.gov",
+        "sec.gov"
+      ],
+      "maxAgeDays": 7,
+      "pollMinutes": 5,
+      "mode": "review",
+      "domestic": true,
+      "deskRole": "primary",
+      "deskBeats": [
+        "economy",
+        "consumer",
+        "policy"
+      ],
+      "policyUrl": "https://www.sec.gov/about/developer-resources",
+      "rightsNote": "Primary agency discovery; independently check context and claims before narration. Government hosting does not establish rights to third-party text or imagery.",
+      "discoveryOnly": true,
+      "deskScope": "national"
+    },
+    {
+      "enabled": true,
+      "id": "fda-recalls",
+      "name": "FDA",
+      "publisherGroup": "FDA",
+      "topic": "health",
+      "url": "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/recalls/rss.xml",
+      "hosts": [
+        "www.fda.gov",
+        "fda.gov"
+      ],
+      "maxAgeDays": 7,
+      "pollMinutes": 6,
+      "mode": "review",
+      "domestic": true,
+      "deskRole": "primary",
+      "deskBeats": [
+        "consumer",
+        "health",
+        "safety"
+      ],
+      "policyUrl": "https://www.fda.gov/about-fda/contact-fda/subscribe-podcasts-and-news-feeds",
+      "rightsNote": "Primary agency discovery; independently check context and claims before narration. Government hosting does not establish rights to third-party text or imagery.",
+      "discoveryOnly": true,
+      "deskScope": "national"
+    },
+    {
+      "enabled": true,
+      "id": "fda-releases",
+      "name": "FDA",
+      "publisherGroup": "FDA",
+      "topic": "health",
+      "url": "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/press-releases/rss.xml",
+      "hosts": [
+        "www.fda.gov",
+        "fda.gov"
+      ],
+      "maxAgeDays": 7,
+      "pollMinutes": 5,
+      "mode": "review",
+      "domestic": true,
+      "deskRole": "primary",
+      "deskBeats": [
+        "health",
+        "consumer",
+        "policy"
+      ],
+      "policyUrl": "https://www.fda.gov/about-fda/contact-fda/subscribe-podcasts-and-news-feeds",
+      "rightsNote": "Primary agency discovery; independently check context and claims before narration. Government hosting does not establish rights to third-party text or imagery.",
+      "discoveryOnly": true,
+      "deskScope": "national"
+    },
+    {
+      "enabled": true,
+      "id": "cisa-advisories",
+      "name": "CISA",
+      "publisherGroup": "CISA",
+      "topic": "technology",
+      "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
+      "hosts": [
+        "www.cisa.gov",
+        "cisa.gov"
+      ],
+      "maxAgeDays": 7,
+      "pollMinutes": 5,
+      "mode": "review",
+      "domestic": true,
+      "deskRole": "primary",
+      "deskBeats": [
+        "technology",
+        "consumer",
+        "national-security"
+      ],
+      "policyUrl": "https://www.cisa.gov/cybersecurity-advisories",
+      "rightsNote": "Primary agency discovery; independently check context and claims before narration. Government hosting does not establish rights to third-party text or imagery.",
+      "discoveryOnly": true,
+      "deskScope": "specialized"
+    },
+    {
+      "enabled": true,
+      "id": "nhc-atlantic",
+      "name": "NOAA NHC",
+      "publisherGroup": "NOAA NHC",
+      "topic": "nature",
+      "url": "https://www.nhc.noaa.gov/index-at.xml",
+      "hosts": [
+        "www.nhc.noaa.gov",
+        "nhc.noaa.gov"
+      ],
+      "maxAgeDays": 7,
+      "pollMinutes": 5,
+      "mode": "review",
+      "domestic": true,
+      "deskRole": "primary",
+      "deskBeats": [
+        "safety"
+      ],
+      "policyUrl": "https://www.nhc.noaa.gov/mobile/rss.html",
+      "rightsNote": "Primary agency discovery; independently check context and claims before narration. Government hosting does not establish rights to third-party text or imagery.",
+      "discoveryOnly": true,
+      "deskScope": "specialized"
+    },
+    {
+      "enabled": true,
+      "id": "nhc-pacific",
+      "name": "NOAA NHC",
+      "publisherGroup": "NOAA NHC",
+      "topic": "nature",
+      "url": "https://www.nhc.noaa.gov/index-ep.xml",
+      "hosts": [
+        "www.nhc.noaa.gov",
+        "nhc.noaa.gov"
+      ],
+      "maxAgeDays": 7,
+      "pollMinutes": 5,
+      "mode": "review",
+      "domestic": true,
+      "deskRole": "primary",
+      "deskBeats": [
+        "safety"
+      ],
+      "policyUrl": "https://www.nhc.noaa.gov/mobile/rss.html",
+      "rightsNote": "Primary agency discovery; independently check context and claims before narration. Government hosting does not establish rights to third-party text or imagery.",
+      "discoveryOnly": true,
+      "deskScope": "specialized"
+    },
+    {
+      "enabled": true,
+      "id": "usgs-significant-quakes",
+      "name": "USGS",
+      "publisherGroup": "USGS",
+      "topic": "nature",
+      "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_day.atom",
+      "hosts": [
+        "earthquake.usgs.gov",
+        "www.usgs.gov"
+      ],
+      "maxAgeDays": 7,
+      "pollMinutes": 1,
+      "mode": "review",
+      "domestic": true,
+      "deskRole": "primary",
+      "deskBeats": [
+        "safety"
+      ],
+      "policyUrl": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/atom.php",
+      "rightsNote": "Primary agency discovery; independently check context and claims before narration. Government hosting does not establish rights to third-party text or imagery.",
+      "discoveryOnly": true,
+      "deskScope": "specialized"
+    },
+    {
+      "enabled": true,
+      "id": "nws-severe-alerts",
+      "name": "NWS",
+      "publisherGroup": "NWS",
+      "topic": "nature",
+      "url": "https://api.weather.gov/alerts/active.atom?severity=Extreme,Severe",
+      "hosts": [
+        "api.weather.gov",
+        "alerts.weather.gov",
+        "forecast.weather.gov",
+        "www.weather.gov"
+      ],
+      "maxAgeDays": 7,
+      "pollMinutes": 1,
+      "mode": "review",
+      "domestic": true,
+      "deskRole": "primary",
+      "deskBeats": [
+        "safety"
+      ],
+      "policyUrl": "https://www.weather.gov/documentation/services-web-alerts",
+      "rightsNote": "Primary agency discovery; independently check context and claims before narration. Government hosting does not establish rights to third-party text or imagery.",
+      "discoveryOnly": true,
+      "deskScope": "specialized"
+    },
+    {
+      "enabled": true,
+      "id": "federal-register-inspection",
+      "name": "Federal Register",
+      "publisherGroup": "Federal Register",
+      "topic": "world",
+      "url": "https://www.federalregister.gov/api/v1/public-inspection-documents/current.json",
+      "adapter": "federal-register-inspection",
+      "hosts": [
+        "www.federalregister.gov"
+      ],
+      "maxAgeDays": 7,
+      "pollMinutes": 5,
+      "mode": "review",
+      "domestic": true,
+      "deskRole": "primary",
+      "deskScope": "national",
+      "deskBeats": [
+        "policy",
+        "consumer"
+      ],
+      "discoveryOnly": true,
+      "policyUrl": "https://www.federalregister.gov/developers/documentation/api/v1",
+      "rightsNote": "Official filing metadata for discovery. Public inspection is not a final rule or legal effective date; verify against the official document before production."
     }
   ],
   "editorialPolicy": "US consumer/economic impact first; international publishers capped at 10% of curated selection; consequences over political sparring.",
@@ -506,6 +981,39 @@
       "url": "https://www.cnn.com/",
       "status": "source-link-only",
       "reason": "No licence; legacy official RSS failed TLS verification. No scraping fallback or fabricated feed health."
+    }
+  ],
+  "deskGaps": [
+    {
+      "name": "Bureau of Labor Statistics",
+      "status": "unavailable",
+      "reason": "Official feeds and release calendar returned HTTP 403 from this machine on October 2. Jobs and inflation coverage currently relies on publisher reporting; direct primary releases still need checking.",
+      "url": "https://www.bls.gov/schedule/news_release/"
+    },
+    {
+      "name": "Department of Labor",
+      "status": "unavailable",
+      "reason": "The official release feed returned HTTP 403 from this machine. Direct labor-policy and weekly claims intake is not connected.",
+      "url": "https://www.dol.gov/newsroom/releases"
+    },
+    {
+      "name": "AP",
+      "url": "https://apnews.com/",
+      "status": "source-link-only",
+      "reason": "No licence; public RSS returned 403. Use licensed AP Media API when access is supplied.",
+      "documentation": "https://api.ap.org/media/v/docs/Getting_Started_API.htm"
+    },
+    {
+      "name": "CNN",
+      "url": "https://www.cnn.com/",
+      "status": "source-link-only",
+      "reason": "No licence; legacy official RSS failed TLS verification. No scraping fallback or fabricated feed health."
+    },
+    {
+      "name": "Courts and Congress",
+      "status": "not-connected",
+      "reason": "No direct national court-opinion or congressional-action feed is connected yet. Publisher discovery does not fill this primary-source gap.",
+      "url": "https://www.supremecourt.gov/publicinfo/publicinfo.aspx"
     }
   ]
 }

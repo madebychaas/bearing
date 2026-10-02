@@ -1,12 +1,27 @@
 import copy, json, tempfile, unittest
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import patch, MagicMock
 import sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'production'))
 import pipeline
 
 class FeedTests(unittest.TestCase):
+    def test_text_xml_feed_negotiates_supported_rss_format(self):
+        # BEA rejects requests that exclude its text/xml representation.
+        response=MagicMock();response.status=200;response.headers={'Content-Type':'text/xml'}
+        response.read.return_value=b'<rss><channel><title>Agency releases</title></channel></rss>'
+        response.__enter__.return_value=response
+        def open_feed(request,timeout):
+            if 'text/xml' not in request.get_header('Accept').split(','):
+                raise pipeline.urllib.error.HTTPError(request.full_url,406,'Not Acceptable',{},None)
+            return response
+        with patch.object(pipeline.urllib.request,'build_opener') as opener:
+            opener.return_value.open.side_effect=open_feed
+            result=pipeline.fetch('https://apps.bea.gov/rss/rss.xml')
+        self.assertEqual(result['status'],200)
+        self.assertEqual(pipeline.parse_feed(result['body']),[])
+
     def test_atom_and_rdf_preserve_dates_links_and_summaries(self):
         atom=b'<feed xmlns="http://www.w3.org/2005/Atom"><entry><title>A dated report</title><link rel="self" href="https://api.example/a"/><link href="https://www.nasa.gov/a"/><summary>A complete summary.</summary><published>2026-09-28T12:00:00Z</published></entry></feed>'
         rdf=b'<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://purl.org/rss/1.0/" xmlns:dc="http://purl.org/dc/elements/1.1/"><item><title>A dated report</title><link>https://www.nasa.gov/a</link><description>A complete summary.</description><dc:date>2026-09-28T12:00:00Z</dc:date></item></rdf:RDF>'

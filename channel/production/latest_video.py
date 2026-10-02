@@ -32,6 +32,7 @@ def eligible(items, now=None):
     seen = set()
     for item in items:
         try:
+            if item.get('discoveryOnly') or item.get('sourceTimeKind') in ('updated','filed'):continue
             value = item['publishedTime']
             if not isinstance(value,str) or 'T' not in value:continue
             published = datetime.fromisoformat(value.replace('Z','+00:00'))

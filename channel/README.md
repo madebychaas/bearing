@@ -2,7 +2,13 @@
 
 One watch-first news page: a large player, a playlist of individual stories, and a latest-news desk alongside it (below it on mobile). Every video has its own source, duration, thumbnail, and selection control. One initial Play starts continuous playback. Stories remain independently playable; they are not stitched into a multi-story compilation.
 
-## Current mission: Make my newscast
+## Current mission: national assignment desk
+
+Open **http://127.0.0.1:8796/producer.html** for current national U.S. reporting and consequential world leads. Source gathering runs independently of media production every 30 seconds, checking only due feeds and respecting publisher TTL/cache controls. The desk exposes possible today pegs, changed reporting, watch items, held sources, beat gaps and scheduled BEA releases. The 28 configured endpoints include 13 new discovery-only sources; AP/CNN and several primary beats remain explicit gaps. Read [the current sourcing record](../product/NATIONAL_ASSIGNMENT_DESK.md).
+
+The local server and machine must remain running for collection. `--no-media` keeps gathering sources without background media generation; `--no-refresh` disables automatic gathering as well. The default continues both. No competitor latency comparison has been measured.
+
+## Parked feature: Make my newscast
 
 Use **Make my newscast** beside the channel controls to choose two or three stories from the current trusted domestic-source intake. Your selection order becomes the running order. Choose Warm or Measured narration, Natural or Unhurried delivery, and an editorial score or voice only. These choices apply to the personal playlist when you press Play; returning to the channel restores its prior settings.
 
@@ -34,11 +40,11 @@ Run **Start Bearing.cmd**, then open **http://127.0.0.1:8796**. The configured l
 
 The latest desk shows reports published within 24 hours, newest first, with For you/All/topic filters. It checks completed local snapshots every 30 seconds. Reader updates wait behind an updates button; new playable editions enter at video boundaries. Refreshing the desk never resets playback. Feed polling retains publisher TTLs and existing 5–60 minute schedules, so this is continuously updating news, not event footage or guaranteed instant delivery.
 
-## Easy News producer workspace
+## Bearing producer workspace
 
 Open **http://127.0.0.1:8796/producer.html** on the same server for producer work. The separate workspace shares Bearing's reporting and coverage IDs. The Brief and In Focus have independent recommendations, source-linked reasons and readiness gaps; shortlist, watch, dismiss and reset are editorial decisions, not assignments or publication commands. Live feed excerpts remain in this local producer interface, behind a loopback-only API.
 
-The server observes collected reporting every 20 seconds; the producer page polls its snapshot every 30 seconds. Source collection retains its existing publisher schedules and waits for the current production cycle. A source check time is not a publication time or a guaranteed live update. **Sample cycle** uses clearly labeled representative inputs and separate state to demonstrate meaningful updates, cosmetic edits, syndication and local reporting signals without mixing them into live news.
+The server observes collected reporting every 20 seconds; the producer page polls its snapshot every 30 seconds. Source collection has its own worker and interprocess lock; it retains publisher schedules while continuing independently of production. The desk reads one coherent intake snapshot. A source check time is not a publication time or a guaranteed live update. **Sample cycle** uses clearly labeled representative inputs and separate state to demonstrate meaningful updates, cosmetic edits, syndication and local reporting signals without mixing them into live news.
 
 Configuration lives in `production/producer-strategy.json`. Editorial history and decisions persist locally under the ignored `production/runs/` directory. Run one local server per checkout to keep one writer for that state. See [the V1 guide](../product/EASY_NEWS_V1.md) for the proof, limits and operation. The Bearing player and accepted story segment remain independent of these controls.
 

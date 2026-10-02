@@ -1,12 +1,34 @@
 # Bearing — Active Mission
 
-**Status: active mission — Make my newscast.**
+**Status: active mission — the national assignment desk.**
 
-The user now requests a viewer workflow: browse the newest reporting from trusted sources, choose two or three stories, adjust a few meaningful preferences, and make a personal newscast. Production should happen behind a polished living progress screen. A completed result should offer one grounded sentence about its contents and an explicit Play action. This new request supersedes the earlier stop instruction for the scope described here.
+On October 2 the user explicitly parked **Make my newscast** and redirected work to hunting and gathering current national U.S. news, plus consequential world developments. The newsroom should know what changed, why it belongs today, who is affected and where the primary evidence lives. Preserve the accepted player, production approach and saved personal-newscast work.
+
+The current checkpoint evolves the native producer desk at `/producer.html`: independent source gathering, a broader publisher/primary-source network, national relevance and today-peg candidates, source-linked questions, coverage gaps and an official release calendar. It does not grant editorial approval, generate films or redesign the viewer. New sources are discovery-only. No archival reference project was inspected or imported.
+
+Source gathering checks due feeds every 30 seconds independently of media rendering, respecting individual schedules, cache controls and conditional requests. Publication, source updates, public-inspection filings, first discovery and observed reporting changes retain separate meanings. Coherent intake snapshots prevent partially updated evidence from being read together. A keyword match is an inspectable lead, not a verified development. Routine tropical bulletins, local alerts, political sparring and promotional material must not fill the national lead list; contradictory or forecast-only evidence needs review.
+
+See [the national desk record](NATIONAL_ASSIGNMENT_DESK.md) for source coverage, operational details and limits. Faster detection than major newsrooms is an ambition, not a measured result. The local collector runs only while this server and machine are running. Direct BLS/DOL access is currently blocked; AP/CNN access and direct court/congress feeds remain gaps. Build on actual observed misses and fresh-arrival measurements rather than adding volume for its own sake.
+
+### Verified checkpoint — October 2
+
+Added 13 discovery endpoints for **28 enabled feeds**. At 13:11 UTC, all 28 were available; the desk held 14 possible current leads, 79 watch items and 419 held/out-of-scope events. These are a dated observation, not completeness or uptime claims. BEA's feed initially returned 406 because the request omitted its `text/xml` format; normal content negotiation now succeeds without changing identity or circumventing access restrictions. BLS and DOL remain unconnected access gaps, separate from the enabled-feed count.
+
+**262 Python tests and 72 JavaScript tests pass.** The full Python suite includes source/approval/production regressions; new checks cover independent collection under a production lock, atomic snapshots, publisher cache limits, alert expiry, filing/update clocks, baseline versus delayed discovery, misleading forecasts, national scope and exact changed-source attribution. The JavaScript suite was run directly with `node --test channel/tests/*.test.mjs` because this machine's global npm launcher points to a missing npm CLI.
+
+Actual Chrome verification at 1478 × 910 confirmed a scroll-less outer page, Today/Developing/Watch/Held filters, source excerpts, the official scheduled-only BEA calendar, visible source gaps, and refresh preserving the selected report and open evidence. The CBS jobs report led the final view. Routine tropical bulletins, a forecast excerpt paired with released figures, and a retrospective political story no longer occupied Today. These observed misses became regressions. Browser evidence is local under `output/assignment-desk/` and excluded from Git.
+
+Normal intake and media workers remain enabled. Successive runtime checks confirmed source collection progressing independently; the production-lock test proves an occupied renderer cannot lock out collection. All accepted films, scripts, narration and player files remain unchanged. Discovery latency has only an initial sample and is not yet a useful performance benchmark. Continue this sourcing mission from observed misses, primary-source gaps and measured coverage quality; the personal-newscast feature below stays parked.
+
+## Parked — Make my newscast
+
+The October 1 implementation below is preserved. Do not resume creative-provider integration or personal-newscast feature development without the user reopening it.
+
+The prior mission requested a viewer workflow: browse the newest reporting from trusted sources, choose two or three stories, adjust a few meaningful preferences, and make a personal newscast. Production should happen behind a polished living progress screen. A completed result should offer one grounded sentence about its contents and an explicit Play action. This remains historical scope, parked by the October 2 assignment-desk request.
 
 Build this on the existing watch page and production machinery. Preserve the accepted player and story quality. Keep selected stories in their chosen order, keep the personal queue separate from ordinary channel refreshes, and finish the chosen run with replay/return options. Voice, natural/unhurried delivery and score/voice-only preferences belong to the request until playback begins. Progress reflects actual stages; a generated script or an elapsed timer is never a playable result.
 
-The audited gap is creative automation: native narration, scoring, assembly and playback work, but current full-film packets and bespoke visual plans are editorially authored. The accepted loan renderer is specific to that story; it cannot be stamped onto arbitrary headlines. There is no configured server-callable image provider or automatic production director. The user has been asked whether to use cloud generation, local-only generation, or assisted production first; that choice is still pending. Build the selection/job/playback path and its reviewed-production adapter while this decision is open. Do not claim arbitrary fresh stories are fully automatic or substitute headline readouts for produced films. Missing creative production must produce a clear saved/needs-attention state, not an endless spinner or a fake finished newscast.
+The audited gap is creative automation: native narration, scoring, assembly and playback work, but current full-film packets and bespoke visual plans are editorially authored. The accepted loan renderer is specific to that story; it cannot be stamped onto arbitrary headlines. There is no configured server-callable image provider or automatic production director. The creative-provider choice remains unresolved and is parked with this feature; do not pursue it during sourcing work. Do not claim arbitrary fresh stories are fully automatic or substitute headline readouts for produced films. Missing creative production must produce a clear saved/needs-attention state, not an endless spinner or a fake finished newscast.
 
 ### Implemented checkpoint — October 1
 
@@ -28,7 +50,7 @@ The latest October 1 follow-up is **`9c4fe29dbfb3a18916ea`**. It replaces the sa
 
 Both finished MP4s fully decode and all 13 delivery hashes match; 38 encoded frames were inspected. Actual browser playback used the new film, kept the full picture and captions visible, and advanced into the next item. **17 graphics tests and all 54 JavaScript tests pass.** The full Python run passes 182 of 183: an existing Windows HTTP connection-close race intermittently aborts the oversized-request test before the client receives 413. The isolated seven-test server module passes. This was reproduced separately and is unrelated to the picture revision; no server behavior was changed or flaky test hidden. Keep that limitation visible rather than calling the full suite green.
 
-See the [production record and acceptance](STUDENT_LOAN_PRODUCTION_20261001.md), [reviewed packet](../channel/production/reviewed-student-loans-20261001-picture-v3.json), and [original image prompts](../channel/production/student-loan-image-led-v3-prompts.json). Preserve this delivered cut as the accepted approach reference. Earlier milestone notes below retain their status as recorded at delivery; the new personal-newscast mission above is now authorized.
+See the [production record and acceptance](STUDENT_LOAN_PRODUCTION_20261001.md), [reviewed packet](../channel/production/reviewed-student-loans-20261001-picture-v3.json), and [original image prompts](../channel/production/student-loan-image-led-v3-prompts.json). Preserve this delivered cut as the accepted approach reference. Earlier milestone notes below retain their status as recorded at delivery; the active sourcing mission is stated above; the personal-newscast mission is parked.
 
 ## Previous picture revision
 
@@ -46,7 +68,7 @@ The September 30 editorial-voice and 13-script rewrite milestone is complete and
 
 The completed mission is the selection-to-production proof described in [SELECTION_TO_PRODUCTION.md](SELECTION_TO_PRODUCTION.md). Its scope is retained below for context.
 
-## Mission
+## Historical selection-to-production mission
 
 Connect the existing Easy News producer intelligence to the existing Bearing production machinery for one real story.
 

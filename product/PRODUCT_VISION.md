@@ -47,6 +47,12 @@ Personalization should be explicit and understandable. Avoid hidden engagement o
 
 A personal newscast can begin with a small, deliberate choice: select two or three current stories from trusted sources, set voice, delivery and sound, then make the newscast. Creation should feel considered and alive while reflecting real work. Once all selected stories are complete, offer one grounded sentence that conveys the value of the contents and invite the viewer to press Play. Preserve the selection through production and playback; fresh channel arrivals should not silently change it. The viewer should be able to keep browsing while it is being made, resume after a refresh, and understand when a production needs attention.
 
+## A newsroom that keeps its bearings
+
+The sourcing layer should function as a national assignment desk: continuously gather trusted reporting and originating releases, notice what changed, anticipate scheduled developments and expose gaps. Prioritize household, economic and consequential policy impact over political sparring. Include world developments when their consequences warrant national attention. Local reporting may provide evidence, but local-only volume is not the current assignment scope.
+
+A usable lead explains why the story belongs today and carries the source that supports that possible peg. Publication time, event time, a revised report and first discovery are different things. Keep them distinguishable. Speed must be measured honestly; additional feeds do not establish completeness or an advantage over another newsroom. Discovery never substitutes for factual verification, rights review or the production standard.
+
 ## Produced, not generated
 
 **Produced, not generated.**

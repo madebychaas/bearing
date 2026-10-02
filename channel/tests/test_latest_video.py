@@ -33,6 +33,10 @@ class LatestVideoTests(unittest.TestCase):
         stories=[item(1),item(2),item(3,'culture'),item(4,'sport'),item(5,'nature')]
         ordered=video.production_order(stories,4)
         self.assertEqual([s['topic'] for s in ordered],['world','culture','sport','nature'])
+    def test_discovery_only_and_non_publication_clocks_never_enter_automatic_playback(self):
+        good=item()
+        for changes in [{'discoveryOnly':True},{'sourceTimeKind':'filed'},{'sourceTimeKind':'updated'}]:
+            self.assertEqual(video.eligible([{**good,**changes}]),[])
     def test_failed_revised_clip_is_withdrawn_and_previous_edition_archived(self):
         revised=item();old={**revised,'title':'Old title','mediaVersion':'old','status':'ready'}
         with tempfile.TemporaryDirectory() as temp:

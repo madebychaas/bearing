@@ -185,9 +185,9 @@ class Handler(SimpleHTTPRequestHandler):
 def refresh(minutes):
     if stop.wait(5):return
     while not stop.is_set():
-        with status_lock:status.update(state='checking',detail='Checking approved source feeds.')
+        with status_lock:status.update(state='checking',detail='Checking collected reporting for production.')
         try:
-            process=subprocess.run([sys.executable,str(ROOT/'production'/'pipeline.py'),'auto','--limit','4'],cwd=ROOT,capture_output=True,text=True,encoding='utf-8',timeout=600)
+            process=subprocess.run([sys.executable,str(ROOT/'production'/'pipeline.py'),'auto','--skip-collect','--limit','4'],cwd=ROOT,capture_output=True,text=True,encoding='utf-8',timeout=600)
             with status_lock:status.update(detail='Preparing fresh headline videos. The current story keeps playing.')
             video=subprocess.run([sys.executable,str(ROOT/'production'/'latest_video.py'),'--limit','8'],cwd=ROOT,capture_output=True,text=True,encoding='utf-8',timeout=600)
             programme=subprocess.run([sys.executable,str(ROOT/'production'/'produce_programmes.py')],cwd=ROOT,capture_output=True,text=True,encoding='utf-8',timeout=600)
@@ -204,8 +204,43 @@ def refresh(minutes):
             with status_lock:status.update(state='held',lastRun=datetime.now(timezone.utc).isoformat(),detail='Update unavailable. The last complete edition is retained.')
         if stop.wait(minutes*60):return
 
+def intake_once():
+    """A source check owns no production lock and invokes no media generation."""
+    import pipeline
+    attempted=datetime.now(timezone.utc).isoformat()
+    with status_lock:
+        previous=status.get('intake',{})
+        status['intake']={**previous,'state':'checking','checkStartedAt':attempted}
+    result=subprocess.run([sys.executable,str(ROOT/'production'/'pipeline.py'),'collect'],cwd=ROOT,capture_output=True,text=True,encoding='utf-8',timeout=180)
+    snapshot_path=ROOT/'production'/'runs'/'intake-snapshot.json'
+    snapshot=json.loads(snapshot_path.read_text(encoding='utf-8')) if snapshot_path.exists() else {}
+    health=snapshot.get('sourceHealth',{})
+    current=health.get('checkedAt','')>=attempted
+    detail={'state':'idle' if result.returncode==0 else 'held','checkStartedAt':attempted,'checkCompletedAt':datetime.now(timezone.utc).isoformat(),'exitCode':result.returncode,'lastAttemptAt':health.get('lastAttemptAt'),'lastSuccess':health.get('lastSuccess'),'nextDueAt':health.get('nextDueAt'),'healthySources':health.get('healthy'),'totalSources':health.get('total'),'attemptedSources':health.get('attempted') if current else 0,'snapshotCurrent':current,'detail':'Independent source check completed.' if result.returncode==0 else 'Source checking needs attention; retained reporting remains available.'}
+    if result.returncode:detail['error']=(result.stderr or result.stdout)[-1500:]
+    if result.returncode==0 and health.get('healthy',0)<health.get('total',0):detail['state']='partial'
+    try:
+        import release_calendar
+        calendar=release_calendar.refresh(ROOT)
+        detail['calendar']={key:calendar.get('health',{}).get(key) for key in ('status','lastAttemptAt','lastSuccess','nextCheckAt')}
+    except Exception:
+        detail['calendar']={'status':'unavailable','detail':'Scheduled-release check unavailable; source gathering continues.'}
+    pipeline.write_json(ROOT/'production'/'runs'/'last-intake.json',detail)
+    with status_lock:status['intake']=detail
+    return detail
+
+def refresh_intake(seconds=30):
+    # Cadence is start-to-start where a check finishes inside the interval.
+    # Publisher TTL, conditional GET and retry backoff remain in the collector.
+    while not stop.is_set():
+        started=time.monotonic()
+        try:intake_once()
+        except Exception:
+            with status_lock:status['intake']={**status.get('intake',{}),'state':'held','checkCompletedAt':datetime.now(timezone.utc).isoformat(),'detail':'The source check could not finish. Retained reporting remains available.'}
+        if stop.wait(max(1,min(30,seconds)-(time.monotonic()-started))):return
+
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--port',type=int,default=8796);parser.add_argument('--refresh-minutes',type=int,default=1);parser.add_argument('--no-refresh',action='store_true');parser.add_argument('--open-browser',action='store_true');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--port',type=int,default=8796);parser.add_argument('--refresh-minutes',type=int,default=1);parser.add_argument('--no-refresh',action='store_true');parser.add_argument('--no-media',action='store_true',help='Keep gathering sources without background media generation');parser.add_argument('--open-browser',action='store_true');args=parser.parse_args()
     runtime=ROOT/'production'/'runtime.json'
     if runtime.exists():
         settings=json.loads(runtime.read_text(encoding='utf-8'))
@@ -213,10 +248,13 @@ def main():
         if settings.get('ffmpeg'):os.environ['CURRENT_FFMPEG']=settings['ffmpeg']
     server=ThreadingHTTPServer(('127.0.0.1',args.port),partial(Handler,directory=str(ROOT/'dist')))
     threading.Thread(target=observe_reporting,daemon=True).start()
-    if not args.no_refresh:threading.Thread(target=refresh,args=(max(1,args.refresh_minutes),),daemon=True).start()
+    if not args.no_refresh:
+        threading.Thread(target=refresh_intake,daemon=True).start()
+        if not args.no_media:threading.Thread(target=refresh,args=(max(1,args.refresh_minutes),),daemon=True).start()
+        else:status.update(state='idle',detail='Source gathering is active; background media production is paused.')
     else:status.update(state='preview',detail='Automatic refresh is disabled in this preview.')
     print(f'Bearing is ready at http://127.0.0.1:{args.port}',flush=True)
-    print('Automatic local production enabled.' if not args.no_refresh else 'Preview only.',flush=True)
+    print('Independent source gathering enabled.' if not args.no_refresh else 'Preview only.',flush=True)
     if args.open_browser:threading.Timer(.5,lambda:webbrowser.open(f'http://127.0.0.1:{args.port}')).start()
     try:server.serve_forever()
     except KeyboardInterrupt:pass

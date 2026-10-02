@@ -1,15 +1,48 @@
 const PAGE_SIZE=8;
 const productNames={brief:'The Brief',focus:'In Focus'};
 const actionNames={none:'Not yet reviewed',shortlist:'Shortlisted',watch:'Watching',dismiss:'Dismissed',reset:'Returned to candidates'};
+const nationalScopes=new Set(['national','world-impact']);
+const assignmentLanes={today:'Today’s lead',developing:'Developing',watch:'Watch',held:'Held for review'};
+
+export function candidateFilters(snapshot){
+ return snapshot?.assignment?[['today','Today’s leads'],['developing','Developing'],['watch','Watch'],['all','All national'],['shortlist','Shortlist'],['alternatives','Held / out of scope'],['dismissed','Dismissed']]:[['all','Top candidates'],['updates','Meaningful updates'],['watch','Watch'],['local','Local signals'],['shortlist','Shortlist'],['alternatives','Alternatives / held'],['dismissed','Dismissed']];
+}
+export function discoveryLag(value){
+ if(!Number.isFinite(value)||value<0)return 'Not measured';
+ if(value<1)return 'Under 1 min';
+ if(value<60)return `${Math.round(value)} min`;
+ return `${(value/60).toFixed(1)} hr`;
+}
+export function assignmentPegSource(event){
+ const sourceId=event.assignment?.todayPeg?.sourceId;
+ return sourceId?(event.evidence||[]).find(source=>source.id===sourceId)||null:null;
+}
+export function sourceClockLabel(source){return source?.sourceTimeKind==='filed'?'Filed':source?.sourceTimeKind==='updated'?'Updated':'Published';}
+export function assignmentReportClock(event){
+ const source=assignmentPegSource(event);
+ return source?{label:sourceClockLabel(source),at:source.publishedAt||null}:{label:'Source time',at:null};
+}
 
 export function safeSourceURL(value){
  try{const url=new URL(value);return ['http:','https:'].includes(url.protocol)&&!url.username&&!url.password?url.href:null;}catch{return null;}
 }
 export function rankedCandidates(snapshot,product='brief',filter='all'){
  const events=new Map((snapshot?.events||[]).map(event=>[event.id,event]));
- return (snapshot?.rankings?.[product]||[]).map(id=>events.get(id)).filter(Boolean).filter(event=>{
+ const ranked=(snapshot?.rankings?.[product]||[]).map(id=>events.get(id)).filter(Boolean);
+ // Live assignment signals prioritize the desk; product rank breaks equal-priority ties.
+ if(snapshot?.assignment)ranked.sort((a,b)=>(Number(b.assignment?.priority)||0)-(Number(a.assignment?.priority)||0));
+ return ranked.filter(event=>{
   const action=event.decision?.action||'none';
   if(filter==='dismissed')return action==='dismiss';
+  if(snapshot?.assignment){
+   const desk=event.assignment||{},national=nationalScopes.has(desk.scope);
+   if(filter==='shortlist')return action==='shortlist';
+   if(action==='dismiss')return false;
+   if(filter==='alternatives')return desk.lane==='held'||!national;
+   if(!national)return false;
+   if(['today','developing','watch'].includes(filter))return desk.lane===filter;
+   return true;
+  }
   if(filter==='updates')return !!event.signals?.update;
   if(filter==='watch')return action!=='dismiss'&&(action==='watch'||!!event.signals?.watch);
   if(filter==='local')return action!=='dismiss'&&!!event.localSignal;
@@ -62,10 +95,10 @@ if(typeof document!=='undefined')boot();
 
 function boot(){
  const $=id=>document.getElementById(id),node=(tag,cls,text)=>{const item=document.createElement(tag);if(cls)item.className=cls;if(text!==undefined)item.textContent=text;return item;};
- let snapshot=null,mode='live',product='brief',filter='all',page=0,selectedId=null,requestNumber=0,controller=null,busy=false,detailKey='',lastViewRefresh=null;
+ let snapshot=null,mode='live',product='brief',filter='today',page=0,selectedId=null,requestNumber=0,controller=null,busy=false,detailKey='',lastViewRefresh=null;
  const drafts=new Map(),cards=new Map();
  const text=(id,value)=>{$(id).textContent=value||'';};
- const date=value=>{if(!value)return 'Time unverified';const parsed=new Date(value);return Number.isFinite(parsed.getTime())?parsed.toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}):'Time unverified';};
+ const date=value=>{if(!value)return 'Time unverified';const parsed=new Date(value);return Number.isFinite(parsed.getTime())?parsed.toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit',timeZone:'America/Chicago',timeZoneName:'short'}):'Time unverified';};
  const selected=()=>snapshot?.events?.find(event=>event.id===selectedId);
  const draftKey=()=>`${mode}:${selectedId}`;
  const list=(value)=>Array.isArray(value)?value:[];
@@ -86,33 +119,62 @@ function boot(){
  }
  function refresh(){if(!busy)void request(`/api/producer?mode=${mode}`);}
  function render(){
-  const focus=focusKey(),scroll=$('candidates').scrollTop;renderHealth();renderDefinitions();renderList();renderDetail();$('candidates').scrollTop=scroll;restoreFocus(focus);
+  const focus=focusKey(),scroll=$('candidates').scrollTop;renderHealth();renderCoverage();renderDefinitions();renderList();renderDetail();$('candidates').scrollTop=scroll;restoreFocus(focus);
  }
  function renderHealth(){
-  text('strategy-name',snapshot.strategy?.name||'YOUR EDITORIAL VIEW');
+  text('strategy-name',snapshot.assignment?'U.S. NATIONAL · CONSEQUENTIAL WORLD':snapshot.strategy?.name||'YOUR EDITORIAL VIEW');
   const health=snapshot.sourceHealth||{},old=health.stale===true;
   $('connection-dot').dataset.status=mode==='demo'?'stale':old||!health.healthy||health.healthy<health.total?'stale':'healthy';
   if(mode==='demo')text('health-message','Representative reporting · isolated from the live editorial record');
   else text('health-message',`${Number.isFinite(health.healthy)?`${health.healthy} of ${health.total||0} feeds available`:'Feed availability unverified'} · ${health.checkedAt?`${old?'Last reporting check':'Reporting checked'} ${date(health.checkedAt)}`:'Reporting check time unavailable'}${old?' · Refresh may be delayed':''}`);
-  text('refresh-time',lastViewRefresh?`View refreshed ${lastViewRefresh.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})} · Checks every 30s`:'');
+  text('refresh-time',lastViewRefresh?`View refreshed ${lastViewRefresh.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})} · View checks every 30s`:'');
   $('cycle-banner').hidden=mode!=='demo';
   if(mode==='demo'){const demo=snapshot.demo||{};text('cycle-description',`${demo.label||'Review the next development'} · Step ${Number(demo.step)+1||1} of ${demo.totalSteps||'—'}. Synthetic examples, not current news.`);$('cycle-advance').disabled=busy||demo.canAdvance===false;text('cycle-advance',demo.canAdvance===false?'Cycle complete':'Next development →');}
  }
- function cardBadge(event){const freshness=freshnessLabel(event);if(freshness)return {text:freshness,kind:'watch'};if(event.signals?.update)return {text:'Meaningful update',kind:'update'};if(event.localSignal)return {text:'Local signal',kind:'local'};if(event.decision?.action==='watch'||event.signals?.watch)return {text:'Watch',kind:'watch'};return {text:'Candidate',kind:'candidate'};}
+ function renderCoverage(){
+  const desk=snapshot.assignment,panel=$('desk-coverage');panel.hidden=!desk;if(!desk)return;
+  const counts=desk.counts||{},health=desk.health||{},coverageScroll=panel.querySelector('.coverage-content').scrollTop,calendarOpen=panel.querySelector('.release-calendar')?.open||false;
+  text('coverage-summary',`${counts.today||0} today · ${counts.developing||0} developing · ${counts.watch||0} watching`);
+  text('coverage-context',`${desk.date||'Current cycle'} · ${desk.scope||'U.S. national + consequential world'} · ${desk.timezone||'America/Chicago'}. Coverage describes the collected reporting, not the entire news agenda.`);
+  const beats=$('coverage-beats');beats.replaceChildren();
+  for(const beat of list(desk.coverage)){
+   const card=node('div','coverage-beat');card.dataset.gap=String(!!beat.gap);
+   card.append(node('strong','',beat.label||beat.id),node('span','coverage-count',`${beat.currentCount||0} current leads · ${beat.reportCount||0} reports`));
+   const publishers=list(beat.publishers),primary=list(beat.primarySources);
+   card.append(node('p','',publishers.length?publishers.join(' · '):'No publisher reporting collected'));
+   if(primary.length)card.append(node('p','coverage-primary',`Connected primary feeds: ${primary.join(' · ')}`));
+   if(beat.gap)card.append(node('p','coverage-gap',beat.gap));beats.append(card);
+  }
+  const healthNode=$('coverage-health');healthNode.replaceChildren();
+  healthNode.append(node('span','',`${health.healthySources??'—'} / ${health.sourceCount??'—'} sources available`),node('span','',`Collection checked: ${date(health.lastCollectedAt)}`),node('span','',`Discovery lag: median ${discoveryLag(health.medianDiscoveryMinutes)} · P90 ${discoveryLag(health.p90DiscoveryMinutes)} · ${health.latencySamples||0} samples`));
+  healthNode.append(node('p','', 'Discovery lag measures source publication to first collection. It is not a measurement of when an event happened or how quickly another newsroom reported it.'));
+  if(list(desk.sourceGaps).length){
+   const gaps=node('section','coverage-source-gaps');gaps.append(node('h3','','Sources to strengthen'));
+   for(const source of desk.sourceGaps){const row=node('div','release-row'),url=safeSourceURL(source.url),name=node(url?'a':'strong','',source.name||'Source');if(url){name.href=url;name.target='_blank';name.rel='noopener noreferrer';}row.append(name,node('span','',String(source.status||'Not connected').replaceAll('-',' ')));if(source.reason)row.append(node('p','',source.reason));gaps.append(row);}healthNode.append(gaps);
+  }
+  if(list(desk.watchpoints).length){
+   const calendar=node('details','release-calendar'),summary=node('summary','','Scheduled releases');calendar.open=calendarOpen;calendar.append(summary,node('p','', 'A scheduled release is a reporting prompt. Confirm that the report is out before using its findings.'));
+   for(const release of desk.watchpoints){const row=node('div','release-row'),url=safeSourceURL(release.sourceUrl),title=node(url?'a':'strong','',release.title);if(url){title.href=url;title.target='_blank';title.rel='noopener noreferrer';}row.append(title,node('span','',`${release.status==='due'?'Due — check source':'Scheduled'} · ${date(release.scheduledAt)} · ${release.sourceName||'Official calendar'}`));if(release.note)row.append(node('p','',release.note));calendar.append(row);}healthNode.append(calendar);
+  }
+  const limits=$('coverage-limitations');limits.replaceChildren();for(const limit of [...new Set([...list(desk.limitations),...list(health.limitations)])])limits.append(node('li','',limit));panel.querySelector('.coverage-content').scrollTop=coverageScroll;
+ }
+ function cardBadge(event){if(snapshot.assignment&&event.assignment){const lane=event.assignment.lane;return {text:assignmentLanes[lane]||'Needs review',kind:lane==='today'||lane==='developing'?'update':'watch'};}const freshness=freshnessLabel(event);if(freshness)return {text:freshness,kind:'watch'};if(event.signals?.update)return {text:'Meaningful update',kind:'update'};if(event.localSignal)return {text:'Local signal',kind:'local'};if(event.decision?.action==='watch'||event.signals?.watch)return {text:'Watch',kind:'watch'};return {text:'Candidate',kind:'candidate'};}
  function renderList(){
+  const filters=candidateFilters(snapshot),filterKey=JSON.stringify(filters);if($('candidate-filter').dataset.options!==filterKey){$('candidate-filter').replaceChildren(...filters.map(([value,label])=>{const option=node('option','',label);option.value=value;return option;}));$('candidate-filter').dataset.options=filterKey;}if(!filters.some(([value])=>value===filter))filter=filters[0][0];$('candidate-filter').value=filter;
   const batch=candidatePage(snapshot,product,filter,page);page=batch.page;
   document.querySelectorAll('[data-product]').forEach(button=>{button.setAttribute('aria-selected',String(button.dataset.product===product));button.tabIndex=button.dataset.product===product?0:-1;});
   $('candidates').setAttribute('aria-labelledby',`product-${product}`);
-  text('ranking-note',product==='brief'?'Ranked for immediate audience awareness. A candidate is not an assignment.':'Ranked for explanatory value and reporting potential. A candidate is not an assignment.');
-  if(!selectedId||!selected()){selectedId=batch.items[0]?.id||snapshot.events[0]?.id||null;detailKey='';}
+  text('ranking-note',snapshot.assignment?'National significance and a today peg lead. Signals need editorial verification.':product==='brief'?'Ranked for immediate audience awareness. A candidate is not an assignment.':'Ranked for explanatory value and reporting potential. A candidate is not an assignment.');
+  if(!selectedId||!selected()){selectedId=batch.items[0]?.id||null;detailKey='';}
   const wanted=new Set(batch.items.map(event=>event.id));for(const child of [...$('candidates').children])if(!wanted.has(child.dataset.eventId))child.remove();
-  if(!batch.items.length){$('candidates').replaceChildren(node('p','empty-state',filter==='all'?'No candidates meet this view yet. The reporting stream remains available for the next development.':`No ${$('candidate-filter').selectedOptions[0].textContent.toLowerCase()} in this product view. Choose another filter to keep exploring.`));}
+  if(!batch.items.length){const empty=filter==='developing'?'No material reporting changes to inspect right now.':filter==='today'?'No national leads have a candidate today peg yet.':filter==='watch'?'No reporting leads are being watched in this view.':filter==='all'?'No candidates meet this view yet. The reporting stream remains available for the next development.':`No stories in ${$('candidate-filter').selectedOptions[0].textContent.toLowerCase()} right now.`;$('candidates').replaceChildren(node('p','empty-state',`${empty} Choose another filter to keep exploring.`));}
   for(const [index,event] of batch.items.entries()){
    let card=cards.get(event.id);if(!card){card=node('button','candidate-card');card.dataset.eventId=event.id;card.addEventListener('click',()=>choose(event.id));cards.set(event.id,card);}
    const key=JSON.stringify([event,product,index,page]);if(card.dataset.renderKey!==key){
     const top=node('span','card-top'),badge=cardBadge(event),badgeNode=node('span','card-badge',badge.text);badgeNode.dataset.kind=badge.kind;
-    top.append(node('span','card-index',String(page*PAGE_SIZE+index+1).padStart(2,'0')),badgeNode,node('span','card-time',relativeTime(event.whyNow?.at,snapshot.asOf||snapshot.generatedAt)));
-    const reason=event.fits?.[product]?.reasons?.[0]?.text||event.strategy?.reason||event.whyNow?.text||'';
+    const clock=snapshot.assignment?assignmentReportClock(event):{label:'',at:event.whyNow?.at};
+    top.append(node('span','card-index',String(page*PAGE_SIZE+index+1).padStart(2,'0')),badgeNode,node('span','card-time',`${clock.label?`${clock.label} `:''}${relativeTime(clock.at,snapshot.asOf||snapshot.generatedAt)}`));
+    const reason=(event.assignment?.lane==='held'?(nationalScopes.has(event.assignment.scope)?event.assignment.questions?.[0]:event.assignment.scopeReason):null)||event.assignment?.todayPeg?.label||event.fits?.[product]?.reasons?.[0]?.text||event.strategy?.reason||event.whyNow?.text||'';
     const publishers=[...new Set(list(event.evidence).map(source=>source.publisher).filter(Boolean))],sources=node('span','card-sources',publishers.slice(0,2).join(' · ')+(publishers.length>2?` +${publishers.length-2}`:''));
     if(event.decision?.action&&event.decision.action!=='none')sources.append(node('span','card-state',actionNames[event.decision.action]||''));
     card.replaceChildren(top,node('span','card-title',event.title),node('span','card-reason',reason),sources);card.dataset.renderKey=key;
@@ -128,10 +190,16 @@ function boot(){
   const event=selected();$('detail-empty').hidden=!!event;$('story-detail').hidden=!event;$('decision-panel').hidden=!event;if(!event)return;
   const localBasis=event.localSignal?localSignalSources(snapshot,event.localSignal):null,key=JSON.stringify([event,product,localBasis]);if(detailKey===key)return;detailKey=key;
   const scroll=$('detail-scroll').scrollTop,historyOpen=$('story-detail').querySelector('.history')?.open||false,openedExcerpts=new Set([...$('story-detail').querySelectorAll('details[data-evidence]')].filter(item=>item.open).map(item=>item.dataset.evidence)),article=$('story-detail');article.replaceChildren();
-  const meta=node('div','detail-meta'),badge=cardBadge(event),badgeNode=node('span','card-badge',badge.text),heading=node('h2','detail-title',event.title);heading.tabIndex=-1;heading.dataset.focusKey='detail-heading';badgeNode.dataset.kind=badge.kind;meta.append(badgeNode,node('span','',event.topic||'Reporting'),node('span','detail-date',date(event.whyNow?.at)));article.append(meta,heading);
+  const meta=node('div','detail-meta'),badge=cardBadge(event),badgeNode=node('span','card-badge',badge.text),heading=node('h2','detail-title',event.title),clock=snapshot.assignment?assignmentReportClock(event):{label:'',at:event.whyNow?.at};heading.tabIndex=-1;heading.dataset.focusKey='detail-heading';badgeNode.dataset.kind=badge.kind;meta.append(badgeNode,node('span','',event.assignment?.beatLabel||event.topic||'Reporting'),node('span','detail-date',`${clock.label?`${clock.label} `:''}${date(clock.at)}`));article.append(meta,heading);
   const excerptSource=list(event.evidence).find(source=>source.excerpt&&source.excerpt===event.summary);
   if(excerptSource){const preview=node('div','story-preview'),excerpt=String(excerptSource.excerpt),short=excerpt.length>260?excerpt.slice(0,260).replace(/\s+\S*$/,'')+'…':excerpt;preview.append(node('p','',short),node('span','',`${excerptSource.publisher} · ${mode==='demo'?'representative excerpt':'available excerpt'}`));article.append(preview);}
-  const why=node('div','why-now');why.append(node('span','section-label','Why this matters now'),node('p','',readableReportingText(event.whyNow?.text)||'The current reason to cover this story still needs verification.'));article.append(why);
+  if(snapshot.assignment&&event.assignment){
+   const desk=event.assignment,peg=desk.todayPeg||{},source=assignmentPegSource(event),why=node('section','why-now assignment-peg');
+   why.append(node('span','section-label',peg.status==='candidate'?'Candidate today peg':peg.status==='needs-verification'?'Today peg needs verification':'Today peg not established'),node('h3','',peg.label||'Verify what is new and why it matters today'),node('p','',peg.reason||'A recent collection is not enough to establish a current development.'));
+   if(peg.quote){why.append(node('blockquote','',peg.quote));const url=safeSourceURL(source?.url);const citation=node(url?'a':'span','peg-citation',source?`${source.publisher||'Source'} · ${sourceClockLabel(source).toLowerCase()} ${date(source.publishedAt)}`:'The cited source is unavailable in this snapshot.');if(url){citation.href=url;citation.target='_blank';citation.rel='noopener noreferrer';}why.append(citation);}
+   why.append(node('p','supporting-detail',`${desk.scope==='world-impact'?'World impact':desk.scope==='national'?'National scope':desk.scope==='local'?'Local scope — outside this desk':'National relevance not established'} · ${desk.scopeReason||'The scope requires editorial review.'}`));article.append(why);
+   if(list(desk.questions).length){const questions=section('Next reporting questions'),ul=node('ul','gap-list');for(const question of desk.questions)ul.append(node('li','',question));questions.append(ul);article.append(questions);}
+  }else{const why=node('div','why-now');why.append(node('span','section-label','Why this matters now'),node('p','',readableReportingText(event.whyNow?.text)||'The current reason to cover this story still needs verification.'));article.append(why);}
   const change=section('What changed'),changeRow=node('div','change-note'),changeCopy=node('div','');
   changeRow.append(node('span','change-mark',event.change?.material?'↗':'—'));changeCopy.append(node('strong','',event.change?.material?'Potential material change':({new:'First surfaced in this view',cosmetic:'Headline wording changed', 'source-added':'Additional reporting',unchanged:'No material change detected'})[event.change?.kind]||'Change still needs review'),node('p','',readableReportingText(event.change?.text)||'No supported material change has been identified.'));changeRow.append(changeCopy);change.append(changeRow);
   const revisions=list(event.change?.details);for(const reason of [...new Set(revisions.map(detail=>detail.reason).filter(Boolean))].slice(0,3))change.append(node('p','supporting-detail',reason));
@@ -156,7 +224,8 @@ function boot(){
   for(const evidence of list(event.evidence)){
    const url=safeSourceURL(evidence.url);if(!url&&mode!=='demo')continue;const entry=node('div','source-entry'),link=node(mode==='demo'?'div':'a','source-link'),name=node('span','source-name',evidence.publisher||'Source'),identity=String(evidence.id||url||links);
    if(mode!=='demo'){link.href=url;link.target='_blank';link.rel='noopener noreferrer';link.dataset.focusKey=`source:${identity}`;}
-   name.append(node('time','',date(evidence.publishedAt)));if(mode!=='demo')name.append(node('span','external','↗'));link.append(name,node('span','source-headline',evidence.title||'Read the original report'));
+   name.append(node('time','',`${snapshot.assignment?`${sourceClockLabel(evidence)} `:''}${date(evidence.publishedAt)}`));if(mode!=='demo')name.append(node('span','external','↗'));link.append(name,node('span','source-headline',evidence.title||'Read the original report'));
+   if(snapshot.assignment&&evidence.firstSeenAt)link.append(node('span','supporting-detail',`First collected ${date(evidence.firstSeenAt)}`));
    if(mode==='demo')link.append(node('span','supporting-detail','Synthetic source fixture · not a live article'));else if(evidence.level==='headline')link.append(node('span','supporting-detail','Headline evidence · full reporting still needs review'));entry.append(link);
    if(evidence.excerpt){const excerpt=node('details','source-excerpt'),summary=node('summary','',mode==='demo'?'Inspect representative reporting':'Read the available excerpt');excerpt.dataset.evidence=identity;excerpt.open=openedExcerpts.has(identity);summary.dataset.focusKey=`excerpt:${identity}`;excerpt.append(summary,node('blockquote','',evidence.excerpt));entry.append(excerpt);}sourceList.append(entry);links++;
   }
@@ -170,8 +239,8 @@ function boot(){
   if(list(snapshot.limitations).length){const block=node('section','definition');block.append(node('h3','','Reporting boundaries'));const ul=node('ul','');for(const limit of snapshot.limitations)ul.append(node('li','',limit));block.append(ul);panel.append(block);}
  }
  $('refresh').addEventListener('click',refresh);
- $('input-mode').addEventListener('change',()=>{drafts.set(draftKey(),$('decision-note').value);mode=$('input-mode').value;snapshot=null;selectedId=null;page=0;detailKey='';text('health-message',mode==='demo'?'Loading an isolated representative cycle…':'Connecting to live reporting…');$('cycle-banner').hidden=mode!=='demo';$('story-detail').hidden=true;$('decision-panel').hidden=true;$('detail-empty').hidden=false;$('candidates').replaceChildren(node('p','empty-state','Loading this reporting view…'));void request(`/api/producer?mode=${mode}`);});
- $('candidate-filter').addEventListener('change',()=>{filter=$('candidate-filter').value;page=0;if(snapshot){renderList();renderDetail();$('candidates').scrollTop=0;}});
+ $('input-mode').addEventListener('change',()=>{drafts.set(draftKey(),$('decision-note').value);mode=$('input-mode').value;filter=mode==='live'?'today':'all';snapshot=null;selectedId=null;page=0;detailKey='';text('health-message',mode==='demo'?'Loading an isolated representative cycle…':'Connecting to live reporting…');$('cycle-banner').hidden=mode!=='demo';$('desk-coverage').hidden=true;$('story-detail').hidden=true;$('decision-panel').hidden=true;$('detail-empty').hidden=false;$('candidates').replaceChildren(node('p','empty-state','Loading this reporting view…'));void request(`/api/producer?mode=${mode}`);});
+ $('candidate-filter').addEventListener('change',()=>{drafts.set(draftKey(),$('decision-note').value);filter=$('candidate-filter').value;selectedId=null;detailKey='';page=0;if(snapshot){renderList();renderDetail();$('candidates').scrollTop=0;$('detail-scroll').scrollTop=0;}});
  for(const button of document.querySelectorAll('[data-product]')){button.addEventListener('click',()=>{product=button.dataset.product;page=0;if(snapshot){renderList();renderDetail();$('candidates').scrollTop=0;}});button.addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const id=event.key==='Home'?'brief':event.key==='End'?'focus':product==='brief'?'focus':'brief';$(`product-${id}`).click();$(`product-${id}`).focus();});}
  $('previous-page').addEventListener('click',()=>{page--;renderList();$('candidates').scrollTop=0;});$('next-page').addEventListener('click',()=>{page++;renderList();$('candidates').scrollTop=0;});
  $('decision-note').addEventListener('input',()=>drafts.set(draftKey(),$('decision-note').value));
