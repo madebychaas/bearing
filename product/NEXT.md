@@ -1,5 +1,67 @@
 # Bearing — Active Mission
 
+**Status: active mission — prove the role-separated newsroom pipeline.**
+
+On October 3 the user explicitly expanded the newsroom architecture beyond the assignment-desk-only checkpoint. The assignment desk remains the factual foundation; the next proof is to separate distinct newsroom judgments so one broad model no longer has to discover, frame, produce, write, visualize and approve a story in one inference.
+
+Read [the role-separated newsroom architecture](NEWSROOM_ARCHITECTURE.md) before implementing this mission. This current direction supersedes the older historical guardrail below that said not to build a multi-agent newsroom. Preserve that historical text as the scope of the mission in which it was written; do not treat it as the current instruction.
+
+### Current implementation target
+
+Build the **smallest vertical proof** through the existing Bearing codebase:
+
+```text
+current canonical event
+→ AssignmentBrief
+→ EditorialBrief
+→ ProductionPlan
+→ Journalist + VisualAssessment + GraphicsSpec
+→ FinalReview
+→ deterministic production/playout handoff
+→ one finished traceable Bearing asset
+```
+
+Do not build eight autonomous services or a generalized agent framework. Role separation is initially about isolated context, jurisdiction, schemas, permissions and stop conditions. Reuse one underlying model where sensible.
+
+The first proof must:
+
+1. Reuse the existing national assignment desk/canonical-event evidence rather than replacing it.
+2. Persist versioned artifacts for each newsroom handoff.
+3. Add a bounded **Editor** that decides meaning, audience need and editorial focus from an `AssignmentBrief`.
+4. Add a bounded **Producer** that decides format, structure, timing and element needs from an `EditorialBrief`.
+5. Fan out from the production plan to:
+   - one **Journalist** intelligence with output modes such as anchor/reporter track,
+   - **Visual Intelligence** that judges what available imagery actually proves and what is missing,
+   - **Graphics Intelligence** that emits a machine-readable `GraphicsSpec`.
+6. Reunite those outputs at a narrow **Standards / Final Edit** role that returns specific edits/holds rather than regenerating the story.
+7. Keep technical execution deterministic: missing/stale/mismatched assets, versions or manifests must fail loudly and specifically.
+8. Use the accepted Bearing production machinery for the finished proof instead of redesigning the viewer or renderer.
+9. Demonstrate one material source update that invalidates or reassesses the correct downstream artifacts.
+10. Demonstrate one intentionally broken execution dependency that the technical layer refuses to paper over.
+
+Use **one real current story** for the end-to-end proof. Do not batch stories merely to show orchestration.
+
+### Graphics / Lumina boundary
+
+Angelo's current **Lumina Studio** prototype is a promising graphics renderer and human-edit surface, not an editorial agent. The Graphics Intelligence should decide what explanatory graphic is needed and emit a stable `GraphicsSpec`; a renderer adapter should execute that spec.
+
+For this first mission, define the adapter boundary and keep the existing Bearing graphics path working. Do **not** create a runtime dependency on the Lovable-hosted project or copy the whole studio into Bearing yet. Once the graphics contract is proven, the Lumina code can be explicitly exported/synced and adapted behind that interface.
+
+### Evaluation
+
+Do not declare success because the artifacts validate.
+
+Compare the role-separated output with the existing broad-agent behavior where practical and inspect the actual story. Look for clearer editorial focus, fewer unsupported assertions, better visual evidence choices, more purposeful graphics, less model wandering and a result that feels more produced than generated.
+
+If a bad result occurs, preserve enough provenance to identify **which newsroom judgment failed**.
+
+### Stop condition
+
+When one real current story completes this path, the material-update reassessment works, the technical failure test fails loudly, relevant automated tests pass and the finished story has been reviewed end-to-end, commit stable milestones, update this file with what the proof taught us, and stop for user review.
+
+---
+
+
 **Status: active mission — the national assignment desk.**
 
 On October 2 the user explicitly parked **Make my newscast** and redirected work to hunting and gathering current national U.S. news, plus consequential world developments. The newsroom should know what changed, why it belongs today, who is affected and where the primary evidence lives. Preserve the accepted player, production approach and saved personal-newscast work.
