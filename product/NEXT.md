@@ -2,7 +2,7 @@
 
 **Status: active mission — second-story + graphics-quality proof.**
 
-The first role-separated newsroom proof has been reviewed and the workflow has been made repeatable. The next active mission is [Second Story + Graphics Quality Proof](SECOND_STORY_GRAPHICS_PROOF.md). Read and follow [Graphics & Art Direction Standard](GRAPHICS_ART_DIRECTION.md) as an active production standard.
+The first role-separated newsroom proof has been reviewed and the workflow has been made repeatable. The next active mission is [Second Story + Graphics Quality Proof](SECOND_STORY_GRAPHICS_PROOF.md), with [Editorial Supply Proof](EDITORIAL_SUPPLY_PROOF.md) as its first prerequisite. Read and follow [Editorial Story Library & Ranking](EDITORIAL_STORY_LIBRARY.md) and [Graphics & Art Direction Standard](GRAPHICS_ART_DIRECTION.md) as active standards.
 
 This follow-on mission is deliberately a reuse test: run one materially different current story through the existing role-separated workflow, add only the smallest bounded Art Direction stage needed to test design judgment, produce a private preview, compare the role behavior with the Medicare proof, and stop. Do not enable autonomous production, publish, or begin Lumina integration.
 
