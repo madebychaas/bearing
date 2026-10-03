@@ -1,5 +1,15 @@
 # Bearing — Active Mission
 
+**Status: active mission — second-story + graphics-quality proof.**
+
+The first role-separated newsroom proof has been reviewed and the workflow has been made repeatable. The next active mission is [Second Story + Graphics Quality Proof](SECOND_STORY_GRAPHICS_PROOF.md). Read and follow [Graphics & Art Direction Standard](GRAPHICS_ART_DIRECTION.md) as an active production standard.
+
+This follow-on mission is deliberately a reuse test: run one materially different current story through the existing role-separated workflow, add only the smallest bounded Art Direction stage needed to test design judgment, produce a private preview, compare the role behavior with the Medicare proof, and stop. Do not enable autonomous production, publish, or begin Lumina integration.
+
+If local commits from the first proof have not yet been pushed, preserve and reconcile them; do not discard completed local work.
+
+---
+
 **Status: active mission — prove the role-separated newsroom pipeline.**
 
 On October 3 the user explicitly expanded the newsroom architecture beyond the assignment-desk-only checkpoint. The assignment desk remains the factual foundation; the next proof is to separate distinct newsroom judgments so one broad model no longer has to discover, frame, produce, write, visualize and approve a story in one inference.
