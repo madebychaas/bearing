@@ -18,6 +18,12 @@ Test whether the newsroom roles behave differently when the journalism requires 
 
 This run is an experiment in reuse, not an invitation to expand the architecture.
 
+## Editorial supply prerequisite
+
+Before selecting the second story, complete [Editorial Supply Proof](EDITORIAL_SUPPLY_PROOF.md). The second story must come naturally from Bearing's ranked Current Story Library rather than being hand-selected outside the editorial system.
+
+The purpose is to test the whole newsroom chain: **does Bearing know enough about what is happening to have real editorial choice before it starts producing?**
+
 ## Story selection
 
 Choose one current story that is materially different from the Medicare proof.
